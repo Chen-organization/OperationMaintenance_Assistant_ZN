@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		153ABB463F579A139DC90271 /* Pods_OperationMaintenance_Assistant_ZN.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2331F8AA2C2E5183A987B1A /* Pods_OperationMaintenance_Assistant_ZN.framework */; };
+		7403D07B21C2BC5F0055561E /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7403D07821C2BC5F0055561E /* Network.swift */; };
+		7403D07C21C2BC5F0055561E /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7403D07921C2BC5F0055561E /* NetworkService.swift */; };
+		7403D07D21C2BC5F0055561E /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7403D07A21C2BC5F0055561E /* API.swift */; };
+		7403D08121C2C0F10055561E /* PCH.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7403D08021C2C0F10055561E /* PCH.swift */; };
+		7403D08421C2C4380055561E /* ZNCustomAlertView.h in Sources */ = {isa = PBXBuildFile; fileRef = 7477E8D421C1711800AAA756 /* ZNCustomAlertView.h */; };
 		7477E84221C025BF00AAA756 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7477E84121C025BF00AAA756 /* AppDelegate.swift */; };
 		7477E84421C025BF00AAA756 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7477E84321C025BF00AAA756 /* ViewController.swift */; };
 		7477E84721C025BF00AAA756 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7477E84521C025BF00AAA756 /* Main.storyboard */; };
@@ -151,6 +156,11 @@
 		7477EAEE21C189E600AAA756 /* MXSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7477EAE921C189E600AAA756 /* MXSegmentedControl.swift */; };
 		7477EAEF21C189E600AAA756 /* MXSegment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7477EAEA21C189E600AAA756 /* MXSegment.swift */; };
 		7477EAF021C189E600AAA756 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7477EAEC21C189E600AAA756 /* Info.plist */; };
+		7477EAF521C2A50B00AAA756 /* MeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7477EAF221C2A50B00AAA756 /* MeVC.swift */; };
+		7477EAF621C2A50B00AAA756 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7477EAF421C2A50B00AAA756 /* HomeVC.swift */; };
+		7477EAF821C2A5F800AAA756 /* TabeBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7477EAF721C2A5F800AAA756 /* TabeBarViewController.swift */; };
+		7477EAFB21C2A7F600AAA756 /* InspectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7477EAFA21C2A7F600AAA756 /* InspectionVC.swift */; };
+		7477EAFE21C2A8CA00AAA756 /* MeterReadingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7477EAFD21C2A8CA00AAA756 /* MeterReadingVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -172,6 +182,12 @@
 
 /* Begin PBXFileReference section */
 		4154604F37E3CCCFB375A4AD /* Pods-OperationMaintenance_Assistant_ZN.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OperationMaintenance_Assistant_ZN.release.xcconfig"; path = "Pods/Target Support Files/Pods-OperationMaintenance_Assistant_ZN/Pods-OperationMaintenance_Assistant_ZN.release.xcconfig"; sourceTree = "<group>"; };
+		7403D07821C2BC5F0055561E /* Network.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
+		7403D07921C2BC5F0055561E /* NetworkService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		7403D07A21C2BC5F0055561E /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		7403D07E21C2BD230055561E /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7403D08021C2C0F10055561E /* PCH.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PCH.swift; sourceTree = "<group>"; };
+		7403D08621C2C6A90055561E /* OperationMaintenance_Assistant_ZN-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "OperationMaintenance_Assistant_ZN-Bridging-Header.h"; sourceTree = "<group>"; };
 		7477E83E21C025BF00AAA756 /* OperationMaintenance_Assistant_ZN.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OperationMaintenance_Assistant_ZN.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7477E84121C025BF00AAA756 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7477E84321C025BF00AAA756 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -429,6 +445,11 @@
 		7477EAEA21C189E600AAA756 /* MXSegment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MXSegment.swift; sourceTree = "<group>"; };
 		7477EAEB21C189E600AAA756 /* MXSegmentedControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MXSegmentedControl.h; sourceTree = "<group>"; };
 		7477EAEC21C189E600AAA756 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7477EAF221C2A50B00AAA756 /* MeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeVC.swift; sourceTree = "<group>"; };
+		7477EAF421C2A50B00AAA756 /* HomeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
+		7477EAF721C2A5F800AAA756 /* TabeBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabeBarViewController.swift; sourceTree = "<group>"; };
+		7477EAFA21C2A7F600AAA756 /* InspectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InspectionVC.swift; sourceTree = "<group>"; };
+		7477EAFD21C2A8CA00AAA756 /* MeterReadingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeterReadingVC.swift; sourceTree = "<group>"; };
 		9387F9749FA2D28DBBE888FA /* Pods-OperationMaintenance_Assistant_ZN.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OperationMaintenance_Assistant_ZN.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OperationMaintenance_Assistant_ZN/Pods-OperationMaintenance_Assistant_ZN.debug.xcconfig"; sourceTree = "<group>"; };
 		D2331F8AA2C2E5183A987B1A /* Pods_OperationMaintenance_Assistant_ZN.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OperationMaintenance_Assistant_ZN.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -472,9 +493,20 @@
 		6C10444056BA7CF598DE237F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7403D07E21C2BD230055561E /* Alamofire.framework */,
 				D2331F8AA2C2E5183A987B1A /* Pods_OperationMaintenance_Assistant_ZN.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		7403D07721C2BC5F0055561E /* NetworkService */ = {
+			isa = PBXGroup;
+			children = (
+				7403D07821C2BC5F0055561E /* Network.swift */,
+				7403D07921C2BC5F0055561E /* NetworkService.swift */,
+				7403D07A21C2BC5F0055561E /* API.swift */,
+			);
+			path = NetworkService;
 			sourceTree = "<group>";
 		};
 		7477E83521C025BF00AAA756 = {
@@ -502,6 +534,7 @@
 		7477E84021C025BF00AAA756 /* OperationMaintenance_Assistant_ZN */ = {
 			isa = PBXGroup;
 			children = (
+				7403D07721C2BC5F0055561E /* NetworkService */,
 				7477EACD21C1714000AAA756 /* Module */,
 				7477E89E21C170C800AAA756 /* Vendors */,
 				7477E89721C1709900AAA756 /* BaseModel */,
@@ -509,6 +542,8 @@
 				7477E86F21C1701E00AAA756 /* Utils */,
 				7477E84121C025BF00AAA756 /* AppDelegate.swift */,
 				7477E84321C025BF00AAA756 /* ViewController.swift */,
+				7403D08621C2C6A90055561E /* OperationMaintenance_Assistant_ZN-Bridging-Header.h */,
+				7403D08021C2C0F10055561E /* PCH.swift */,
 				7477E84521C025BF00AAA756 /* Main.storyboard */,
 				7477E84821C025C000AAA756 /* Assets.xcassets */,
 				7477E84A21C025C000AAA756 /* LaunchScreen.storyboard */,
@@ -573,6 +608,7 @@
 				7477E88E21C1705F00AAA756 /* BaseVC.swift */,
 				7477E88F21C1705F00AAA756 /* BaseTableVC.swift */,
 				7477E89021C1705F00AAA756 /* NavigationController.swift */,
+				7477EAF721C2A5F800AAA756 /* TabeBarViewController.swift */,
 			);
 			path = BaseVC;
 			sourceTree = "<group>";
@@ -645,11 +681,11 @@
 		7477E8D021C1711800AAA756 /* ZNCustomAlertView */ = {
 			isa = PBXGroup;
 			children = (
-				7477E8D121C1711800AAA756 /* ZNCustomAlertView.m */,
-				7477E8D221C1711800AAA756 /* ZNCustomAlertContentView.xib */,
-				7477E8D321C1711800AAA756 /* ZNCustomAlertContentView.h */,
 				7477E8D421C1711800AAA756 /* ZNCustomAlertView.h */,
+				7477E8D121C1711800AAA756 /* ZNCustomAlertView.m */,
+				7477E8D321C1711800AAA756 /* ZNCustomAlertContentView.h */,
 				7477E8D521C1711800AAA756 /* ZNCustomAlertContentView.m */,
+				7477E8D221C1711800AAA756 /* ZNCustomAlertContentView.xib */,
 			);
 			path = ZNCustomAlertView;
 			sourceTree = "<group>";
@@ -1214,6 +1250,10 @@
 		7477EACD21C1714000AAA756 /* Module */ = {
 			isa = PBXGroup;
 			children = (
+				7477EAF321C2A50B00AAA756 /* Home */,
+				7477EAF921C2A7CE00AAA756 /*  Inspection */,
+				7477EAFC21C2A80300AAA756 /* MeterReading  */,
+				7477EAF121C2A50B00AAA756 /* Me */,
 			);
 			path = Module;
 			sourceTree = "<group>";
@@ -1229,6 +1269,38 @@
 			);
 			name = MXSegmentedControl;
 			path = "../../../../../Users/chen/Downloads/MXSegmentedControl-master/MXSegmentedControl";
+			sourceTree = "<group>";
+		};
+		7477EAF121C2A50B00AAA756 /* Me */ = {
+			isa = PBXGroup;
+			children = (
+				7477EAF221C2A50B00AAA756 /* MeVC.swift */,
+			);
+			path = Me;
+			sourceTree = "<group>";
+		};
+		7477EAF321C2A50B00AAA756 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				7477EAF421C2A50B00AAA756 /* HomeVC.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		7477EAF921C2A7CE00AAA756 /*  Inspection */ = {
+			isa = PBXGroup;
+			children = (
+				7477EAFA21C2A7F600AAA756 /* InspectionVC.swift */,
+			);
+			path = " Inspection";
+			sourceTree = "<group>";
+		};
+		7477EAFC21C2A80300AAA756 /* MeterReading  */ = {
+			isa = PBXGroup;
+			children = (
+				7477EAFD21C2A8CA00AAA756 /* MeterReadingVC.swift */,
+			);
+			path = "MeterReading ";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1443,6 +1515,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7403D08421C2C4380055561E /* ZNCustomAlertView.h in Sources */,
 				7477EACC21C1712300AAA756 /* UINavigationController+FDFullscreenPopGesture.m in Sources */,
 				7477EAAE21C1712300AAA756 /* WRProxy.swift in Sources */,
 				7477EAED21C189E600AAA756 /* MXIndicator.swift in Sources */,
@@ -1474,6 +1547,7 @@
 				7477E88321C1701E00AAA756 /* UIView+Common.m in Sources */,
 				7477EAC021C1712300AAA756 /* View+MASAdditions.m in Sources */,
 				7477EABC21C1712300AAA756 /* MASCompositeConstraint.m in Sources */,
+				7477EAF621C2A50B00AAA756 /* HomeVC.swift in Sources */,
 				7477EA8B21C1712300AAA756 /* Reachability.m in Sources */,
 				7477EA8621C1712300AAA756 /* CALayer+Anim.m in Sources */,
 				7477EA9721C1712300AAA756 /* SDWebImageCoderHelper.m in Sources */,
@@ -1483,6 +1557,7 @@
 				7477EA7921C1712300AAA756 /* UIImage+Extend.m in Sources */,
 				7477EABD21C1712300AAA756 /* MASConstraintMaker.m in Sources */,
 				7477EA8221C1712300AAA756 /* NSString+Extend.m in Sources */,
+				7477EAF521C2A50B00AAA756 /* MeVC.swift in Sources */,
 				7477EAA621C1712300AAA756 /* UIView+WebCache.m in Sources */,
 				7477EA6A21C1712300AAA756 /* PhotoItemView.m in Sources */,
 				7477EAC321C1712300AAA756 /* MASViewAttribute.m in Sources */,
@@ -1501,8 +1576,10 @@
 				7477EAA721C1712300AAA756 /* SDWebImageImageIOCoder.m in Sources */,
 				7477EA6F21C1712300AAA756 /* UIImage+ReMake.m in Sources */,
 				7477EABA21C1712300AAA756 /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
+				7403D07B21C2BC5F0055561E /* Network.swift in Sources */,
 				7477EA7F21C1712300AAA756 /* UIView+Extend.m in Sources */,
 				7477EA7221C1712300AAA756 /* CoreSVP.m in Sources */,
+				7403D08121C2C0F10055561E /* PCH.swift in Sources */,
 				7477EA3921C1712300AAA756 /* MKDropdownMenu.m in Sources */,
 				7477EA6021C1712300AAA756 /* PhotoBroswerVC.m in Sources */,
 				7477EA7721C1712300AAA756 /* UIImage+Water.m in Sources */,
@@ -1516,6 +1593,8 @@
 				7477E88421C1701E00AAA756 /* UITextField+Placeholder.m in Sources */,
 				7477EA3521C1712300AAA756 /* ZNCustomAlertContentView.m in Sources */,
 				7477EAA321C1712300AAA756 /* SDWebImageGIFCoder.m in Sources */,
+				7403D07D21C2BC5F0055561E /* API.swift in Sources */,
+				7403D07C21C2BC5F0055561E /* NetworkService.swift in Sources */,
 				7477EA6721C1712300AAA756 /* PBSaveBtn.m in Sources */,
 				7477EAC121C1712300AAA756 /* MASConstraint.m in Sources */,
 				7477EAA521C1712300AAA756 /* UIView+WebCacheOperation.m in Sources */,
@@ -1539,10 +1618,12 @@
 				7477EAEF21C189E600AAA756 /* MXSegment.swift in Sources */,
 				7477EA1D21C1712300AAA756 /* MKRingProgressView.swift in Sources */,
 				7477EAB021C1712300AAA756 /* WRCycleCell.swift in Sources */,
+				7477EAF821C2A5F800AAA756 /* TabeBarViewController.swift in Sources */,
 				7477EA8421C1712300AAA756 /* NSArray+Extend.m in Sources */,
 				7477E84221C025BF00AAA756 /* AppDelegate.swift in Sources */,
 				7477EA6921C1712300AAA756 /* PhotoImageView.m in Sources */,
 				7477EA3321C1712300AAA756 /* ZNCustomAlertView.m in Sources */,
+				7477EAFE21C2A8CA00AAA756 /* MeterReadingVC.swift in Sources */,
 				7477EA7321C1712300AAA756 /* SVProgressHUD.m in Sources */,
 				7477EAAC21C1712300AAA756 /* WRNavigationBar.swift in Sources */,
 				7477EAA921C1712300AAA756 /* SDWebImageWebPCoder.m in Sources */,
@@ -1560,6 +1641,7 @@
 				7477EA9521C1712300AAA756 /* UIImage+GIF.m in Sources */,
 				7477E89521C1705F00AAA756 /* BaseTableVC.swift in Sources */,
 				7477EA6321C1712300AAA756 /* PBConst.m in Sources */,
+				7477EAFB21C2A7F600AAA756 /* InspectionVC.swift in Sources */,
 				7477E89121C1705F00AAA756 /* UIBarButtonItemFixSpace.swift in Sources */,
 				7477EAC421C1712300AAA756 /* NSObject+ALiHUD.m in Sources */,
 			);
@@ -1745,7 +1827,9 @@
 					"$(PROJECT_DIR)/OperationMaintenance_Assistant_ZN/Vendors/BaiduLoc_iOSSDK_Libs_Bitcode_v1.1",
 					"$(PROJECT_DIR)/OperationMaintenance_Assistant_ZN/Vendors/BaiduMapAPI",
 				);
+				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/OperationMaintenance_Assistant_ZN/Vendors/ZNCustomAlertView\"/**";
 				INFOPLIST_FILE = OperationMaintenance_Assistant_ZN/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1754,11 +1838,13 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/OperationMaintenance_Assistant_ZN/Vendors/BaiduMapAPI/thirdlibs",
 				);
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "chen.OperationMaintenance-Assistant-ZN";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/OperationMaintenance_Assistant_ZN/OperationMaintenance_Assistant_ZN-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "$(PODS_ROOT)/**";
 			};
 			name = Debug;
@@ -1776,7 +1862,9 @@
 					"$(PROJECT_DIR)/OperationMaintenance_Assistant_ZN/Vendors/BaiduLoc_iOSSDK_Libs_Bitcode_v1.1",
 					"$(PROJECT_DIR)/OperationMaintenance_Assistant_ZN/Vendors/BaiduMapAPI",
 				);
+				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/OperationMaintenance_Assistant_ZN/Vendors/ZNCustomAlertView\"/**";
 				INFOPLIST_FILE = OperationMaintenance_Assistant_ZN/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1788,8 +1876,9 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "chen.OperationMaintenance-Assistant-ZN";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/OperationMaintenance_Assistant_ZN/OperationMaintenance_Assistant_ZN-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "$(PODS_ROOT)/**";
 			};
 			name = Release;

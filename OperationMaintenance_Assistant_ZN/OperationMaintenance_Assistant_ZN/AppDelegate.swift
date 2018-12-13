@@ -15,7 +15,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+
+
+        //设置tabbar
+        self.window = UIWindow(frame: UIScreen.main.bounds)
+        self.window?.backgroundColor = UIColor.white
+        
+        //初始化tabbar
+        let tabbarVC = TabeBarViewController()
+        self.window!.rootViewController = tabbarVC
+        self.window!.makeKeyAndVisible()
+        
+
         return true
     }
 
