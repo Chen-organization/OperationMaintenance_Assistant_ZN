@@ -27,12 +27,15 @@ class TabeBarViewController: UITabBarController {
     
     
     func setUpAllChildViewController() {
+
         
         self.setUpOneChildViewController(viewController: HomeVC(), image: "", selectedImage: "", title: "首页")
         
         self.setUpOneChildViewController(viewController: InspectionVC(), image: "", selectedImage: "", title: "巡检")
         
-        self.setUpOneChildViewController(viewController: MeterReadingVC(), image: "", selectedImage: "", title: "抄表")
+        let meterReading = UIStoryboard(name: "MeterReading", bundle: nil)
+            .instantiateViewController(withIdentifier: "MeterReadingVC") as! MeterReadingVC
+        self.setUpOneChildViewController(viewController: meterReading, image: "", selectedImage: "", title: "抄表")
         
         self.setUpOneChildViewController(viewController: MeVC(), image: "", selectedImage: "", title: "我的")
     }

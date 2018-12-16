@@ -15,15 +15,15 @@ class BaseVC: UIViewController {
 
 
         // 设置导航栏颜色
-        navBarBarTintColor = UIColor.init(red: 71/255.0, green: 143/255.0, blue: 183/255.0, alpha: 1.0)
-        
-        // 设置初始导航栏透明度
-        navBarBackgroundAlpha = 1.0
-        
-        // 设置导航栏按钮和标题颜色
-        navBarTintColor = .white
-        navBarTitleColor = .white
-        statusBarStyle = UIStatusBarStyle.lightContent
+//        navBarBarTintColor = UIColor.init(red: 71/255.0, green: 143/255.0, blue: 183/255.0, alpha: 1.0)
+//        
+//        // 设置初始导航栏透明度
+//        navBarBackgroundAlpha = 1.0
+//        
+//        // 设置导航栏按钮和标题颜色
+//        navBarTintColor = .white
+//        navBarTitleColor = .white
+//        statusBarStyle = UIStatusBarStyle.lightContent
         
         self.view.backgroundColor = UIColor.white
         

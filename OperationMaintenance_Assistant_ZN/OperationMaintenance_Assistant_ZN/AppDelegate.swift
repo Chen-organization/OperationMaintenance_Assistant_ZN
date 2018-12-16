@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Alamofire
+
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,17 +18,64 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 
-
         //设置tabbar
         self.window = UIWindow(frame: UIScreen.main.bounds)
         self.window?.backgroundColor = UIColor.white
         
-        //初始化tabbar
-        let tabbarVC = TabeBarViewController()
-        self.window!.rootViewController = tabbarVC
+        
+//        //NAV
+//        UINavigationBar.appearance().tintColor = UIColor.black
+//        UINavigationBar.appearance().barTintColor = UIColor.init(red: 31, green: 181, blue: 167, alpha: 1)
+//        UINavigationBar.appearance().isTranslucent = false
+//        UINavigationBar.appearance().titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white] // 设置导航条标题颜色，还可以设置其它文字属性，只需要在里面添加对应的属性
+
+
+        
+        IQKeyboardManager.sharedManager().enable = true
+        IQKeyboardManager.sharedManager().enableAutoToolbar = false
+        IQKeyboardManager.sharedManager().shouldResignOnTouchOutside = true
+        
+        UITextField.appearance().tintColor = RGBCOLOR(r: 74, 144, 181)
+        
+//        _mapManager = BMKMapManager()
+//        // 如果要关注网络及授权验证事件，请设定generalDelegate参数
+//        let ret = _mapManager?.start("T861GXQXTnAYjvF1MxfGlGpXGgFg4yhY", generalDelegate: self)
+//        if ret == false {
+//            NSLog("manager start failed!")
+//        }
+        
+        
+        let net = NetworkReachabilityManager()
+        if net?.isReachable ?? false {
+            
+            //可用
+            UserCenter.shared.userInfo{ (islogin, userReturnModel) in
+                
+                if (islogin){
+
+                    //初始化tabbar
+                    let tabbarVC = TabeBarViewController()
+                    self.window!.rootViewController = tabbarVC
+                    
+                }else{
+                    //未登录
+                    let vc = LoginVC.getLoginVC()
+                    self.window?.rootViewController = vc
+                }
+            }
+            
+        }else{
+            
+            //未登录
+            let vc = LoginVC.getLoginVC()
+            self.window?.rootViewController = vc
+            
+        }
+        
+       
+
         self.window!.makeKeyAndVisible()
         
-
         return true
     }
 

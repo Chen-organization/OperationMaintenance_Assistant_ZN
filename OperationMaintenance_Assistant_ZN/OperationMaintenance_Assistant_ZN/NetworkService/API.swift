@@ -12,7 +12,7 @@ import Foundation
 
 //public struct API {
 
-private let baseURL = "http://"
+private let baseURL = "http://plat.znxk.net:6801"
 
 //private let baseURL = "http://"    //
 
@@ -20,5 +20,6 @@ private let baseURL = "http://"
 //MARK:- ---  接口
 
 //登录
-public let LoginUrl = baseURL + ""
-
+public let LoginUrl = baseURL + "/first/getLand"
+//找回密码接口
+public let getBackPasswordUrl = baseURL + "/first/getBackPassword"
