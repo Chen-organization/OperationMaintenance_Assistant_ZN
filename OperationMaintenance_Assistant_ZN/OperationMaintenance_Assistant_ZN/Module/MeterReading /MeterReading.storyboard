@@ -602,7 +602,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="qrcode_border" width="16" height="16"/>
+        <image name="qrcode_border" width="51" height="51"/>
         <image name="qrcode_scanline_qrcode" width="16" height="16"/>
     </resources>
 </document>
