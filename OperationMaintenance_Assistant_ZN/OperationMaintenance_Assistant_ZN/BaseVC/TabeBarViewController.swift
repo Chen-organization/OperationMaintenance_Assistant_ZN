@@ -48,7 +48,7 @@ class TabeBarViewController: UITabBarController {
         // 让图片显示图片原始颜色  “UIImage” 后+ “.imageWithRenderingMode(.AlwaysOriginal)”
         navVC.tabBarItem = UITabBarItem.init(title: title as String, image: UIImage.init(named: image), selectedImage: UIImage.init(named: selectedImage)?.withRenderingMode(.alwaysOriginal))
         
-        self.addChildViewController(navVC)
+        self.addChild(navVC)
     }
     
     override func didReceiveMemoryWarning() {

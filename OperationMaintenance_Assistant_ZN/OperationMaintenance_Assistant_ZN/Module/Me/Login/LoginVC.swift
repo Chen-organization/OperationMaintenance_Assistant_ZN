@@ -53,8 +53,8 @@ class LoginVC: BaseTableVC ,ChangedPwDelegate ,UITextFieldDelegate{
         self.pwTextField.delegate = self
         self.mobileTextfield.delegate = self
         
-        self.mobileTextfield.addTarget(self, action: #selector(textField1TextChange(textfield:)), for: UIControlEvents.editingChanged)
-        self.pwTextField.addTarget(self, action: #selector(textField1TextChange(textfield:)), for: UIControlEvents.editingChanged)
+        self.mobileTextfield.addTarget(self, action: #selector(textField1TextChange(textfield:)), for: UIControl.Event.editingChanged)
+        self.pwTextField.addTarget(self, action: #selector(textField1TextChange(textfield:)), for: UIControl.Event.editingChanged)
 
         
         self.mobileTextfield.placeholderColor = UIColor.white
@@ -63,10 +63,10 @@ class LoginVC: BaseTableVC ,ChangedPwDelegate ,UITextFieldDelegate{
         self.mobileTextfield.tintColor = UIColor.white
         self.pwTextField.tintColor = UIColor.white
         
-        self.rememberPWBtn.imageView?.contentMode = UIViewContentMode.center
+        self.rememberPWBtn.imageView?.contentMode = UIView.ContentMode.center
         self.rememberPWBtn.adjustsImageWhenHighlighted = false //使触摸模式下按钮也不会变暗
         self.rememberPWBtn.isSelected = false
-        self.rememberPWBtn.titleEdgeInsets = UIEdgeInsetsMake(0, 5, 0, 0)
+        self.rememberPWBtn.titleEdgeInsets = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 0)
         
 //        var image = UIImage(named: "login_button_touch")
 //        var imageHigh = UIImage(named: "login_button_touchch")
@@ -81,7 +81,7 @@ class LoginVC: BaseTableVC ,ChangedPwDelegate ,UITextFieldDelegate{
         self.tableView.frame = CGRect(x: 0, y: 0, width: ScreenW, height: ScreenH)
         let img = UIImageView(frame:self.tableView.bounds)
         img.image = UIImage.init(named: "登录")
-        img.contentMode = UIViewContentMode.scaleAspectFill
+        img.contentMode = UIView.ContentMode.scaleAspectFill
         self.tableView.backgroundView = img
         
         
@@ -150,10 +150,14 @@ class LoginVC: BaseTableVC ,ChangedPwDelegate ,UITextFieldDelegate{
                     
                     
                     
-                    let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-                    let initViewController: NavigationController = storyBoard.instantiateViewController(withIdentifier: "rootNav") as! NavigationController
+//                    let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+//                    let initViewController: NavigationController = storyBoard.instantiateViewController(withIdentifier: "rootNav") as! NavigationController
+                    
+                    //初始化tabbar
+                    let tabbarVC = TabeBarViewController()
+                    
                     let appdelegate = UIApplication.shared.delegate as! AppDelegate
-                    appdelegate.window?.rootViewController = initViewController
+                    appdelegate.window?.rootViewController = tabbarVC
                     
                 }else{
                     

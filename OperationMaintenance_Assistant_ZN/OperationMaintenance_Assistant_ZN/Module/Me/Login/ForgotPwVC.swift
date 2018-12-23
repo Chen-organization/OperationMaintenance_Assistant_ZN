@@ -47,8 +47,8 @@ class ForgotPwVC: BaseTableVC ,UITextFieldDelegate{
         self.newPwTextField.delegate = self
         self.messageTextField.delegate = self
         
-        self.phoneNumTextField.addTarget(self, action: #selector(textField1TextChange(textfield:)), for: UIControlEvents.editingChanged)
-        self.newPwTextField.addTarget(self, action: #selector(textField1TextChange(textfield:)), for: UIControlEvents.editingChanged)
+        self.phoneNumTextField.addTarget(self, action: #selector(textField1TextChange(textfield:)), for: UIControl.Event.editingChanged)
+        self.newPwTextField.addTarget(self, action: #selector(textField1TextChange(textfield:)), for: UIControl.Event.editingChanged)
         
         self.vertifyBtn.layer.borderColor = RGBCOLOR(r: 153, 153, 153).cgColor
         self.vertifyBtn.layer.borderWidth = 1

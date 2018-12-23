@@ -91,6 +91,10 @@ public struct NetworkService {
                 
                 response(model! as AnyObject)
                 
+            }else{
+                
+                response(responseObject as AnyObject)
+
             }
             
             print(responseObject);

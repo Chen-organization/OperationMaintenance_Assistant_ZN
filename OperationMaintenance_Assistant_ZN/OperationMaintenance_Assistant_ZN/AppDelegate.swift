@@ -9,6 +9,9 @@
 import UIKit
 import Alamofire
 
+import RealmSwift
+
+
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -23,17 +26,32 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window?.backgroundColor = UIColor.white
         
         
-//        //NAV
-//        UINavigationBar.appearance().tintColor = UIColor.black
-//        UINavigationBar.appearance().barTintColor = UIColor.init(red: 31, green: 181, blue: 167, alpha: 1)
-//        UINavigationBar.appearance().isTranslucent = false
-//        UINavigationBar.appearance().titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white] // 设置导航条标题颜色，还可以设置其它文字属性，只需要在里面添加对应的属性
 
-
+        /* Realm 数据库配置，用于数据库的迭代更新 */
+        let schemaVersion: UInt64 = 0
+        let config = Realm.Configuration(schemaVersion: schemaVersion, migrationBlock: { migration, oldSchemaVersion in
+            
+            /* 什么都不要做！Realm 会自行检测新增和需要移除的属性，然后自动更新硬盘上的数据库架构 */
+            if (oldSchemaVersion < schemaVersion) {}
+        })
+        Realm.Configuration.defaultConfiguration = config
+        Realm.asyncOpen { (realm, error) in
+            /* Realm 成功打开，迁移已在后台线程中完成 */
+            if let _ = realm {
+                
+                print("Realm 数据库配置成功")
+            }
+                /* 处理打开 Realm 时所发生的错误 */
+            else if let error = error {
+                
+                print("Realm 数据库配置失败：\(error.localizedDescription)")
+            }
+        }
         
-        IQKeyboardManager.sharedManager().enable = true
-        IQKeyboardManager.sharedManager().enableAutoToolbar = false
-        IQKeyboardManager.sharedManager().shouldResignOnTouchOutside = true
+        
+//        IQKeyboardManager.sharedManager().enable = true
+//        IQKeyboardManager.sharedManager().enableAutoToolbar = false
+//        IQKeyboardManager.sharedManager().shouldResignOnTouchOutside = true
         
         UITextField.appearance().tintColor = RGBCOLOR(r: 74, 144, 181)
         
