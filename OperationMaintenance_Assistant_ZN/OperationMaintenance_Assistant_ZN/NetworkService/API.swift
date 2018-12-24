@@ -32,4 +32,5 @@ public let getVerificationUrl = baseURL + "/meter/getVerification"
 public let getDeviceInfoUrl = baseURL + "/meter/getDeviceInfo"
 //抄表提交数据
 public let getSubmitUrl = baseURL + "/meter/getSubmit"
-
+//换表
+public let getSubmitUrl = baseURL + "/change/getDate"

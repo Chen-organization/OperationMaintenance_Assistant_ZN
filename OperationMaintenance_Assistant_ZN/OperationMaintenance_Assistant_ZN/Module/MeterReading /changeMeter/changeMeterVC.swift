@@ -9,15 +9,58 @@
 import UIKit
 
 class changeMeterVC: UITableViewController {
-
+    
+    
+    @IBOutlet weak var meterNoTextField: UITextField!
+    
+    @IBOutlet weak var meterNameL: UILabel!
+    @IBOutlet weak var addressL: UILabel!
+    
+    @IBOutlet weak var oldMeterNum: UITextField!
+    @IBOutlet weak var newMeterNum: UITextField!
+    
+    @IBOutlet weak var typeSelectContentView: UIView!
+    @IBOutlet weak var remarkTextView: UITextView!
+    
+    @IBOutlet weak var firstImgView: UIImageView!
+    @IBOutlet weak var secondImgView: UIImageView!
+    
+    @IBOutlet weak var firstDeleteBtn: UIButton!
+    @IBOutlet weak var secondDeleteBtn: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
+        
+        //设备更换原因 获取
+        UserCenter.shared.userInfo { (islogin, userModel) in
+            
+            let para = [
+                
+                "companyCode": UserCenter.companyCode,
+                "orgCode": UserCenter.orgCode,
+                "empNo": UserCenter.empNo,
+                "empName": userModel.empName,
+                "code": "2",
+                "deviceNo": self.meterNoTextField.text,
+            ]
+            
+            NetworkService.networkGetrequest(currentView: self.view, parameters: para, requestApi: getDatesUrl, modelClass: "", response: { (obj) in
+            
+            }, failture: { (error) in
+                
+                
+                
+            })
+        }
+        
+      
+        self.firstDeleteBtn.isHidden = true
+        self.secondDeleteBtn.isHidden = true
+        
 
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        
+        
     }
 
     // MARK: - Table view data source
@@ -32,6 +75,40 @@ class changeMeterVC: UITableViewController {
         return 0
     }
 
+    //MARK: - 控制器 方法
+    
+    @IBAction func commitBtnClick(_ sender: UIButton) {
+        
+        UserCenter.shared.userInfo { (islogin, userModel) in
+            
+//            let para = [
+//
+//                "companyCode": UserCenter.companyCode,
+//                "orgCode": UserCenter.orgCode,
+//                "empNo": UserCenter.empNo,
+//                "code": "1",
+//                "deviceNo": ,
+//                "oldGauge": ,
+//                "newGauge": ,
+//                "remain": ,
+//                "remarks": ,
+//                "reason": ,
+//                "oldFile": ,
+//                "newFile": ,
+//
+//                ]
+//
+//            NetworkService.networkPostrequest(currentView: self.view, parameters: <#T##[String : Any]#>, requestApi: <#T##String#>, modelClass: <#T##String#>, response: <#T##(AnyObject) -> ()#>, failture: <#T##(NSError) -> ()#>)
+            
+            
+        }
+        
+        
+      
+    }
+    
+    
+    
     /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
