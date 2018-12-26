@@ -49,9 +49,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         
-//        IQKeyboardManager.sharedManager().enable = true
-//        IQKeyboardManager.sharedManager().enableAutoToolbar = false
-//        IQKeyboardManager.sharedManager().shouldResignOnTouchOutside = true
+        IQKeyboardManager.shared.enable = true
+        IQKeyboardManager.shared.enableAutoToolbar = false
+        IQKeyboardManager.shared.shouldResignOnTouchOutside = true
         
         UITextField.appearance().tintColor = RGBCOLOR(r: 74, 144, 181)
         

@@ -12,11 +12,14 @@ import RealmSwift
 class writeMeterModel:  Object  {
 
     @objc dynamic var id : String?
+    @objc dynamic var deviceName : String?
+
     @objc dynamic var value : String?
     @objc dynamic var empId : String?
     @objc dynamic var org : String?
     @objc dynamic var type : String?
     @objc dynamic var file : String?
+    @objc dynamic var file2 : String?
     @objc dynamic var longitude : String?
     @objc dynamic var latitude : String?
     @objc dynamic var status : String?

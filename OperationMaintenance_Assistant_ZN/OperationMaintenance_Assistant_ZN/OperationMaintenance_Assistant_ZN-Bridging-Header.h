@@ -42,6 +42,7 @@
 
 #import "MBProgressHUD+SGQRCode.h"
 #import "PopSignatureView.h"
+#import "MBProgressHUD+SGQRCode.h"
 
 
 

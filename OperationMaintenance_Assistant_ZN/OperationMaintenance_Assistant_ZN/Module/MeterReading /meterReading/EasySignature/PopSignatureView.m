@@ -37,7 +37,7 @@
     self = [super initWithFrame:frame];
     if(self)
     {
-        self.frame =CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height);
+//        self.frame =CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height);
         self.backgroundColor = WINDOW_COLOR;
         self.userInteractionEnabled = YES;
         
@@ -52,7 +52,6 @@
     self = [super init];
     if(self)
     {
-        self.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height);
         self.userInteractionEnabled = YES;
         _mainView = mainView;
         [self setupView];
@@ -71,10 +70,13 @@
     //蒙板背景
     _maskView = [UIButton buttonWithType:UIButtonTypeCustom];
     _maskView.frame = CGRectMake(0, 0, ScreenWidth, ScreenHeight);
-    _maskView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.4];
     _maskView.userInteractionEnabled = YES;
     [_maskView addTarget:self action:@selector(onTapMaskView:) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:_maskView];
+    [_maskView mas_makeConstraints:^(MASConstraintMaker *make) {
+        
+        make.edges.equalTo(self).insets(UIEdgeInsetsMake(0, 0, 0, 0));
+    }];
     
     //背景
     self.backGroundView = [[UIView alloc] initWithFrame:CGRectMake(0, [UIScreen mainScreen].bounds.size.height, [UIScreen mainScreen].bounds.size.width, 0)];
@@ -83,7 +85,7 @@
     [_maskView addSubview:self.backGroundView];
     [self.backGroundView mas_makeConstraints:^(MASConstraintMaker *make) {
         
-        make.edges.equalTo(self->_maskView).insets(UIEdgeInsetsMake(0, 0, 0, 0));
+        make.edges.equalTo(_maskView).insets(UIEdgeInsetsMake(0, 0, 0, 0));
     }];
     
     UILabel *headView = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 44)];
@@ -117,8 +119,8 @@
     [OKBtn setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
     OKBtn.titleLabel.font = [UIFont systemFontOfSize:15];
     [OKBtn addTarget:self action:@selector(onClear) forControlEvents:UIControlEventTouchUpInside];
-    [OKBtn setTitleColor:[UIColor colorWithRed:155.0/255 green:155.0/255 blue:155.0/255 alpha:1.0]forState:UIControlStateNormal];
-    OKBtn.backgroundColor = [UIColor colorWithRed:252.0/255 green:112.0/255 blue:43.0/255 alpha:1.0];
+    [OKBtn setTitleColor:[UIColor whiteColor]forState:UIControlStateNormal];
+    OKBtn.backgroundColor = [UIColor colorWithRed:252.0/255.0 green:112.0/255.0 blue:43.0/255.0 alpha:1.0];
     OKBtn.layer.cornerRadius = 3;
     [self.backGroundView addSubview:OKBtn];
     [OKBtn mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -139,12 +141,11 @@
     
     btn3 = [[UIButton alloc] initWithFrame:CGRectMake(0, SignatureViewHeight-44, ScreenWidth, 44)];
     [btn3 setTitle:@"确定" forState:UIControlStateNormal];
-    [btn3 setTitleColor:[UIColor colorWithRed:255.0/255 green:255.0/255 blue:255.0/255 alpha:0.5] forState:UIControlStateNormal];
+    [btn3 setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     btn3.titleLabel.font = [UIFont systemFontOfSize:15];
-    btn3.backgroundColor = [UIColor colorWithRed:0.1529 green:0.7765 blue:0.7765 alpha:1.0];
     [btn3 addTarget:self action:@selector(okAction) forControlEvents:UIControlEventTouchUpInside];
-    OKBtn.backgroundColor = [UIColor colorWithRed:31.0/255 green:181.0/255 blue:171.0/255 alpha:1.0];
-    OKBtn.layer.cornerRadius = 3;
+    btn3.backgroundColor = [UIColor colorWithRed:31.0/255 green:181.0/255 blue:171.0/255 alpha:1.0];
+    btn3.layer.cornerRadius = 3;
     [self.backGroundView addSubview:btn3];
     [btn3 mas_makeConstraints:^(MASConstraintMaker *make) {
         
@@ -153,39 +154,39 @@
         make.bottom.equalTo(self.backGroundView).offset(-10);
     }];
     
-    [UIView animateWithDuration:0.5 animations:^{
-        [self.backGroundView setFrame:CGRectMake(0, [UIScreen mainScreen].bounds.size.height-SignatureViewHeight, [UIScreen mainScreen].bounds.size.width, SignatureViewHeight)];
-    } completion:^(BOOL finished) {
-    }];
+//    [UIView animateWithDuration:0.5 animations:^{
+//        [self.backGroundView setFrame:CGRectMake(0, [UIScreen mainScreen].bounds.size.height-SignatureViewHeight, [UIScreen mainScreen].bounds.size.width, SignatureViewHeight)];
+//    } completion:^(BOOL finished) {
+//    }];
 }
 
 - (void)cancelAction {
-    [self hide];
+//    [self hide];
 }
 
-- (void)show {
-    [UIView animateWithDuration:0.5 animations:^{
-        UIWindow* window = [UIApplication sharedApplication].keyWindow;
-        [window addSubview:self];
-    }];
-}
+//- (void)show {
+//    [UIView animateWithDuration:0.5 animations:^{
+//        UIWindow* window = [UIApplication sharedApplication].keyWindow;
+//        [window addSubview:self];
+//    }];
+//}
 
 - (void)onSignatureWriteAction {
     [btn3 setTitleColor:[UIColor colorWithRed:255.0/255 green:255.0/255 blue:255.0/255 alpha:1.0] forState:UIControlStateNormal];
 }
 
-- (void)hide {
-    [UIView animateWithDuration:0.3 animations:^{
-        [self.backGroundView setFrame:CGRectMake(0, [UIScreen mainScreen].bounds.size.height, [UIScreen mainScreen].bounds.size.width, SignatureViewHeight)];
-        self.alpha = 0;
-    } completion:^(BOOL finished) {
-        [self removeFromSuperview];
-    }];
-}
+//- (void)hide {
+//    [UIView animateWithDuration:0.3 animations:^{
+//        [self.backGroundView setFrame:CGRectMake(0, [UIScreen mainScreen].bounds.size.height, [UIScreen mainScreen].bounds.size.width, SignatureViewHeight)];
+//        self.alpha = 0;
+//    } completion:^(BOOL finished) {
+//        [self removeFromSuperview];
+//    }];
+//}
 
 
 - (void)onTapMaskView:(id)sender {
-    [self hide];
+//    [self hide];
 }
 
 
@@ -202,8 +203,8 @@
     if(signatureView.SignatureImg)
     {
         NSLog(@"haveImage");
-        self.hidden = YES;
-        [self hide];
+//        self.hidden = YES;
+//        [self hide];
         if (self.delegate != nil &&[self.delegate respondsToSelector:@selector(onSubmitBtn:)]) {
             [self.delegate onSubmitBtn:signatureView.SignatureImg];
         }

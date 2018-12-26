@@ -47,6 +47,7 @@ class meterReadingSignVC: UIViewController,PopSignatureViewDelegate {
     func onSubmitBtn(_ signatureImg: UIImage!) {
         
         self.signDelegate?.meterReadingedWithImg(img: signatureImg)
+        self.navigationController?.popViewController(animated: true)
         
     }
     

@@ -11,7 +11,7 @@
 @implementation MBProgressHUD (SGQRCode)
 
 /** MBProgressHUD 修改后的样式 */
-+ (MBProgressHUD *)SG_showMBProgressHUDWithModifyStyleMessage:(NSString *)message toView:(UIView *)view {
++ (MBProgressHUD *)showMBProgressHUDWithModifyStyleMessage:(NSString *)message toView:(UIView *)view {
     if (view == nil) view = [[UIApplication sharedApplication].windows lastObject];
     // 快速显示一个提示信息
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:view animated:YES];
@@ -29,7 +29,7 @@
     return hud;
 }
 /** MBProgressHUD 自带样式 */
-+ (MBProgressHUD *)SG_showMBProgressHUDWithSystemComesStyleMessage:(NSString *)message toView:(UIView *)view {
++ (MBProgressHUD *)showMBProgressHUDWithSystemComesStyleMessage:(NSString *)message toView:(UIView *)view {
     if (view == nil) view = [[UIApplication sharedApplication].windows lastObject];
     // 快速显示一个提示信息
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:view animated:YES];
@@ -68,24 +68,24 @@
 }
 
 /** 显示加载成功的 MBProgressHUD */
-+ (void)SG_showMBProgressHUDOfSuccessMessage:(NSString *)message toView:(UIView *)view {
++ (void)showMBProgressHUDOfSuccessMessage:(NSString *)message toView:(UIView *)view {
     [self showMessage:message icon:@"success" toView:view];
 }
 
 /** 显示加载失败的 MBProgressHUD */
-+ (void)SG_showMBProgressHUDOfErrorMessage:(NSString *)message toView:(UIView *)view {
++ (void)showMBProgressHUDOfErrorMessage:(NSString *)message toView:(UIView *)view {
     [self showMessage:message icon:@"error" toView:view];
 }
 
 #pragma mark - - - 隐藏MBProgressHUD
 /** 隐藏 MBProgressHUD */
-+ (void)SG_hideHUDForView:(UIView *)view {
++ (void)hideHUDForView:(UIView *)view {
     if (view == nil) view = [[UIApplication sharedApplication].windows lastObject];
     [self hideHUDForView:view animated:YES];
 }
 
 /** MBProgressHUD 修改后的样式 (10s) */
-+ (MBProgressHUD *)SG_showMBProgressHUD10sHideWithModifyStyleMessage:(NSString *)message toView:(UIView *)view {
++ (MBProgressHUD *)showMBProgressHUD10sHideWithModifyStyleMessage:(NSString *)message toView:(UIView *)view {
     if (view == nil) view = [[UIApplication sharedApplication].windows lastObject];
     // 快速显示一个提示信息
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:view animated:YES];
@@ -105,7 +105,7 @@
 
 
 /** 只显示文字的 15 号字体（文字最好不要超过 14 个汉字） MBProgressHUD */
-+ (void)SG_showMBProgressHUDWithOnlyMessage:(NSString *)message delayTime:(CGFloat)time {
++ (void)showMBProgressHUDWithOnlyMessage:(NSString *)message delayTime:(CGFloat)time {
     MBProgressHUD *hud = [[MBProgressHUD alloc] initWithView:[[[UIApplication sharedApplication] delegate] window]] ;
     hud.mode = MBProgressHUDModeText;
     hud.label.text = message;

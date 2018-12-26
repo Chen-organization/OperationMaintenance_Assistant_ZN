@@ -33,4 +33,7 @@ public let getDeviceInfoUrl = baseURL + "/meter/getDeviceInfo"
 //抄表提交数据
 public let getSubmitUrl = baseURL + "/meter/getSubmit"
 //换表
-public let getSubmitUrl = baseURL + "/change/getDate"
+public let getDateUrl = baseURL + "/change/getDate"
+//用户上传头像
+public let getModifyAvatarUrl = baseURL + "/my/getModifyAvatar"
+

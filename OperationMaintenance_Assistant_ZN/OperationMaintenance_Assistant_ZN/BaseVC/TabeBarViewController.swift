@@ -28,16 +28,19 @@ class TabeBarViewController: UITabBarController {
     
     func setUpAllChildViewController() {
 
+        let home = UIStoryboard(name: "Home", bundle: nil)
+            .instantiateViewController(withIdentifier: "HomeVC") as! HomeVC
+        self.setUpOneChildViewController(viewController: home, image: "首页", selectedImage: "首页Sel", title: "")
         
-        self.setUpOneChildViewController(viewController: HomeVC(), image: "", selectedImage: "", title: "首页")
-        
-        self.setUpOneChildViewController(viewController: InspectionVC(), image: "", selectedImage: "", title: "巡检")
+        self.setUpOneChildViewController(viewController: InspectionVC(), image: "巡检", selectedImage: "巡检Sel", title: "")
         
         let meterReading = UIStoryboard(name: "MeterReading", bundle: nil)
             .instantiateViewController(withIdentifier: "MeterReadingVC") as! MeterReadingVC
-        self.setUpOneChildViewController(viewController: meterReading, image: "", selectedImage: "", title: "抄表")
+        self.setUpOneChildViewController(viewController: meterReading, image: "抄表", selectedImage: "抄表Sel", title: "")
         
-        self.setUpOneChildViewController(viewController: MeVC(), image: "", selectedImage: "", title: "我的")
+        let me = UIStoryboard(name: "Me", bundle: nil)
+            .instantiateViewController(withIdentifier: "MeVC") as! MeVC
+        self.setUpOneChildViewController(viewController: me, image: "我的", selectedImage: "我的Sel", title: "")
     }
     
     
@@ -46,7 +49,13 @@ class TabeBarViewController: UITabBarController {
         let navVC = NavigationController.init(rootViewController: viewController)
         
         // 让图片显示图片原始颜色  “UIImage” 后+ “.imageWithRenderingMode(.AlwaysOriginal)”
-        navVC.tabBarItem = UITabBarItem.init(title: title as String, image: UIImage.init(named: image), selectedImage: UIImage.init(named: selectedImage)?.withRenderingMode(.alwaysOriginal))
+        let barItem : UITabBarItem = UITabBarItem.init(title: title as String, image: UIImage.init(named: image), selectedImage: UIImage.init(named: selectedImage)?.withRenderingMode(.alwaysOriginal))
+//        barItem.setTitleTextAttributes([NSAttributedString.Key.foregroundColor : UIColor.lightGray], for: UIControl.State.normal)
+//        barItem.setTitleTextAttributes([NSAttributedString.Key.foregroundColor : RGBCOLOR(r: 31, 182, 167)], for: UIControl.State.selected)
+        barItem.imageInsets = UIEdgeInsets(top: 6, left: 0, bottom: -6, right: 0);
+
+
+        navVC.tabBarItem = barItem
         
         self.addChild(navVC)
     }

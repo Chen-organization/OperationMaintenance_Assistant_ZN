@@ -42,7 +42,7 @@ class LoginVC: BaseTableVC ,ChangedPwDelegate ,UITextFieldDelegate{
 //        self.title = "登录"
 //        navBarBackgroundAlpha = 0
         
-        self.view.backgroundColor = UIColor.gray
+        self.view.backgroundColor = RGBCOLOR(r: 245, 245, 245)
         
         self.fd_prefersNavigationBarHidden = true
         self.navigationController?.setNavigationBarHidden(true, animated: true)
@@ -57,11 +57,11 @@ class LoginVC: BaseTableVC ,ChangedPwDelegate ,UITextFieldDelegate{
         self.pwTextField.addTarget(self, action: #selector(textField1TextChange(textfield:)), for: UIControl.Event.editingChanged)
 
         
-        self.mobileTextfield.placeholderColor = UIColor.white
-        self.pwTextField.placeholderColor = UIColor.white
+        self.mobileTextfield.placeholderColor = UIColor.black
+        self.pwTextField.placeholderColor = UIColor.lightGray
         
-        self.mobileTextfield.tintColor = UIColor.white
-        self.pwTextField.tintColor = UIColor.white
+        self.mobileTextfield.tintColor = UIColor.black
+        self.pwTextField.tintColor = UIColor.lightGray
         
         self.rememberPWBtn.imageView?.contentMode = UIView.ContentMode.center
         self.rememberPWBtn.adjustsImageWhenHighlighted = false //使触摸模式下按钮也不会变暗
