@@ -36,4 +36,7 @@ public let getSubmitUrl = baseURL + "/meter/getSubmit"
 public let getDateUrl = baseURL + "/change/getDate"
 //用户上传头像
 public let getModifyAvatarUrl = baseURL + "/my/getModifyAvatar"
-
+//首页维修头条接口
+public let getTheHeadlinesUrl = baseURL + "/first/getTheHeadlines"
+//首页工单维修情况接口
+public let getJobOrderUrl = baseURL + "/first/getJobOrder"

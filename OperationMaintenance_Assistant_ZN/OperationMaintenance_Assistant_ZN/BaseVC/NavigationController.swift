@@ -41,7 +41,7 @@ class NavigationController: UINavigationController {
         if viewControllers.count > 0 {
             // push 后隐藏 tabbar
             viewController.hidesBottomBarWhenPushed = true
-            viewController.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "backItem"), style: .plain, target: self, action: #selector(navigationBackClick))
+            viewController.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "icon_back"), style: .plain, target: self, action: #selector(navigationBackClick))
         }
         super.pushViewController(viewController, animated: true)
     }

@@ -223,7 +223,7 @@ class MeterReadingVC: UITableViewController {
                     
                     RealmTool.insertMetersDic(by: model.returnObj!)
                     
-                    MBProgressHUD .showText("下载成功")
+                    MBProgressHUD.show(withOnlyMessage: "下载成功", delayTime: 2.5)
                     
                 }
             

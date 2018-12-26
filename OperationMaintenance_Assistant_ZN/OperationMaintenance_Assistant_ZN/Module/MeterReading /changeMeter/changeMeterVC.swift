@@ -167,6 +167,21 @@ class changeMeterVC: UITableViewController,ScanViewControllerDelegate,UIGestureR
 
     }
     
+    //MARK: - tableview
+    
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        
+        let view = UIView()
+        view.backgroundColor = UIColor.clear
+        
+        return view
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        
+        return 10
+    }
+    
     
     //MARK: -  拍照
     func cameraGetphoto() {

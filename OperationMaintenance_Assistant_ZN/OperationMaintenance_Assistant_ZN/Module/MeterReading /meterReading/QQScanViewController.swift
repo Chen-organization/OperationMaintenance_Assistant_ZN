@@ -41,6 +41,8 @@ class QQScanViewController: LBXScanViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.title = "扫码"
 
         //需要识别后的图像
         setNeedCodeImage(needCodeImg: true)

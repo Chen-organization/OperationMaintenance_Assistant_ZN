@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class HomeVC: UITableViewController {
 
@@ -24,6 +25,9 @@ class HomeVC: UITableViewController {
     @IBOutlet weak var repairView: UIView!
     @IBOutlet weak var repairingView: UIView!
     @IBOutlet weak var repairedView: UIView!
+    
+    
+    var headLinesData = [TheHeadlinesReturnObjModel]()
     
     
     override func viewDidLoad() {
@@ -71,6 +75,9 @@ class HomeVC: UITableViewController {
 //        self.tableView.contentOffset.y = 44//statusBarheight
 
 
+        self.getTheHeadlines()
+        
+        self.getJobOrders()
         
     }
     
@@ -104,7 +111,7 @@ class HomeVC: UITableViewController {
         
         if section == 3 {
             
-            return 3
+            return self.headLinesData.count
         }
         return super.tableView(tableView, numberOfRowsInSection: section)
     }
@@ -115,6 +122,16 @@ class HomeVC: UITableViewController {
         if indexPath.section == 3 {
             let cell:HomeNewCell = tableView.dequeueReusableCell(withIdentifier: HomeNewCell_id, for: indexPath) as! HomeNewCell
             
+            let model : TheHeadlinesReturnObjModel = self.headLinesData[indexPath.row]
+            
+            if let url = model.imgUrl {
+                
+                cell.img.kf.setImage(with: URL.init(string: url))
+
+            }
+            cell.titleL.text = model.title ?? ""
+            cell.contentL.text = model.knowledgeDesc ?? ""
+            cell.timeL.text = self.timeStampToString(timeStamp: model.createDate ?? "")
             
             cell.selectionStyle = UITableViewCell.SelectionStyle.none
             
@@ -135,6 +152,11 @@ class HomeVC: UITableViewController {
         }
 
         return 90
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
     
@@ -158,6 +180,77 @@ class HomeVC: UITableViewController {
             scrollView.contentOffset.y = 0
         }
         
+    }
+    
+    
+    //MARK: - 方法
+    func getTheHeadlines() {
+        
+        let para = ["start": "1",
+                    "end": "3",
+                    ]
+        
+        NetworkService.networkGetrequest(currentView: self.view, parameters: para, requestApi: getTheHeadlinesUrl, modelClass: "TheHeadlinesModel", response: { (obj) in
+            
+            let model : TheHeadlinesModel = obj as! TheHeadlinesModel
+            
+            if model.statusCode == 800 {
+                
+                self.headLinesData = model.returnObj ?? []
+                self.tableView.reloadData()
+                
+            }
+            
+        }) { (error) in
+            
+        }
+    }
+    
+    func getJobOrders() {
+        
+        NetworkService.networkGetrequest(currentView: self.view, parameters: [:], requestApi: getJobOrderUrl, modelClass: "jobOrdersModel", response: { (obj) in
+            
+            let model:jobOrdersModel = obj as! jobOrdersModel
+            
+            if model.statusCode == 800 {
+                
+                self.repairNumL.text = model.returnObj?[0].count ?? "0"
+                
+                self.repairingNumL.text = model.returnObj?[1].count ?? "0"
+
+                self.repairedNumL.text = model.returnObj?[2].count ?? "0"
+
+                
+            }
+            
+            
+        }) { (error) in
+            
+            
+            
+        }
+        
+    }
+    
+    
+    
+    //MARK: -时间戳转时间函数
+    func timeStampToString(timeStamp: String)->String {
+        //时间戳为毫秒级要 ／ 1000， 秒就不用除1000，参数带没带000
+        
+        if let timestampDouble = Double(timeStamp) {
+            
+            let timeSta:TimeInterval = TimeInterval(timestampDouble / 1000)
+            let date = NSDate(timeIntervalSince1970: timeSta)
+            let dfmatter = DateFormatter()
+            //yyyy-MM-dd HH:mm:ss
+            dfmatter.dateFormat="yyyy-MM-dd HH:mm:ss"
+            return dfmatter.string(from: date as Date)
+            
+        }
+        
+        return ""
+     
     }
     
     
