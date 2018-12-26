@@ -195,7 +195,7 @@ class MeterReadingVC: UITableViewController {
     func ChangeMeter() {
         
         let vc = UIStoryboard(name: "changeMeterVC", bundle: nil)
-            .instantiateViewController(withIdentifier: "changeMeterVC") as! readingVC
+            .instantiateViewController(withIdentifier: "changeMeterVC") as! changeMeterVC
         self.navigationController?.pushViewController(vc, animated: true)
         
     }

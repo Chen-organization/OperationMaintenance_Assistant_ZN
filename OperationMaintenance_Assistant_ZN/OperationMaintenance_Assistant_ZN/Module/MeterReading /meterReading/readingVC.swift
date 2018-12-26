@@ -212,6 +212,19 @@ class readingVC: UITableViewController,ScanViewControllerDelegate,UIGestureRecog
         return 360
     }
     
+    
+    //cell的缩进级别,动态静态cell必须重写,否则会造成崩溃
+    override func tableView(_ tableView: UITableView, indentationLevelForRowAt indexPath: IndexPath) -> Int {
+        
+        if(3 == indexPath.section){
+            // (动态cell)
+            let newIndexPath = IndexPath(row: 0, section: indexPath.section)
+            return super.tableView(tableView, indentationLevelForRowAt: newIndexPath)
+        }
+        return super.tableView(tableView, indentationLevelForRowAt: indexPath)
+    }
+    
+    
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         
         return section == 1 ? 10 : 0

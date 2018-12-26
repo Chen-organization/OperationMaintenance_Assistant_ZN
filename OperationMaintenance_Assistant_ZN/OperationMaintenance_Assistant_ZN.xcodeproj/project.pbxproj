@@ -8,6 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		153ABB463F579A139DC90271 /* Pods_OperationMaintenance_Assistant_ZN.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2331F8AA2C2E5183A987B1A /* Pods_OperationMaintenance_Assistant_ZN.framework */; };
+		185C233121D37D1B0004AD0C /* LLViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185C232921D37D1B0004AD0C /* LLViewExtensions.swift */; };
+		185C233221D37D1B0004AD0C /* LLPillPageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185C232A21D37D1B0004AD0C /* LLPillPageControl.swift */; };
+		185C233321D37D1B0004AD0C /* LLCycleScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185C232B21D37D1B0004AD0C /* LLCycleScrollView.swift */; };
+		185C233421D37D1B0004AD0C /* LLSnakePageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185C232C21D37D1B0004AD0C /* LLSnakePageControl.swift */; };
+		185C233521D37D1B0004AD0C /* LLCycleScrollViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185C232D21D37D1B0004AD0C /* LLCycleScrollViewCell.swift */; };
+		185C233621D37D1B0004AD0C /* LLFilledPageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185C232E21D37D1B0004AD0C /* LLFilledPageControl.swift */; };
+		185C233721D37D1B0004AD0C /* LLImagePageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185C232F21D37D1B0004AD0C /* LLImagePageControl.swift */; };
+		185C233821D37D1B0004AD0C /* LLCycleScrollView.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 185C233021D37D1B0004AD0C /* LLCycleScrollView.bundle */; };
 		7403D07B21C2BC5F0055561E /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7403D07821C2BC5F0055561E /* Network.swift */; };
 		7403D07C21C2BC5F0055561E /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7403D07921C2BC5F0055561E /* NetworkService.swift */; };
 		7403D07D21C2BC5F0055561E /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7403D07A21C2BC5F0055561E /* API.swift */; };
@@ -109,8 +117,8 @@
 		7403D27C21CF800A0055561E /* 首页@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7403D1B821CF7FE70055561E /* 首页@2x.png */; };
 		7403D27D21CF800A0055561E /* banner2.png in Resources */ = {isa = PBXBuildFile; fileRef = 7403D1B921CF7FE70055561E /* banner2.png */; };
 		7403D27E21CF800A0055561E /* 任务清单2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7403D1BA21CF7FE70055561E /* 任务清单2@2x.png */; };
-		7403D27F21CF800A0055561E /* banner 3.png in Resources */ = {isa = PBXBuildFile; fileRef = 7403D1BB21CF7FE70055561E /* banner 3.png */; };
-		7403D28021CF800A0055561E /* banner 1.png in Resources */ = {isa = PBXBuildFile; fileRef = 7403D1BC21CF7FE70055561E /* banner 1.png */; };
+		7403D27F21CF800A0055561E /* banner3.png in Resources */ = {isa = PBXBuildFile; fileRef = 7403D1BB21CF7FE70055561E /* banner3.png */; };
+		7403D28021CF800A0055561E /* banner1.png in Resources */ = {isa = PBXBuildFile; fileRef = 7403D1BC21CF7FE70055561E /* banner1.png */; };
 		7403D28121CF800A0055561E /* tu2  3X.png in Resources */ = {isa = PBXBuildFile; fileRef = 7403D1BD21CF7FE70055561E /* tu2  3X.png */; };
 		7403D28221CF800A0055561E /* 我的@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7403D1BE21CF7FE70055561E /* 我的@3x.png */; };
 		7403D28321CF800A0055561E /* 首页Sel@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7403D1BF21CF7FE70055561E /* 首页Sel@3x.png */; };
@@ -417,6 +425,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		185C232921D37D1B0004AD0C /* LLViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LLViewExtensions.swift; sourceTree = "<group>"; };
+		185C232A21D37D1B0004AD0C /* LLPillPageControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LLPillPageControl.swift; sourceTree = "<group>"; };
+		185C232B21D37D1B0004AD0C /* LLCycleScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LLCycleScrollView.swift; sourceTree = "<group>"; };
+		185C232C21D37D1B0004AD0C /* LLSnakePageControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LLSnakePageControl.swift; sourceTree = "<group>"; };
+		185C232D21D37D1B0004AD0C /* LLCycleScrollViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LLCycleScrollViewCell.swift; sourceTree = "<group>"; };
+		185C232E21D37D1B0004AD0C /* LLFilledPageControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LLFilledPageControl.swift; sourceTree = "<group>"; };
+		185C232F21D37D1B0004AD0C /* LLImagePageControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LLImagePageControl.swift; sourceTree = "<group>"; };
+		185C233021D37D1B0004AD0C /* LLCycleScrollView.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = LLCycleScrollView.bundle; sourceTree = "<group>"; };
 		4154604F37E3CCCFB375A4AD /* Pods-OperationMaintenance_Assistant_ZN.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OperationMaintenance_Assistant_ZN.release.xcconfig"; path = "Pods/Target Support Files/Pods-OperationMaintenance_Assistant_ZN/Pods-OperationMaintenance_Assistant_ZN.release.xcconfig"; sourceTree = "<group>"; };
 		7403D07821C2BC5F0055561E /* Network.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		7403D07921C2BC5F0055561E /* NetworkService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
@@ -525,8 +541,8 @@
 		7403D1B821CF7FE70055561E /* 首页@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "首页@2x.png"; sourceTree = "<group>"; };
 		7403D1B921CF7FE70055561E /* banner2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = banner2.png; sourceTree = "<group>"; };
 		7403D1BA21CF7FE70055561E /* 任务清单2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "任务清单2@2x.png"; sourceTree = "<group>"; };
-		7403D1BB21CF7FE70055561E /* banner 3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "banner 3.png"; sourceTree = "<group>"; };
-		7403D1BC21CF7FE70055561E /* banner 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "banner 1.png"; sourceTree = "<group>"; };
+		7403D1BB21CF7FE70055561E /* banner3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = banner3.png; sourceTree = "<group>"; };
+		7403D1BC21CF7FE70055561E /* banner1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = banner1.png; sourceTree = "<group>"; };
 		7403D1BD21CF7FE70055561E /* tu2  3X.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tu2  3X.png"; sourceTree = "<group>"; };
 		7403D1BE21CF7FE70055561E /* 我的@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "我的@3x.png"; sourceTree = "<group>"; };
 		7403D1BF21CF7FE70055561E /* 首页Sel@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "首页Sel@3x.png"; sourceTree = "<group>"; };
@@ -960,6 +976,29 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		185C232721D37D1B0004AD0C /* CycleBanner */ = {
+			isa = PBXGroup;
+			children = (
+				185C232821D37D1B0004AD0C /* LLCycleScrollView */,
+				185C233021D37D1B0004AD0C /* LLCycleScrollView.bundle */,
+			);
+			path = CycleBanner;
+			sourceTree = "<group>";
+		};
+		185C232821D37D1B0004AD0C /* LLCycleScrollView */ = {
+			isa = PBXGroup;
+			children = (
+				185C232921D37D1B0004AD0C /* LLViewExtensions.swift */,
+				185C232A21D37D1B0004AD0C /* LLPillPageControl.swift */,
+				185C232B21D37D1B0004AD0C /* LLCycleScrollView.swift */,
+				185C232C21D37D1B0004AD0C /* LLSnakePageControl.swift */,
+				185C232D21D37D1B0004AD0C /* LLCycleScrollViewCell.swift */,
+				185C232E21D37D1B0004AD0C /* LLFilledPageControl.swift */,
+				185C232F21D37D1B0004AD0C /* LLImagePageControl.swift */,
+			);
+			path = LLCycleScrollView;
+			sourceTree = "<group>";
+		};
 		37D07A4C21783CCD725DBCD2 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -1218,8 +1257,8 @@
 				7403D1B421CF7FE70055561E /* 箭头.png */,
 				7403D1B621CF7FE70055561E /* 热门3x.png */,
 				7403D1B921CF7FE70055561E /* banner2.png */,
-				7403D1BB21CF7FE70055561E /* banner 3.png */,
-				7403D1BC21CF7FE70055561E /* banner 1.png */,
+				7403D1BB21CF7FE70055561E /* banner3.png */,
+				7403D1BC21CF7FE70055561E /* banner1.png */,
 				7403D1BD21CF7FE70055561E /* tu2  3X.png */,
 				7403D1C321CF7FE70055561E /* banner2   3x.png */,
 				7403D1C521CF7FE70055561E /* 信息.png */,
@@ -1612,6 +1651,7 @@
 		7477E89E21C170C800AAA756 /* Vendors */ = {
 			isa = PBXGroup;
 			children = (
+				185C232721D37D1B0004AD0C /* CycleBanner */,
 				7464239E21D271060038E8E3 /* IQKeyboardManagerSwift */,
 				744F752B21CF97F20072326E /* swiftScan */,
 				7403D11121C67DB30055561E /* SGQRCode */,
@@ -2393,7 +2433,7 @@
 				7403D23E21CF800A0055561E /* 点击3x.png in Resources */,
 				746423C821D2D6000038E8E3 /* Me.storyboard in Resources */,
 				7403D24A21CF800A0055561E /* 加减点击3x.png in Resources */,
-				7403D27F21CF800A0055561E /* banner 3.png in Resources */,
+				7403D27F21CF800A0055561E /* banner3.png in Resources */,
 				7403D29121CF800A0055561E /* banner 3   3x.png in Resources */,
 				7403D29721CF800A0055561E /* 首页@3x.png in Resources */,
 				7403D2E921CF800B0055561E /* 类型2x.png in Resources */,
@@ -2401,7 +2441,7 @@
 				7403D2EF21CF800B0055561E /* 短信验证@2x.png in Resources */,
 				7403D2D121CF800A0055561E /* 登陆logo@3x.png in Resources */,
 				7403D2AD21CF800A0055561E /* 驾车.png in Resources */,
-				7403D28021CF800A0055561E /* banner 1.png in Resources */,
+				7403D28021CF800A0055561E /* banner1.png in Resources */,
 				7477EA6B21C1712300AAA756 /* PhotoItemView.xib in Resources */,
 				746423CD21D2E96A0038E8E3 /* Home.storyboard in Resources */,
 				7403D2E221CF800A0055561E /* 位置2x.png in Resources */,
@@ -2578,6 +2618,7 @@
 				7403D2D721CF800A0055561E /* login_eye@2x.png in Resources */,
 				7403D08821C4D8030055561E /* MeterReading.storyboard in Resources */,
 				7403D2C621CF800A0055561E /* 定位3x.png in Resources */,
+				185C233821D37D1B0004AD0C /* LLCycleScrollView.bundle in Resources */,
 				7403D2C421CF800A0055561E /* 图3x.png in Resources */,
 				7403D27121CF800A0055561E /* meterReading_下载字典表@2x.png in Resources */,
 				7403D2CD21CF800A0055561E /* 状态框.png in Resources */,
@@ -2708,8 +2749,10 @@
 				7477EAF621C2A50B00AAA756 /* HomeVC.swift in Sources */,
 				7477EA8B21C1712300AAA756 /* Reachability.m in Sources */,
 				744F753B21CF9F530072326E /* QQScanViewController.swift in Sources */,
+				185C233321D37D1B0004AD0C /* LLCycleScrollView.swift in Sources */,
 				7477EA8621C1712300AAA756 /* CALayer+Anim.m in Sources */,
 				744F753621CF97F20072326E /* LBXScanLineAnimation.swift in Sources */,
+				185C233221D37D1B0004AD0C /* LLPillPageControl.swift in Sources */,
 				746423B921D271060038E8E3 /* IQBarButtonItem.swift in Sources */,
 				7477EA9721C1712300AAA756 /* SDWebImageCoderHelper.m in Sources */,
 				7403D0D221C5594A0055561E /* LoginVC.swift in Sources */,
@@ -2754,8 +2797,10 @@
 				7403D12221C69ADD0055561E /* readingVC.swift in Sources */,
 				7477EA7721C1712300AAA756 /* UIImage+Water.m in Sources */,
 				7477EA9C21C1712300AAA756 /* SDAnimatedImageRep.m in Sources */,
+				185C233721D37D1B0004AD0C /* LLImagePageControl.swift in Sources */,
 				7477E84421C025BF00AAA756 /* ViewController.swift in Sources */,
 				7477EA7821C1712300AAA756 /* UIImage+Cut.m in Sources */,
+				185C233621D37D1B0004AD0C /* LLFilledPageControl.swift in Sources */,
 				7477EA3621C1712300AAA756 /* MBProgressHUD.m in Sources */,
 				7477E88621C1701E00AAA756 /* UIPlaceHolderTextView.m in Sources */,
 				7403D13B21C807E60055561E /* changeMeterVC.swift in Sources */,
@@ -2764,6 +2809,7 @@
 				744F753721CF97F20072326E /* LBXScanViewStyle.swift in Sources */,
 				744F753921CF97F20072326E /* LBXScanWrapper.swift in Sources */,
 				7477EA9621C1712300AAA756 /* UIImage+MultiFormat.m in Sources */,
+				185C233521D37D1B0004AD0C /* LLCycleScrollViewCell.swift in Sources */,
 				7477E88421C1701E00AAA756 /* UITextField+Placeholder.m in Sources */,
 				7403D14921CD4E400055561E /* DownloadMeterDicReturnObjModel.swift in Sources */,
 				7477EA3521C1712300AAA756 /* ZNCustomAlertContentView.m in Sources */,
@@ -2796,6 +2842,7 @@
 				746423BC21D271060038E8E3 /* IQInvocation.swift in Sources */,
 				7477EA7421C1712300AAA756 /* SVIndefiniteAnimatedView.m in Sources */,
 				744F753421CF97F20072326E /* LBXScanView.swift in Sources */,
+				185C233421D37D1B0004AD0C /* LLSnakePageControl.swift in Sources */,
 				7477EA9221C1712300AAA756 /* SDWebImageCodersManager.m in Sources */,
 				7477EA1D21C1712300AAA756 /* MKRingProgressView.swift in Sources */,
 				746423D121D2FC030038E8E3 /* HomeNewCell.swift in Sources */,
@@ -2822,6 +2869,7 @@
 				7477EA8F21C1712300AAA756 /* UIImageView+HighlightedWebCache.m in Sources */,
 				746423C121D271060038E8E3 /* IQKeyboardManager.swift in Sources */,
 				7477EA9421C1712300AAA756 /* SDWebImageDownloader.m in Sources */,
+				185C233121D37D1B0004AD0C /* LLViewExtensions.swift in Sources */,
 				7477EAA421C1712300AAA756 /* SDImageCacheConfig.m in Sources */,
 				7477E89D21C1709900AAA756 /* BaseModel.swift in Sources */,
 				7403D0D521C5594A0055561E /* LoginReturnObjModel.swift in Sources */,

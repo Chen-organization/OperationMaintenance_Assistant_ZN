@@ -23,7 +23,7 @@
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </view>
                         <view key="tableFooterView" contentMode="scaleToFill" id="35j-j9-Now">
-                            <rect key="frame" x="0.0" y="502" width="375" height="1"/>
+                            <rect key="frame" x="0.0" y="546" width="375" height="1"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </view>
@@ -146,7 +146,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <imageView userInteractionEnabled="NO" alpha="0.59999999999999998" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="虚线.png" translatesAutoresizingMaskIntoConstraints="NO" id="d32-ch-JXZ">
-                                                            <rect key="frame" x="0.0" y="0.0" width="0.5" height="63"/>
+                                                            <rect key="frame" x="0.0" y="15" width="0.5" height="38"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="0.5" id="HQo-GC-bzZ"/>
                                                             </constraints>
@@ -159,10 +159,10 @@
                                                     <constraints>
                                                         <constraint firstItem="UYJ-Ef-ZmL" firstAttribute="centerX" secondItem="Mwj-vl-Y4N" secondAttribute="centerX" id="2Vm-Je-T3Y"/>
                                                         <constraint firstItem="Vwv-NE-y0X" firstAttribute="top" secondItem="UYJ-Ef-ZmL" secondAttribute="bottom" constant="5" id="50Q-fS-LDE"/>
-                                                        <constraint firstItem="d32-ch-JXZ" firstAttribute="top" secondItem="Mwj-vl-Y4N" secondAttribute="top" id="7e2-FA-Nqj"/>
+                                                        <constraint firstItem="d32-ch-JXZ" firstAttribute="top" secondItem="Mwj-vl-Y4N" secondAttribute="top" constant="15" id="7e2-FA-Nqj"/>
                                                         <constraint firstItem="UYJ-Ef-ZmL" firstAttribute="centerY" secondItem="Mwj-vl-Y4N" secondAttribute="centerY" constant="-10" id="BkP-xU-TYh"/>
                                                         <constraint firstItem="d32-ch-JXZ" firstAttribute="leading" secondItem="Mwj-vl-Y4N" secondAttribute="leading" id="kic-QS-0lS"/>
-                                                        <constraint firstAttribute="bottom" secondItem="d32-ch-JXZ" secondAttribute="bottom" id="qrL-Ik-WJK"/>
+                                                        <constraint firstAttribute="bottom" secondItem="d32-ch-JXZ" secondAttribute="bottom" constant="10" id="qrL-Ik-WJK"/>
                                                         <constraint firstItem="Vwv-NE-y0X" firstAttribute="centerX" secondItem="UYJ-Ef-ZmL" secondAttribute="centerX" id="xr9-n1-k3L"/>
                                                     </constraints>
                                                 </view>
@@ -181,26 +181,25 @@
                                                             <color key="textColor" red="0.25098039220000001" green="0.25098039220000001" blue="0.25098039220000001" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <imageView userInteractionEnabled="NO" alpha="0.59999999999999998" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="虚线.png" translatesAutoresizingMaskIntoConstraints="NO" id="cOb-HL-fR7">
-                                                            <rect key="frame" x="0.0" y="0.0" width="0.5" height="73"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="width" constant="0.5" id="7C2-Gs-IjB"/>
-                                                            </constraints>
-                                                            <userDefinedRuntimeAttributes>
-                                                                <userDefinedRuntimeAttribute type="boolean" keyPath="masksToBounds" value="YES"/>
-                                                            </userDefinedRuntimeAttributes>
-                                                        </imageView>
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
                                                         <constraint firstItem="fGB-Y2-zz5" firstAttribute="top" secondItem="ZpD-Ky-EOz" secondAttribute="bottom" constant="5" id="0x8-iC-Im7"/>
                                                         <constraint firstItem="fGB-Y2-zz5" firstAttribute="centerX" secondItem="ZpD-Ky-EOz" secondAttribute="centerX" id="2yZ-Fi-oRN"/>
                                                         <constraint firstItem="ZpD-Ky-EOz" firstAttribute="centerY" secondItem="vBh-gD-035" secondAttribute="centerY" constant="-10" id="gzd-zr-4wU"/>
-                                                        <constraint firstItem="cOb-HL-fR7" firstAttribute="leading" secondItem="vBh-gD-035" secondAttribute="leading" id="jGP-d1-iot"/>
-                                                        <constraint firstItem="cOb-HL-fR7" firstAttribute="top" secondItem="vBh-gD-035" secondAttribute="top" id="rgj-aa-NN1"/>
                                                         <constraint firstItem="ZpD-Ky-EOz" firstAttribute="centerX" secondItem="vBh-gD-035" secondAttribute="centerX" id="uEz-0O-AoR"/>
                                                     </constraints>
                                                 </view>
+                                                <imageView userInteractionEnabled="NO" alpha="0.59999999999999998" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="虚线.png" translatesAutoresizingMaskIntoConstraints="NO" id="cOb-HL-fR7">
+                                                    <rect key="frame" x="249.5" y="45.5" width="0.5" height="50"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="0.5" id="7jm-6E-DT1"/>
+                                                        <constraint firstAttribute="height" constant="50" id="iyv-cs-d8N"/>
+                                                    </constraints>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="masksToBounds" value="YES"/>
+                                                    </userDefinedRuntimeAttributes>
+                                                </imageView>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="R8u-EM-Cr4" firstAttribute="leading" secondItem="Sld-Qb-RIq" secondAttribute="leading" id="0ac-QF-Iod"/>
@@ -216,7 +215,9 @@
                                                 <constraint firstAttribute="trailing" secondItem="me7-z2-kOb" secondAttribute="trailing" id="YS4-vv-i91"/>
                                                 <constraint firstItem="Mwj-vl-Y4N" firstAttribute="leading" secondItem="R8u-EM-Cr4" secondAttribute="trailing" id="ekq-5o-dJy"/>
                                                 <constraint firstItem="e7X-xu-B2O" firstAttribute="leading" secondItem="Sld-Qb-RIq" secondAttribute="leading" constant="15" id="j6K-Sl-ksE"/>
+                                                <constraint firstItem="cOb-HL-fR7" firstAttribute="trailing" secondItem="Mwj-vl-Y4N" secondAttribute="trailing" id="jIN-Af-y8E"/>
                                                 <constraint firstItem="R8u-EM-Cr4" firstAttribute="top" secondItem="me7-z2-kOb" secondAttribute="bottom" id="pP8-yq-9uk"/>
+                                                <constraint firstItem="cOb-HL-fR7" firstAttribute="top" secondItem="me7-z2-kOb" secondAttribute="top" constant="10" id="qcl-yq-k0i"/>
                                                 <constraint firstItem="me7-z2-kOb" firstAttribute="leading" secondItem="Sld-Qb-RIq" secondAttribute="leading" id="qvg-WP-L5N"/>
                                                 <constraint firstAttribute="trailing" secondItem="vBh-gD-035" secondAttribute="trailing" id="tVo-qR-zho"/>
                                                 <constraint firstItem="7p0-So-JA1" firstAttribute="leading" secondItem="e7X-xu-B2O" secondAttribute="trailing" constant="5" id="vPg-G4-vvH"/>
@@ -278,7 +279,16 @@
                                 </cells>
                             </tableViewSection>
                             <tableViewSection headerTitle="Section-4" id="KTc-2u-cRA">
-                                <cells/>
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="S12-6g-PZm">
+                                        <rect key="frame" x="0.0" y="502" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="S12-6g-PZm" id="qcH-3M-AnQ">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
                             </tableViewSection>
                         </sections>
                         <connections>
@@ -287,8 +297,15 @@
                         </connections>
                     </tableView>
                     <connections>
+                        <outlet property="headView" destination="PQ4-Jn-P2N" id="5P3-vf-De5"/>
                         <outlet property="orderPoolBtn" destination="VBN-1v-bAt" id="luZ-4z-xKQ"/>
                         <outlet property="repairBtn" destination="8a7-a0-72S" id="Nf2-lK-Os2"/>
+                        <outlet property="repairNumL" destination="4us-ME-zGA" id="97w-rt-n0l"/>
+                        <outlet property="repairView" destination="R8u-EM-Cr4" id="poO-ya-W1t"/>
+                        <outlet property="repairedNumL" destination="ZpD-Ky-EOz" id="oL4-JR-V08"/>
+                        <outlet property="repairedView" destination="vBh-gD-035" id="DHe-mY-pdU"/>
+                        <outlet property="repairingNumL" destination="UYJ-Ef-ZmL" id="Foy-9f-7K0"/>
+                        <outlet property="repairingView" destination="Mwj-vl-Y4N" id="KXC-mb-lU5"/>
                         <outlet property="taskBtn" destination="e7J-3T-jNT" id="bG3-5H-UdC"/>
                     </connections>
                 </tableViewController>

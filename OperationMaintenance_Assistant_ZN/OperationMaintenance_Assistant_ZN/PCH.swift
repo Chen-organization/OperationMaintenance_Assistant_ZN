@@ -29,5 +29,6 @@ let ScreenW = UIScreen.main.bounds.size.width
 
 let NavHeight = IS_iPhoneX ? 88.0 : 64.0
 
+public let statusBarheight = UIApplication.shared.statusBarFrame.size.height
 
 

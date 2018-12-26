@@ -11,11 +11,19 @@ import UIKit
 class HomeVC: UITableViewController {
 
     
+    @IBOutlet weak var headView: UIView!
+    
     @IBOutlet weak var taskBtn: UIButton!
-    
     @IBOutlet weak var repairBtn: UIButton!
-    
     @IBOutlet weak var orderPoolBtn: UIButton!
+    
+    @IBOutlet weak var repairNumL: UILabel!
+    @IBOutlet weak var repairingNumL: UILabel!
+    @IBOutlet weak var repairedNumL: UILabel!
+    
+    @IBOutlet weak var repairView: UIView!
+    @IBOutlet weak var repairingView: UIView!
+    @IBOutlet weak var repairedView: UIView!
     
     
     override func viewDidLoad() {
@@ -33,7 +41,35 @@ class HomeVC: UITableViewController {
         self.orderPoolBtn.set(icon: UIImage.init(named: "抢单池1"), title: "抢单池", titleLocation: .bottom, padding: 0, state: .normal)
         
         
-        self.tableView.register(UINib.init(nibName: "HomeNewCell", bundle: nil), forCellReuseIdentifier: HomeNewCell_id)
+        self.tableView.register(UINib.init(nibName: "HomeNewCell", bundle:Bundle.main ), forCellReuseIdentifier: HomeNewCell_id)
+        
+        
+        self.tableView.tableHeaderView?.height = ScreenW * 510 / 1080.0;
+        // 网络图，本地图混合
+        let imagesURLStrings = [
+            "banner1",
+            "banner2",
+            "banner3",
+            ]
+        // Demo--点击回调
+        let bannerDemo = LLCycleScrollView.llCycleScrollViewWithFrame(CGRect.init(x: 0, y:0, width: ScreenW, height: ScreenW * 510 / 1080.0), imageURLPaths: imagesURLStrings, titles:nil, didSelectItemAtIndex: { index in
+            print("当前点击图片的位置为:\(index)")
+        })
+        
+        bannerDemo.lldidSelectItemAtIndex = { index in
+            
+        }
+        bannerDemo.customPageControlStyle = .fill
+        bannerDemo.customPageControlInActiveTintColor = UIColor.red
+        bannerDemo.pageControlPosition = .center
+        bannerDemo.pageControlLeadingOrTrialingContact = 28
+        
+        // 下边约束
+        bannerDemo.pageControlBottom = 15
+        self.headView.addSubview(bannerDemo)
+        
+//        self.tableView.contentOffset.y = 44//statusBarheight
+
 
         
     }
@@ -59,11 +95,16 @@ class HomeVC: UITableViewController {
         return 10
     }
     
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        
+        return 4
+    }
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         if section == 3 {
             
-            return 0
+            return 3
         }
         return super.tableView(tableView, numberOfRowsInSection: section)
     }
@@ -72,8 +113,7 @@ class HomeVC: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         if indexPath.section == 3 {
-            let cell:HomeNewCell
-                = tableView.dequeueReusableCell(withIdentifier: HomeNewCell_id, for: indexPath) as! HomeNewCell
+            let cell:HomeNewCell = tableView.dequeueReusableCell(withIdentifier: HomeNewCell_id, for: indexPath) as! HomeNewCell
             
             
             cell.selectionStyle = UITableViewCell.SelectionStyle.none
@@ -94,7 +134,30 @@ class HomeVC: UITableViewController {
             return 40
         }
 
-        return 120
+        return 90
+    }
+    
+    
+    //cell的缩进级别,动态静态cell必须重写,否则会造成崩溃
+    override func tableView(_ tableView: UITableView, indentationLevelForRowAt indexPath: IndexPath) -> Int {
+
+        if(3 == indexPath.section){
+        // (动态cell)
+            let newIndexPath = IndexPath(row: 0, section: indexPath.section)
+            return super.tableView(tableView, indentationLevelForRowAt: newIndexPath)
+        }
+        return super.tableView(tableView, indentationLevelForRowAt: indexPath)
+    }
+    
+    
+    
+    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        
+        if scrollView.contentOffset.y < 0 {
+            
+            scrollView.contentOffset.y = 0
+        }
+        
     }
     
     

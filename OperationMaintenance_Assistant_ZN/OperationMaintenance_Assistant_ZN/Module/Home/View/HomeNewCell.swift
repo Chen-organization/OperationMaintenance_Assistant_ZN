@@ -12,7 +12,14 @@ let HomeNewCell_id = "HomeNewCell"
 
 
 class HomeNewCell: UITableViewCell {
-
+    
+    
+    @IBOutlet weak var img: UIImageView!
+    @IBOutlet weak var titleL: UILabel!
+    @IBOutlet weak var contentL: UILabel!
+    
+    @IBOutlet weak var timeL: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
