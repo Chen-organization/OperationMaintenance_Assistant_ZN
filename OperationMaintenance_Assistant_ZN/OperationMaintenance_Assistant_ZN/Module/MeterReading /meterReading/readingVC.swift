@@ -11,7 +11,7 @@ import Photos
 import Alamofire
 
 
-class readingVC: UITableViewController,ScanViewControllerDelegate,UIGestureRecognizerDelegate,meterReadingSignVCDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,ReadingVCTableviewCellDelegate {
+class readingVC: UITableViewController,ScanViewControllerDelegate,UIGestureRecognizerDelegate,meterReadingSignVCDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,ReadingVCTableviewCellDelegate,UITextFieldDelegate {
 
     @IBOutlet weak var meterNo: UITextField!
     @IBOutlet weak var scanBtn: UIButton!
@@ -73,7 +73,47 @@ class readingVC: UITableViewController,ScanViewControllerDelegate,UIGestureRecog
         
         self.tableView.register(UINib.init(nibName: NSStringFromClass(ReadingVCTableviewCell.self), bundle: nil), forCellReuseIdentifier: ReadingVCTableviewCell_id)
         
- 
+        
+        self.meterNo.delegate = self;
+        self.meterNo.addTarget(self, action: #selector(meterNoChanged), for: UIControl.Event.editingChanged)
+        
+        
+        // 返回按钮
+        let backButton = UIButton(type: .custom)
+        // 设置frame
+        backButton.frame = CGRect(x: 200, y: 13, width: 18, height: 18)
+        backButton.addTarget(self, action: #selector(toList), for: .touchUpInside)
+        backButton.setTitle("记录", for: UIControl.State.normal)
+        backButton.setTitleColor(UIColor.white, for: UIControl.State.normal)
+        // 自定义导航栏的UIBarButtonItem类型的按钮
+        let backView = UIBarButtonItem(customView: backButton)
+        // 重要方法，用来调整自定义返回view距离左边的距离
+        let barButtonItem = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: nil, action: nil)
+        barButtonItem.width = -5
+        // 返回按钮设置成功
+        navigationItem.rightBarButtonItems = [barButtonItem, backView]
+
+        
+        
+    }
+    
+    //MARK: - toList
+    @objc func toList() {
+        
+        let list = UIStoryboard(name: "MeterReading", bundle: nil)
+            .instantiateViewController(withIdentifier: "readingListVC") as! readingListVC
+        self.navigationController?.pushViewController(list, animated: true)
+        
+    }
+    
+    @objc func meterNoChanged() {
+
+        if self.meterNo.text?.characters.count == 16 {
+            
+            self.searchBtnClick(UIButton())
+            
+        }
+        
     }
     
     @objc func tapPickImgView(action:UITapGestureRecognizer) -> Void {
@@ -474,34 +514,52 @@ class readingVC: UITableViewController,ScanViewControllerDelegate,UIGestureRecog
         let net = NetworkReachabilityManager()
         if net?.isReachable ?? false {
             
-            let para = ["id": self.meterNo.text]
-            
-            NetworkService.networkPostrequest(currentView: self.view, parameters: para as [String : Any], requestApi: getVerificationUrl, modelClass: "getVerificationModel"
-                , response: { (object) in
-                    
-                    let model : getVerificationModel = object as! getVerificationModel
-                    
-                    if model.statusCode == 800 {
+            UserCenter.shared.userInfo { (islogin, model) in
+                
+                let para = [
+                    "companyCode":model.companyCode,
+                    "empNo":model.empNo,
+                    "orgCode":model.orgCode,
+                    "id": self.meterNo.text]
+                
+                NetworkService.networkPostrequest(currentView: self.view, parameters: para as [String : Any], requestApi: getVerificationUrl, modelClass: "getVerificationModel"
+                    , response: { (object) in
                         
-                        if (Int((model.returnObj?.state)!) == 1) {
+                        let model : getVerificationModel = object as! getVerificationModel
+                        
+                        if model.statusCode == 800 {
                             
-                            self.getMeterInfo(deviceKey: self.meterNo.text!)
+                            if (Int((model.returnObj?.state)!) == 1) {
+                                
+                                self.getMeterInfo(deviceKey: self.meterNo.text!)
+                                
+                            }else{
+                                
+                                ZNCustomAlertView.handleTip("设备不存在", isShowCancelBtn: false, completion: { (isSure) in
+                                    
+                                    
+                                })
+                            }
                             
                         }else{
                             
-                            ZNCustomAlertView.handleTip("设备不存在", isShowCancelBtn: false, completion: { (isSure) in
-                                
+                            ZNCustomAlertView.handleTip(model.msg, isShowCancelBtn: false, completion: { (isSure) in
                                 
                             })
+                            
                         }
-                    }
+                        
+                        
+                }) { (error) in
                     
                     
-            }) { (error) in
+                }
+                
                 
                 
             }
             
+      
             
         }else{
             
@@ -731,6 +789,17 @@ class readingVC: UITableViewController,ScanViewControllerDelegate,UIGestureRecog
     private func imagePickerControllerDidCancel(picker: UIImagePickerController) {
         dismiss(animated: true, completion: nil)
     }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        
+        let text = textField.text!
+        
+        let len = text.characters.count + string.count - range.length
+
+        return len<=16
+        
+    }
+    
     
     
     //MARK: -  其他
