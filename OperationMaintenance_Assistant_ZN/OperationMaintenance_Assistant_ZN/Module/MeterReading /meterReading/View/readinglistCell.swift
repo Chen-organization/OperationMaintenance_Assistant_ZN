@@ -39,6 +39,26 @@ class readinglistCell: UITableViewCell {
         // Initialization code
     }
 
+    func setTitleColor(CanDelete:Bool)  {
+        
+        if CanDelete {
+            
+            self.NoL.textColor = RGBCOLOR(r: 31, 182, 167)
+            self.nameL.textColor = RGBCOLOR(r: 31, 182, 167)
+            self.value1.textColor = RGBCOLOR(r: 31, 182, 167)
+            self.value0.textColor = RGBCOLOR(r: 31, 182, 167)
+            
+            
+        }else{
+            
+            self.NoL.textColor = .gray
+            self.nameL.textColor = .gray
+            self.value1.textColor = .gray
+            self.value0.textColor = .gray
+        }
+        
+        
+    }
     
     @IBAction func deleteBtnClick(_ sender: UIButton) {
         

@@ -36,6 +36,27 @@ class MeVC: UITableViewController,UIActionSheetDelegate,UIImagePickerControllerD
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        UserCenter.shared.userInfo { (islogin, model) in
+            
+            let para = ["userId":model.empNo]
+            
+            NetworkService.networkGetrequest(currentView: self.view, parameters: para as [String : Any], requestApi: getSysUserUrl, modelClass: "", response: { (obj) in
+                
+                
+                
+            }, failture: { (error) in
+                
+                
+            })
+            
+            
+        }
+        
+    }
+    
     
     @objc private func handleSingleTap(tap:UITapGestureRecognizer) {
         print("单击")
@@ -69,7 +90,12 @@ class MeVC: UITableViewController,UIActionSheetDelegate,UIImagePickerControllerD
         
         if indexPath.section == 0 {
             
-            
+            if indexPath.row == 1{
+                
+                let sb = UIStoryboard(name: "Main", bundle: nil)
+                let vc = sb.instantiateViewController(withIdentifier: "ChangePwVC") as! ChangePwVC
+                self.navigationController?.pushViewController(vc, animated: true)
+            }
             
         }else if indexPath.section == 1{
             
@@ -102,6 +128,9 @@ class MeVC: UITableViewController,UIActionSheetDelegate,UIImagePickerControllerD
             if indexPath.row == 0{
                 
                 
+                let sb = UIStoryboard(name: "Me", bundle: nil)
+                let vc = sb.instantiateViewController(withIdentifier: "aboutUsVC") as! aboutUsVC
+                self.navigationController?.pushViewController(vc, animated: true)
             }else{
                 
                 //退出登录

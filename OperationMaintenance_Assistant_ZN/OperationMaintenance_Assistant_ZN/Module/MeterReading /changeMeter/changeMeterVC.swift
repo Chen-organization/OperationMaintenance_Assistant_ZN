@@ -10,7 +10,7 @@ import UIKit
 import Photos
 import Alamofire
 
-class changeMeterVC: UITableViewController,ScanViewControllerDelegate,UIGestureRecognizerDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate {
+class changeMeterVC: UITableViewController,ScanViewControllerDelegate,UIGestureRecognizerDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UITextFieldDelegate {
     
     
     
@@ -47,7 +47,7 @@ class changeMeterVC: UITableViewController,ScanViewControllerDelegate,UIGestureR
 
         self.title = "换表"
         
-        
+        self.tableView.backgroundColor = RGBCOLOR(r: 245, 245, 245)
         
         
         let tap:UITapGestureRecognizer = UITapGestureRecognizer.init()
@@ -67,8 +67,8 @@ class changeMeterVC: UITableViewController,ScanViewControllerDelegate,UIGestureR
         
         self.tableView.register(UINib.init(nibName: NSStringFromClass(ReadingVCTableviewCell.self), bundle: nil), forCellReuseIdentifier: ReadingVCTableviewCell_id)
         
-        
-        
+        self.meterNoTextField.delegate = self
+        self.meterNoTextField.addTarget(self, action: #selector(meterNoChanged), for: UIControl.Event.editingChanged)
         
         
         
@@ -103,6 +103,155 @@ class changeMeterVC: UITableViewController,ScanViewControllerDelegate,UIGestureR
         
         
     }
+    
+    //MARK: - textField
+    @objc func meterNoChanged() {
+        
+        if self.meterNoTextField.text?.characters.count == 16 {
+            
+            self.searchBtnClick()
+            
+        }
+        
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        
+        let text = textField.text!
+        
+        let len = text.characters.count + string.count - range.length
+        
+        return len<=16
+        
+    }
+    
+    
+    func searchBtnClick() {
+        
+        if !((self.meterNoTextField.text?.characters.count)! > 0) {
+            
+            ZNCustomAlertView.handleTip("请输入设备编码或表号", isShowCancelBtn: false) { (issure) in
+                
+            }
+            return
+        }
+        
+        
+        //无网络判断
+        let net = NetworkReachabilityManager()
+        if net?.isReachable ?? false {
+            
+            UserCenter.shared.userInfo { (islogin, model) in
+                
+                let para = [
+                    "companyCode":model.companyCode,
+                    "empNo":model.empNo,
+                    "orgCode":model.orgCode,
+                    "id": self.meterNoTextField.text]
+                
+                NetworkService.networkPostrequest(currentView: self.view, parameters: para as [String : Any], requestApi: getVerificationUrl, modelClass: "getVerificationModel"
+                    , response: { (object) in
+                        
+                        let model : getVerificationModel = object as! getVerificationModel
+                        
+                        if model.statusCode == 800 {
+                            
+                            if (Int((model.returnObj?.state)!) == 1) {
+                                
+                                self.getMeterInfo(deviceKey: self.meterNoTextField.text!)
+                                
+                            }else{
+                                
+                                ZNCustomAlertView.handleTip("设备不存在", isShowCancelBtn: false, completion: { (isSure) in
+                                    
+                                    
+                                })
+                            }
+                            
+                        }else{
+                            
+                            ZNCustomAlertView.handleTip(model.msg, isShowCancelBtn: false, completion: { (isSure) in
+                                
+                            })
+                            
+                        }
+                        
+                        
+                }) { (error) in
+                    
+                    
+                }
+                
+                
+                
+            }
+            
+            
+            
+        }else{
+            
+            self.searchMeterWighKey(key: self.meterNoTextField.text ?? " ")
+        }
+
+    }
+    
+    //本地字典表查询
+    func searchMeterWighKey(key:String) {
+        
+        
+        let result = RealmTool.getMetersDic()
+        if result.count > 0 {
+            
+            
+            //无网络本地查询
+            let arr :NSArray = RealmTool.getOneMetersDic(meterNo: key) as NSArray
+            
+            if (arr.count > 0) {
+                
+                
+                let model:DownloadMeterDicReturnObjModel = arr.firstObject as! DownloadMeterDicReturnObjModel
+                
+                
+                self.meterNoTextField.text = model.id ?? ""
+                self.meterNameL.text = model.name ?? ""
+                self.addressL.text = model.installSite ?? ""
+                self.oldMeterNum.text = model.nowValue.description ?? ""
+                
+                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+0.3) {
+                    
+                    self.newMeterNum.becomeFirstResponder()
+                }
+                
+                
+                self.deviceInfoModel = getDeviceInfoReturnObjModel()
+                self.deviceInfoModel?.deviceNo = model.id ?? ""
+                self.deviceInfoModel?.lastNowValue = model.nowValue as? Double
+                self.deviceInfoModel?.deviceName = model.name ?? ""
+                self.deviceInfoModel?.stationName = model.stationName ?? ""
+                self.deviceInfoModel?.installSite = model.installSite ?? ""
+                
+                if let mul = model.multiplyingPower{
+                    
+                    self.deviceInfoModel?.multiplyingPower = Double(mul) ?? 0
+                    
+                }
+                
+                
+                
+            }
+            
+        }else{
+            
+            ZNCustomAlertView.handleTip("请先下载字典表", isShowCancelBtn: false) { (issure) in
+            }
+            
+        }
+        
+        
+        
+        
+    }
+    
     
     
     // MARK: - 手势
@@ -215,7 +364,7 @@ class changeMeterVC: UITableViewController,ScanViewControllerDelegate,UIGestureR
             self.firstImage64Str = imageBase64String
             self.firstDeleteBtn.isHidden = false
             
-        }else  if( self.selectingImgIndex == 1) {
+        }else  if( self.selectingImgIndex == 2) {
             
             self.secondImgView.image = image
             self.secondImage64Str = imageBase64String

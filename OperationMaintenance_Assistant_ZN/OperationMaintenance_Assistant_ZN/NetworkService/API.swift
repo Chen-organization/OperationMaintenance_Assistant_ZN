@@ -23,6 +23,10 @@ private let baseURL = "http://plat.znxk.net:6801"
 public let LoginUrl = baseURL + "/first/getLand"
 //找回密码接口
 public let getBackPasswordUrl = baseURL + "/first/getBackPassword"
+//修改密码
+public let getModifyPasswordUrl = baseURL + "/my/getModifyPassword"
+//获取用户信息
+public let getSysUserUrl = baseURL + "/user/getSysUser"
 
 //字典表下载
 public let getDatesUrl = baseURL + "/meter/getDates"
@@ -42,5 +46,5 @@ public let getTheHeadlinesUrl = baseURL + "/first/getTheHeadlines"
 public let getJobOrderUrl = baseURL + "/first/getJobOrder"
 //抄表获取数据
 public let getDisplayUrl = baseURL + "/meter/getDisplay"
-////
-//public let getJobOrderUrl = baseURL + "/first/getJobOrder"
+//抄表删除数据
+public let getDeleteUrl = baseURL + "/meter/getDelete"

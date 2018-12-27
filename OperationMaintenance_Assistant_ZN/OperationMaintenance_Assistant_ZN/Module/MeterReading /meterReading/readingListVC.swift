@@ -11,8 +11,9 @@ import UIKit
 class readingListVC: UITableViewController,readinglistCellDelegate {
     
     
-    var nowPage = 1
+    var lastNum = 1
 
+//    var localDataArray = []()
     var dataArray = [Any]()
     
     
@@ -28,32 +29,33 @@ class readingListVC: UITableViewController,readinglistCellDelegate {
         edgesForExtendedLayout = []
         
 
+//        self.localDataArray = RealmTool.getMetersReadingData()
         
         self.tableView.es.addPullToRefresh {
             
-//            [unowned self] in
+            [unowned self] in
             
-            self.getdata(page: 1)
+            self.getdata(num: 1)
         }
         
-//        self.tableView.es.addInfiniteScrolling {
-//            [unowned self] in
-//
-//            self.getdata(page: self.nowPage + 1)
-//
-//        }
+        self.tableView.es.addInfiniteScrolling {
+            [unowned self] in
 
-        self.getdata(page: 1)
+            self.getdata(num: self.dataArray.count)
+
+        }
+
+        self.getdata(num: 1)
     }
     
     
-    func getdata(page:Int) {
+    func getdata(num:Int) {
         
         UserCenter.shared.userInfo { (islogin, model) in
             
             let para = ["empId": model.empNo,
                         "code": "2",
-                        "start":page.description,
+                        "start":num.description,
                         "ord": "20",
                         ]
             
@@ -63,9 +65,19 @@ class readingListVC: UITableViewController,readinglistCellDelegate {
                 
                 if model.statusCode == 800 {
                     
-                    self.nowPage = page
+                    if num == 1 {
+                        
+                        self.dataArray = model.returnObj ?? []
+
+                    }else{
+                        
+                        if let arr = model.returnObj{
+                            
+                            self.dataArray.append(arr)
+
+                        }
+                    }
                     
-                    self.dataArray = model.returnObj ?? [Any]()
                     
                     self.tableView.reloadData()
                     
@@ -94,8 +106,13 @@ class readingListVC: UITableViewController,readinglistCellDelegate {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return 10;
         if section==0 {
+            
+            if RealmTool.getMetersReadingData().count > 0 {
+                
+                return RealmTool.getMetersReadingData().count + self.dataArray.count
+            }
+            
             return self.dataArray.count
         }
         return super.tableView(tableView, numberOfRowsInSection: section)
@@ -108,10 +125,58 @@ class readingListVC: UITableViewController,readinglistCellDelegate {
             let cell:readinglistCell
                 = tableView.dequeueReusableCell(withIdentifier:readinglistCell_id, for: indexPath) as! readinglistCell
             
-//            let model : readingListModel = self.dataArray[indexPath.row] as! readingListModel
+            var orderNum = ""
+            var name = ""
+            var meterNum = ""
+            var time = ""
+            var canDelete = false
+            
+            
+            let num = RealmTool.getMetersReadingData().count
+            if num > 0 {
+                
+                if indexPath.row < num{
+                    
+                    let model : writeMeterModel = RealmTool.getMetersReadingData()[indexPath.row]
+                    
+                    
+                    name = model.deviceName ?? ""
+                    meterNum = model.value ?? ""
+                    time = model.time ?? ""
+                    canDelete = true
+                    
+                }else{
+                    
+                    let model : readingListReturnObjModel = self.dataArray[indexPath.row + num] as! readingListReturnObjModel
+
+                    orderNum = (indexPath.row - num).description
+                    name = model.deviceHisId ?? ""
+                    meterNum = model.nowValue ?? ""
+                    time = self.timeStampToString(timeStamp:model.createDate ?? "")
+                    canDelete = true
+                    
+                }
+            }else{
+                
+                
+                let model : readingListReturnObjModel = self.dataArray[indexPath.row] as! readingListReturnObjModel
+                
+                orderNum = (indexPath.row - num).description
+                name = model.deviceHisId ?? ""
+                meterNum = model.nowValue ?? ""
+                time = self.timeStampToString(timeStamp:model.createDate ?? "")
+                canDelete = true
+                
+            }
+            
+            cell.NoL.text = orderNum
+            cell.nameL.text = name
+            cell.value0.text = meterNum
+            cell.value1.text = time
+            
+            cell.setTitleColor(CanDelete: canDelete)
             
             cell.index = indexPath.row
-            
             cell.cellDelegate = self
             
             cell.selectionStyle = UITableViewCell.SelectionStyle.none
@@ -140,9 +205,93 @@ class readingListVC: UITableViewController,readinglistCellDelegate {
     }
     
     
-    // MARK: - cell Delegate
+    // MARK: - cell Delegate  抄表删除数据
 
     func cellDeleteWithIndex(index: Int) {
+    
+        UserCenter.shared.userInfo { (islogin, model) in
+            
+            
+            var para = [ String : String]()
+            
+            let localNum = RealmTool.getMetersReadingData().count
+            
+            if localNum > 0 {
+                
+                if index < localNum {
+                    
+                    //本地删除
+                    RealmTool.deleteMetersReadingData(model: RealmTool.getMetersReadingData()[index])
+                    
+                    self.tableView.reloadData()
+                    return
+                    
+                }else{
+                    
+                    let model:readingListReturnObjModel = self.dataArray[index + localNum] as! readingListReturnObjModel
+                    
+                    para["id"] = model.id
+                    
+                }
+                
+            }else{
+                
+                let model:readingListReturnObjModel = self.dataArray[index] as! readingListReturnObjModel
+                
+                para["id"] = model.id
+                
+            }
+            
+            NetworkService.networkPostrequest(currentView: self.view, parameters: para as [String : Any], requestApi: getDeleteUrl, modelClass: "BaseModel", response: { (obj) in
+                
+                let model : BaseModel = obj as! BaseModel
+                
+                if model.statusCode == 800{
+                    
+                    ZNCustomAlertView.handleTip("删除成功", isShowCancelBtn: false, completion: { (sure) in
+                        
+                    })
+                    
+                }else{
+                    
+                    ZNCustomAlertView.handleTip(model.msg, isShowCancelBtn: false, completion: { (sure) in
+                        
+                    })
+                    
+                    self.tableView.reloadData()
+                    
+                }
+                
+            }) { (error) in
+                
+                
+                
+            }
+            
+            
+        }
+    
+  
+   
+    }
+    
+    
+    //MARK: -时间戳转时间函数
+    func timeStampToString(timeStamp: String)->String {
+        //时间戳为毫秒级要 ／ 1000， 秒就不用除1000，参数带没带000
+        
+        if let timestampDouble = Double(timeStamp) {
+            
+            let timeSta:TimeInterval = TimeInterval(timestampDouble / 1000)
+            let date = NSDate(timeIntervalSince1970: timeSta)
+            let dfmatter = DateFormatter()
+            //yyyy-MM-dd HH:mm:ss
+            dfmatter.dateFormat="yyyy-MM-dd HH:mm:ss"
+            return dfmatter.string(from: date as Date)
+            
+        }
+        
+        return ""
         
     }
     
