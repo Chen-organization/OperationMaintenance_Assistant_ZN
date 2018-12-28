@@ -31,6 +31,17 @@
 		185C235C21D4AA040004AD0C /* ESRefreshProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185C235221D4AA030004AD0C /* ESRefreshProtocol.swift */; };
 		185C235D21D4AA040004AD0C /* ES.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185C235321D4AA030004AD0C /* ES.swift */; };
 		185C235E21D4AA040004AD0C /* ESPullToRefresh.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185C235421D4AA030004AD0C /* ESPullToRefresh.swift */; };
+		185C238221D63CFB0004AD0C /* FMDatabase+InMemoryOnDiskIO.m in Sources */ = {isa = PBXBuildFile; fileRef = 185C236B21D63CFB0004AD0C /* FMDatabase+InMemoryOnDiskIO.m */; };
+		185C238321D63CFB0004AD0C /* FMDatabase+FTS3.m in Sources */ = {isa = PBXBuildFile; fileRef = 185C236D21D63CFB0004AD0C /* FMDatabase+FTS3.m */; };
+		185C238421D63CFB0004AD0C /* FMTokenizers.m in Sources */ = {isa = PBXBuildFile; fileRef = 185C236F21D63CFB0004AD0C /* FMTokenizers.m */; };
+		185C238521D63CFB0004AD0C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 185C237421D63CFB0004AD0C /* main.m */; };
+		185C238621D63CFB0004AD0C /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 185C237721D63CFB0004AD0C /* FMDatabaseQueue.m */; };
+		185C238721D63CFB0004AD0C /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 185C237A21D63CFB0004AD0C /* FMDatabaseAdditions.m */; };
+		185C238821D63CFB0004AD0C /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 185C237B21D63CFB0004AD0C /* FMDatabase.m */; };
+		185C238921D63CFB0004AD0C /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = 185C237F21D63CFB0004AD0C /* FMDatabasePool.m */; };
+		185C238A21D63CFB0004AD0C /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 185C238021D63CFB0004AD0C /* FMResultSet.m */; };
+		185C238B21D63CFB0004AD0C /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 185C238121D63CFB0004AD0C /* Info.plist */; };
+		185C238E21D63D8C0004AD0C /* SqliteManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 185C238C21D63D8C0004AD0C /* SqliteManager.m */; };
 		7403D07B21C2BC5F0055561E /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7403D07821C2BC5F0055561E /* Network.swift */; };
 		7403D07C21C2BC5F0055561E /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7403D07921C2BC5F0055561E /* NetworkService.swift */; };
 		7403D07D21C2BC5F0055561E /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7403D07A21C2BC5F0055561E /* API.swift */; };
@@ -476,6 +487,29 @@
 		185C235221D4AA030004AD0C /* ESRefreshProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ESRefreshProtocol.swift; sourceTree = "<group>"; };
 		185C235321D4AA030004AD0C /* ES.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ES.swift; sourceTree = "<group>"; };
 		185C235421D4AA030004AD0C /* ESPullToRefresh.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ESPullToRefresh.swift; sourceTree = "<group>"; };
+		185C236A21D63CFB0004AD0C /* FMDatabase+InMemoryOnDiskIO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "FMDatabase+InMemoryOnDiskIO.h"; sourceTree = "<group>"; };
+		185C236B21D63CFB0004AD0C /* FMDatabase+InMemoryOnDiskIO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "FMDatabase+InMemoryOnDiskIO.m"; sourceTree = "<group>"; };
+		185C236D21D63CFB0004AD0C /* FMDatabase+FTS3.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "FMDatabase+FTS3.m"; sourceTree = "<group>"; };
+		185C236E21D63CFB0004AD0C /* FMTokenizers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMTokenizers.h; sourceTree = "<group>"; };
+		185C236F21D63CFB0004AD0C /* FMTokenizers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMTokenizers.m; sourceTree = "<group>"; };
+		185C237021D63CFB0004AD0C /* FMDatabase+FTS3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "FMDatabase+FTS3.h"; sourceTree = "<group>"; };
+		185C237121D63CFB0004AD0C /* fts3_tokenizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = fts3_tokenizer.h; sourceTree = "<group>"; };
+		185C237321D63CFB0004AD0C /* fmdb_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = fmdb_Prefix.pch; sourceTree = "<group>"; };
+		185C237421D63CFB0004AD0C /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		185C237621D63CFB0004AD0C /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabase.h; sourceTree = "<group>"; };
+		185C237721D63CFB0004AD0C /* FMDatabaseQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabaseQueue.m; sourceTree = "<group>"; };
+		185C237821D63CFB0004AD0C /* FMResultSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMResultSet.h; sourceTree = "<group>"; };
+		185C237921D63CFB0004AD0C /* FMDatabasePool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabasePool.h; sourceTree = "<group>"; };
+		185C237A21D63CFB0004AD0C /* FMDatabaseAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabaseAdditions.m; sourceTree = "<group>"; };
+		185C237B21D63CFB0004AD0C /* FMDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabase.m; sourceTree = "<group>"; };
+		185C237C21D63CFB0004AD0C /* FMDatabaseQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseQueue.h; sourceTree = "<group>"; };
+		185C237D21D63CFB0004AD0C /* FMDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDB.h; sourceTree = "<group>"; };
+		185C237E21D63CFB0004AD0C /* FMDatabaseAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseAdditions.h; sourceTree = "<group>"; };
+		185C237F21D63CFB0004AD0C /* FMDatabasePool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabasePool.m; sourceTree = "<group>"; };
+		185C238021D63CFB0004AD0C /* FMResultSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMResultSet.m; sourceTree = "<group>"; };
+		185C238121D63CFB0004AD0C /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		185C238C21D63D8C0004AD0C /* SqliteManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SqliteManager.m; sourceTree = "<group>"; };
+		185C238D21D63D8C0004AD0C /* SqliteManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SqliteManager.h; sourceTree = "<group>"; };
 		4154604F37E3CCCFB375A4AD /* Pods-OperationMaintenance_Assistant_ZN.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OperationMaintenance_Assistant_ZN.release.xcconfig"; path = "Pods/Target Support Files/Pods-OperationMaintenance_Assistant_ZN/Pods-OperationMaintenance_Assistant_ZN.release.xcconfig"; sourceTree = "<group>"; };
 		7403D07821C2BC5F0055561E /* Network.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		7403D07921C2BC5F0055561E /* NetworkService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
@@ -1076,6 +1110,83 @@
 				185C235121D4AA030004AD0C /* ESRefreshFooterAnimator.swift */,
 			);
 			path = Animator;
+			sourceTree = "<group>";
+		};
+		185C236621D636860004AD0C /* fmdbManager */ = {
+			isa = PBXGroup;
+			children = (
+				185C238D21D63D8C0004AD0C /* SqliteManager.h */,
+				185C238C21D63D8C0004AD0C /* SqliteManager.m */,
+			);
+			path = fmdbManager;
+			sourceTree = "<group>";
+		};
+		185C236721D63CFB0004AD0C /* FMDB */ = {
+			isa = PBXGroup;
+			children = (
+				185C236821D63CFB0004AD0C /* extra */,
+				185C237221D63CFB0004AD0C /* sample */,
+				185C237521D63CFB0004AD0C /* fmdb */,
+			);
+			path = FMDB;
+			sourceTree = "<group>";
+		};
+		185C236821D63CFB0004AD0C /* extra */ = {
+			isa = PBXGroup;
+			children = (
+				185C236921D63CFB0004AD0C /* InMemoryOnDiskIO */,
+				185C236C21D63CFB0004AD0C /* fts3 */,
+			);
+			path = extra;
+			sourceTree = "<group>";
+		};
+		185C236921D63CFB0004AD0C /* InMemoryOnDiskIO */ = {
+			isa = PBXGroup;
+			children = (
+				185C236A21D63CFB0004AD0C /* FMDatabase+InMemoryOnDiskIO.h */,
+				185C236B21D63CFB0004AD0C /* FMDatabase+InMemoryOnDiskIO.m */,
+			);
+			path = InMemoryOnDiskIO;
+			sourceTree = "<group>";
+		};
+		185C236C21D63CFB0004AD0C /* fts3 */ = {
+			isa = PBXGroup;
+			children = (
+				185C236D21D63CFB0004AD0C /* FMDatabase+FTS3.m */,
+				185C236E21D63CFB0004AD0C /* FMTokenizers.h */,
+				185C236F21D63CFB0004AD0C /* FMTokenizers.m */,
+				185C237021D63CFB0004AD0C /* FMDatabase+FTS3.h */,
+				185C237121D63CFB0004AD0C /* fts3_tokenizer.h */,
+			);
+			path = fts3;
+			sourceTree = "<group>";
+		};
+		185C237221D63CFB0004AD0C /* sample */ = {
+			isa = PBXGroup;
+			children = (
+				185C237321D63CFB0004AD0C /* fmdb_Prefix.pch */,
+				185C237421D63CFB0004AD0C /* main.m */,
+			);
+			path = sample;
+			sourceTree = "<group>";
+		};
+		185C237521D63CFB0004AD0C /* fmdb */ = {
+			isa = PBXGroup;
+			children = (
+				185C237621D63CFB0004AD0C /* FMDatabase.h */,
+				185C237721D63CFB0004AD0C /* FMDatabaseQueue.m */,
+				185C237821D63CFB0004AD0C /* FMResultSet.h */,
+				185C237921D63CFB0004AD0C /* FMDatabasePool.h */,
+				185C237A21D63CFB0004AD0C /* FMDatabaseAdditions.m */,
+				185C237B21D63CFB0004AD0C /* FMDatabase.m */,
+				185C237C21D63CFB0004AD0C /* FMDatabaseQueue.h */,
+				185C237D21D63CFB0004AD0C /* FMDB.h */,
+				185C237E21D63CFB0004AD0C /* FMDatabaseAdditions.h */,
+				185C237F21D63CFB0004AD0C /* FMDatabasePool.m */,
+				185C238021D63CFB0004AD0C /* FMResultSet.m */,
+				185C238121D63CFB0004AD0C /* Info.plist */,
+			);
+			path = fmdb;
 			sourceTree = "<group>";
 		};
 		37D07A4C21783CCD725DBCD2 /* Pods */ = {
@@ -1704,6 +1815,7 @@
 		7477E86F21C1701E00AAA756 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				185C236621D636860004AD0C /* fmdbManager */,
 				7477E87021C1701E00AAA756 /* Category */,
 				7477E87F21C1701E00AAA756 /* PhoneCodeButton.m */,
 				7477E88021C1701E00AAA756 /* PhoneCodeButton.h */,
@@ -1767,6 +1879,7 @@
 		7477E89E21C170C800AAA756 /* Vendors */ = {
 			isa = PBXGroup;
 			children = (
+				185C236721D63CFB0004AD0C /* FMDB */,
 				185C234621D4AA030004AD0C /* ESPullToRefresh */,
 				185C232721D37D1B0004AD0C /* CycleBanner */,
 				7464239E21D271060038E8E3 /* IQKeyboardManagerSwift */,
@@ -2697,6 +2810,7 @@
 				7403D27421CF800A0055561E /* 故障报修1@2x.png in Resources */,
 				7403D29B21CF800A0055561E /* 工单3x.png in Resources */,
 				7403D2BD21CF800A0055561E /* 我的头像@3x.png in Resources */,
+				185C238B21D63CFB0004AD0C /* Info.plist in Resources */,
 				185C235A21D4AA040004AD0C /* icon_pull_to_refresh_arrow@2x.png in Resources */,
 				7403D2CC21CF800A0055561E /* 电话.png in Resources */,
 				7403D2D621CF800A0055561E /* 登陆logo@2x.png in Resources */,
@@ -2860,6 +2974,7 @@
 				7477EA9321C1712300AAA756 /* FLAnimatedImageView+WebCache.m in Sources */,
 				7477EA9B21C1712300AAA756 /* NSButton+WebCache.m in Sources */,
 				7477E89321C1705F00AAA756 /* DispatchQueueExtension.swift in Sources */,
+				185C238421D63CFB0004AD0C /* FMTokenizers.m in Sources */,
 				7477EA6821C1712300AAA756 /* PBScrollView.m in Sources */,
 				7477EA1C21C1712300AAA756 /* MKGradientGenerator.swift in Sources */,
 				7403D0D321C5594A0055561E /* UserCenter.swift in Sources */,
@@ -2870,6 +2985,7 @@
 				7477EA8E21C1712300AAA756 /* SDWebImageManager.m in Sources */,
 				744F753321CF97F20072326E /* LBXScanNetAnimation.swift in Sources */,
 				7477EA9921C1712300AAA756 /* SDWebImagePrefetcher.m in Sources */,
+				185C238221D63CFB0004AD0C /* FMDatabase+InMemoryOnDiskIO.m in Sources */,
 				7477E88321C1701E00AAA756 /* UIView+Common.m in Sources */,
 				7477EAC021C1712300AAA756 /* View+MASAdditions.m in Sources */,
 				742CAEA721D528A50022648E /* agreenmentVC.swift in Sources */,
@@ -2878,12 +2994,15 @@
 				746423BD21D271060038E8E3 /* IQKeyboardManagerConstantsInternal.swift in Sources */,
 				7477EAF621C2A50B00AAA756 /* HomeVC.swift in Sources */,
 				742CAE9B21D3F0910022648E /* TheHeadlinesReturnObjModel.swift in Sources */,
+				185C238721D63CFB0004AD0C /* FMDatabaseAdditions.m in Sources */,
 				7477EA8B21C1712300AAA756 /* Reachability.m in Sources */,
 				744F753B21CF9F530072326E /* QQScanViewController.swift in Sources */,
 				185C233321D37D1B0004AD0C /* LLCycleScrollView.swift in Sources */,
+				185C238321D63CFB0004AD0C /* FMDatabase+FTS3.m in Sources */,
 				7477EA8621C1712300AAA756 /* CALayer+Anim.m in Sources */,
 				744F753621CF97F20072326E /* LBXScanLineAnimation.swift in Sources */,
 				185C233221D37D1B0004AD0C /* LLPillPageControl.swift in Sources */,
+				185C238621D63CFB0004AD0C /* FMDatabaseQueue.m in Sources */,
 				746423B921D271060038E8E3 /* IQBarButtonItem.swift in Sources */,
 				7477EA9721C1712300AAA756 /* SDWebImageCoderHelper.m in Sources */,
 				7403D0D221C5594A0055561E /* LoginVC.swift in Sources */,
@@ -2892,6 +3011,7 @@
 				7477EA9E21C1712300AAA756 /* SDWebImageDownloaderOperation.m in Sources */,
 				7477EA7921C1712300AAA756 /* UIImage+Extend.m in Sources */,
 				7403D16721CF5ED60055561E /* getVerificationModel.swift in Sources */,
+				185C238821D63CFB0004AD0C /* FMDatabase.m in Sources */,
 				7477EABD21C1712300AAA756 /* MASConstraintMaker.m in Sources */,
 				7477EA8221C1712300AAA756 /* NSString+Extend.m in Sources */,
 				7477EAF521C2A50B00AAA756 /* MeVC.swift in Sources */,
@@ -2904,6 +3024,7 @@
 				7477EAC321C1712300AAA756 /* MASViewAttribute.m in Sources */,
 				7477E88721C1701E00AAA756 /* UIColor+expanded.m in Sources */,
 				7403D0D621C5594A0055561E /* ForgotPwVC.swift in Sources */,
+				185C238A21D63CFB0004AD0C /* FMResultSet.m in Sources */,
 				742CAEA221D524BF0022648E /* aboutUsVC.swift in Sources */,
 				7477E89421C1705F00AAA756 /* BaseVC.swift in Sources */,
 				7477EA7C21C1712300AAA756 /* UIWindow+Launch.m in Sources */,
@@ -2941,6 +3062,7 @@
 				7403D13B21C807E60055561E /* changeMeterVC.swift in Sources */,
 				185C235B21D4AA040004AD0C /* ESRefreshFooterAnimator.swift in Sources */,
 				7477E89C21C1709900AAA756 /* OtherBaseModel.swift in Sources */,
+				185C238E21D63D8C0004AD0C /* SqliteManager.m in Sources */,
 				744F753821CF97F20072326E /* LBXPermissions.swift in Sources */,
 				744F753721CF97F20072326E /* LBXScanViewStyle.swift in Sources */,
 				744F753921CF97F20072326E /* LBXScanWrapper.swift in Sources */,
@@ -2994,6 +3116,7 @@
 				7477E84221C025BF00AAA756 /* AppDelegate.swift in Sources */,
 				7477EA6921C1712300AAA756 /* PhotoImageView.m in Sources */,
 				7477EA3321C1712300AAA756 /* ZNCustomAlertView.m in Sources */,
+				185C238921D63CFB0004AD0C /* FMDatabasePool.m in Sources */,
 				185C235621D4AA040004AD0C /* ESRefreshAnimator.swift in Sources */,
 				7477EAFE21C2A8CA00AAA756 /* MeterReadingVC.swift in Sources */,
 				185C235C21D4AA040004AD0C /* ESRefreshProtocol.swift in Sources */,
@@ -3018,6 +3141,7 @@
 				7403D0D521C5594A0055561E /* LoginReturnObjModel.swift in Sources */,
 				7477EA9521C1712300AAA756 /* UIImage+GIF.m in Sources */,
 				185C235E21D4AA040004AD0C /* ESPullToRefresh.swift in Sources */,
+				185C238521D63CFB0004AD0C /* main.m in Sources */,
 				7477E89521C1705F00AAA756 /* BaseTableVC.swift in Sources */,
 				7403D12B21C6A8D50055561E /* MBProgressHUD+SGQRCode.m in Sources */,
 				742CAE9F21D3FB690022648E /* jobOrderReturnobjModel.swift in Sources */,
