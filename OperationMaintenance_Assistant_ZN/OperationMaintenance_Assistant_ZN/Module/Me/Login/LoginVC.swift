@@ -57,7 +57,7 @@ class LoginVC: BaseTableVC ,ChangedPwDelegate ,UITextFieldDelegate{
         self.pwTextField.addTarget(self, action: #selector(textField1TextChange(textfield:)), for: UIControl.Event.editingChanged)
 
         
-        self.mobileTextfield.placeholderColor = UIColor.black
+        self.mobileTextfield.placeholderColor = UIColor.lightGray
         self.pwTextField.placeholderColor = UIColor.lightGray
         
         self.mobileTextfield.tintColor = UIColor.black

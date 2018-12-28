@@ -44,6 +44,9 @@ public let getModifyAvatarUrl = baseURL + "/my/getModifyAvatar"
 public let getTheHeadlinesUrl = baseURL + "/first/getTheHeadlines"
 //首页工单维修情况接口
 public let getJobOrderUrl = baseURL + "/first/getJobOrder"
+
+//记录
+public let getRecordUrl = baseURL + "/record/getDate"
 //抄表获取数据
 public let getDisplayUrl = baseURL + "/meter/getDisplay"
 //抄表删除数据

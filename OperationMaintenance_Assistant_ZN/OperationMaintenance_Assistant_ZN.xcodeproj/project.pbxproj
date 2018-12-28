@@ -34,7 +34,6 @@
 		185C238221D63CFB0004AD0C /* FMDatabase+InMemoryOnDiskIO.m in Sources */ = {isa = PBXBuildFile; fileRef = 185C236B21D63CFB0004AD0C /* FMDatabase+InMemoryOnDiskIO.m */; };
 		185C238321D63CFB0004AD0C /* FMDatabase+FTS3.m in Sources */ = {isa = PBXBuildFile; fileRef = 185C236D21D63CFB0004AD0C /* FMDatabase+FTS3.m */; };
 		185C238421D63CFB0004AD0C /* FMTokenizers.m in Sources */ = {isa = PBXBuildFile; fileRef = 185C236F21D63CFB0004AD0C /* FMTokenizers.m */; };
-		185C238521D63CFB0004AD0C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 185C237421D63CFB0004AD0C /* main.m */; };
 		185C238621D63CFB0004AD0C /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 185C237721D63CFB0004AD0C /* FMDatabaseQueue.m */; };
 		185C238721D63CFB0004AD0C /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 185C237A21D63CFB0004AD0C /* FMDatabaseAdditions.m */; };
 		185C238821D63CFB0004AD0C /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 185C237B21D63CFB0004AD0C /* FMDatabase.m */; };
@@ -494,8 +493,6 @@
 		185C236F21D63CFB0004AD0C /* FMTokenizers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMTokenizers.m; sourceTree = "<group>"; };
 		185C237021D63CFB0004AD0C /* FMDatabase+FTS3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "FMDatabase+FTS3.h"; sourceTree = "<group>"; };
 		185C237121D63CFB0004AD0C /* fts3_tokenizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = fts3_tokenizer.h; sourceTree = "<group>"; };
-		185C237321D63CFB0004AD0C /* fmdb_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = fmdb_Prefix.pch; sourceTree = "<group>"; };
-		185C237421D63CFB0004AD0C /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		185C237621D63CFB0004AD0C /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabase.h; sourceTree = "<group>"; };
 		185C237721D63CFB0004AD0C /* FMDatabaseQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabaseQueue.m; sourceTree = "<group>"; };
 		185C237821D63CFB0004AD0C /* FMResultSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMResultSet.h; sourceTree = "<group>"; };
@@ -1125,7 +1122,6 @@
 			isa = PBXGroup;
 			children = (
 				185C236821D63CFB0004AD0C /* extra */,
-				185C237221D63CFB0004AD0C /* sample */,
 				185C237521D63CFB0004AD0C /* fmdb */,
 			);
 			path = FMDB;
@@ -1159,15 +1155,6 @@
 				185C237121D63CFB0004AD0C /* fts3_tokenizer.h */,
 			);
 			path = fts3;
-			sourceTree = "<group>";
-		};
-		185C237221D63CFB0004AD0C /* sample */ = {
-			isa = PBXGroup;
-			children = (
-				185C237321D63CFB0004AD0C /* fmdb_Prefix.pch */,
-				185C237421D63CFB0004AD0C /* main.m */,
-			);
-			path = sample;
 			sourceTree = "<group>";
 		};
 		185C237521D63CFB0004AD0C /* fmdb */ = {
@@ -3141,7 +3128,6 @@
 				7403D0D521C5594A0055561E /* LoginReturnObjModel.swift in Sources */,
 				7477EA9521C1712300AAA756 /* UIImage+GIF.m in Sources */,
 				185C235E21D4AA040004AD0C /* ESPullToRefresh.swift in Sources */,
-				185C238521D63CFB0004AD0C /* main.m in Sources */,
 				7477E89521C1705F00AAA756 /* BaseTableVC.swift in Sources */,
 				7403D12B21C6A8D50055561E /* MBProgressHUD+SGQRCode.m in Sources */,
 				742CAE9F21D3FB690022648E /* jobOrderReturnobjModel.swift in Sources */,

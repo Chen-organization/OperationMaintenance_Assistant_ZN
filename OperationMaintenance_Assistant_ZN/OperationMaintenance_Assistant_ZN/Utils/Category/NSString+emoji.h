@@ -24,6 +24,7 @@
 //最新
 - (BOOL)containEmoji;
 
++(NSString *)connectWithAuthorizeUrl:(NSString *)baseUrl andParams:(NSDictionary *)params;
 
 
 @end

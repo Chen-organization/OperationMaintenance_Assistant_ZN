@@ -53,13 +53,17 @@ class readingListVC: UITableViewController,readinglistCellDelegate {
         
         UserCenter.shared.userInfo { (islogin, model) in
             
-            let para = ["empId": model.empNo,
-                        "code": "2",
+            let para = [
+                
+                "companyCode":model.companyCode,
+                "orgCode" : model.orgCode,
+                        "empId": model.empNo,
+                        "empName": model.empName,
                         "start":num.description,
                         "ord": "20",
                         ]
             
-            NetworkService.networkPostrequest(currentView: self.view, parameters: para as [String : Any], requestApi: getDisplayUrl, modelClass: "readingListModel", response: { (obj) in
+            NetworkService.networkPostrequest(currentView: self.view, parameters: para as [String : Any], requestApi: getRecordUrl, modelClass: "readingListModel", response: { (obj) in
                 
                 let model : readingListModel = obj as! readingListModel
                 
@@ -147,13 +151,13 @@ class readingListVC: UITableViewController,readinglistCellDelegate {
                     
                 }else{
                     
-                    let model : readingListReturnObjModel = self.dataArray[indexPath.row + num] as! readingListReturnObjModel
+                    let model : readingListReturnObjModel = self.dataArray[indexPath.row - num] as! readingListReturnObjModel
 
                     orderNum = (indexPath.row - num).description
                     name = model.deviceHisId ?? ""
                     meterNum = model.nowValue ?? ""
                     time = self.timeStampToString(timeStamp:model.createDate ?? "")
-                    canDelete = true
+                    canDelete = false
                     
                 }
             }else{
@@ -165,7 +169,7 @@ class readingListVC: UITableViewController,readinglistCellDelegate {
                 name = model.deviceHisId ?? ""
                 meterNum = model.nowValue ?? ""
                 time = self.timeStampToString(timeStamp:model.createDate ?? "")
-                canDelete = true
+                canDelete = false
                 
             }
             
@@ -286,7 +290,7 @@ class readingListVC: UITableViewController,readinglistCellDelegate {
             let date = NSDate(timeIntervalSince1970: timeSta)
             let dfmatter = DateFormatter()
             //yyyy-MM-dd HH:mm:ss
-            dfmatter.dateFormat="yyyy-MM-dd HH:mm:ss"
+            dfmatter.dateFormat="MM-dd HH:mm"
             return dfmatter.string(from: date as Date)
             
         }

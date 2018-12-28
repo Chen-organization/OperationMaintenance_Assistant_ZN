@@ -43,6 +43,8 @@
 #import "MBProgressHUD+SGQRCode.h"
 #import "PopSignatureView.h"
 #import "MBProgressHUD+SGQRCode.h"
+#import "FMDatabase.h"
+#import "NSString+emoji.h"
 
 
 

@@ -31,6 +31,7 @@ extension NetworkRequest {
         
         PostRequest(urlString: URL, params: params, success: { (responseObject) in
             
+            print(responseObject);
             success(responseObject)
         }) { (Error) in
             

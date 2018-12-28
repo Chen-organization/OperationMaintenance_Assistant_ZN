@@ -64,8 +64,8 @@ class changeMeterVC: UITableViewController,ScanViewControllerDelegate,UIGestureR
         tap1.delegate = self
         tap1.addTarget(self, action: #selector(tapSecondImgView(action:)))
         self.secondImgView.addGestureRecognizer(tap1)
-        
-        self.tableView.register(UINib.init(nibName: NSStringFromClass(ReadingVCTableviewCell.self), bundle: nil), forCellReuseIdentifier: ReadingVCTableviewCell_id)
+//        
+//        self.tableView.register(UINib.init(nibName: NSStringFromClass(ReadingVCTableviewCell.self), bundle: nil), forCellReuseIdentifier: ReadingVCTableviewCell_id)
         
         self.meterNoTextField.delegate = self
         self.meterNoTextField.addTarget(self, action: #selector(meterNoChanged), for: UIControl.Event.editingChanged)
@@ -217,7 +217,7 @@ class changeMeterVC: UITableViewController,ScanViewControllerDelegate,UIGestureR
                 self.addressL.text = model.installSite ?? ""
                 self.oldMeterNum.text = model.nowValue.description ?? ""
                 
-                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+0.3) {
+                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+0.6) {
                     
                     self.newMeterNum.becomeFirstResponder()
                 }
@@ -456,6 +456,26 @@ class changeMeterVC: UITableViewController,ScanViewControllerDelegate,UIGestureR
             return
         }
         
+        if !(self.firstImage64Str?.characters.count ?? 0 > 0){
+            
+            ZNCustomAlertView.handleTip("请进行旧表拍照", isShowCancelBtn: false) { (issure) in
+                
+            }
+            return
+        }
+        
+        if !(self.secondImage64Str?.characters.count ?? 0 > 0){
+            
+            ZNCustomAlertView.handleTip("请进行新表拍照", isShowCancelBtn: false) { (issure) in
+                
+            }
+            return
+        }
+        
+        
+        MBProgressHUD.show(withModifyStyleMessage: "", to: self.view)
+        
+        
         UserCenter.shared.userInfo { (islogin, userModel) in
             
             var para = [
@@ -463,29 +483,42 @@ class changeMeterVC: UITableViewController,ScanViewControllerDelegate,UIGestureR
                 "companyCode": userModel.companyCode!,
                 "orgCode": userModel.orgCode!,
                 "empNo": userModel.empNo!,
+                "empName": userModel.empName!,
                 "code": "1",
                 "deviceNo": self.deviceInfoModel?.deviceNo ?? "",
                 "oldGauge": self.oldMeterNum.text ?? "",
                 "newGauge": self.newMeterNum.text ?? "",
                 "remarks": self.remarkTextView.text ?? "",
-                "reason": "",
+                "reason": "070001",
                 "remain": self.remainNum.text ?? "",
 
                 ] as [String : Any]
 
             
             if let oldFile = self.firstImage64Str {
-                
+
                 para["oldFile"] = oldFile
-                
+
             }
             if let newFile = self.secondImage64Str {
-                
-                para["newFile"] = newFile
-                
-            }
 
-            NetworkService.networkPostrequest(currentView: self.view, parameters: para, requestApi: getDateUrl, modelClass: "BaseModel", response: { (obj) in
+                para["newFile"] = newFile
+
+            }
+//
+//            let newUrl = getDateUrl + "?companyCode:" + userModel.companyCode! + "&orgCode:" +  userModel.orgCode! + "&empNo:" + userModel.empNo!
+//
+//            let newnewUrl = newUrl  + "&empName:" + userModel.empName! + "&deviceNo:" + (self.deviceInfoModel?.deviceNo ?? "") + "&oldGauge:" + (self.oldMeterNum.text ?? "")
+//
+//            let url3 = newnewUrl  + "&newGauge:" + (self.newMeterNum.text ?? "") + "&remarks:" + (self.remarkTextView.text ?? "")
+//
+//            let url4 = url3 + "&reason:070001" + "&remain:" + (self.remainNum.text ?? "")
+            
+            
+//            let newurl = NSString.connect(withAuthorizeUrl: getDateUrl, andParams: para)
+            
+
+            NetworkService.networkPostrequest(currentView: self.view, parameters: para, requestApi:getDateUrl , modelClass: "BaseModel", response: { (obj) in
                 
                 let model : BaseModel = obj as! BaseModel
                 
@@ -503,8 +536,12 @@ class changeMeterVC: UITableViewController,ScanViewControllerDelegate,UIGestureR
                     })
                 }
                 
+                MBProgressHUD.hide(for: self.view)
                 
             }, failture: { (error) in
+                
+                MBProgressHUD.hide(for: self.view)
+
                 
             })
             
@@ -550,7 +587,7 @@ class changeMeterVC: UITableViewController,ScanViewControllerDelegate,UIGestureR
                     self.addressL.text = model.returnObj?.installSite ?? ""
                     self.oldMeterNum.text = model.returnObj?.lastNowValue?.description ?? ""
                     
-                    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+0.3) {
+                    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+0.6) {
                         
                         self.newMeterNum.becomeFirstResponder()
                         

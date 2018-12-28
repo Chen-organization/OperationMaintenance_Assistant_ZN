@@ -196,7 +196,7 @@
                                                         <constraint firstAttribute="height" constant="0.5" id="VZl-59-l19"/>
                                                     </constraints>
                                                 </view>
-                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="用户名" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="e91-gB-uqU">
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入11位手机号码" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="e91-gB-uqU">
                                                     <rect key="frame" x="95" y="17" width="240" height="30"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="30" id="nAO-QA-4dT"/>
@@ -241,7 +241,7 @@
                                                         <constraint firstAttribute="height" constant="25" id="sIA-4w-VC1"/>
                                                     </constraints>
                                                 </imageView>
-                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="密码" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="opI-dt-oHB">
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入密码" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="opI-dt-oHB">
                                                     <rect key="frame" x="95" y="32" width="205" height="30"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="30" id="LZK-Qe-7lX"/>
@@ -255,8 +255,8 @@
                                                         <constraint firstAttribute="width" constant="30" id="VkD-IA-CB3"/>
                                                         <constraint firstAttribute="height" constant="40" id="qgX-Ng-yVK"/>
                                                     </constraints>
-                                                    <state key="normal" image="login_eye.png"/>
-                                                    <state key="selected" image="显示睁眼.png"/>
+                                                    <state key="normal" image="login_eyeClose.png"/>
+                                                    <state key="selected" image="login_eye.png"/>
                                                     <connections>
                                                         <action selector="eyeBtnClick:" destination="NRN-9B-bPc" eventType="touchUpInside" id="k7s-T9-2Dh"/>
                                                     </connections>
@@ -1434,6 +1434,7 @@
         <image name="back_circle_config_center.png" width="110" height="110"/>
         <image name="head_portrait.png" width="102" height="102"/>
         <image name="login_eye.png" width="16" height="12"/>
+        <image name="login_eyeClose.png" width="16" height="12"/>
         <image name="login_用户.png" width="15" height="21"/>
         <image name="login_锁.png" width="15" height="21"/>
         <image name="repairClass.jpg" width="16" height="16"/>
@@ -1443,7 +1444,6 @@
         <image name="内容.png" width="16" height="16"/>
         <image name="已选.png" width="12" height="12"/>
         <image name="手机.png" width="14" height="16"/>
-        <image name="显示睁眼.png" width="16" height="12"/>
         <image name="未选.png" width="12" height="12"/>
         <image name="照片.png" width="16" height="16"/>
         <image name="电话.png" width="40" height="40"/>

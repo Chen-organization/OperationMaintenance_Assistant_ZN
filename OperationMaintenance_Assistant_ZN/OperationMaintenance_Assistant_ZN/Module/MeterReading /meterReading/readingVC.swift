@@ -71,7 +71,7 @@ class readingVC: UITableViewController,ScanViewControllerDelegate,UIGestureRecog
         tap1.addTarget(self, action: #selector(tapSignImgView(action:)))
         self.signImg.addGestureRecognizer(tap1)
         
-        self.tableView.register(UINib.init(nibName: NSStringFromClass(ReadingVCTableviewCell.self), bundle: nil), forCellReuseIdentifier: ReadingVCTableviewCell_id)
+        self.tableView.register(UINib.init(nibName: "ReadingVCTableviewCell", bundle: nil), forCellReuseIdentifier: ReadingVCTableviewCell_id)
         
         
         self.meterNo.delegate = self;
@@ -151,30 +151,50 @@ class readingVC: UITableViewController,ScanViewControllerDelegate,UIGestureRecog
         if ((self.nowNum.text)!.characters.count > 0) {
             
             if self.signImage64Str == nil {
-                
+
                 //签名
                 let vc = meterReadingSignVC()
                 vc.signDelegate = self
-                
-                vc.meterNameL.text = self.meterNo.text ?? ""
-                vc.lastTimeMeterNumL.text = self.deviceInfoModel?.lastNowValue?.description ?? ""
-                vc.NowMeterNumL.text = self.nowNum.text ?? ""
-                vc.meterNo.text = self.deviceInfoModel?.deviceNo ?? ""
+//
+//                if let name = self.deviceInfoModel?.deviceName{
+//
+//                    vc.meterNameL.text = name
+//                }
+//
+//                if let lastimeNum = self.deviceInfoModel?.lastNowValue?.description{
+//
+//                     vc.lastTimeMeterNumL.text = lastimeNum
+//                }
+//
+//                if let nowNum = self.nowNum.text{
+//
+//                    vc.NowMeterNumL.text = nowNum
+//                }
+//
+//                if let meterNo = self.deviceInfoModel?.deviceNo{
+//
+//                    vc.meterNo.text =  meterNo
+//                }
+            
+                vc.meterName = self.deviceInfoModel?.deviceName ?? ""
+                vc.lastTimeMeterNum = self.deviceInfoModel?.lastNowValue?.description ?? ""
+                vc.NowMeterNum = self.nowNum.text ?? ""
+                vc.meterNoStr = self.deviceInfoModel?.deviceNo ?? ""
 
-                vc.numL.text = ""
+                vc.num = ""
 
-                if let now = vc.NowMeterNumL.text{
+                if let now = self.nowNum.text{
                     
-                    if let last = vc.lastTimeMeterNumL.text{
+                    if let last = self.deviceInfoModel?.lastNowValue{
                         
                         if let nowNum = Double(now){
                             
-                            if let lastNum = Double(last){
-                                
-                                let num = nowNum - lastNum
-                                vc.numL.text = num.description
+//                            if let lastNum = last{
+                            
+                                let num = nowNum - last
+                                vc.num = num.description
 
-                            }
+//                            }
                             
                         }
 
@@ -228,7 +248,7 @@ class readingVC: UITableViewController,ScanViewControllerDelegate,UIGestureRecog
             
             cell.nameL.text = model.deviceName ?? ""
             cell.value0.text = model.value ?? ""
-            cell.value1.text = model.time ?? ""
+            cell.value1.text = self.timeStampToString(timeStamp: model.time ?? "")
             
             cell.index = indexPath.row
             
@@ -353,13 +373,16 @@ class readingVC: UITableViewController,ScanViewControllerDelegate,UIGestureRecog
             return
         }
         
-        
-        //获取当前时间
-        let now = Date()
-        let dformatter = DateFormatter()
-        dformatter.dateFormat = "MM-dd HH:mm:ss"
+//
+//        //获取当前时间
+//        let now = Date()
+//        let dformatter = DateFormatter()
+//        dformatter.dateFormat = "MM-dd HH:mm:ss"
+//
 
-        let time = dformatter.string(from: now)
+        
+
+        let time = self.milliStamp
         print("对应的日期时间：\(time)")
         
         
@@ -464,19 +487,30 @@ class readingVC: UITableViewController,ScanViewControllerDelegate,UIGestureRecog
                 model.status = "2"
                 model.time = time
                 model.remark = self.remarksTextField.text
+                model.isMoreThanMax = "0"
                 
                 if let num = Int(self.nowNum.text!) {
                     
-                    model.isMoreThanMax = ( self.deviceInfoModel?.thresholdMax!)! > num ? "0" : "1"
+                    if let max = self.deviceInfoModel?.thresholdMax {
+                        
+                        model.isMoreThanMax = max > num ? "0" : "1"
+
+                    }
                 }
                 
-                model.thresholdMax = String(describing: self.deviceInfoModel?.thresholdMax!)
+                model.thresholdMax = ""
+                if let thresholdMax = self.deviceInfoModel?.thresholdMax{
+                    
+                    model.thresholdMax = thresholdMax.description
+                }
                 
                 //存储本地
                 RealmTool.insertMetersReadingData(by: [model])
-                
                 //下部展示
                 self.meterArr.append(model)
+                
+                //清空页面本次提交数据
+                self.cleanPageMeterdData()
             }
             
             self.tableView.reloadData()
@@ -674,7 +708,7 @@ class readingVC: UITableViewController,ScanViewControllerDelegate,UIGestureRecog
                         self.addressL.text = "位置：" + (model.returnObj?.installSite)!
                         self.projectNameL.text = "项目：" + (model.returnObj?.stationName)!
                         
-                        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+0.3) {
+                        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+0.6) {
                         
                             self.nowNum.becomeFirstResponder()
                             
@@ -738,6 +772,12 @@ class readingVC: UITableViewController,ScanViewControllerDelegate,UIGestureRecog
                 }
                 
                 
+                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+0.6) {
+                    
+                    self.nowNum.becomeFirstResponder()
+                    
+                    
+                }
                 
             }
             
@@ -823,7 +863,30 @@ class readingVC: UITableViewController,ScanViewControllerDelegate,UIGestureRecog
     }
     
     
+    /// 获取当前 毫秒级 时间戳 - 13位
+    var milliStamp : String {
+        let timeInterval: TimeInterval = NSDate().timeIntervalSince1970
+        let millisecond = CLongLong(round(timeInterval*1000))
+        return "\(millisecond)"
+    }
     
     
-   
+    //MARK: -时间戳转时间函数
+    func timeStampToString(timeStamp: String)->String {
+        //时间戳为毫秒级要 ／ 1000， 秒就不用除1000，参数带没带000
+        
+        if let timestampDouble = Double(timeStamp) {
+            
+            let timeSta:TimeInterval = TimeInterval(timestampDouble / 1000)
+            let date = NSDate(timeIntervalSince1970: timeSta)
+            let dfmatter = DateFormatter()
+            //yyyy-MM-dd HH:mm:ss
+            dfmatter.dateFormat="MM-dd HH:mm"
+            return dfmatter.string(from: date as Date)
+            
+        }
+        
+        return ""
+        
+    }
 }

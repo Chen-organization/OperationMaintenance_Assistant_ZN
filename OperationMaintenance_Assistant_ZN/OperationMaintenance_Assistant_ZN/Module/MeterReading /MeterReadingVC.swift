@@ -15,6 +15,12 @@ import Alamofire
 class MeterReadingVC: UITableViewController {
     
     
+    var deleteTimeArr = [String]()
+
+    var uploadNum = 0
+    
+    
+    
     @IBOutlet weak var uploadTitleL: UILabel!
     
     
@@ -91,87 +97,72 @@ class MeterReadingVC: UITableViewController {
 
             }
             
-            let queue = DispatchQueue.init(label: "getCount")//定义队列
-            let group = DispatchGroup()//创建一个组
+         
             
-            
-            
-            for model in result {
+            for model:writeMeterModel  in result {
                 
-                //将队列放进组里
-                queue.async(group: group, execute: {
-                    group.enter()//开始线程1
-                    
+                
                     UserCenter.shared.userInfo { (islogin, userModel) in
                     
-                            //MARK: - ！！！！ 添加经纬度 ！！！！！！！！！！！！！！！
-                            var para = [
-                                
-                                "companyCode": userModel.orgCode ?? "",
+                            var para = ["companyCode": userModel.orgCode ?? "",
                                 "orgCode": userModel.orgCode ?? "",
                                 "empId": userModel.empNo ?? "",
                                 "empName": userModel.empName  ?? "",
                                 "id": model.id ?? "",
-                                "value": model.value,
+                                "value": model.value ?? "",
                                 "org": "002002",
-                                "longitude": "",
-                                "latitude": "",
                                 "status": "1",
-                                "time" : time,
-                                "remark": model.remark ?? "",
-                                "isMoreThanMax": "0",
-                                "thresholdMax": model.thresholdMax ?? "",
-                                ] as [String : Any]
+                               
+                                ]
                         
-                            if let file = model.file {
+                        para["time"] = model.time ?? ""
+                        
+                        para["remark"] = model.remark ?? ""
+                        para["isMoreThanMax"] = "0"
+                        para["thresholdMax"] = model.thresholdMax ?? ""
+                        para["file"] = model.file ?? ""
+                        para["file2"] = model.file2  ?? ""
+                        
+//                            if let file = model.file {
+                        
+                        
+//                            }
+//                            if let file2 = model.file2 {
                                 
-                                para["file"] = file
-                                
-                            }
-                            if let file2 = model.file2 {
-                                
-                                para["file2"] = file2
-                                
-                            }
+                        
+//                            }
                         
                             NetworkService.networkPostrequest(currentView: self.view, parameters: para, requestApi:getSubmitUrl, modelClass: "BaseModel", response: { (obj) in
                                 
                                 let m :BaseModel = obj as! BaseModel
                                 if m.statusCode == 800 {
                                     
-                                    //清空页面本次提交数据
-                                    RealmTool.deleteMetersReadingData(model: model)
-                                 
+                                    
+                                        //清空本次提交数据
+//                                        RealmTool.deleteMetersReadingData(model: model)
+                                
+//                                    RealmTool.deleteMeterReadingDataWithTime(time: model.time ?? "")
+                                    
+                                    self.deleteTimeArr.append(para["time"] ?? "")
+                                   
+                                
                                 }else{
                                     
                                 
                                 }
                                 
-                                group.leave()//线程结束
+                                self.uploadNum += 1
+                                self.setUploadResult()
+                                
                                 
                             }, failture: { (error) in
                                 
-                                
+                                self.uploadNum += 1
+                                self.setUploadResult()
+
                                 
                             })
                     }
-                })
-            }
-            
-            
-            
-            group.notify(queue: queue){
-                //队列中线程全部结束
-                print("end")
-                
-                DispatchQueue.main.async {
-                    
-                    let result =  RealmTool.getMetersReadingData()
-                    self.uploadTitleL.text = "上传离线数据" + "（" + result.count.description + "）"
-                    
-                    MBProgressHUD.hide(for: self.view)
-                    
-                }
             }
             
             
@@ -190,6 +181,33 @@ class MeterReadingVC: UITableViewController {
         
     }
     
+    
+    func setUploadResult() {
+        
+        if self.uploadNum == RealmTool.getMetersReadingData().count {
+            
+            MBProgressHUD.hide(for: self.view)
+            
+            if self.deleteTimeArr.count > 0 {
+                
+                
+                for time in deleteTimeArr{
+                    
+                    RealmTool.deleteMeterReadingDataWithTime(time: time )
+                    
+                }
+                
+                let results =  RealmTool.getMetersReadingData()
+                self.uploadTitleL.text = "上传离线数据" + "（" + results.count.description + "）"
+                
+                
+            }
+            
+        }
+        
+    
+        
+    }
     
     
     func ChangeMeter() {
@@ -223,7 +241,7 @@ class MeterReadingVC: UITableViewController {
                     
                     RealmTool.insertMetersDic(by: model.returnObj!)
                     
-                    MBProgressHUD.show(withOnlyMessage: "下载成功", delayTime: 2.5)
+                    MBProgressHUD.show(withOnlyMessage: "数据更新成功", delayTime: 2.5)
                     
                 }
             
@@ -342,8 +360,34 @@ extension RealmTool {
     public class func deleteMetersReadingData(model:writeMeterModel){
         let defaultRealm = self.getWriteDB()
         
-        defaultRealm.delete(model)
+        try! defaultRealm.write {
+            
+            defaultRealm.delete(model)
+            
+        }
+        
+    }
+    
+    /// 操作抄表数据 按条件 删除
+    public class func deleteMeterReadingDataWithTime(time:String){
+        let defaultRealm = self.getWriteDB()
+        
+        let results = defaultRealm.objects(writeMeterModel.self).filter("time = %@", time)
+        
+        if let a = results.first {
+            //删除单条数据
+            try! defaultRealm.write {
+                
+                defaultRealm.delete(a) // 删除单个数据
+                
+            }
+        }
+        
+     
+
+        
         
     }
 
+    
 }

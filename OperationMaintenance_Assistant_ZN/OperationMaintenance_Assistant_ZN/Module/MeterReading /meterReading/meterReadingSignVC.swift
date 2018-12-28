@@ -17,6 +17,16 @@ import UIKit
 
 class meterReadingSignVC: UIViewController,PopSignatureViewDelegate {
     
+    
+    var meterName : String?
+    var lastTimeMeterNum : String?
+    var NowMeterNum : String?
+    var num : String?
+    var meterNoStr : String?
+
+    
+    
+    
     weak var  signDelegate: meterReadingSignVCDelegate?
 
     
@@ -32,6 +42,15 @@ class meterReadingSignVC: UIViewController,PopSignatureViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.title = "扫码"
+        
+        self.meterNameL.text = self.meterName
+        self.lastTimeMeterNumL.text = self.lastTimeMeterNum
+        self.NowMeterNumL.text = self.NowMeterNum
+        self.numL.text = self.num
+        self.meterNo.text = self.meterNoStr
+        
 
         let signView = PopSignatureView()
         signView.delegate = self

@@ -268,6 +268,47 @@
     return NO;
 }
 
++(NSString *)connectWithAuthorizeUrl:(NSString *)baseUrl andParams:(NSDictionary *)params
+
+{
+    
+    if (params == nil) {
+        
+        return baseUrl;
+        
+    }else{
+        
+        NSMutableArray *keyValues = [[NSMutableArray alloc]init];
+        
+        
+        
+        for (NSString *key in params.keyEnumerator) {
+            
+            NSString *keyAndValue = [NSString stringWithFormat:@"%@=%@",key,params[key]];
+            
+            
+            
+            [keyValues addObject:keyAndValue];
+            
+            NSLog(@"%@",keyAndValue);
+            
+        }
+        
+        NSLog(@"%@",keyValues);
+        
+        
+        
+         NSString *path = [keyValues componentsJoinedByString:@"&"];
+        
+        
+        path = [NSString stringWithFormat:@"%@?%@",baseUrl,path];
+
+        return path;
+
+    }
+    
+}
+
 
 
 @end

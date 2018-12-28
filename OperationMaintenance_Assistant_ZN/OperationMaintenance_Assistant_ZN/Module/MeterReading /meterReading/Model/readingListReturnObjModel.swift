@@ -22,6 +22,22 @@ class readingListReturnObjModel: BaseReturnObjModel {
     var origin : String?
 
     var type : String?
+    
+    
+//    "id": 4740607,
+//    "deviceHisId": "测试场站1-水表1",
+//    "nowValue": 35.0,
+//    "preNowValue": 28.0,
+//    "refreshDate": 1546007777000,
+//    "createDate": 1546007777000,
+//    "empNo": "E100900003",
+//    "empName": "zf机构",
+//    "processed": 1,
+//    "origin": "002002",
+//    "type": 1,
+//    "state": "0",
+//    "photoUrl": "http://plat.znxk.net/nfs/fill/",
+//    "number": "1"
 
 
 }

@@ -25,7 +25,7 @@ class writeMeterModel:  Object  {
     @objc dynamic var status : String?
     @objc dynamic var time : String?
     @objc dynamic var remark : String?
-    @objc dynamic var isMoreThanMax : String?
+    @objc dynamic var isMoreThanMax : String? 
     @objc dynamic var thresholdMax : String?
 
     

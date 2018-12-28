@@ -32,6 +32,7 @@ class readinglistCell: UITableViewCell {
     @IBOutlet weak var value1: UILabel!
     
 
+    @IBOutlet weak var deleteBtn: UIButton!
     
 
     override func awakeFromNib() {
@@ -57,7 +58,7 @@ class readinglistCell: UITableViewCell {
             self.value0.textColor = .gray
         }
         
-        
+        self.deleteBtn.isHidden = !CanDelete
     }
     
     @IBAction func deleteBtnClick(_ sender: UIButton) {

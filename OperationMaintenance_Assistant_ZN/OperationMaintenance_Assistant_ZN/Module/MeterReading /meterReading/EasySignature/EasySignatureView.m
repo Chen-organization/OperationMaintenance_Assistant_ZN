@@ -152,7 +152,7 @@ static CGPoint midpoint(CGPoint p0,CGPoint p1) {
     
     NSLog(@"width:%f,height:%f",image.size.width,image.size.height);
     
-    UIImage *img = [self cutImage:image];
+    UIImage *img = image; //[self cutImage:image];
     
     //[self.delegate getSignatureImg:[self scaleToSize:img]];
     self.SignatureImg = [self scaleToSize:img];
@@ -163,15 +163,15 @@ static CGPoint midpoint(CGPoint p0,CGPoint p1) {
     CGRect rect ;
     CGFloat imageWidth = img.size.width;
     //判断图片宽度
-    if(imageWidth >= 128)
-    {
-        rect =CGRectMake(0,0, 128, self.frame.size.height);
-    }
-    else
-    {
+//    if(imageWidth >= 128)
+//    {
+//        rect =CGRectMake(0,0, 128, self.frame.size.height);
+//    }
+//    else
+//    {
         rect =CGRectMake(0,0, img.size.width,self.frame.size.height);
         
-    }
+//    }
     CGSize size = rect.size;
     UIGraphicsBeginImageContext(size);
     [img drawInRect:rect];
