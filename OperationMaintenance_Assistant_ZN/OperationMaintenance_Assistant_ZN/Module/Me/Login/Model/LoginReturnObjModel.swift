@@ -23,7 +23,7 @@ class LoginReturnObjModel: BaseReturnObjModel {
 
     var bankDeposit : String?
     
-    
+    var loginPwd : String?
     
 //
 //    ▿ 6 : 2 elements

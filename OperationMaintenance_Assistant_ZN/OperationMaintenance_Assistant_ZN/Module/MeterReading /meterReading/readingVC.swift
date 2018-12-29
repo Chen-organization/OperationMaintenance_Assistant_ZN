@@ -353,35 +353,44 @@ class readingVC: UITableViewController,ScanViewControllerDelegate,UIGestureRecog
         // 2 、 数据确认 弹框确认
         
         
-        // 3 、 表底数比较
+        // 3 、 上次表底数比较
         var isRight = true
         
         if let num = Int(self.nowNum.text!) {
             
-            if let max = self.deviceInfoModel?.thresholdMax {
+            if let last = self.deviceInfoModel?.lastNowValue {
                 
-                isRight =  num > Int(max) ? false : false
+                isRight =  num >= Int(last) ? true : false
                 
             }
         }
         
         if !isRight {
             
-            ZNCustomAlertView.handleTip("输入表底数比上次小，请确认是否超出最大量程 ？", isShowCancelBtn: false) { (issure) in
+            ZNCustomAlertView.handleTip("输入表底数比上次小，请确认是否超出最大量程 ？", isShowCancelBtn: true) { (issure) in
+                
+                if issure{
+                    
+                    self.saveData()
+                }else{
+                    
+                    return;
+                }
                 
             }
-            return
+        }else{
+            
+            self.saveData()
         }
         
-//
-//        //获取当前时间
-//        let now = Date()
-//        let dformatter = DateFormatter()
-//        dformatter.dateFormat = "MM-dd HH:mm:ss"
-//
-
         
 
+      
+    }
+    
+    
+    func saveData() {
+        
         let time = self.milliStamp
         print("对应的日期时间：\(time)")
         
@@ -400,7 +409,7 @@ class readingVC: UITableViewController,ScanViewControllerDelegate,UIGestureRecog
                     if let max = self.deviceInfoModel?.thresholdMax {
                         
                         isMoreThanMaxStr =  num > Int(max) ? "1" : "0"
-
+                        
                     }
                     
                 }
@@ -427,7 +436,7 @@ class readingVC: UITableViewController,ScanViewControllerDelegate,UIGestureRecog
                 if let file = self.meterImage64Str {
                     
                     para["file"] = file
-
+                    
                 }
                 if let file2 = self.signImage64Str {
                     
@@ -443,7 +452,7 @@ class readingVC: UITableViewController,ScanViewControllerDelegate,UIGestureRecog
                         
                         //清空页面本次提交数据
                         self.cleanPageMeterdData()
-                
+                        
                         ZNCustomAlertView.handleTip("提交成功", isShowCancelBtn: false, completion: { (issure) in
                             
                         })
@@ -465,7 +474,7 @@ class readingVC: UITableViewController,ScanViewControllerDelegate,UIGestureRecog
                 
             }
             
-
+            
             
         }else{
             
@@ -480,7 +489,7 @@ class readingVC: UITableViewController,ScanViewControllerDelegate,UIGestureRecog
                 model.value = self.nowNum.text
                 model.empId = userModel.empNo
                 model.org = userModel.orgCode
-//                model.type = self.deviceInfoModel?.returnObj?.
+                //                model.type = self.deviceInfoModel?.returnObj?.
                 model.file = ""
                 model.longitude = nil
                 model.latitude = nil
@@ -494,7 +503,7 @@ class readingVC: UITableViewController,ScanViewControllerDelegate,UIGestureRecog
                     if let max = self.deviceInfoModel?.thresholdMax {
                         
                         model.isMoreThanMax = max > num ? "0" : "1"
-
+                        
                     }
                 }
                 
@@ -514,8 +523,10 @@ class readingVC: UITableViewController,ScanViewControllerDelegate,UIGestureRecog
             }
             
             self.tableView.reloadData()
-
+            
         }
+        
+        
         
     }
     
@@ -669,11 +680,19 @@ class readingVC: UITableViewController,ScanViewControllerDelegate,UIGestureRecog
         let net = NetworkReachabilityManager()
         if net?.isReachable ?? false {
             
-            self.getMeterInfo(deviceKey: answer)
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.25) {
+               
+                self.getMeterInfo(deviceKey: answer)
+
+            }
+            
             
         }else{
             
-            self.searchMeterWighKey(key: answer)
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.25) {
+
+                self.searchMeterWighKey(key: answer)
+            }
         }
         
     }
@@ -708,15 +727,12 @@ class readingVC: UITableViewController,ScanViewControllerDelegate,UIGestureRecog
                         self.addressL.text = "位置：" + (model.returnObj?.installSite)!
                         self.projectNameL.text = "项目：" + (model.returnObj?.stationName)!
                         
-                        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+0.6) {
-                        
+   
+                        DispatchQueue.main.after(0.3) {
+                            
                             self.nowNum.becomeFirstResponder()
                             
-
                         }
-                            
-                            
-    
                         
                         
                     }
@@ -771,12 +787,10 @@ class readingVC: UITableViewController,ScanViewControllerDelegate,UIGestureRecog
                     
                 }
                 
-                
-                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+0.6) {
-                    
-                    self.nowNum.becomeFirstResponder()
-                    
-                    
+                DispatchQueue.main.after(0.3) {
+    
+                        self.nowNum.becomeFirstResponder()
+                        
                 }
                 
             }

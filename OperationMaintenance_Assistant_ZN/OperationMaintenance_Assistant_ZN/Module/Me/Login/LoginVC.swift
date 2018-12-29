@@ -145,13 +145,10 @@ class LoginVC: BaseTableVC ,ChangedPwDelegate ,UITextFieldDelegate{
                 if(model.statusCode == 800){
                     
                     print( model.returnObj?.empName as Any  )
+                    model.returnObj?.loginPwd = self.pwTextField.text!
                     
                     UserCenter.shared.logIn(userModel: model)
-                    
-                    
-                    
-//                    let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-//                    let initViewController: NavigationController = storyBoard.instantiateViewController(withIdentifier: "rootNav") as! NavigationController
+                
                     
                     //初始化tabbar
                     let tabbarVC = TabeBarViewController()

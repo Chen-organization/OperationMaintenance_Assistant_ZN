@@ -7,15 +7,31 @@
 //
 
 import UIKit
+import WebKit
+
 
 class agreenmentVC: UIViewController {
 
+    var webView: WKWebView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.title = "法律条款"
         
-        // Do any additional setup after loading the view.
+        
+        let webConfiguration = WKWebViewConfiguration()
+        webView = WKWebView(frame: .zero, configuration: webConfiguration)
+        self.view.addSubview(webView)
+        webView.snp.makeConstraints { (make) in
+            
+            make.edges.equalTo(self.view).inset(UIEdgeInsets(top: CGFloat(NavHeight), left: 0, bottom: 0, right: 0))
+            
+        }
+        
+        let path = Bundle.main.path(forResource: "agreement", ofType: "html")
+        let urlStr = NSURL.fileURL(withPath: path!)
+        webView.load(URLRequest.init(url: urlStr)) ///t(NSURLRequest(URL: urlStr))
     }
 
 

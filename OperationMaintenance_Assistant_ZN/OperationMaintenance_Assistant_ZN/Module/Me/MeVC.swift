@@ -39,24 +39,52 @@ class MeVC: UITableViewController,UIActionSheetDelegate,UIImagePickerControllerD
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        self.getUserInfo()
+        
+    }
+    
+    func getUserInfo() {
+        
         UserCenter.shared.userInfo { (islogin, model) in
             
-            let para = ["userId":model.empNo]
             
-            NetworkService.networkGetrequest(currentView: self.view, parameters: para as [String : Any], requestApi: getSysUserUrl, modelClass: "", response: { (obj) in
+            let para = ["name"   : model.mobile ?? "" ,
+                        "password"    : model.loginPwd ?? "",
+                        "companyCode" : "0000"] as [String : Any]
+            
+            
+            NetworkService.networkPostrequest(currentView : self.view , parameters: para as! [String : String], requestApi: LoginUrl, modelClass: String(describing: LoginModel.self), response: { (obj) in
+                
+                YJProgressHUD.hide()
+                
+                let model : LoginModel = obj as! LoginModel
+                
+                print( model.statusCode as Any )
+                
+                if(model.statusCode == 800){
+                    
+                    print( model.returnObj?.empName as Any  )
+                    
+                    //                    UserCenter.shared.logIn(userModel: model)
+                    
+                    if let imgUrl = model.returnObj?.headUrl{
+                        
+                        self.headImg.kf.setImage(with:URL.init(string: imgUrl))
+                        
+                    }
+                    self.nameL.text = model.returnObj?.empName
+                    
+                }
+                
+            }) { (error) in
                 
                 
-                
-            }, failture: { (error) in
-                
-                
-            })
+            }
             
             
         }
         
     }
-    
     
     @objc private func handleSingleTap(tap:UITapGestureRecognizer) {
         print("单击")
@@ -71,7 +99,43 @@ class MeVC: UITableViewController,UIActionSheetDelegate,UIImagePickerControllerD
         actionSheet.show(in: self.view)
     }
     
+    //MARK: - UIActionSheet
+
+    func actionSheet(_ actionSheet: UIActionSheet, clickedButtonAt buttonIndex: Int) {
+
+        print("点击了："+actionSheet.buttonTitle(at: buttonIndex)!)
+        var sourceType: UIImagePickerController.SourceType = .photoLibrary
+        if (buttonIndex == 0) {
+            
+            return
+        }else if (buttonIndex == 1) {
+            
+            //拍照
+            sourceType = .camera
+            
+        }else if (buttonIndex == 2) {
+            
+            //相册
+            sourceType = .photoLibrary
+            
+        }
+        
+        DispatchQueue.main.after(0.1) {
+            
+            let pickerVC = UIImagePickerController()
+            pickerVC.view.backgroundColor = UIColor.white
+            pickerVC.delegate = self
+            pickerVC.allowsEditing = false
+            pickerVC.sourceType = sourceType
+            self.present(pickerVC, animated: true, completion: nil)
+        }
+        
+     
+        
+        
+    }
     
+    //MARK: - tableview
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
         let view = UIView()
@@ -163,7 +227,7 @@ class MeVC: UITableViewController,UIActionSheetDelegate,UIImagePickerControllerD
         
         self.dismiss(animated: true, completion: nil)
         //获得照片
-        let image = info[UIImagePickerController.InfoKey.editedImage] as! UIImage
+        let image = info[UIImagePickerController.InfoKey.originalImage] as! UIImage
         
         self.headImg.image = image
         

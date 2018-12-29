@@ -66,8 +66,9 @@ class QQScanViewController: LBXScanViewController {
             if let str = result.strScanned {
                 print(str)
                 
-                self.scanDelegate?.ScanViewInfo(answer: str)
                 self.navigationController?.popViewController(animated: true)
+                self.scanDelegate?.ScanViewInfo(answer: str)
+
                 
             }
         }

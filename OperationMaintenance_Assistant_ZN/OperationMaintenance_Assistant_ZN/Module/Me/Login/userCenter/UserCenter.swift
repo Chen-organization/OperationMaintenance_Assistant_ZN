@@ -17,6 +17,9 @@ final class UserCenter: NSObject {
     static let empName       = "empName"
     static let loginName     = "loginName"
     static let mobile        = "mobile"
+    static let headUrl        = "headUrl"
+    static let loginPwd        = "loginPwd"   //登陆返回密码
+
     
     static let loginMobile   = "loginMobile"
     static let loginPw       = "loginPw"
@@ -45,6 +48,9 @@ extension UserCenter {
         UserDefaults .standard.set(userModel.returnObj?.empName, forKey:UserCenter.empName)
         UserDefaults .standard.set(userModel.returnObj?.loginName, forKey:UserCenter.loginName)
         UserDefaults .standard.set(userModel.returnObj?.mobile, forKey:UserCenter.mobile)
+        UserDefaults .standard.set(userModel.returnObj?.headUrl, forKey:UserCenter.headUrl)
+        UserDefaults .standard.set(userModel.returnObj?.loginPwd, forKey:UserCenter.loginPwd)
+
 
         //2、同步
         UserDefaults .standard.synchronize()
@@ -65,6 +71,9 @@ extension UserCenter {
         UserDefaults .standard.set("", forKey:UserCenter.empName)
         UserDefaults .standard.set("", forKey:UserCenter.loginName)
         UserDefaults .standard.set("", forKey:UserCenter.mobile)
+        UserDefaults .standard.set("", forKey:UserCenter.headUrl)
+        UserDefaults .standard.set("", forKey:UserCenter.loginPwd)
+
         
         //2、同步
         UserDefaults .standard.synchronize()
@@ -82,7 +91,9 @@ extension UserCenter {
         objModel.loginName = UserDefaults.standard.object(forKey: UserCenter.loginName) as? String
         objModel.mobile = UserDefaults.standard.object(forKey: UserCenter.mobile) as? String
         objModel.orgCode = UserDefaults.standard.object(forKey: UserCenter.orgCode) as? String
-        
+        objModel.headUrl = UserDefaults.standard.object(forKey: UserCenter.headUrl) as? String
+        objModel.loginPwd = UserDefaults.standard.object(forKey: UserCenter.loginPwd) as? String
+
         Infor(UserDefaults.standard.bool(forKey: UserCenter.isLogin) , objModel)
         
 //        return ( UserDefaults.standard.bool(forKey: UserCenter.isLogin), objModel)
