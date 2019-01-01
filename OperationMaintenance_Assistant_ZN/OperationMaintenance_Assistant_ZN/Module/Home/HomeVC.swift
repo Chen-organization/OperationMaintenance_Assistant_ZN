@@ -9,7 +9,7 @@
 import UIKit
 import Kingfisher
 
-class HomeVC: UITableViewController {
+class HomeVC: UITableViewController,UIGestureRecognizerDelegate {
 
     
     @IBOutlet weak var headView: UIView!
@@ -25,6 +25,10 @@ class HomeVC: UITableViewController {
     @IBOutlet weak var repairView: UIView!
     @IBOutlet weak var repairingView: UIView!
     @IBOutlet weak var repairedView: UIView!
+    
+    @IBOutlet weak var newsBtn: UIButton!
+    @IBOutlet weak var newsIconL: UILabel!
+    @IBOutlet weak var mewsTopH: NSLayoutConstraint!
     
     
     var headLinesData = [TheHeadlinesReturnObjModel]()
@@ -47,6 +51,8 @@ class HomeVC: UITableViewController {
         
         self.tableView.register(UINib.init(nibName: "HomeNewCell", bundle:Bundle.main ), forCellReuseIdentifier: HomeNewCell_id)
         
+        self.newsIconL.isHidden = true
+        self.mewsTopH.constant = is_X_XS_max ? 40 : 20
         
         self.tableView.tableHeaderView?.height = ScreenW * 510 / 1080.0;
         // 网络图，本地图混合
@@ -70,20 +76,69 @@ class HomeVC: UITableViewController {
         
         // 下边约束
         bannerDemo.pageControlBottom = 15
-        self.headView.addSubview(bannerDemo)
+        self.headView.insertSubview(bannerDemo, at: 0 )
         
 //        self.tableView.contentOffset.y = 44//statusBarheight
 
+    
+        let tap:UITapGestureRecognizer = UITapGestureRecognizer.init()
+        tap.numberOfTapsRequired = 1 //轻点次数
+        tap.numberOfTouchesRequired = 1 //手指个数
+        tap.delegate = self
+        tap.addTarget(self, action: #selector(tapRepairView(action:)))
+        self.repairView.addGestureRecognizer(tap)
+        
+        
+        let tap1:UITapGestureRecognizer = UITapGestureRecognizer.init()
+        tap1.numberOfTapsRequired = 1 //轻点次数
+        tap1.numberOfTouchesRequired = 1 //手指个数
+        tap1.delegate = self
+        tap1.addTarget(self, action: #selector(tapRepairingView(action:)))
+        self.repairingView.addGestureRecognizer(tap1)
+        
+        
+        let tap2:UITapGestureRecognizer = UITapGestureRecognizer.init()
+        tap2.numberOfTapsRequired = 1 //轻点次数
+        tap2.numberOfTouchesRequired = 1 //手指个数
+        tap2.delegate = self
+        tap2.addTarget(self, action: #selector(tapRepairedView(action:)))
+        self.repairedView.addGestureRecognizer(tap2)
+    
 
         self.getTheHeadlines()
         
-        self.getJobOrders()
-        
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        
+        super.viewWillAppear(animated)
+        
+        self.getMyMessage()
+               
+        self.getJobOrders()
+
+    }
     
+    //MARK: - 手势
+    @objc func tapRepairView(action:UIGestureRecognizer)  {
+        
+        self.navigationController?.pushViewController(myOrdersVC(), animated: true)
+        
+    }
+    @objc func tapRepairingView(action:UIGestureRecognizer)  {
+        
+        self.navigationController?.pushViewController(myOrdersVC(), animated: true)
+
+        
+    }
+    @objc func tapRepairedView(action:UIGestureRecognizer)  {
+        
+        
+        self.navigationController?.pushViewController(myOrdersVC(), animated: true)
+
+    }
     
-    
+    //MARK: - TABLEVIEW
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
@@ -157,6 +212,20 @@ class HomeVC: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         tableView.deselectRow(at: indexPath, animated: true)
+        
+        if indexPath.section == 2 {
+            
+            self.navigationController?.pushViewController(MoreHeadLinesVC(), animated: true)
+            
+        }else if indexPath.section == 3{
+            
+            let model : TheHeadlinesReturnObjModel = self.headLinesData[indexPath.row] as? TheHeadlinesReturnObjModel ?? TheHeadlinesReturnObjModel()
+            
+            let vc = headerLinesDetailVC()
+            vc.url = model.h5Url ?? ""
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+        
     }
     
     
@@ -179,6 +248,30 @@ class HomeVC: UITableViewController {
             
             scrollView.contentOffset.y = 0
         }
+        
+    }
+    
+    //MARK: - 模块
+    @IBAction func myOrdersBtnClick(_ sender: UIButton) {
+        
+        self.navigationController?.pushViewController(WorkOrdersVC(), animated: true)
+    }
+    @IBAction func repairsOlineBtnClick(_ sender: UIButton) {
+        
+        let vc = UIStoryboard(name: "Home", bundle: nil)
+            .instantiateViewController(withIdentifier: "onlineRepaire") as! onlineRepaire
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    @IBAction func GrabOrdersBtnClick(_ sender: UIButton) {
+        
+        
+    }
+    
+    
+    //MARK: - 消息
+    @IBAction func newBtnClick(_ sender: UIButton) {
+        
+        self.navigationController?.pushViewController(MessageVC(), animated: true)
         
     }
     
@@ -208,25 +301,86 @@ class HomeVC: UITableViewController {
     
     func getJobOrders() {
         
-        NetworkService.networkGetrequest(currentView: self.view, parameters: [:], requestApi: getJobOrderUrl, modelClass: "jobOrdersModel", response: { (obj) in
+        UserCenter.shared.userInfo { (islogin, userModel) in
             
-            let model:jobOrdersModel = obj as! jobOrdersModel
+            let para = [
             
-            if model.statusCode == 800 {
+                "companyCode":userModel.companyCode,
+                "orgCode":userModel.orgCode,
+                "empNo":userModel.empNo,
+                "empName":userModel.empName
                 
-                self.repairNumL.text = model.returnObj?[0].count ?? "0"
+            ]
+            
+            NetworkService.networkGetrequest(currentView: self.view, parameters: para as [String : Any], requestApi: getJobOrderUrl, modelClass: "jobOrdersModel", response: { (obj) in
                 
-                self.repairingNumL.text = model.returnObj?[1].count ?? "0"
-
-                self.repairedNumL.text = model.returnObj?[2].count ?? "0"
-
+                let model:jobOrdersModel = obj as! jobOrdersModel
+                
+                if model.statusCode == 800 {
+                    
+                    self.repairNumL.text = model.returnObj?[0].count ?? "0"
+                    
+                    self.repairingNumL.text = model.returnObj?[1].count ?? "0"
+                    
+                    self.repairedNumL.text = model.returnObj?[2].count ?? "0"
+                    
+                    
+                }
+                
+                
+            }) { (error) in
+                
+                
                 
             }
             
+        }
+        
+        
+    }
+    
+    func getMyMessage() {
+        
+        UserCenter.shared.userInfo { (islogin, userModel) in
             
-        }) { (error) in
+            let para = [
+                "companyCode": userModel.companyCode,
+                "orgCode": userModel.orgCode,
+                "empId": userModel.empNo,
+                "empName": userModel.empName,
+                "code": "2"
+            ]
             
-            
+            NetworkService.networkPostrequest(currentView: self.view, parameters: para as [String : Any], requestApi:getMyMessageUrl, modelClass: "MessageCountModel", response: { (obj) in
+                
+                let model :MessageCountModel = obj as! MessageCountModel
+                
+                if let num = model.returnObj {
+                    
+                    if num > 0 {
+
+                        self.newsIconL.isHidden = false
+                        self.newsIconL.text =  num.description
+                        
+                        
+                        let size:CGSize = num.description.boundingRect(with: CGSize.init(width: 1000, height: 30), options: [.usesLineFragmentOrigin], attributes: [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 12)], context: nil).size
+                        
+                        self.newsIconL.snp.updateConstraints({ (make) in
+                            
+                            make.width.equalTo(num > 9 ? size.width + 10 : 12 )
+                        })
+                        
+                        
+                    }else{
+                        
+                        self.newsIconL.isHidden = true
+                    }
+                }
+                
+            }, failture: { (error) in
+                
+                
+            })
             
         }
         

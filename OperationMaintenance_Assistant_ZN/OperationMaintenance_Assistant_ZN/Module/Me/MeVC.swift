@@ -175,7 +175,7 @@ class MeVC: UITableViewController,UIActionSheetDelegate,UIImagePickerControllerD
         
                     break
                 case 3:
-              
+                    self.navigationController?.pushViewController(MessageVC(), animated: true)
                     break
                 case 4:
                      UIApplication.shared.openURL(NSURL.init(string: "tel://01062019488")! as URL)

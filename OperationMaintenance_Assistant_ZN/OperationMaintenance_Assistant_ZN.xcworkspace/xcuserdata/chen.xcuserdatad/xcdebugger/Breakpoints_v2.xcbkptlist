@@ -4,70 +4,6 @@
    version = "2.0">
    <Breakpoints>
       <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "OperationMaintenance_Assistant_ZN/NetworkService/Network.swift"
-            timestampString = "567709258.433194"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "121"
-            endingLineNumber = "121"
-            landmarkName = "PostRequest(urlString:params:success:failture:)"
-            landmarkType = "9">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "OperationMaintenance_Assistant_ZN/NetworkService/NetworkService.swift"
-            timestampString = "567700595.255325"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "107"
-            endingLineNumber = "107"
-            landmarkName = "networkGetrequest(currentView:parameters:requestApi:modelClass:response:failture:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #3 (__C.NSError) -&gt; () in static OperationMaintenance_Assistant_ZN.NetworkService.networkGetrequest(currentView: __C.UIView, parameters: Swift.Dictionary&lt;Swift.String, Any&gt;, requestApi: Swift.String, modelClass: Swift.String, response: (Swift.AnyObject) -&gt; (), failture: (__C.NSError) -&gt; ()) -&gt; ()"
-                  moduleName = "OperationMaintenance_Assistant_ZN"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///My_Github_Progect/OperationMaintenance_Assistant_ZN/OperationMaintenance_Assistant_ZN/OperationMaintenance_Assistant_ZN/NetworkService/NetworkService.swift"
-                  timestampString = "567720275.673912"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "107"
-                  endingLineNumber = "107"
-                  offsetFromSymbolStart = "44">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Bool) -&gt; () in closure #3 (__C.NSError) -&gt; () in static OperationMaintenance_Assistant_ZN.NetworkService.networkGetrequest(currentView: __C.UIView, parameters: Swift.Dictionary&lt;Swift.String, Any&gt;, requestApi: Swift.String, modelClass: Swift.String, response: (Swift.AnyObject) -&gt; (), failture: (__C.NSError) -&gt; ()) -&gt; ()"
-                  moduleName = "OperationMaintenance_Assistant_ZN"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///My_Github_Progect/OperationMaintenance_Assistant_ZN/OperationMaintenance_Assistant_ZN/OperationMaintenance_Assistant_ZN/NetworkService/NetworkService.swift"
-                  timestampString = "567720275.675871"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "109"
-                  endingLineNumber = "109"
-                  offsetFromSymbolStart = "12">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.SwiftErrorBreakpoint">
          <BreakpointContent
             shouldBeEnabled = "Yes"
@@ -112,108 +48,12 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "OperationMaintenance_Assistant_ZN/Module/MeterReading /MeterReadingVC.swift"
-            timestampString = "567720655.7728"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "138"
-            endingLineNumber = "138"
-            landmarkName = "UploadeMeterDic()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "OperationMaintenance_Assistant_ZN/Module/MeterReading /MeterReadingVC.swift"
-            timestampString = "567720655.772872"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "92"
-            endingLineNumber = "92"
-            landmarkName = "UploadeMeterDic()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "OperationMaintenance_Assistant_ZN/Module/MeterReading /MeterReadingVC.swift"
-            timestampString = "567720655.7729191"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "105"
-            endingLineNumber = "105"
-            landmarkName = "UploadeMeterDic()"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "OperationMaintenance_Assistant_ZN.MeterReadingVC.UploadeMeterDic() -&gt; ()"
-                  moduleName = "OperationMaintenance_Assistant_ZN"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///My_Github_Progect/OperationMaintenance_Assistant_ZN/OperationMaintenance_Assistant_ZN/OperationMaintenance_Assistant_ZN/Module/MeterReading%20/MeterReadingVC.swift"
-                  timestampString = "567720275.79998"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "105"
-                  endingLineNumber = "105"
-                  offsetFromSymbolStart = "668">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Bool, OperationMaintenance_Assistant_ZN.LoginReturnObjModel) -&gt; () in OperationMaintenance_Assistant_ZN.MeterReadingVC.UploadeMeterDic() -&gt; ()"
-                  moduleName = "OperationMaintenance_Assistant_ZN"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///My_Github_Progect/OperationMaintenance_Assistant_ZN/OperationMaintenance_Assistant_ZN/OperationMaintenance_Assistant_ZN/Module/MeterReading%20/MeterReadingVC.swift"
-                  timestampString = "567720275.801729"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "107"
-                  endingLineNumber = "107"
-                  offsetFromSymbolStart = "116">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "OperationMaintenance_Assistant_ZN/Module/MeterReading /changeMeter/changeMeterVC.swift"
-            timestampString = "567720655.772964"
+            timestampString = "568066284.605599"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "459"
-            endingLineNumber = "459"
-            landmarkName = "commitBtnClick(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "OperationMaintenance_Assistant_ZN/Module/MeterReading /changeMeter/changeMeterVC.swift"
-            timestampString = "567720655.77333"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "521"
-            endingLineNumber = "521"
+            startingLineNumber = "688"
+            endingLineNumber = "688"
             landmarkName = "commitBtnClick(_:)"
             landmarkType = "7">
             <Locations>
@@ -221,33 +61,65 @@
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "closure #7 (Swift.Bool, OperationMaintenance_Assistant_ZN.LoginReturnObjModel) -&gt; () in OperationMaintenance_Assistant_ZN.changeMeterVC.commitBtnClick(__C.UIButton) -&gt; ()"
+                  symbolName = "closure #8 (Swift.Bool, OperationMaintenance_Assistant_ZN.LoginReturnObjModel) -&gt; () in OperationMaintenance_Assistant_ZN.changeMeterVC.commitBtnClick(__C.UIButton) -&gt; ()"
                   moduleName = "OperationMaintenance_Assistant_ZN"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///My_Github_Progect/OperationMaintenance_Assistant_ZN/OperationMaintenance_Assistant_ZN/OperationMaintenance_Assistant_ZN/Module/MeterReading%20/changeMeter/changeMeterVC.swift"
-                  timestampString = "567720275.809532"
+                  timestampString = "568062263.652912"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "519"
-                  endingLineNumber = "519"
-                  offsetFromSymbolStart = "4348">
+                  startingLineNumber = "688"
+                  endingLineNumber = "688"
+                  offsetFromSymbolStart = "4884">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.AnyObject) -&gt; () in closure #7 (Swift.Bool, OperationMaintenance_Assistant_ZN.LoginReturnObjModel) -&gt; () in OperationMaintenance_Assistant_ZN.changeMeterVC.commitBtnClick(__C.UIButton) -&gt; ()"
+                  symbolName = "closure #1 (Swift.AnyObject) -&gt; () in closure #8 (Swift.Bool, OperationMaintenance_Assistant_ZN.LoginReturnObjModel) -&gt; () in OperationMaintenance_Assistant_ZN.changeMeterVC.commitBtnClick(__C.UIButton) -&gt; ()"
                   moduleName = "OperationMaintenance_Assistant_ZN"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///My_Github_Progect/OperationMaintenance_Assistant_ZN/OperationMaintenance_Assistant_ZN/OperationMaintenance_Assistant_ZN/Module/MeterReading%20/changeMeter/changeMeterVC.swift"
-                  timestampString = "567720275.811191"
+                  timestampString = "568062263.655751"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "521"
-                  endingLineNumber = "521"
+                  startingLineNumber = "690"
+                  endingLineNumber = "690"
                   offsetFromSymbolStart = "48">
                </Location>
             </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "OperationMaintenance_Assistant_ZN/Module/Home/MoreHeadLinesVC/MoreHeadLinesVC.swift"
+            timestampString = "568051845.4246351"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "59"
+            endingLineNumber = "59"
+            landmarkName = "tableView(_:cellForRowAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "OperationMaintenance_Assistant_ZN/Module/MeterReading /meterReading/readingListVC.swift"
+            timestampString = "568066284.60612"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "93"
+            endingLineNumber = "93"
+            landmarkName = "getdata(num:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

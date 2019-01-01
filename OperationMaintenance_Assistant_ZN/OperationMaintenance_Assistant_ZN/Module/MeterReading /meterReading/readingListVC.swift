@@ -8,13 +8,13 @@
 
 import UIKit
 
-class readingListVC: UITableViewController,readinglistCellDelegate {
+class readingListVC: UIViewController,UITableViewDelegate,UITableViewDataSource,readinglistCellDelegate,PullTableViewDelegate {
     
-    
+    var tableView : BasePullTableView!
+
     var lastNum = 1
 
-//    var localDataArray = []()
-    var dataArray = [Any]()
+    var dataArray = [readingListReturnObjModel]()
     
     
     override func viewDidLoad() {
@@ -22,30 +22,53 @@ class readingListVC: UITableViewController,readinglistCellDelegate {
         
         self.title = "记录"
         
+        self.tableView = BasePullTableView()
+        self.view.addSubview(self.tableView)
+        self.tableView.delegate = self
+        self.tableView.dataSource = self
+        self.tableView.pullDelegate = self
+        self.tableView.snp.makeConstraints { (make) in
+            
+            make.edges.equalTo(self.view).inset(UIEdgeInsets.init(top: 0, left: 0, bottom: 0, right: 0))
+            
+        }
         self.tableView.backgroundColor = UIColor.white
+        
+
+        
+        let view = UIView()
+        view.height = 40
+        
+        let header = readingListHeaderView().loadXib()
+        view.addSubview(header)
+        header.snp.makeConstraints { (make) in
+            
+            make.edges.equalTo(view).inset(UIEdgeInsets.init(top: 0, left: 0, bottom: 0, right: 0))
+        }
+        self.tableView.tableHeaderView = view
+        self.tableView.tableHeaderView?.height = 40
+        
         
         self.tableView.register(UINib.init(nibName: "readinglistCell", bundle: nil), forCellReuseIdentifier: readinglistCell_id)
         
         edgesForExtendedLayout = []
         
+        self.tableView.mj_footer.ignoredScrollViewContentInsetBottom = is_X_XS_max ? 34 : 0;
 
-//        self.localDataArray = RealmTool.getMetersReadingData()
-        
-        self.tableView.es.addPullToRefresh {
-            
-            [unowned self] in
-            
-            self.getdata(num: 1)
-        }
-        
-        self.tableView.es.addInfiniteScrolling {
-            [unowned self] in
-
-            self.getdata(num: self.dataArray.count)
-
-        }
 
         self.getdata(num: 1)
+    }
+    
+    func pullTableViewDidTriggerRefresh(_ pullTableView: BasePullTableView!) {
+        
+        self.getdata(num: 1)
+
+    }
+    
+    func pullTableViewDidTriggerLoadMore(_ pullTableView: BasePullTableView!) {
+        
+        self.getdata(num: self.dataArray.count)
+        
     }
     
     
@@ -77,25 +100,26 @@ class readingListVC: UITableViewController,readinglistCellDelegate {
                         
                         if let arr = model.returnObj{
                             
-                            self.dataArray.append(arr)
+                            self.dataArray += arr
 
                         }
                     }
                     
+                    self.tableView.mj_header.endRefreshing()
+                    self.tableView.mj_footer.endRefreshing()
                     
                     self.tableView.reloadData()
                     
                     
                 }
                 
-                self.tableView.es.stopPullToRefresh()
-                self.tableView.es.stopLoadingMore()
+              
 
                 
             }, failture: { (error) in
                 
-                self.tableView.es.stopPullToRefresh()
-
+                self.tableView.mj_header.endRefreshing()
+                self.tableView.mj_footer.endRefreshing()
                 
             })
             
@@ -108,24 +132,20 @@ class readingListVC: UITableViewController,readinglistCellDelegate {
     
     //MAKR: - tableview
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        if section==0 {
-            
+        
             if RealmTool.getMetersReadingData().count > 0 {
                 
                 return RealmTool.getMetersReadingData().count + self.dataArray.count
             }
             
             return self.dataArray.count
-        }
-        return super.tableView(tableView, numberOfRowsInSection: section)
     }
     
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        if indexPath.section == 0 {
             let cell:readinglistCell
                 = tableView.dequeueReusableCell(withIdentifier:readinglistCell_id, for: indexPath) as! readinglistCell
             
@@ -146,7 +166,7 @@ class readingListVC: UITableViewController,readinglistCellDelegate {
                     
                     name = model.deviceName ?? ""
                     meterNum = model.value ?? ""
-                    time = model.time ?? ""
+                    time = self.timeStampToString(timeStamp: model.time ?? "")
                     canDelete = true
                     
                 }else{
@@ -186,26 +206,12 @@ class readingListVC: UITableViewController,readinglistCellDelegate {
             cell.selectionStyle = UITableViewCell.SelectionStyle.none
             
             return cell
-        }
-        
-        return super.tableView(tableView, cellForRowAt: indexPath)
+
     }
     
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
         return 40
-    }
-    
-    
-    //cell的缩进级别,动态静态cell必须重写,否则会造成崩溃
-    override func tableView(_ tableView: UITableView, indentationLevelForRowAt indexPath: IndexPath) -> Int {
-        
-        if(0 == indexPath.section){
-            // (动态cell)
-            let newIndexPath = IndexPath(row: 0, section: indexPath.section)
-            return super.tableView(tableView, indentationLevelForRowAt: newIndexPath)
-        }
-        return super.tableView(tableView, indentationLevelForRowAt: indexPath)
     }
     
     
@@ -303,7 +309,7 @@ class readingListVC: UITableViewController,readinglistCellDelegate {
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
     }

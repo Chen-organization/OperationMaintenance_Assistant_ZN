@@ -93,7 +93,7 @@ class MeterReadingVC: UITableViewController {
             
             if result.count > 0{
                 
-                MBProgressHUD.show(withModifyStyleMessage: "", to: self.view)
+                YJProgressHUD.showProgress("", in: self.view)
 
             }
             
@@ -186,8 +186,8 @@ class MeterReadingVC: UITableViewController {
         
         if self.uploadNum == RealmTool.getMetersReadingData().count {
             
-            MBProgressHUD.hide(for: self.view)
-            
+            YJProgressHUD.hide()
+
             if self.deleteTimeArr.count > 0 {
                 
                 
@@ -199,6 +199,19 @@ class MeterReadingVC: UITableViewController {
                 
                 let results =  RealmTool.getMetersReadingData()
                 self.uploadTitleL.text = "上传离线数据" + "（" + results.count.description + "）"
+                
+                if results.count > 0 {
+                    
+                    ZNCustomAlertView.handleTip("离线数据部分上传成功", isShowCancelBtn: false) { (issure) in
+                        
+                    }
+                }else{
+                    
+                    ZNCustomAlertView.handleTip("离线数据上传成功", isShowCancelBtn: false) { (issure) in
+                        
+                    }
+                    
+                }
                 
                 
             }
@@ -233,6 +246,8 @@ class MeterReadingVC: UITableViewController {
                 
             ]
             
+            YJProgressHUD.showProgress("", in: self.view)
+            
             NetworkService.networkPostrequest(currentView: self.view, parameters: dic as [String : Any], requestApi: getDatesUrl, modelClass:"DownloadMeterDicModel", response: { (object) in
                 
                 let model = object as! DownloadMeterDicModel
@@ -245,10 +260,12 @@ class MeterReadingVC: UITableViewController {
                     
                 }
             
+                YJProgressHUD.hide()
                 
             }, failture: { (error) in
                 
-                
+                YJProgressHUD.hide()
+
             })
             
             

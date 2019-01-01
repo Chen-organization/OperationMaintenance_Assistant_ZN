@@ -8,94 +8,157 @@
 
 import UIKit
 
-class MoreHeadLinesVC: UITableViewController {
+class MoreHeadLinesVC: UIViewController,UITableViewDelegate,UITableViewDataSource,PullTableViewDelegate {
 
+    var tableview : BasePullTableView!
+    
+    var headLinesData = [TheHeadlinesReturnObjModel]()
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-
-//        self.tableView.mj_footer = MJRefreshBackNormalFooter.
+        self.title = "运维头条"
         
-        // 设置回调（一旦进入刷新状态，就调用target的action，也就是调用self的loadMoreData方法）
-//        self.tableView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMoreData)];
-//        // 设置了底部inset
-//        self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 30, 0);
-//        // 忽略掉底部inset
-//        self.tableView.mj_footer.ignoredScrollViewContentInsetBottom = 30;
+        self.tableview = BasePullTableView()
+        self.view.addSubview(self.tableview)
+        self.tableview.delegate = self
+        self.tableview.dataSource = self
+        self.tableview.pullDelegate = self
+        self.tableview.snp.makeConstraints { (make) in
+            
+            make.edges.equalTo(self.view).inset(UIEdgeInsets.init(top: 0, left: 0, bottom: 0, right: 0))
+            
+        }
+
         
+        self.tableview.register(UINib.init(nibName: "HomeNewCell", bundle:Bundle.main ), forCellReuseIdentifier: HomeNewCell_id)
+        
+        self.getDataWithStart(start: 1)
+        
+        self.tableview.mj_footer.ignoredScrollViewContentInsetBottom = is_X_XS_max ? 34 : 0;
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
 
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
-    }
+}
 
     // MARK: - Table view data source
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+     func numberOfSections(in tableView: UITableView) -> Int {
+
+        return 1
     }
 
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+
+        return self.headLinesData.count
     }
 
-    /*
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
+    
+     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell:HomeNewCell = tableView.dequeueReusableCell(withIdentifier: HomeNewCell_id, for: indexPath) as! HomeNewCell
+        
+        let model : TheHeadlinesReturnObjModel = self.headLinesData[indexPath.row] as? TheHeadlinesReturnObjModel ?? TheHeadlinesReturnObjModel()
+    
+        if let url = model.imgUrl {
+            
+            cell.img.kf.setImage(with: URL.init(string: url))
+            
+        }
+        cell.titleL.text = model.title ?? ""
+        cell.contentL.text = model.knowledgeDesc ?? ""
+        cell.timeL.text = self.timeStampToString(timeStamp: model.createDate ?? "")
+        
+        cell.selectionStyle = UITableViewCell.SelectionStyle.none
+        
         return cell
     }
-    */
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+        return 90
     }
-    */
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let model : TheHeadlinesReturnObjModel = self.headLinesData[indexPath.row] as? TheHeadlinesReturnObjModel ?? TheHeadlinesReturnObjModel()
 
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+        let vc = headerLinesDetailVC()
+        vc.url = model.h5Url ?? ""
+        self.navigationController?.pushViewController(vc, animated: true)
+        
     }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
+    
+    func pullTableViewDidTriggerRefresh(_ pullTableView: BasePullTableView!) {
+        
+        self.getDataWithStart(start: 1)
+        
+    }
+    
+    func pullTableViewDidTriggerLoadMore(_ pullTableView: BasePullTableView!) {
+        
+        self.getDataWithStart(start: self.headLinesData.count + 1)
 
     }
-    */
+    
+    
+    //MARK : - 获取数据
+    
+    func getDataWithStart(start:Int) {
+        
+        
+        let para = ["start": start.description,
+                    "end": "20",
+                    ]
+        
+        NetworkService.networkGetrequest(currentView: self.view, parameters: para, requestApi: getTheHeadlinesUrl, modelClass: "TheHeadlinesModel", response: { (obj) in
+            
+            let model : TheHeadlinesModel = obj as! TheHeadlinesModel
+            
+            if model.statusCode == 800 {
+                
+                
+                if start == 1{
+                    
+                    self.headLinesData.removeAll()
+                    self.headLinesData = model.returnObj ?? []
+                    
+                }else{
+                    
+                    self.headLinesData += model.returnObj as! [TheHeadlinesReturnObjModel]
+                
+                }
+                self.tableview.reloadData()
+                
+                self.tableview.mj_header.endRefreshing()
+                self.tableview.mj_footer.endRefreshing()
 
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
+            }
+            
+        }) { (error) in
+            
+        }
+        
     }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+    
+    //MARK: -时间戳转时间函数
+    func timeStampToString(timeStamp: String)->String {
+        //时间戳为毫秒级要 ／ 1000， 秒就不用除1000，参数带没带000
+        
+        if let timestampDouble = Double(timeStamp) {
+            
+            let timeSta:TimeInterval = TimeInterval(timestampDouble / 1000)
+            let date = NSDate(timeIntervalSince1970: timeSta)
+            let dfmatter = DateFormatter()
+            //yyyy-MM-dd HH:mm:ss
+            dfmatter.dateFormat="yyyy-MM-dd HH:mm:ss"
+            return dfmatter.string(from: date as Date)
+            
+        }
+        
+        return ""
+        
     }
-    */
-
+  
 }

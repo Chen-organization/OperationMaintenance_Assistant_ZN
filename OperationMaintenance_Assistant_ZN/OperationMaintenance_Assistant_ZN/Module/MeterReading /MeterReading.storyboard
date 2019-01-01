@@ -627,10 +627,10 @@
             </objects>
             <point key="canvasLocation" x="858.39999999999998" y="68.815592203898049"/>
         </scene>
-        <!--Reading ListVC-->
+        <!--Table View Controller-->
         <scene sceneID="bNw-PU-ARU">
             <objects>
-                <tableViewController storyboardIdentifier="readingListVC" id="Plw-PP-nYL" customClass="readingListVC" customModule="OperationMaintenance_Assistant_ZN" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="readingListVC" id="Plw-PP-nYL" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="qCj-m9-h5W">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

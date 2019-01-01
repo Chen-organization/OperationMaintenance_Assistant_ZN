@@ -10,7 +10,7 @@ import UIKit
 import Photos
 import Alamofire
 
-class changeMeterVC: UITableViewController,ScanViewControllerDelegate,UIGestureRecognizerDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UITextFieldDelegate {
+class changeMeterVC: UITableViewController,ScanViewControllerDelegate,UIGestureRecognizerDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UITextFieldDelegate,MKDropdownMenuDataSource,MKDropdownMenuDelegate {
     
     
     
@@ -23,8 +23,10 @@ class changeMeterVC: UITableViewController,ScanViewControllerDelegate,UIGestureR
     @IBOutlet weak var newMeterNum: UITextField!
     @IBOutlet weak var remainNum: UITextField!
     
+    @IBOutlet weak var dropDownMenu: MKDropdownMenu!
     
-    @IBOutlet weak var typeSelectContentView: UIView!
+    
+//    @IBOutlet weak var typeSelectContentView: UIView!
     @IBOutlet weak var remarkTextView: UITextView!
     
     @IBOutlet weak var firstImgView: UIImageView!
@@ -33,6 +35,11 @@ class changeMeterVC: UITableViewController,ScanViewControllerDelegate,UIGestureR
     @IBOutlet weak var firstDeleteBtn: UIButton!
     @IBOutlet weak var secondDeleteBtn: UIButton!
     
+    
+    var selectedRepaireTypeModel : changeMeterParModel?  //类型
+
+    var repairTypeArr : NSArray = [Any]() as NSArray
+
     
     var firstImage64Str : String?
     var secondImage64Str : String?
@@ -72,34 +79,67 @@ class changeMeterVC: UITableViewController,ScanViewControllerDelegate,UIGestureR
         
         
         
-        
-//        //设备更换原因 获取
-//        UserCenter.shared.userInfo { (islogin, userModel) in
-//
-//            let para = [
-//
-//                "companyCode": UserCenter.companyCode,
-//                "orgCode": UserCenter.orgCode,
-//                "empNo": UserCenter.empNo,
-//                "empName": userModel.empName,
-//                "code": "2",
-//                "deviceNo": self.meterNoTextField.text,
-//                ] as [String : Any]
-//
-//            NetworkService.networkGetrequest(currentView: self.view, parameters: para, requestApi: getDatesUrl, modelClass: "", response: { (obj) in
-//
-//            }, failture: { (error) in
-//
-//
-//
-//            })
-//        }
+        self.dropDownMenu.backgroundColor = UIColor.clear
+        self.dropDownMenu.useFullScreenWidth = true
+        self.dropDownMenu.delegate = self
+        self.dropDownMenu.dataSource = self
+        self.dropDownMenu.componentTextAlignment = NSTextAlignment.left
+        self.dropDownMenu.dropdownShowsTopRowSeparator = false
         
       
         self.firstDeleteBtn.isHidden = true
         self.secondDeleteBtn.isHidden = true
         
 
+        
+        
+    }
+    
+    //MARK: - 设备更换原因 获取
+
+    func getChangeReason(meterNo:String) {
+        
+        UserCenter.shared.userInfo { (islogin, userModel) in
+            
+            let para = [
+                
+                "companyCode": userModel.companyCode ?? "",
+                "orgCode": userModel.orgCode ?? "",
+                "empNo": userModel.empNo ?? "",
+                "empName": userModel.empName ?? "",
+                "code": "2",
+                "deviceNo": meterNo ,
+                ] as [String : Any]
+            
+            NetworkService.networkPostrequest(currentView: self.view, parameters: para, requestApi: changeReasonUrl, modelClass: "changeMeterModel", response: { (obj) in
+                
+                let model : changeMeterModel = obj as! changeMeterModel
+                
+                if model.statusCode == 800 {
+                    
+                    self.meterNoTextField.text = model.returnObj?.display?.deviceNO ?? ""
+                    self.meterNameL.text = model.returnObj?.display?.deviceName ?? ""
+                    self.addressL.text = model.returnObj?.display?.installSite ?? ""
+                    self.oldMeterNum.text = model.returnObj?.display?.nowValue?.description ?? ""
+                    
+                    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+0.6) {
+                        
+                        self.newMeterNum.becomeFirstResponder()
+                        
+                    }
+                    
+                    self.repairTypeArr = model.returnObj?.par as! NSArray
+                    self.dropDownMenu.reloadAllComponents()
+                    
+                }
+                
+                
+            }, failture: { (error) in
+                
+                
+                
+            })
+        }
         
         
     }
@@ -251,6 +291,128 @@ class changeMeterVC: UITableViewController,ScanViewControllerDelegate,UIGestureR
         
         
     }
+    
+    
+    //MARK: - MKDropdownMenu
+    
+    func numberOfComponents(in dropdownMenu: MKDropdownMenu) -> Int {
+        
+        return 1
+    }
+    
+    
+    func dropdownMenu(_ dropdownMenu: MKDropdownMenu, attributedTitleForComponent component: Int) -> NSAttributedString? {
+        
+        let title : String!
+        
+            
+            if self.selectedRepaireTypeModel != nil {
+                
+                title = self.selectedRepaireTypeModel?.configName
+            }else{
+                
+                title = ""
+            }
+        
+        
+        
+        let att = NSAttributedString.init(string: title , attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 14) , NSAttributedString.Key.foregroundColor : RGBCOLOR(r: 51, 51, 51)])
+        
+        return att
+    }
+    
+    func dropdownMenu(_ dropdownMenu: MKDropdownMenu, numberOfRowsInComponent component: Int) -> Int {
+        
+        return  self.repairTypeArr.count
+    }
+    
+    //MKDropdownMenuDelegate
+    
+    func dropdownMenu(_ dropdownMenu: MKDropdownMenu, rowHeightForComponent component: Int) -> CGFloat {
+        
+        return 33
+    }
+    
+    func dropdownMenu(_ dropdownMenu: MKDropdownMenu, maximumNumberOfRowsInComponent component: Int) -> Int {
+        
+        return 10
+        
+    }
+    
+    //    func dropdownMenu(_ dropdownMenu: MKDropdownMenu, widthForComponent component: Int) -> CGFloat {
+    //
+    //        return ScreenW //180
+    //    }
+    
+    func dropdownMenu(_ dropdownMenu: MKDropdownMenu, shouldUseFullRowWidthForComponent component: Int) -> Bool {
+        return true
+    }
+    
+    func dropdownMenu(_ dropdownMenu: MKDropdownMenu, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
+        
+        let view : UIView = UIView()
+        
+        let model = self.repairTypeArr[row] as! changeMeterParModel
+        
+        let label : UILabel = UILabel()
+        label.text = model.configName
+        label.font = UIFont.systemFont(ofSize:13 )
+        
+        view.addSubview(label)
+        label.snp.makeConstraints { (make) in
+            
+            make.centerY.equalTo(view)
+            make.centerX.equalTo(view)
+            //            make.left.equalTo(view).offset(10)
+        }
+        
+        
+        return view
+    }
+    
+    func dropdownMenu(_ dropdownMenu: MKDropdownMenu, didSelectRow row: Int, inComponent component: Int) {
+        
+        
+        print(row)
+        
+            
+            let model = self.repairTypeArr[row] as! changeMeterParModel
+            self.selectedRepaireTypeModel = model
+
+        
+        dropdownMenu.reloadAllComponents()
+        dropdownMenu.closeAllComponents(animated: true)
+        
+    }
+    
+    
+    func dropdownMenu(_ dropdownMenu: MKDropdownMenu, didOpenComponent component: Int) {
+        
+        self.view.endEditing(true)
+        
+//
+//                if(self.repairTypeArr.count == 0){
+//
+//
+//                    if (self.selectedRepaireClassModel == nil){
+//
+//                        //                    ZNCustomAlertView.handleTip("请选择报修类别", isShowCancelBtn: false, completion: { (issure) in
+//                        //
+//                        //                    })
+//                        dropdownMenu.closeAllComponents(animated: false)
+//
+//                    }else{
+//
+//                        self.view.beginLoading()
+//                        self.getRepairsType(replairClass: (self.selectedRepaireClassModel?.workClass)!)
+//                        dropdownMenu.closeAllComponents(animated: false)
+//                    }
+//
+//
+//                }
+
+    }
+    
     
     
     
@@ -424,9 +586,7 @@ class changeMeterVC: UITableViewController,ScanViewControllerDelegate,UIGestureR
     
     @IBAction func commitBtnClick(_ sender: UIButton) {
         
-        if let m = self.deviceInfoModel?.deviceNo {
-            
-        }else{
+        if self.meterNoTextField.text?.characters.count != 16 {
             
             ZNCustomAlertView.handleTip("设备编号输入错误，请重新输入", isShowCancelBtn: false) { (issure) in
                 
@@ -456,6 +616,14 @@ class changeMeterVC: UITableViewController,ScanViewControllerDelegate,UIGestureR
             return
         }
         
+        if ((self.selectedRepaireTypeModel == nil)){
+            
+            ZNCustomAlertView.handleTip("请选择换表原因", isShowCancelBtn: false) { (issure) in
+                
+            }
+            return
+        }
+        
         if !(self.firstImage64Str?.characters.count ?? 0 > 0){
             
             ZNCustomAlertView.handleTip("请进行旧表拍照", isShowCancelBtn: false) { (issure) in
@@ -472,9 +640,8 @@ class changeMeterVC: UITableViewController,ScanViewControllerDelegate,UIGestureR
             return
         }
         
-        
-        MBProgressHUD.show(withModifyStyleMessage: "", to: self.view)
-        
+        YJProgressHUD.showProgress("", in: self.view)
+//        MBProgressHUD.show(withModifyStyleMessage: "", to: self.view)
         
         UserCenter.shared.userInfo { (islogin, userModel) in
             
@@ -485,11 +652,11 @@ class changeMeterVC: UITableViewController,ScanViewControllerDelegate,UIGestureR
                 "empNo": userModel.empNo!,
                 "empName": userModel.empName!,
                 "code": "1",
-                "deviceNo": self.deviceInfoModel?.deviceNo ?? "",
+                "deviceNo": self.meterNoTextField.text ?? "",
                 "oldGauge": self.oldMeterNum.text ?? "",
                 "newGauge": self.newMeterNum.text ?? "",
                 "remarks": self.remarkTextView.text ?? "",
-                "reason": "070001",
+                "reason": self.selectedRepaireTypeModel?.configCode ?? "",
                 "remain": self.remainNum.text ?? "",
 
                 ] as [String : Any]
@@ -536,11 +703,14 @@ class changeMeterVC: UITableViewController,ScanViewControllerDelegate,UIGestureR
                     })
                 }
                 
-                MBProgressHUD.hide(for: self.view)
+//                MBProgressHUD.hide(for: self.view)
+                YJProgressHUD.hide()
                 
             }, failture: { (error) in
                 
-                MBProgressHUD.hide(for: self.view)
+                YJProgressHUD.hide()
+
+//                MBProgressHUD.hide(for: self.view)
 
                 
             })
@@ -556,7 +726,6 @@ class changeMeterVC: UITableViewController,ScanViewControllerDelegate,UIGestureR
     // MARK: - 二维码 代理
     func ScanViewInfo(answer: String) {
         
- 
         self.getMeterInfo(deviceKey: answer)
 
     }
@@ -565,43 +734,43 @@ class changeMeterVC: UITableViewController,ScanViewControllerDelegate,UIGestureR
     func getMeterInfo(deviceKey:String) {
         
         
-        
-        UserCenter.shared.userInfo { (islogin, model) in
-            
-            let para = ["deviceKey":deviceKey,
-                        "companyCode":model.companyCode,
-                        "empNo":model.empNo,
-                        "orgCode":model.orgCode,
-                        ]
-            
-            NetworkService.networkGetrequest(currentView: self.view, parameters: para as [String : Any], requestApi: getDeviceInfoUrl, modelClass: "getDeviceInfoModel", response: { (obj) in
-                
-                let model = obj as! getDeviceInfoModel
-                
-                if model.statusCode == 800 {
-                    
-                    self.deviceInfoModel = model.returnObj
-                    
-                    self.meterNoTextField.text = model.returnObj?.deviceNo ?? ""
-                    self.meterNameL.text = model.returnObj?.deviceName ?? ""
-                    self.addressL.text = model.returnObj?.installSite ?? ""
-                    self.oldMeterNum.text = model.returnObj?.lastNowValue?.description ?? ""
-                    
-                    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+0.6) {
-                        
-                        self.newMeterNum.becomeFirstResponder()
-                        
-                        
-                    }
- 
-                    
-                }
-                
-            }) { (error) in
-                
-            }
-    
-        }
+        self.getChangeReason(meterNo: deviceKey)
+//
+//        UserCenter.shared.userInfo { (islogin, model) in
+//
+//            let para = ["deviceKey":deviceKey,
+//                        "companyCode":model.companyCode,
+//                        "empNo":model.empNo,
+//                        "orgCode":model.orgCode,
+//                        ]
+//
+//            NetworkService.networkGetrequest(currentView: self.view, parameters: para as [String : Any], requestApi: getDeviceInfoUrl, modelClass: "getDeviceInfoModel", response: { (obj) in
+//
+//                let model = obj as! getDeviceInfoModel
+//
+//                if model.statusCode == 800 {
+//
+//                    self.deviceInfoModel = model.returnObj
+//
+//                    self.meterNoTextField.text = model.returnObj?.deviceNo ?? ""
+//                    self.meterNameL.text = model.returnObj?.deviceName ?? ""
+//                    self.addressL.text = model.returnObj?.installSite ?? ""
+//                    self.oldMeterNum.text = model.returnObj?.lastNowValue?.description ?? ""
+//
+//                    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+0.6) {
+//
+//                        self.newMeterNum.becomeFirstResponder()
+//
+//                    }
+//
+//
+//                }
+//
+//            }) { (error) in
+//
+//            }
+//
+//        }
   
     }
     

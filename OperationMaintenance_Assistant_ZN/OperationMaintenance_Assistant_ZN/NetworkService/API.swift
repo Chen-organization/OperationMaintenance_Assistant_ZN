@@ -51,3 +51,19 @@ public let getRecordUrl = baseURL + "/record/getDate"
 public let getDisplayUrl = baseURL + "/meter/getDisplay"
 //抄表删除数据
 public let getDeleteUrl = baseURL + "/meter/getDelete"
+
+//我的消息
+public let getMyMessageUrl = baseURL + "/meter/getMyMessage"
+
+//换表原因
+public let changeReasonUrl = baseURL + "/change/getDate"
+
+
+
+//获取报修类别
+public let getRepairsClassUrl = baseURL + "/fieldRepairs/getRepairsClass"
+
+//1.1.    1.1.    获取报修类型，根据报修类别
+public let getRepairsTypeUrl = baseURL + "/fieldRepairs/getRepairsTypeByClass"
+//1.1.    现场报修提交
+public let commitUrl = baseURL + "/fieldRepairs/commit"

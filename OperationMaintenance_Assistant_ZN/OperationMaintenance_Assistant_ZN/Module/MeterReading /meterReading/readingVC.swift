@@ -97,12 +97,20 @@ class readingVC: UITableViewController,ScanViewControllerDelegate,UIGestureRecog
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        
+        super.viewWillAppear(animated)
+        
+        
+        
+    }
+    
     //MARK: - toList
     @objc func toList() {
         
-        let list = UIStoryboard(name: "MeterReading", bundle: nil)
-            .instantiateViewController(withIdentifier: "readingListVC") as! readingListVC
-        self.navigationController?.pushViewController(list, animated: true)
+//        let list = UIStoryboard(name: "MeterReading", bundle: nil)
+//            .instantiateViewController(withIdentifier: "readingListVC") as! readingListVC
+        self.navigationController?.pushViewController(readingListVC(), animated: true)
         
     }
     
@@ -351,40 +359,51 @@ class readingVC: UITableViewController,ScanViewControllerDelegate,UIGestureRecog
         }
         
         // 2 、 数据确认 弹框确认
-        
-        
-        // 3 、 上次表底数比较
-        var isRight = true
-        
-        if let num = Int(self.nowNum.text!) {
+        ZNMakeSureView.handleTip(self.nowNum.text!, isShowCancelBtn: true) { (makeSure) in
             
-            if let last = self.deviceInfoModel?.lastNowValue {
-                
-                isRight =  num >= Int(last) ? true : false
-                
-            }
-        }
-        
-        if !isRight {
             
-            ZNCustomAlertView.handleTip("输入表底数比上次小，请确认是否超出最大量程 ？", isShowCancelBtn: true) { (issure) in
+            if makeSure {
                 
-                if issure{
+                // 3 、 上次表底数比较
+                var isRight = true
+                
+                if let num = Int(self.nowNum.text!) {
                     
-                    self.saveData()
-                }else{
-                    
-                    return;
+                    if let last = self.deviceInfoModel?.lastNowValue {
+                        
+                        isRight =  num >= Int(last) ? true : false
+                        
+                    }
                 }
                 
+                if !isRight {
+                    
+                    ZNCustomAlertView.handleTip("输入表底数比上次小，请确认是否超出最大量程 ？", isShowCancelBtn: true) { (issure) in
+                        
+                        if issure{
+                            
+                            self.saveData()
+                        }else{
+                            
+                            return;
+                        }
+                        
+                    }
+                }else{
+                    
+                    self.saveData()
+                }
+                
+                
+
+                
             }
-        }else{
             
-            self.saveData()
+            
+            
         }
         
-        
-
+      
       
     }
     
@@ -444,6 +463,7 @@ class readingVC: UITableViewController,ScanViewControllerDelegate,UIGestureRecog
                     
                 }
                 
+                YJProgressHUD.showProgress("", in: self.view)
                 
                 NetworkService.networkPostrequest(currentView: self.view, parameters: para, requestApi:getSubmitUrl, modelClass: "BaseModel", response: { (obj) in
                     
@@ -464,11 +484,12 @@ class readingVC: UITableViewController,ScanViewControllerDelegate,UIGestureRecog
                         })
                     }
                     
+                    YJProgressHUD.hide()
                     
                 }, failture: { (error) in
                     
                     
-                    
+                    YJProgressHUD.hide()
                 })
                 
                 
