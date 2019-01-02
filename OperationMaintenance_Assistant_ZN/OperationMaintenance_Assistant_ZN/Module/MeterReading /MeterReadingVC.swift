@@ -385,6 +385,29 @@ extension RealmTool {
         
     }
     
+    /// 操作抄表数据 查找
+    public class func getOneMeterReadingDataWithNo(meterNo:String) -> ([writeMeterModel]) {
+        let defaultRealm = self.getWriteDB()
+        
+        //        try! defaultRealm.write {
+        
+        let result = defaultRealm.objects(writeMeterModel.self).filter("id = %@", meterNo)
+        
+        var arr = [Any]()
+        
+        for model in result {
+            
+            arr.append(model)
+            
+        }
+        
+        return arr as! ([writeMeterModel])
+        
+//        return [(defaultRealm.object(ofType: writeMeterModel.self, forPrimaryKey: meterNo) ?? nil)!]
+        
+        //        }
+    }
+    
     /// 操作抄表数据 按条件 删除
     public class func deleteMeterReadingDataWithTime(time:String){
         let defaultRealm = self.getWriteDB()

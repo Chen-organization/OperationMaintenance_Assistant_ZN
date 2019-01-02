@@ -37,6 +37,8 @@ class readingVC: UITableViewController,ScanViewControllerDelegate,UIGestureRecog
     @IBOutlet weak var signImgDeleteBtn: UIButton!
     
     var meterArr = [AnyObject]()  //下部展示 抄表数据
+    var beforMeterArr = [AnyObject]()  //之前下部展示 抄表数据
+
     
     var deviceInfoModel : getDeviceInfoReturnObjModel?   //获取的表设备数据
     
@@ -119,6 +121,8 @@ class readingVC: UITableViewController,ScanViewControllerDelegate,UIGestureRecog
         if self.meterNo.text?.characters.count == 16 {
             
             self.searchBtnClick(UIButton())
+            
+            self.getRecordList(deviceNo: self.meterNo.text!)
             
         }
         
@@ -240,7 +244,7 @@ class readingVC: UITableViewController,ScanViewControllerDelegate,UIGestureRecog
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section==2 {
-            return self.meterArr.count
+            return self.meterArr.count + self.beforMeterArr.count
         }
         return super.tableView(tableView, numberOfRowsInSection: section)
     }
@@ -249,22 +253,66 @@ class readingVC: UITableViewController,ScanViewControllerDelegate,UIGestureRecog
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         if indexPath.section == 2 {
+            
             let cell:ReadingVCTableviewCell
                 = tableView.dequeueReusableCell(withIdentifier: ReadingVCTableviewCell_id, for: indexPath) as! ReadingVCTableviewCell
             
-            let model : writeMeterModel = self.meterArr[indexPath.row] as! writeMeterModel
             
-            cell.nameL.text = model.deviceName ?? ""
-            cell.value0.text = model.value ?? ""
-            cell.value1.text = self.timeStampToString(timeStamp: model.time ?? "")
-            
-            cell.index = indexPath.row
-            
-            cell.cellDelegate = self
-            
-            cell.selectionStyle = UITableViewCell.SelectionStyle.none
+            if indexPath.row >= self.meterArr.count {
+                
+                let model : readingListReturnObjModel = self.beforMeterArr[indexPath.row - self.meterArr.count] as! readingListReturnObjModel
+                
+                cell.nameL.text = model.deviceHisId ?? ""
+                cell.value0.text = model.nowValue ?? ""
+                cell.value1.text = self.timeStampToString(timeStamp: model.createDate ?? "")
+                
+                cell.index = indexPath.row
+                
+                //判断时间 一小时内能修改
+                var candelete = false
 
-            return cell
+                let betowen = Int(self.milliStamp)! - Int(model.createDate!)!
+                
+                if betowen/1000 >=  60 * 60 {
+                    
+                    candelete = false
+                }else{
+                    
+                    candelete = true
+                }
+                
+                cell.setTitleColor(isLocal: false)
+                cell.setCanDelete(CanDelete: candelete)
+                
+                cell.cellDelegate = self
+                
+                cell.selectionStyle = UITableViewCell.SelectionStyle.none
+                
+                return cell
+                
+                
+            }else{
+                
+                let model : writeMeterModel = self.meterArr[indexPath.row] as! writeMeterModel
+                
+                cell.nameL.text = model.deviceName ?? ""
+                cell.value0.text = model.value ?? ""
+                cell.value1.text = self.timeStampToString(timeStamp: model.time ?? "")
+                
+                cell.index = indexPath.row
+                
+                cell.setTitleColor(isLocal: true)
+                cell.setCanDelete(CanDelete: true)
+                
+                cell.cellDelegate = self
+                
+                cell.selectionStyle = UITableViewCell.SelectionStyle.none
+                
+                return cell
+                
+            }
+            
+           
         }
         
         return super.tableView(tableView, cellForRowAt: indexPath)
@@ -284,11 +332,12 @@ class readingVC: UITableViewController,ScanViewControllerDelegate,UIGestureRecog
     //cell的缩进级别,动态静态cell必须重写,否则会造成崩溃
     override func tableView(_ tableView: UITableView, indentationLevelForRowAt indexPath: IndexPath) -> Int {
         
-        if(3 == indexPath.section){
+        if(2 == indexPath.section){
             // (动态cell)
             let newIndexPath = IndexPath(row: 0, section: indexPath.section)
             return super.tableView(tableView, indentationLevelForRowAt: newIndexPath)
         }
+        
         return super.tableView(tableView, indentationLevelForRowAt: indexPath)
     }
     
@@ -470,6 +519,8 @@ class readingVC: UITableViewController,ScanViewControllerDelegate,UIGestureRecog
                     let model :BaseModel = obj as! BaseModel
                     if model.statusCode == 800 {
                         
+                        self.getRecordList(deviceNo:self.meterNo.text!)
+
                         //清空页面本次提交数据
                         self.cleanPageMeterdData()
                         
@@ -539,6 +590,10 @@ class readingVC: UITableViewController,ScanViewControllerDelegate,UIGestureRecog
                 //下部展示
                 self.meterArr.append(model)
                 
+                ZNCustomAlertView.handleTip("离线数据提交成功", isShowCancelBtn: false, completion: { (issure) in
+                    
+                })
+                
                 //清空页面本次提交数据
                 self.cleanPageMeterdData()
             }
@@ -575,6 +630,9 @@ class readingVC: UITableViewController,ScanViewControllerDelegate,UIGestureRecog
             return
         }
         
+    
+        self.getRecordList(deviceNo: self.meterNo.text ?? "")
+
         
         //无网络判断
         let net = NetworkReachabilityManager()
@@ -665,17 +723,90 @@ class readingVC: UITableViewController,ScanViewControllerDelegate,UIGestureRecog
     // MARK: - cell代理
     
     func cellDeleteWithIndex(index: Int) {
-        
-        
-        if let m : writeMeterModel = self.meterArr[index] as! writeMeterModel{
-            
-            RealmTool.deleteMetersReadingData(model: m )
-            
-            self.meterArr.remove(at: index)
-        }
 
         
+        if index >= self.meterArr.count {
+            
+            //删除已上传过得记录
+            
+            let model = self.beforMeterArr[index - self.meterArr.count] as? readingListReturnObjModel
+            
+            if let id = model?.id{
+                
+                ZNCustomAlertView.handleTip("是否确定删除此条抄表记录！", isShowCancelBtn: true) { (issure) in
+                    
+                    if issure{
+                        
+                        self.deleteOnlineData(key: id, arrIndex: index - self.meterArr.count)
+
+                    }
+                    
+                }
+                
+
+            }
+            
+        }else{
+            
+            if let m : writeMeterModel = self.meterArr[index] as! writeMeterModel{
+                
+                RealmTool.deleteMetersReadingData(model: m )
+                
+                self.meterArr.remove(at: index)
+            }
+        }
+        
+        self.tableView.reloadData()
+        
     }
+    
+    func deleteOnlineData(key:String , arrIndex:Int) {
+        
+        UserCenter.shared.userInfo { (islogin, userModel) in
+            
+            let para = [
+                
+                "companyCode":userModel.companyCode,
+                "orgCode":userModel.orgCode,
+                "empId":userModel.empNo,
+                "empName":userModel.empName,
+                "id":key,
+            ]
+            
+            YJProgressHUD.showProgress("", in: self.view)
+            
+            NetworkService.networkPostrequest(currentView: self.view, parameters: para as [String : Any], requestApi: getDeleteUrl, modelClass: "BaseModel", response: { (obj) in
+                
+                let model : BaseModel = obj as! BaseModel
+                
+                if model.statusCode == 800 {
+                    
+//                    self.getRecordList(deviceNo: self.meterNo.text ?? "")
+                    
+                    self.beforMeterArr.remove(at: arrIndex)
+                    self.tableView.reloadData()
+                    
+                    ZNCustomAlertView.handleTip("数据删除成功", isShowCancelBtn: false, completion: { (issure) in
+                        
+                    })
+                    
+                }
+                
+                YJProgressHUD.hide()
+                
+            }, failture: { (error) in
+                
+                
+                YJProgressHUD.hide()
+
+            })
+            
+            
+        }
+        
+        
+    }
+    
     
      // MARK: - 签名代理
     
@@ -696,6 +827,8 @@ class readingVC: UITableViewController,ScanViewControllerDelegate,UIGestureRecog
     
     // MARK: - 二维码 代理
     func ScanViewInfo(answer: String) {
+        
+        self.getRecordList(deviceNo: answer)
         
         //无网络判断
         let net = NetworkReachabilityManager()
@@ -754,7 +887,6 @@ class readingVC: UITableViewController,ScanViewControllerDelegate,UIGestureRecog
                             self.nowNum.becomeFirstResponder()
                             
                         }
-                        
                         
                     }
                     
@@ -827,6 +959,47 @@ class readingVC: UITableViewController,ScanViewControllerDelegate,UIGestureRecog
         
         
     }
+    //MARK: -  获抄表取表数据
+    func getRecordList(deviceNo:String) {
+        
+        self.meterArr = RealmTool.getOneMeterReadingDataWithNo(meterNo: deviceNo)
+        
+        
+        UserCenter.shared.userInfo { (islogin, userModel) in
+            
+            let para = [
+            
+                "companyCode":userModel.companyCode,
+                "orgCode":userModel.orgCode,
+                "empId":userModel.empNo,
+                "empName":userModel.empName,
+                "code":deviceNo,
+                
+            ]
+            
+            NetworkService.networkPostrequest(currentView: self.view, parameters: para as [String : Any], requestApi: getDisplayUrl, modelClass: "readingListModel", response: { (obj) in
+                
+                let model :readingListModel = obj as! readingListModel
+
+                if model.statusCode == 800 {
+                    
+                    self.beforMeterArr = model.returnObj ?? []
+                    self.tableView.reloadData()
+                }
+                
+                
+            }, failture: { (error) in
+                
+                
+                
+            })
+            
+            
+        }
+        
+        
+    }
+    
     
     //MARK: -  拍照
     func cameraGetphoto() {

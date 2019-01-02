@@ -27,11 +27,38 @@ class ReadingVCTableviewCell: UITableViewCell {
     @IBOutlet weak var value0: UILabel!
     @IBOutlet weak var value1: UILabel!
     
+    @IBOutlet weak var deleteBtn: UIButton!
     
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+    }
+    
+    
+    func setTitleColor(isLocal:Bool)  {
+        
+        if isLocal {
+            
+            self.nameL.textColor = RGBCOLOR(r: 31, 182, 167)
+            self.nameL.textColor = RGBCOLOR(r: 31, 182, 167)
+            self.value1.textColor = RGBCOLOR(r: 31, 182, 167)
+            self.value0.textColor = RGBCOLOR(r: 31, 182, 167)
+            
+            
+        }else{
+            
+            self.nameL.textColor = .gray
+            self.value1.textColor = .gray
+            self.value0.textColor = .gray
+        }
+        
+    }
+    
+    func setCanDelete(CanDelete:Bool) {
+        
+        self.deleteBtn.isHidden = !CanDelete
+
     }
     
     

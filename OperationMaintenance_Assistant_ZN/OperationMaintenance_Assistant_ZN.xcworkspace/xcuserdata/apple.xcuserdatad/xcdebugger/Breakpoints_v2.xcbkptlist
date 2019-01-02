@@ -57,38 +57,6 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "OperationMaintenance_Assistant_ZN/Module/MeterReading /meterReading/readingListVC.swift"
-            timestampString = "567763759.5017689"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "79"
-            endingLineNumber = "79"
-            landmarkName = "getdata(num:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "OperationMaintenance_Assistant_ZN/Module/MeterReading /meterReading/readingVC.swift"
-            timestampString = "567770047.432485"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "756"
-            endingLineNumber = "756"
-            landmarkName = "searchMeterWighKey(key:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "OperationMaintenance_Assistant_ZN/Module/Me/Login/userCenter/UserCenter.swift"
             timestampString = "567770047.432842"
             startingColumnNumber = "9223372036854775807"
@@ -122,7 +90,7 @@
                   moduleName = "OperationMaintenance_Assistant_ZN"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/apple/Documents/GitHub/OperationMaintenance_Assistant_ZN/OperationMaintenance_Assistant_ZN/OperationMaintenance_Assistant_ZN/Module/Me/Login/LoginVC.swift"
-                  timestampString = "567769781.7198189"
+                  timestampString = "568111719.2642879"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "137"
@@ -137,7 +105,7 @@
                   moduleName = "OperationMaintenance_Assistant_ZN"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/apple/Documents/GitHub/OperationMaintenance_Assistant_ZN/OperationMaintenance_Assistant_ZN/OperationMaintenance_Assistant_ZN/Module/Me/Login/LoginVC.swift"
-                  timestampString = "567769781.722109"
+                  timestampString = "568111719.266488"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "139"
