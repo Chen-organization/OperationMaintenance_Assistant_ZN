@@ -40,6 +40,7 @@ class MeterReadingVC: UITableViewController {
         let result =  RealmTool.getMetersReadingData()
         self.uploadTitleL.text = "上传离线数据" + "（" + result.count.description + "）"
         
+        
     }
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -93,7 +94,7 @@ class MeterReadingVC: UITableViewController {
             
             if result.count > 0{
                 
-                YJProgressHUD.showProgress("", in: self.view)
+                YJProgressHUD.showProgress("", in: UIApplication.shared.delegate?.window!)
 
             }
             
@@ -175,9 +176,7 @@ class MeterReadingVC: UITableViewController {
             
         }
         
-        
-      
-        
+                
         
     }
     
@@ -246,7 +245,7 @@ class MeterReadingVC: UITableViewController {
                 
             ]
             
-            YJProgressHUD.showProgress("", in: self.view)
+            YJProgressHUD.showProgress("", in: UIApplication.shared.delegate?.window!)
             
             NetworkService.networkPostrequest(currentView: self.view, parameters: dic as [String : Any], requestApi: getDatesUrl, modelClass:"DownloadMeterDicModel", response: { (object) in
                 

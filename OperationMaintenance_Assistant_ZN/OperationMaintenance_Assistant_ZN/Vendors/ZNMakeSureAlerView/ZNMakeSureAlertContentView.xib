@@ -32,7 +32,7 @@
                                 <constraint firstAttribute="height" constant="30" id="KlI-Ua-xaY"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                            <state key="normal" title="确定">
+                            <state key="normal" title="正确">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </state>
                             <userDefinedRuntimeAttributes>
@@ -52,7 +52,7 @@
                                 <constraint firstAttribute="height" constant="25" id="Wfj-yN-yoB"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                            <state key="normal" title="取消">
+                            <state key="normal" title="错误">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </state>
                             <userDefinedRuntimeAttributes>
@@ -95,7 +95,7 @@
                     </userDefinedRuntimeAttributes>
                 </view>
             </subviews>
-            <color key="backgroundColor" white="0.0" alpha="0.17883359660000001" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <color key="backgroundColor" white="0.0" alpha="0.24029014625753425" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="PNW-cK-zLm" secondAttribute="trailing" constant="25" id="B6H-RO-YQJ"/>
                 <constraint firstItem="PNW-cK-zLm" firstAttribute="centerY" secondItem="qJV-Dq-yI4" secondAttribute="centerY" id="ITd-P2-jN2"/>

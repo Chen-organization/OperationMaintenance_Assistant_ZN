@@ -4,7 +4,7 @@
 //
 //  Created by Chen on 2018/12/16.
 //  Copyright © 2018年 Chen. All rights reserved.
-//
+
 
 import UIKit
 import Photos
@@ -21,6 +21,13 @@ class readingVC: UITableViewController,ScanViewControllerDelegate,UIGestureRecog
     @IBOutlet weak var nultL: UILabel!  //倍率
     @IBOutlet weak var lastTimeMeterNumL: UILabel!
     
+    //超量程
+    @IBOutlet weak var overContentView: UIView!
+    @IBOutlet weak var overBtn: UIButton!
+    @IBOutlet weak var overL: UILabel!
+    
+    @IBOutlet weak var overContentViewH: NSLayoutConstraint!
+
     
     @IBOutlet weak var remarksTextField: UITextField!  //备注
     
@@ -96,6 +103,10 @@ class readingVC: UITableViewController,ScanViewControllerDelegate,UIGestureRecog
         navigationItem.rightBarButtonItems = [barButtonItem, backView]
 
         
+        //隐藏超量程
+        self.overContentView.isHidden = true
+        self.overContentViewH.constant = 0
+        self.overContentView.backgroundColor = .white
         
     }
     
@@ -106,6 +117,16 @@ class readingVC: UITableViewController,ScanViewControllerDelegate,UIGestureRecog
         
         
     }
+    
+    //勾选最大量程
+    @IBAction func selectMax(_ sender: UIButton) {
+        
+        sender.isSelected = !sender.isSelected
+        
+        self.overL.isHidden = !sender.isSelected
+        
+    }
+    
     
     //MARK: - toList
     @objc func toList() {
@@ -268,7 +289,7 @@ class readingVC: UITableViewController,ScanViewControllerDelegate,UIGestureRecog
                 
                 cell.index = indexPath.row
                 
-                //判断时间 一小时内能修改
+                //判断时间 一小时内最近能修改
                 var candelete = false
 
                 let betowen = Int(self.milliStamp)! - Int(model.createDate!)!
@@ -278,7 +299,17 @@ class readingVC: UITableViewController,ScanViewControllerDelegate,UIGestureRecog
                     candelete = false
                 }else{
                     
-                    candelete = true
+                    //最近一次
+                    if indexPath.row == self.meterArr.count {
+                        
+                        candelete = true
+
+                    }else{
+                        
+                        candelete = false
+
+                    }
+                    
                 }
                 
                 cell.setTitleColor(isLocal: false)
@@ -325,7 +356,7 @@ class readingVC: UITableViewController,ScanViewControllerDelegate,UIGestureRecog
             return 40
         }
         
-        return 360
+        return self.overContentView.isHidden ? 360 : 405
     }
     
     
@@ -407,50 +438,89 @@ class readingVC: UITableViewController,ScanViewControllerDelegate,UIGestureRecog
             return
         }
         
-        // 2 、 数据确认 弹框确认
-        ZNMakeSureView.handleTip(self.nowNum.text!, isShowCancelBtn: true) { (makeSure) in
+        //判断是否是选择了超量程
+        if self.overContentView.isHidden  {
             
+            // 3 、 上次表底数比较
+            var isRight = true
             
-            if makeSure {
+            if let num = Int(self.nowNum.text!) {
                 
-                // 3 、 上次表底数比较
-                var isRight = true
-                
-                if let num = Int(self.nowNum.text!) {
+                if let last = self.deviceInfoModel?.lastNowValue {
                     
-                    if let last = self.deviceInfoModel?.lastNowValue {
-                        
-                        isRight =  num >= Int(last) ? true : false
-                        
-                    }
+                    isRight =  num >= Int(last) ? true : false
+                    
                 }
+            }
+            
+            if !isRight {
                 
-                if !isRight {
+                ZNCustomAlertView.handleTip("输入表底数比上次小，请确认是否超出最大量程 ？", isShowCancelBtn: true) { (issure) in
                     
-                    ZNCustomAlertView.handleTip("输入表底数比上次小，请确认是否超出最大量程 ？", isShowCancelBtn: true) { (issure) in
+                    if issure{
                         
-                        if issure{
+                        //                            self.saveData()
+                        //超量程界面
+                        self.overContentViewH.constant = 45
+                        self.overContentView.isHidden = false
+                        self.overBtn.isSelected = true
+                        self.overL.isHidden = false
+                        
+                        //                            let maxStr = self.deviceInfoModel?.thresholdMax?.description
+                        
+                        var nowMaxStr = ""
+                        
+                        if let maxStr = self.deviceInfoModel?.lastNowValue?.description{
                             
-                            self.saveData()
-                        }else{
+                            for i in 0..<maxStr.count {
+                                
+                                print("a=\(i)");
+                                
+                                nowMaxStr.append("9")
+                                
+                            }
                             
-                            return;
+                            self.overL.text = nowMaxStr
+                            
                         }
                         
+                    }else{
+                        
+                        return;
                     }
-                }else{
                     
-                    self.saveData()
                 }
+            }else{
                 
                 
+                // 2 、 数据确认 弹框确认
+                ZNMakeSureView.handleTip(self.nowNum.text!, isShowCancelBtn: true) { (makeSure) in
+                    
+                    if makeSure {
+                        
+                        self.saveData()
 
-                
+                    }
+                }
             }
             
             
+        }else{
             
+            
+            // 2 、 数据确认 弹框确认
+            ZNMakeSureView.handleTip(self.nowNum.text!, isShowCancelBtn: true) { (makeSure) in
+                
+                if makeSure {
+                    
+                    self.saveData()
+                    
+                }
+            }
         }
+        
+        
+
         
       
       
@@ -501,6 +571,13 @@ class readingVC: UITableViewController,ScanViewControllerDelegate,UIGestureRecog
                     "thresholdMax": self.deviceInfoModel?.thresholdMax ?? "",
                     ] as [String : Any]
                 
+                if self.overContentView.isHidden == false && self.overBtn.isSelected {
+                    
+                    para[ "thresholdMax"] = self.overL.text
+                    
+                }
+                
+                
                 if let file = self.meterImage64Str {
                     
                     para["file"] = file
@@ -512,7 +589,7 @@ class readingVC: UITableViewController,ScanViewControllerDelegate,UIGestureRecog
                     
                 }
                 
-                YJProgressHUD.showProgress("", in: self.view)
+                YJProgressHUD.showProgress("", in: UIApplication.shared.delegate?.window!)
                 
                 NetworkService.networkPostrequest(currentView: self.view, parameters: para, requestApi:getSubmitUrl, modelClass: "BaseModel", response: { (obj) in
                     
@@ -524,13 +601,24 @@ class readingVC: UITableViewController,ScanViewControllerDelegate,UIGestureRecog
                         //清空页面本次提交数据
                         self.cleanPageMeterdData()
                         
+                        self.overContentViewH.constant = 0
+                        self.overContentView.isHidden = true
+                        
                         ZNCustomAlertView.handleTip("提交成功", isShowCancelBtn: false, completion: { (issure) in
                             
                         })
                     }else{
                         
                         
-                        ZNCustomAlertView.handleTip("提交失败", isShowCancelBtn: false, completion: { (issure) in
+                        ZNCustomAlertView.handleTip("提交失败，是否存储到本地！", isShowCancelBtn: true, completion: { (issure) in
+                            
+                            if issure {
+                                
+                                
+                                ////本地存储数据
+                                self.saveDataToLocation()
+                                
+                            }
                             
                         })
                     }
@@ -550,61 +638,81 @@ class readingVC: UITableViewController,ScanViewControllerDelegate,UIGestureRecog
             
         }else{
             
-            
             ////本地存储数据
-            UserCenter.shared.userInfo { (islogin, userModel) in
-                
-                let model = writeMeterModel()
-                
-                model.id = self.deviceInfoModel?.deviceNo
-                model.deviceName = self.deviceInfoModel?.deviceName
-                model.value = self.nowNum.text
-                model.empId = userModel.empNo
-                model.org = userModel.orgCode
-                //                model.type = self.deviceInfoModel?.returnObj?.
-                model.file = ""
-                model.longitude = nil
-                model.latitude = nil
-                model.status = "2"
-                model.time = time
-                model.remark = self.remarksTextField.text
-                model.isMoreThanMax = "0"
-                
-                if let num = Int(self.nowNum.text!) {
-                    
-                    if let max = self.deviceInfoModel?.thresholdMax {
-                        
-                        model.isMoreThanMax = max > num ? "0" : "1"
-                        
-                    }
-                }
-                
-                model.thresholdMax = ""
-                if let thresholdMax = self.deviceInfoModel?.thresholdMax{
-                    
-                    model.thresholdMax = thresholdMax.description
-                }
-                
-                //存储本地
-                RealmTool.insertMetersReadingData(by: [model])
-                //下部展示
-                self.meterArr.append(model)
-                
-                ZNCustomAlertView.handleTip("离线数据提交成功", isShowCancelBtn: false, completion: { (issure) in
-                    
-                })
-                
-                //清空页面本次提交数据
-                self.cleanPageMeterdData()
-            }
-            
-            self.tableView.reloadData()
+            self.saveDataToLocation()
             
         }
         
         
         
     }
+    
+    //MARK: - 本地存储数据
+    func saveDataToLocation() {
+        
+        
+        
+        
+        let time = self.milliStamp
+        print("对应的日期时间：\(time)")
+        
+        UserCenter.shared.userInfo { (islogin, userModel) in
+            
+            let model = writeMeterModel()
+            
+            model.id = self.deviceInfoModel?.deviceNo
+            model.deviceName = self.deviceInfoModel?.deviceName
+            model.value = self.nowNum.text
+            model.empId = userModel.empNo
+            model.org = userModel.orgCode
+            //                model.type = self.deviceInfoModel?.returnObj?.
+            model.file = self.meterImage64Str ?? ""
+            model.file2 = self.signImage64Str ?? ""
+            model.longitude = nil
+            model.latitude = nil
+            model.status = "2"
+            model.time = time
+            model.remark = self.remarksTextField.text
+            model.isMoreThanMax = "0"
+            
+            if let num = Int(self.nowNum.text!) {
+                
+                if let max = self.deviceInfoModel?.thresholdMax {
+                    
+                    model.isMoreThanMax = max > num ? "0" : "1"
+                    
+                }
+            }
+            
+            model.thresholdMax = ""
+            if let thresholdMax = self.deviceInfoModel?.thresholdMax{
+                
+                model.thresholdMax = thresholdMax.description
+            }
+            
+            //存储本地
+            RealmTool.insertMetersReadingData(by: [model])
+            //下部展示
+            self.meterArr.append(model)
+            
+            self.overContentViewH.constant = 0
+            self.overContentView.isHidden = true
+            
+            ZNCustomAlertView.handleTip("离线数据提交成功", isShowCancelBtn: false, completion: { (issure) in
+                
+            })
+            
+            //清空页面本次提交数据
+            self.cleanPageMeterdData()
+        }
+        
+        let positon = IndexSet.init(integer: 2)
+        self.tableView.reloadSections(positon, with: UITableView.RowAnimation.none)
+        
+        
+        
+    }
+    
     
     @IBAction func scanBtnClick(_ sender: UIButton) {
         
@@ -630,65 +738,67 @@ class readingVC: UITableViewController,ScanViewControllerDelegate,UIGestureRecog
             return
         }
         
-    
-        self.getRecordList(deviceNo: self.meterNo.text ?? "")
+        self.getMeterInfo(deviceKey: self.meterNo.text!)
 
         
-        //无网络判断
-        let net = NetworkReachabilityManager()
-        if net?.isReachable ?? false {
-            
-            UserCenter.shared.userInfo { (islogin, model) in
-                
-                let para = [
-                    "companyCode":model.companyCode,
-                    "empNo":model.empNo,
-                    "orgCode":model.orgCode,
-                    "id": self.meterNo.text]
-                
-                NetworkService.networkPostrequest(currentView: self.view, parameters: para as [String : Any], requestApi: getVerificationUrl, modelClass: "getVerificationModel"
-                    , response: { (object) in
-                        
-                        let model : getVerificationModel = object as! getVerificationModel
-                        
-                        if model.statusCode == 800 {
-                            
-                            if (Int((model.returnObj?.state)!) == 1) {
-                                
-                                self.getMeterInfo(deviceKey: self.meterNo.text!)
-                                
-                            }else{
-                                
-                                ZNCustomAlertView.handleTip("设备不存在", isShowCancelBtn: false, completion: { (isSure) in
-                                    
-                                    
-                                })
-                            }
-                            
-                        }else{
-                            
-                            ZNCustomAlertView.handleTip(model.msg, isShowCancelBtn: false, completion: { (isSure) in
-                                
-                            })
-                            
-                        }
-                        
-                        
-                }) { (error) in
-                    
-                    
-                }
-                
-                
-                
-            }
-            
-      
-            
-        }else{
-            
-            self.searchMeterWighKey(key: self.meterNo.text ?? " ")
-        }
+//        //无网络判断
+//        let net = NetworkReachabilityManager()
+//        if net?.isReachable ?? false {
+//
+//            UserCenter.shared.userInfo { (islogin, model) in
+//
+//                let para = [
+//                    "companyCode":model.companyCode,
+//                    "empNo":model.empNo,
+//                    "orgCode":model.orgCode,
+//                    "id": self.meterNo.text]
+//
+//                NetworkService.networkPostrequest(currentView: self.view, parameters: para as [String : Any], requestApi: getVerificationUrl, modelClass: "getVerificationModel"
+//                    , response: { (object) in
+//
+//                        let model : getVerificationModel = object as! getVerificationModel
+//
+//                        if model.statusCode == 800 {
+//
+//                            if (Int((model.returnObj?.state)!) == 1) {
+//
+//                                self.getMeterInfo(deviceKey: self.meterNo.text!)
+//
+//                                self.getRecordList(deviceNo: self.meterNo.text ?? "")
+//
+//
+//                            }else{
+//
+//                                ZNCustomAlertView.handleTip("设备不存在", isShowCancelBtn: false, completion: { (isSure) in
+//
+//
+//                                })
+//                            }
+//
+//                        }else{
+//
+//                            ZNCustomAlertView.handleTip(model.msg, isShowCancelBtn: false, completion: { (isSure) in
+//
+//                            })
+//
+//                        }
+//
+//
+//                }) { (error) in
+//
+//
+//                }
+//
+//
+//
+//            }
+//
+//
+//
+//        }else{
+//
+//            self.searchMeterWighKey(key: self.meterNo.text ?? " ")
+//        }
         
         
        
@@ -700,7 +810,7 @@ class readingVC: UITableViewController,ScanViewControllerDelegate,UIGestureRecog
         self.meterNo.text = ""
         self.nowNum.text = ""
         self.nultL.text = "X倍率"
-        self.lastTimeMeterNumL.text = "上次："
+        self.lastTimeMeterNumL.text = "上次:"
         self.remarksTextField.text = ""
         
         self.meterImg.image = UIImage.init(named: "相机")
@@ -721,6 +831,66 @@ class readingVC: UITableViewController,ScanViewControllerDelegate,UIGestureRecog
     }
    
     // MARK: - cell代理
+    
+    func cellDeleteWithImgIndex(index: Int) {
+        
+        
+        if index >= self.meterArr.count {
+            
+            //线上过得记录
+            
+            let model = self.beforMeterArr[index - self.meterArr.count] as? readingListReturnObjModel
+            
+            if let url = model?.photoUrl{
+                
+                //查看
+                PhotoBroswerVC.show(self, type: PhotoBroswerVCTypeModal, index: 0) { () -> [Any]? in
+                    
+                    let pbModel = PhotoModel()
+                    pbModel.mid = 1
+                    pbModel.image_HD_U = url
+                    
+                    return [pbModel]
+                }
+                
+            }else{
+                
+                ZNCustomAlertView.handleTip("未上传表底数图片！", isShowCancelBtn: true) { (issure) in}
+            }
+            
+        }else{
+            
+            //本地
+            if let m : writeMeterModel = self.meterArr[index] as? writeMeterModel{
+                
+                if m.file?.characters.count ?? 0 > 0 {
+                    
+                    let imageData = Data(base64Encoded: m.file ?? "")
+                    
+
+                    //查看
+                    PhotoBroswerVC.show(self, type: PhotoBroswerVCTypeModal, index: 0) { () -> [Any]? in
+                        
+                        let pbModel = PhotoModel()
+                        pbModel.mid = 1
+                        pbModel.image = UIImage(data: imageData!)
+                        
+                        return [pbModel]
+                    }
+                }else{
+                    
+                    ZNCustomAlertView.handleTip("未上传表底数图片！", isShowCancelBtn: true) { (issure) in}
+                    
+                }
+                
+                
+               
+                
+            }
+        }
+        
+        
+    }
     
     func cellDeleteWithIndex(index: Int) {
 
@@ -756,7 +926,8 @@ class readingVC: UITableViewController,ScanViewControllerDelegate,UIGestureRecog
             }
         }
         
-        self.tableView.reloadData()
+        let positon = IndexSet.init(integer: 2)
+        self.tableView.reloadSections(positon, with: UITableView.RowAnimation.none)
         
     }
     
@@ -773,7 +944,7 @@ class readingVC: UITableViewController,ScanViewControllerDelegate,UIGestureRecog
                 "id":key,
             ]
             
-            YJProgressHUD.showProgress("", in: self.view)
+            YJProgressHUD.showProgress("", in: UIApplication.shared.delegate?.window!)
             
             NetworkService.networkPostrequest(currentView: self.view, parameters: para as [String : Any], requestApi: getDeleteUrl, modelClass: "BaseModel", response: { (obj) in
                 
@@ -784,7 +955,10 @@ class readingVC: UITableViewController,ScanViewControllerDelegate,UIGestureRecog
 //                    self.getRecordList(deviceNo: self.meterNo.text ?? "")
                     
                     self.beforMeterArr.remove(at: arrIndex)
-                    self.tableView.reloadData()
+                    
+                    let positon = IndexSet.init(integer: 2)
+                    self.tableView.reloadSections(positon, with: UITableView.RowAnimation.none)
+                    
                     
                     ZNCustomAlertView.handleTip("数据删除成功", isShowCancelBtn: false, completion: { (issure) in
                         
@@ -828,17 +1002,19 @@ class readingVC: UITableViewController,ScanViewControllerDelegate,UIGestureRecog
     // MARK: - 二维码 代理
     func ScanViewInfo(answer: String) {
         
-        self.getRecordList(deviceNo: answer)
         
         //无网络判断
         let net = NetworkReachabilityManager()
         if net?.isReachable ?? false {
             
-            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.25) {
-               
-                self.getMeterInfo(deviceKey: answer)
+            self.getRecordList(deviceNo: answer
+            )
+            self.getMeterInfo(deviceKey: answer)
 
-            }
+//            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.25) {
+//
+//
+//            }
             
             
         }else{
@@ -861,6 +1037,7 @@ class readingVC: UITableViewController,ScanViewControllerDelegate,UIGestureRecog
                 let para = ["deviceKey":deviceKey,
                             "companyCode":model.companyCode,
                             "empNo":model.empNo,
+                            "empName":model.empName,
                             "orgCode":model.orgCode,
                             ]
                 
@@ -874,7 +1051,7 @@ class readingVC: UITableViewController,ScanViewControllerDelegate,UIGestureRecog
                         
                         self.meterNo.text = model.returnObj?.deviceNo!
                         self.nultL.text = "X" + String(describing: (model.returnObj?.multiplyingPower)!)
-                        self.lastTimeMeterNumL.text = "上次：" + String(describing: (model.returnObj?.lastNowValue)!)
+                        self.lastTimeMeterNumL.text = "上次:" + String(describing: (model.returnObj?.lastNowValue)!) + "kW·h"
                         
                         self.nameL.text = "名称：" + (model.returnObj?.deviceName)!
                         self.meterNoL.text = "表号：" + (model.returnObj?.deviceNo)!
@@ -887,6 +1064,13 @@ class readingVC: UITableViewController,ScanViewControllerDelegate,UIGestureRecog
                             self.nowNum.becomeFirstResponder()
                             
                         }
+                        
+                    }else{
+                        
+                        
+                        ZNCustomAlertView.handleTip("设备不存在", isShowCancelBtn: false, completion: { (isSure) in
+                    
+                      })
                         
                     }
                     
@@ -919,7 +1103,7 @@ class readingVC: UITableViewController,ScanViewControllerDelegate,UIGestureRecog
                 
                 self.meterNo.text = model.id
                 self.nultL.text = "X" + String(describing: (model.multiplyingPower)!)
-                self.lastTimeMeterNumL.text = "上次：" + String(describing: (model.nowValue))
+                self.lastTimeMeterNumL.text = "上次:" + String(describing: (model.nowValue))
                 
                 self.nameL.text = "名称：" + (model.name)!
                 self.meterNoL.text = "表号：" + (model.id)!
@@ -984,7 +1168,9 @@ class readingVC: UITableViewController,ScanViewControllerDelegate,UIGestureRecog
                 if model.statusCode == 800 {
                     
                     self.beforMeterArr = model.returnObj ?? []
-                    self.tableView.reloadData()
+                    
+                    let positon = IndexSet.init(integer: 2)
+                    self.tableView.reloadSections(positon, with: UITableView.RowAnimation.none)
                 }
                 
                 
@@ -1022,6 +1208,9 @@ class readingVC: UITableViewController,ScanViewControllerDelegate,UIGestureRecog
         //        let imageBase64String = data?.base64EncodedString()
         
         
+        picker.dismiss(animated: true, completion: nil)
+
+        
         let data = image.compress(withMaxLength: 1 * 1024 * 1024 / 8)
         print( Double((data?.count)!)/1024.0/1024.0)
         let imageBase64String = data!.base64EncodedString()
@@ -1030,7 +1219,6 @@ class readingVC: UITableViewController,ScanViewControllerDelegate,UIGestureRecog
         self.meterImage64Str = imageBase64String
         self.meterImgDeleteBtn.isHidden = false
         
-        picker.dismiss(animated: true, completion: nil)
         
     }
     

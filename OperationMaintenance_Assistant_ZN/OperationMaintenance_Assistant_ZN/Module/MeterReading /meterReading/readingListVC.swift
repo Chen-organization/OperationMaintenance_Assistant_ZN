@@ -191,7 +191,17 @@ class readingListVC: UIViewController,UITableViewDelegate,UITableViewDataSource,
                         candelete = false
                     }else{
                         
-                        candelete = true
+                        if indexPath.row == num {
+                            
+                            candelete = true
+
+                        }else{
+                            
+                            candelete = false
+
+                        }
+                        
+                        
                     }
                     
                     cell.setTitleColor(isLocal: false)
@@ -251,6 +261,69 @@ class readingListVC: UIViewController,UITableViewDelegate,UITableViewDataSource,
     
     
     // MARK: - cell Delegate  抄表删除数据
+    
+    func cellDeleteWithImgIndex(index: Int) {
+        
+        let localNum = RealmTool.getMetersReadingData().count
+
+        
+        if index >= localNum {
+            
+            //线上过得记录
+            
+            let model = self.dataArray[index - localNum] as? readingListReturnObjModel
+            
+            if let url = model?.photoUrl{
+                
+                //查看
+                PhotoBroswerVC.show(self, type: PhotoBroswerVCTypeModal, index: 0) { () -> [Any]? in
+                    
+                    let pbModel = PhotoModel()
+                    pbModel.mid = 1
+                    pbModel.image_HD_U = url
+                    
+                    return [pbModel]
+                }
+                
+            }else{
+                
+                ZNCustomAlertView.handleTip("未上传表底数图片！", isShowCancelBtn: true) { (issure) in}
+            }
+            
+        }else{
+            
+            //本地
+            let meterArr = RealmTool.getMetersReadingData()
+            
+            if let m : writeMeterModel = meterArr[index] as? writeMeterModel{
+                
+                if m.file?.characters.count ?? 0 > 0 {
+                    
+                    let imageData = Data(base64Encoded: m.file ?? "")
+                    
+                    
+                    //查看
+                    PhotoBroswerVC.show(self, type: PhotoBroswerVCTypeModal, index: 0) { () -> [Any]? in
+                        
+                        let pbModel = PhotoModel()
+                        pbModel.mid = 1
+                        pbModel.image = UIImage(data: imageData!)
+                        
+                        return [pbModel]
+                    }
+                }else{
+                    
+                    ZNCustomAlertView.handleTip("未上传表底数图片！", isShowCancelBtn: true) { (issure) in}
+                    
+                }
+                
+                
+                
+                
+            }
+        }
+        
+    }
 
     func cellDeleteWithIndex(index: Int) {
     
@@ -266,7 +339,6 @@ class readingListVC: UIViewController,UITableViewDelegate,UITableViewDataSource,
             }
             
             
-//            var para = [ String : String]()
             var para = [
                 
                 "companyCode":model.companyCode,
@@ -333,7 +405,7 @@ class readingListVC: UIViewController,UITableViewDelegate,UITableViewDataSource,
             
           
             
-            YJProgressHUD.showProgress("", in: self.view)
+            YJProgressHUD.showProgress("", in: UIApplication.shared.delegate?.window!)
             
             NetworkService.networkPostrequest(currentView: self.view, parameters: para as [String : Any], requestApi: getDeleteUrl, modelClass: "BaseModel", response: { (obj) in
                 

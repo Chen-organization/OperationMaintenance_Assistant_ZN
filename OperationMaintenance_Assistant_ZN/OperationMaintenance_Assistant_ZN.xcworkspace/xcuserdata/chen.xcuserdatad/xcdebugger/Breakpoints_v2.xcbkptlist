@@ -49,7 +49,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "OperationMaintenance_Assistant_ZN/Module/MeterReading /changeMeter/changeMeterVC.swift"
-            timestampString = "568066284.605599"
+            timestampString = "568147897.368167"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "688"
@@ -65,7 +65,7 @@
                   moduleName = "OperationMaintenance_Assistant_ZN"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///My_Github_Progect/OperationMaintenance_Assistant_ZN/OperationMaintenance_Assistant_ZN/OperationMaintenance_Assistant_ZN/Module/MeterReading%20/changeMeter/changeMeterVC.swift"
-                  timestampString = "568062263.652912"
+                  timestampString = "568147897.9796309"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "688"
@@ -80,7 +80,7 @@
                   moduleName = "OperationMaintenance_Assistant_ZN"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///My_Github_Progect/OperationMaintenance_Assistant_ZN/OperationMaintenance_Assistant_ZN/OperationMaintenance_Assistant_ZN/Module/MeterReading%20/changeMeter/changeMeterVC.swift"
-                  timestampString = "568062263.655751"
+                  timestampString = "568147897.981486"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "690"
@@ -113,12 +113,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "OperationMaintenance_Assistant_ZN/Module/MeterReading /meterReading/readingListVC.swift"
-            timestampString = "568066284.60612"
+            timestampString = "568147897.368319"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "93"
             endingLineNumber = "93"
             landmarkName = "getdata(num:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "OperationMaintenance_Assistant_ZN/Module/MeterReading /meterReading/readingVC.swift"
+            timestampString = "568147897.36922"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "864"
+            endingLineNumber = "864"
+            landmarkName = "cellDeleteWithImgIndex(index:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

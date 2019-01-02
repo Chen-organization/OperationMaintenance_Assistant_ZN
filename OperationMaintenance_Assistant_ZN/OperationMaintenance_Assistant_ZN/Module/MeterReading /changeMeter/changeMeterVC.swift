@@ -640,7 +640,7 @@ class changeMeterVC: UITableViewController,ScanViewControllerDelegate,UIGestureR
             return
         }
         
-        YJProgressHUD.showProgress("", in: self.view)
+        YJProgressHUD.showProgress("", in: UIApplication.shared.delegate?.window!)
 //        MBProgressHUD.show(withModifyStyleMessage: "", to: self.view)
         
         UserCenter.shared.userInfo { (islogin, userModel) in

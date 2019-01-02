@@ -85,7 +85,7 @@
                     </userDefinedRuntimeAttributes>
                 </view>
             </subviews>
-            <color key="backgroundColor" white="0.0" alpha="0.1788335966139302" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <color key="backgroundColor" white="0.0" alpha="0.22140101955913566" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="IPv-62-Oh2" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="25" id="GFm-Jo-yWQ"/>
                 <constraint firstAttribute="trailing" secondItem="IPv-62-Oh2" secondAttribute="trailing" constant="25" id="Las-9r-foF"/>

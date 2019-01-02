@@ -14,6 +14,9 @@ let ReadingVCTableviewCell_id = "ReadingVCTableviewCell"
     
     func cellDeleteWithIndex(index: Int)
     
+    func cellDeleteWithImgIndex(index: Int)
+
+    
 }
 
 class ReadingVCTableviewCell: UITableViewCell {
@@ -33,8 +36,23 @@ class ReadingVCTableviewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        
+        //查看表底数图片
+        let tap:UITapGestureRecognizer = UITapGestureRecognizer.init()
+        tap.numberOfTapsRequired = 1 //轻点次数
+        tap.numberOfTouchesRequired = 1 //手指个数
+        tap.delegate = self
+        tap.addTarget(self, action: #selector(tapPickImgView(action:)))
+        self.value0.addGestureRecognizer(tap)
+
     }
     
+    
+    @objc func tapPickImgView(action:UITapGestureRecognizer) -> Void {
+    
+        self.cellDelegate?.cellDeleteWithImgIndex(index: self.index)
+        
+    }
     
     func setTitleColor(isLocal:Bool)  {
         

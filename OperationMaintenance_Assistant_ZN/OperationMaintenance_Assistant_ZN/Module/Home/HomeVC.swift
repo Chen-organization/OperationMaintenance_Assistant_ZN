@@ -37,6 +37,7 @@ class HomeVC: UITableViewController,UIGestureRecognizerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+
         self.navigationItem.title = "首页"
         
         self.tableView.backgroundColor = RGBCOLOR(r: 245, 245, 245)

@@ -22,7 +22,7 @@ class readingListReturnObjModel: BaseReturnObjModel {
     var origin : String?
 
     var type : String?
-    
+    var photoUrl : String?
     
 //    "id": 4740607,
 //    "deviceHisId": "测试场站1-水表1",
