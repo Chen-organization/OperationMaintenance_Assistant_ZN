@@ -153,12 +153,12 @@ class readingListVC: UIViewController,UITableViewDelegate,UITableViewDataSource,
             var name = ""
             var meterNum = ""
             var time = ""
-            var canDelete = false
-            
+//            var canDelete = false
+        
             
             let num = RealmTool.getMetersReadingData().count
-            if num > 0 {
-                
+//            if num > 0 {
+        
                 if indexPath.row < num{
                     
                     let model : writeMeterModel = RealmTool.getMetersReadingData()[indexPath.row]
@@ -167,38 +167,73 @@ class readingListVC: UIViewController,UITableViewDelegate,UITableViewDataSource,
                     name = model.deviceName ?? ""
                     meterNum = model.value ?? ""
                     time = self.timeStampToString(timeStamp: model.time ?? "")
-                    canDelete = true
+                    
+                    
+                    cell.setTitleColor(isLocal: true)
+                    cell.setCanDelete(CanDelete: true)
                     
                 }else{
                     
-                    let model : readingListReturnObjModel = self.dataArray[indexPath.row - num] as! readingListReturnObjModel
+                    let model : readingListReturnObjModel = self.dataArray[indexPath.row - num]
 
                     orderNum = (indexPath.row - num).description
                     name = model.deviceHisId ?? ""
                     meterNum = model.nowValue ?? ""
                     time = self.timeStampToString(timeStamp:model.createDate ?? "")
-                    canDelete = false
+                    
+                    //判断时间 一小时内能修改
+                    var candelete = false
+                    
+                    let betowen = Int(self.milliStamp)! - Int(model.createDate!)!
+                    
+                    if betowen/1000 >=  60 * 60 {
+                        
+                        candelete = false
+                    }else{
+                        
+                        candelete = true
+                    }
+                    
+                    cell.setTitleColor(isLocal: false)
+                    cell.setCanDelete(CanDelete: candelete)
+                    
+                    
                     
                 }
-            }else{
-                
-                
-                let model : readingListReturnObjModel = self.dataArray[indexPath.row] as! readingListReturnObjModel
-                
-                orderNum = (indexPath.row - num).description
-                name = model.deviceHisId ?? ""
-                meterNum = model.nowValue ?? ""
-                time = self.timeStampToString(timeStamp:model.createDate ?? "")
-                canDelete = false
-                
-            }
-            
+//            }else{
+//
+//
+//                let model : readingListReturnObjModel = self.dataArray[indexPath.row]
+//
+//                orderNum = (indexPath.row - num).description
+//                name = model.deviceHisId ?? ""
+//                meterNum = model.nowValue ?? ""
+//                time = self.timeStampToString(timeStamp:model.createDate ?? "")
+//
+//
+//                //判断时间 一小时内能修改
+//                var candelete = false
+//
+//                let betowen = Int(self.milliStamp)! - Int(model.createDate!)!
+//
+//                if betowen/1000 >= 24 * 60 * 60 {
+//
+//                    candelete = false
+//                }else{
+//
+//                    candelete = true
+//                }
+//
+//                cell.setTitleColor(isLocal: false)
+//                cell.setCanDelete(CanDelete: candelete)
+//
+//            }
+        
             cell.NoL.text = orderNum
             cell.nameL.text = name
             cell.value0.text = meterNum
             cell.value1.text = time
-            
-            cell.setTitleColor(CanDelete: canDelete)
+
             
             cell.index = indexPath.row
             cell.cellDelegate = self
@@ -222,7 +257,24 @@ class readingListVC: UIViewController,UITableViewDelegate,UITableViewDataSource,
         UserCenter.shared.userInfo { (islogin, model) in
             
             
-            var para = [ String : String]()
+            ZNCustomAlertView.handleTip("是否确定删除此条抄表记录！", isShowCancelBtn: true) { (issure) in
+                
+                if !issure{
+                    return
+                }
+                
+            }
+            
+            
+//            var para = [ String : String]()
+            var para = [
+                
+                "companyCode":model.companyCode,
+                "orgCode":model.orgCode,
+                "empId":model.empNo,
+                "empName":model.empName,
+                ]
+            
             
             let localNum = RealmTool.getMetersReadingData().count
             
@@ -252,37 +304,84 @@ class readingListVC: UIViewController,UITableViewDelegate,UITableViewDataSource,
                 
             }
             
+//            NetworkService.networkPostrequest(currentView: self.view, parameters: para as [String : Any], requestApi: getDeleteUrl, modelClass: "BaseModel", response: { (obj) in
+//
+////                let model : BaseModel = obj as! BaseModel
+////                
+////                if model.statusCode == 800{
+////
+////                    ZNCustomAlertView.handleTip("删除成功", isShowCancelBtn: false, completion: { (sure) in
+////
+////                    })
+////
+////                }else{
+////                    
+////                    ZNCustomAlertView.handleTip(model.msg, isShowCancelBtn: false, completion: { (sure) in
+////
+////                    })
+////
+////                    self.tableView.reloadData()
+////
+////                }
+//
+//            }) { (error) in
+//
+//
+//
+//            }
+            
+            
+          
+            
+            YJProgressHUD.showProgress("", in: self.view)
+            
             NetworkService.networkPostrequest(currentView: self.view, parameters: para as [String : Any], requestApi: getDeleteUrl, modelClass: "BaseModel", response: { (obj) in
                 
                 let model : BaseModel = obj as! BaseModel
                 
-                if model.statusCode == 800{
+                if model.statusCode == 800 {
                     
-                    ZNCustomAlertView.handleTip("删除成功", isShowCancelBtn: false, completion: { (sure) in
-                        
-                    })
+                    //                    self.getRecordList(deviceNo: self.meterNo.text ?? "")
+//
+//                    self.beforMeterArr.remove(at: arrIndex)
+//
+//                    if index >
                     
-                }else{
-                    
-                    ZNCustomAlertView.handleTip(model.msg, isShowCancelBtn: false, completion: { (sure) in
-                        
-                    })
-                    
+                    self.getdata(num: 1)
+
                     self.tableView.reloadData()
+                    
+                    ZNCustomAlertView.handleTip("数据删除成功", isShowCancelBtn: false, completion: { (issure) in
+                        
+                    })
                     
                 }
                 
-            }) { (error) in
+                YJProgressHUD.hide()
+                
+            }, failture: { (error) in
                 
                 
+                YJProgressHUD.hide()
                 
-            }
+            })
+            
+            
             
             
         }
     
   
    
+    }
+    
+    
+    
+    /// 获取当前 毫秒级 时间戳 - 13位
+    var milliStamp : String {
+        let timeInterval: TimeInterval = NSDate().timeIntervalSince1970
+        let millisecond = CLongLong(round(timeInterval*1000))
+        return "\(millisecond)"
     }
     
     

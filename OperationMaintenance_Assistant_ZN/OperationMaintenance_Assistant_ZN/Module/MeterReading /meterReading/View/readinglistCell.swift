@@ -40,11 +40,12 @@ class readinglistCell: UITableViewCell {
         // Initialization code
     }
 
-    func setTitleColor(CanDelete:Bool)  {
+    func setTitleColor(isLocal:Bool)  {
         
-        if CanDelete {
+        if isLocal {
             
             self.NoL.textColor = RGBCOLOR(r: 31, 182, 167)
+            self.nameL.textColor = RGBCOLOR(r: 31, 182, 167)
             self.nameL.textColor = RGBCOLOR(r: 31, 182, 167)
             self.value1.textColor = RGBCOLOR(r: 31, 182, 167)
             self.value0.textColor = RGBCOLOR(r: 31, 182, 167)
@@ -58,8 +59,14 @@ class readinglistCell: UITableViewCell {
             self.value0.textColor = .gray
         }
         
-        self.deleteBtn.isHidden = !CanDelete
     }
+    
+    func setCanDelete(CanDelete:Bool) {
+        
+        self.deleteBtn.isHidden = !CanDelete
+        
+    }
+    
     
     @IBAction func deleteBtnClick(_ sender: UIButton) {
         

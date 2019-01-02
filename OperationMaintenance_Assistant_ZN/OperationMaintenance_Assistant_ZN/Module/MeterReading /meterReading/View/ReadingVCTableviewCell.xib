@@ -58,7 +58,7 @@
                         </connections>
                     </button>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="acV-MS-gyk">
-                        <rect key="frame" x="368" y="0.0" width="1" height="66.5"/>
+                        <rect key="frame" x="367" y="0.0" width="1" height="66.5"/>
                         <color key="backgroundColor" red="0.93709164860000005" green="0.93694382909999996" blue="0.95754462480000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="1" id="tqB-By-ewB"/>
@@ -84,7 +84,7 @@
                     <constraint firstAttribute="bottom" secondItem="ve3-Jk-5Jp" secondAttribute="bottom" id="Lsc-M1-wnf"/>
                     <constraint firstAttribute="bottom" secondItem="34G-Vy-JNX" secondAttribute="bottom" id="Mbp-Wb-fNU"/>
                     <constraint firstItem="ve3-Jk-5Jp" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="Q1v-Kl-fcl"/>
-                    <constraint firstItem="acV-MS-gyk" firstAttribute="leading" secondItem="6fa-zQ-e8g" secondAttribute="trailing" id="Qlw-fO-mUi"/>
+                    <constraint firstItem="acV-MS-gyk" firstAttribute="leading" secondItem="6fa-zQ-e8g" secondAttribute="trailing" constant="-1" id="Qlw-fO-mUi"/>
                     <constraint firstAttribute="bottom" secondItem="6fa-zQ-e8g" secondAttribute="bottom" id="Yd3-tl-rdt"/>
                     <constraint firstItem="acV-MS-gyk" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="a5S-Pg-HwY"/>
                     <constraint firstItem="ve3-Jk-5Jp" firstAttribute="leading" secondItem="34G-Vy-JNX" secondAttribute="trailing" id="ddw-Uc-yFa"/>
@@ -101,6 +101,7 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="deleteBtn" destination="Tu4-sj-WCY" id="pQO-hM-lVj"/>
                 <outlet property="nameL" destination="Wfr-wy-AuF" id="mdM-Zf-jHz"/>
                 <outlet property="value0" destination="34G-Vy-JNX" id="JiQ-3E-CRg"/>
                 <outlet property="value1" destination="6fa-zQ-e8g" id="IFr-AD-wLy"/>
