@@ -47,9 +47,9 @@ public struct NetworkService {
             }) { (Error) in
                 
                 
-                ZNCustomAlertView.handleTip("网络开小差了，请稍后重试...", isShowCancelBtn: false, completion: { (isure) in
-                    
-                })
+//                ZNCustomAlertView.handleTip("网络开小差了，请稍后重试...", isShowCancelBtn: false, completion: { (isure) in
+//
+//                })
                 
                 failture(Error)
     
@@ -103,9 +103,9 @@ public struct NetworkService {
             
 //            YJProgressHUD.showMessage("网络连接错误！", in: UIApplication.shared.keyWindow, afterDelayTime: 2)
             
-            ZNCustomAlertView.handleTip("网络开小差了，请稍后重试...", isShowCancelBtn: false, completion: { (sure) in
-                
-            })
+//            ZNCustomAlertView.handleTip("网络开小差了，请稍后重试...", isShowCancelBtn: false, completion: { (sure) in
+//                
+//            })
             
             failture(Error)
             

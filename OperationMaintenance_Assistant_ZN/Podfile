@@ -8,7 +8,7 @@ target 'OperationMaintenance_Assistant_ZN' do
   # your other pod
   # ...
 
-  pod 'Alamofire', '~> 5.0.0.beta.1'
+  pod 'Alamofire', '~> 4.7'
 
   pod 'HandyJSON', '~> 4.2.0'
   pod 'RealmSwift'

@@ -49,7 +49,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "OperationMaintenance_Assistant_ZN/Module/MeterReading /changeMeter/changeMeterVC.swift"
-            timestampString = "568147897.368167"
+            timestampString = "568237248.198458"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "688"
@@ -65,7 +65,7 @@
                   moduleName = "OperationMaintenance_Assistant_ZN"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///My_Github_Progect/OperationMaintenance_Assistant_ZN/OperationMaintenance_Assistant_ZN/OperationMaintenance_Assistant_ZN/Module/MeterReading%20/changeMeter/changeMeterVC.swift"
-                  timestampString = "568147897.9796309"
+                  timestampString = "568230323.357042"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "688"
@@ -80,7 +80,7 @@
                   moduleName = "OperationMaintenance_Assistant_ZN"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///My_Github_Progect/OperationMaintenance_Assistant_ZN/OperationMaintenance_Assistant_ZN/OperationMaintenance_Assistant_ZN/Module/MeterReading%20/changeMeter/changeMeterVC.swift"
-                  timestampString = "568147897.981486"
+                  timestampString = "568230323.358803"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "690"
@@ -112,13 +112,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "OperationMaintenance_Assistant_ZN/Module/MeterReading /meterReading/readingListVC.swift"
-            timestampString = "568147897.368319"
+            filePath = "OperationMaintenance_Assistant_ZN/Module/MeterReading /meterReading/readingVC.swift"
+            timestampString = "568237248.198627"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "93"
-            endingLineNumber = "93"
-            landmarkName = "getdata(num:)"
+            startingLineNumber = "867"
+            endingLineNumber = "867"
+            landmarkName = "cellDeleteWithImgIndex(index:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -128,13 +128,61 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "OperationMaintenance_Assistant_ZN/Module/MeterReading /meterReading/readingVC.swift"
-            timestampString = "568147897.36922"
+            filePath = "OperationMaintenance_Assistant_ZN/Module/Home/message/MessageVC.swift"
+            timestampString = "568237248.198698"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "864"
-            endingLineNumber = "864"
-            landmarkName = "cellDeleteWithImgIndex(index:)"
+            startingLineNumber = "144"
+            endingLineNumber = "144"
+            landmarkName = "getMyMessage(page:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "OperationMaintenance_Assistant_ZN.MessageVC.getMyMessage(page: Swift.Int) -&gt; ()"
+                  moduleName = "OperationMaintenance_Assistant_ZN"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///My_Github_Progect/OperationMaintenance_Assistant_ZN/OperationMaintenance_Assistant_ZN/OperationMaintenance_Assistant_ZN/Module/Home/message/MessageVC.swift"
+                  timestampString = "568230323.338405"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "144"
+                  endingLineNumber = "144"
+                  offsetFromSymbolStart = "36">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Bool, OperationMaintenance_Assistant_ZN.LoginReturnObjModel) -&gt; () in OperationMaintenance_Assistant_ZN.MessageVC.getMyMessage(page: Swift.Int) -&gt; ()"
+                  moduleName = "OperationMaintenance_Assistant_ZN"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///My_Github_Progect/OperationMaintenance_Assistant_ZN/OperationMaintenance_Assistant_ZN/OperationMaintenance_Assistant_ZN/Module/Home/message/MessageVC.swift"
+                  timestampString = "568230323.34069"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "146"
+                  endingLineNumber = "146"
+                  offsetFromSymbolStart = "52">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "OperationMaintenance_Assistant_ZN/Module/Home/message/MessageVC.swift"
+            timestampString = "568237248.198748"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "162"
+            endingLineNumber = "162"
+            landmarkName = "getMyMessage(page:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

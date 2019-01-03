@@ -123,19 +123,24 @@ class HomeVC: UITableViewController,UIGestureRecognizerDelegate {
     //MARK: - 手势
     @objc func tapRepairView(action:UIGestureRecognizer)  {
         
-        self.navigationController?.pushViewController(myOrdersVC(), animated: true)
+        let vc = myOrdersVC()
+        vc.selectedIndex = 0
+        self.navigationController?.pushViewController(vc, animated: true)
         
     }
     @objc func tapRepairingView(action:UIGestureRecognizer)  {
         
-        self.navigationController?.pushViewController(myOrdersVC(), animated: true)
+        let vc = myOrdersVC()
+        vc.selectedIndex = 1
+        self.navigationController?.pushViewController(vc, animated: true)
 
         
     }
     @objc func tapRepairedView(action:UIGestureRecognizer)  {
         
-        
-        self.navigationController?.pushViewController(myOrdersVC(), animated: true)
+        let vc = myOrdersVC()
+        vc.selectedIndex = 2
+        self.navigationController?.pushViewController(vc, animated: true)
 
     }
     

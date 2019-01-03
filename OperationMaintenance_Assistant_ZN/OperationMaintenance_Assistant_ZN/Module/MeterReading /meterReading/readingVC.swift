@@ -610,25 +610,28 @@ class readingVC: UITableViewController,ScanViewControllerDelegate,UIGestureRecog
                     }else{
                         
                         
-                        ZNCustomAlertView.handleTip("提交失败，是否存储到本地！", isShowCancelBtn: true, completion: { (issure) in
-                            
-                            if issure {
-                                
-                                
-                                ////本地存储数据
-                                self.saveDataToLocation()
-                                
-                            }
-                            
-                        })
+
                     }
                     
                     YJProgressHUD.hide()
                     
                 }, failture: { (error) in
                     
-                    
                     YJProgressHUD.hide()
+                    
+                    ZNCustomAlertView.handleTip("提交失败，是否存储到本地！", isShowCancelBtn: true, completion: { (issure) in
+                        
+                        if issure {
+                            
+                            
+                            ////本地存储数据
+                            self.saveDataToLocation()
+                            
+                        }
+                        
+                    })
+                    
+                    
                 })
                 
                 

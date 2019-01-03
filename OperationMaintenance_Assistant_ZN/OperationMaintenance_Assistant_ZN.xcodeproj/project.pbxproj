@@ -377,6 +377,8 @@
 		746A63A621DBD4830054C0C1 /* changeMeterReturnObjModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746A63A521DBD4830054C0C1 /* changeMeterReturnObjModel.swift */; };
 		746A63A821DBD4940054C0C1 /* changeMeterDisplayModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746A63A721DBD4940054C0C1 /* changeMeterDisplayModel.swift */; };
 		746A63AA21DBD4A10054C0C1 /* changeMeterParModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746A63A921DBD4A10054C0C1 /* changeMeterParModel.swift */; };
+		746A63B021DE85FE0054C0C1 /* MyOrdersCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746A63AE21DE85FE0054C0C1 /* MyOrdersCell.swift */; };
+		746A63B121DE85FE0054C0C1 /* MyOrdersCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 746A63AF21DE85FE0054C0C1 /* MyOrdersCell.xib */; };
 		7477E84221C025BF00AAA756 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7477E84121C025BF00AAA756 /* AppDelegate.swift */; };
 		7477E84421C025BF00AAA756 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7477E84321C025BF00AAA756 /* ViewController.swift */; };
 		7477E84921C025C000AAA756 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7477E84821C025C000AAA756 /* Assets.xcassets */; };
@@ -972,6 +974,8 @@
 		746A63A521DBD4830054C0C1 /* changeMeterReturnObjModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = changeMeterReturnObjModel.swift; sourceTree = "<group>"; };
 		746A63A721DBD4940054C0C1 /* changeMeterDisplayModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = changeMeterDisplayModel.swift; sourceTree = "<group>"; };
 		746A63A921DBD4A10054C0C1 /* changeMeterParModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = changeMeterParModel.swift; sourceTree = "<group>"; };
+		746A63AE21DE85FE0054C0C1 /* MyOrdersCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyOrdersCell.swift; sourceTree = "<group>"; };
+		746A63AF21DE85FE0054C0C1 /* MyOrdersCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyOrdersCell.xib; sourceTree = "<group>"; };
 		7477E83E21C025BF00AAA756 /* OperationMaintenance_Assistant_ZN.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OperationMaintenance_Assistant_ZN.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7477E84121C025BF00AAA756 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7477E84321C025BF00AAA756 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -1981,6 +1985,8 @@
 		742CAEE121DB56430022648E /* MyOrders */ = {
 			isa = PBXGroup;
 			children = (
+				746A63AD21DE85DD0054C0C1 /* Model */,
+				746A63AC21DE85D10054C0C1 /* View */,
 				749DFD5321DB7AD600BA6BA8 /* myOrdersVC.swift */,
 			);
 			name = MyOrders;
@@ -2213,6 +2219,22 @@
 				746A63A921DBD4A10054C0C1 /* changeMeterParModel.swift */,
 			);
 			path = changeMeterModel;
+			sourceTree = "<group>";
+		};
+		746A63AC21DE85D10054C0C1 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				746A63AE21DE85FE0054C0C1 /* MyOrdersCell.swift */,
+				746A63AF21DE85FE0054C0C1 /* MyOrdersCell.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		746A63AD21DE85DD0054C0C1 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		7477E83521C025BF00AAA756 = {
@@ -3148,6 +3170,7 @@
 				7403D2EE21CF800B0055561E /* 检查更新LOGO3x.png in Resources */,
 				7403D28221CF800A0055561E /* 我的@3x.png in Resources */,
 				7403D2BF21CF800A0055561E /* 三脚下3x.png in Resources */,
+				746A63B121DE85FE0054C0C1 /* MyOrdersCell.xib in Resources */,
 				7403D2BC21CF800A0055561E /* 未标题-2.png in Resources */,
 				7403D2C121CF800A0055561E /* 去支付按钮3x.png in Resources */,
 				7403D24B21CF800A0055561E /* 签字点击3x.png in Resources */,
@@ -3652,6 +3675,7 @@
 				7477EA6921C1712300AAA756 /* PhotoImageView.m in Sources */,
 				7477EA3321C1712300AAA756 /* ZNCustomAlertView.m in Sources */,
 				185C238921D63CFB0004AD0C /* FMDatabasePool.m in Sources */,
+				746A63B021DE85FE0054C0C1 /* MyOrdersCell.swift in Sources */,
 				7477EAFE21C2A8CA00AAA756 /* MeterReadingVC.swift in Sources */,
 				181AC44321D788760018ADAD /* MJRefreshAutoFooter.m in Sources */,
 				746423BB21D271060038E8E3 /* IQUIView+IQKeyboardToolbar.swift in Sources */,

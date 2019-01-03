@@ -74,10 +74,10 @@ extension NetworkRequest {
         
         //使用Alamofire进行网络请求时，调用该方法的参数都是通过getRequest(urlString， params, success :, failture :）传入的，而success传入的其实是一个接受           [String : AnyObject]类型 返回void类型的函数
         
-        
-        AF.request(urlString, method: .get, parameters: params)
+
+        Alamofire.request(urlString, method: .get, parameters: params)
             .responseJSON { (response) in/*这里使用了闭包*/
-                
+
                 PrintLog(message: "data:\(response)")
 
                 //当请求后response是我们自定义的，这个变量用于接受服务器响应的信息
@@ -85,25 +85,25 @@ extension NetworkRequest {
                 switch response.result {
                 case .success:
                     //当响应成功是，使用临时变量value接受服务器返回的信息并判断是否为[String: AnyObject]类型 如果是那么将其传给其定义方法中的success
-                    
+
                     if let value = response.result.value as? [String: AnyObject] {
-                        
+
 //                        if value["status"] as! Int == 1010 {
 //                            print("登录超时,请重新登录" as AnyObject)
 //                            return
 //                        }
-                        
+
                         success(value)
-                        
+
                     }
-               
-                    
+
+
                 case .failure(let error):
                     failture(error)
                     PrintLog(message: "error:\(error)")
                 }
         }
-        
+
         
     }
     //MARK: - POST 请求
@@ -113,18 +113,19 @@ extension NetworkRequest {
                                          "Accept": "application/json",
         ]
         
+
         
-        AF.request(urlString, method : HTTPMethod.post , parameters : params, encoding: URLEncoding.default ,  headers: headers).responseJSON { response in
+        Alamofire.request(urlString, method : HTTPMethod.post , parameters : params, encoding: URLEncoding.default ,  headers: headers).responseJSON { response in
 
             switch response.result{
             case .success:
                 if let value = response.result.value as? [String: AnyObject] {
- 
+
 //                    if value["status"] as! Int == 1010 {
 //                        print("登录超时,请重新登录" as AnyObject)
 //                        return
 //                    }
-                    
+
                     success(value)
                     //                    let json = JSON(value)
                     //                    PrintLog(message: json)
@@ -139,18 +140,18 @@ extension NetworkRequest {
         
         
 //        Alamofire.request(urlString, method : HTTPMethod.post , parameters : params, encoding: JSONEncoding.default ,  headers: headers).responseString { (response) in
-//            
+//
 //            print(response)
-//            
+//
 //            if let json = response.result.value {
 //                print("JSON: \(json)")
 //            }
-//            
-////            let dic = convertToDictionary(text: response.result);
-//            
 //
-//            
-//        }
+//            let dic = convertToDictionary(text: response.result);
+            
+
+            
+        }
         
         
 //        Alamofire.request(urlString, method: HTTPMethod.post, parameters: params).responseJSON { (response) in
@@ -167,8 +168,8 @@ extension NetworkRequest {
 //            }
 
 //        }
-    }
-    
+//    }
+
     //MARK: - 照片上传
     ///
     /// - Parameters:
