@@ -83,9 +83,9 @@
 		7403D16B21CF72940055561E /* getDeviceInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7403D16A21CF72940055561E /* getDeviceInfoModel.swift */; };
 		7403D16D21CF760A0055561E /* getDeviceInfoReturnObjModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7403D16C21CF760A0055561E /* getDeviceInfoReturnObjModel.swift */; };
 		7403D23721CF800A0055561E /* 点击.png in Resources */ = {isa = PBXBuildFile; fileRef = 7403D17021CF7FDC0055561E /* 点击.png */; };
-		7403D23821CF800A0055561E /* 站位图3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7403D17121CF7FDC0055561E /* 站位图3x.png */; };
+		7403D23821CF800A0055561E /* 站位图.png in Resources */ = {isa = PBXBuildFile; fileRef = 7403D17121CF7FDC0055561E /* 站位图.png */; };
 		7403D23921CF800A0055561E /* 未点击3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7403D17221CF7FDC0055561E /* 未点击3x.png */; };
-		7403D23A21CF800A0055561E /* 站位图.png in Resources */ = {isa = PBXBuildFile; fileRef = 7403D17321CF7FDC0055561E /* 站位图.png */; };
+		7403D23A21CF800A0055561E /* 站位图小.png in Resources */ = {isa = PBXBuildFile; fileRef = 7403D17321CF7FDC0055561E /* 站位图小.png */; };
 		7403D23B21CF800A0055561E /* 抢单3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7403D17421CF7FDC0055561E /* 抢单3x.png */; };
 		7403D23C21CF800A0055561E /* 抢单.png in Resources */ = {isa = PBXBuildFile; fileRef = 7403D17521CF7FDC0055561E /* 抢单.png */; };
 		7403D23D21CF800A0055561E /* 未点击.png in Resources */ = {isa = PBXBuildFile; fileRef = 7403D17621CF7FDC0055561E /* 未点击.png */; };
@@ -672,9 +672,9 @@
 		7403D16A21CF72940055561E /* getDeviceInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = getDeviceInfoModel.swift; sourceTree = "<group>"; };
 		7403D16C21CF760A0055561E /* getDeviceInfoReturnObjModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = getDeviceInfoReturnObjModel.swift; sourceTree = "<group>"; };
 		7403D17021CF7FDC0055561E /* 点击.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "点击.png"; sourceTree = "<group>"; };
-		7403D17121CF7FDC0055561E /* 站位图3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "站位图3x.png"; sourceTree = "<group>"; };
+		7403D17121CF7FDC0055561E /* 站位图.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "站位图.png"; sourceTree = "<group>"; };
 		7403D17221CF7FDC0055561E /* 未点击3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "未点击3x.png"; sourceTree = "<group>"; };
-		7403D17321CF7FDC0055561E /* 站位图.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "站位图.png"; sourceTree = "<group>"; };
+		7403D17321CF7FDC0055561E /* 站位图小.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "站位图小.png"; sourceTree = "<group>"; };
 		7403D17421CF7FDC0055561E /* 抢单3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "抢单3x.png"; sourceTree = "<group>"; };
 		7403D17521CF7FDC0055561E /* 抢单.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "抢单.png"; sourceTree = "<group>"; };
 		7403D17621CF7FDC0055561E /* 未点击.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "未点击.png"; sourceTree = "<group>"; };
@@ -1650,9 +1650,9 @@
 			isa = PBXGroup;
 			children = (
 				7403D17021CF7FDC0055561E /* 点击.png */,
-				7403D17121CF7FDC0055561E /* 站位图3x.png */,
+				7403D17121CF7FDC0055561E /* 站位图.png */,
 				7403D17221CF7FDC0055561E /* 未点击3x.png */,
-				7403D17321CF7FDC0055561E /* 站位图.png */,
+				7403D17321CF7FDC0055561E /* 站位图小.png */,
 				7403D17421CF7FDC0055561E /* 抢单3x.png */,
 				7403D17521CF7FDC0055561E /* 抢单.png */,
 				7403D17621CF7FDC0055561E /* 未点击.png */,
@@ -3199,7 +3199,7 @@
 				185C239021D749680004AD0C /* agreement.html in Resources */,
 				7403D2B121CF800A0055561E /* 暂无数据3x.png in Resources */,
 				744F753F21CFC07B0072326E /* meterReadingSignVC.xib in Resources */,
-				7403D23A21CF800A0055561E /* 站位图.png in Resources */,
+				7403D23A21CF800A0055561E /* 站位图小.png in Resources */,
 				7403D2B621CF800A0055561E /* 缴费.png in Resources */,
 				7403D2A721CF800A0055561E /* 定位.png in Resources */,
 				7403D25A21CF800A0055561E /* 确定点击.png in Resources */,
@@ -3251,7 +3251,7 @@
 				7403D24F21CF800A0055561E /* 加未点击3x.png in Resources */,
 				7403D29F21CF800A0055561E /* 切换3x.png in Resources */,
 				746A638B21DB9BEC0054C0C1 /* 位置@3x.png in Resources */,
-				7403D23821CF800A0055561E /* 站位图3x.png in Resources */,
+				7403D23821CF800A0055561E /* 站位图.png in Resources */,
 				7403D2F121CF800B0055561E /* 手机@3x.png in Resources */,
 				7403D2A621CF800A0055561E /* 骑行.png in Resources */,
 				7403D26021CF800A0055561E /* 签字点击.png in Resources */,

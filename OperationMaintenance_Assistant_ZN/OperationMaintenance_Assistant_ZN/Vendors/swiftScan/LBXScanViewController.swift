@@ -52,6 +52,11 @@ open class LBXScanViewController: UIViewController, UIImagePickerControllerDeleg
               // [self.view addSubview:_qRScanView];
         self.view.backgroundColor = UIColor.black
         self.edgesForExtendedLayout = UIRectEdge(rawValue: 0)
+        
+        
+        drawScanView()
+        
+        perform(#selector(LBXScanViewController.startScan), with: nil, afterDelay: 0.0)
     }
     
     open func setNeedCodeImage(needCodeImg:Bool)
@@ -71,9 +76,7 @@ open class LBXScanViewController: UIViewController, UIImagePickerControllerDeleg
         
         super.viewDidAppear(animated)
         
-        drawScanView()
-        
-        perform(#selector(LBXScanViewController.startScan), with: nil, afterDelay: 0.3)
+      
     }
     
     @objc open func startScan()

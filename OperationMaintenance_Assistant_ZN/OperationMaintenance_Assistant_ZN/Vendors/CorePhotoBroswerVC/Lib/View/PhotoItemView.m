@@ -106,7 +106,7 @@
     if(isNetWorkShow){//网络请求
         
         //创建imageView
-        UIImage *image = [UIImage phImageWithSize:[UIScreen mainScreen].bounds.size zoom:.3f];
+        UIImage *image = [UIImage phImageWithSize:[UIScreen mainScreen].bounds.size zoom:1.0f];
         
         self.photoImageView.image = image;
         
@@ -114,11 +114,18 @@
         
         [self.photoImageView imageWithUrlStr:_photoModel.image_HD_U phImage:image progressBlock:^(NSInteger receivedSize, NSInteger expectedSize, NSURL * _Nullable targetURL) {
             
-            _progressView.hidden = NO;
+            dispatch_async(dispatch_get_main_queue(), ^{
+                
+                _progressView.hidden = NO;
+                
+                CGFloat progress = receivedSize /((CGFloat)expectedSize);
+                
+                _progressView.progress = progress;
+                
+            });
             
-            CGFloat progress = receivedSize /((CGFloat)expectedSize);
             
-            _progressView.progress = progress;
+
             
         } completedBlock:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
             

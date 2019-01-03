@@ -83,13 +83,20 @@ extension NetworkRequest {
                 //当请求后response是我们自定义的，这个变量用于接受服务器响应的信息
                 //使用switch判断请求是否成功，也就是response的result
                 switch response.result {
-                case .success(let value):
+                case .success:
                     //当响应成功是，使用临时变量value接受服务器返回的信息并判断是否为[String: AnyObject]类型 如果是那么将其传给其定义方法中的success
-                    //                    if let value = response.result.value as? [String: AnyObject] {
-                    success(value as! [String : AnyObject])
-                    //                    }
-//                    let json = JSON(value)
-//                    PrintLog(message: json)
+                    
+                    if let value = response.result.value as? [String: AnyObject] {
+                        
+//                        if value["status"] as! Int == 1010 {
+//                            print("登录超时,请重新登录" as AnyObject)
+//                            return
+//                        }
+                        
+                        success(value)
+                        
+                    }
+               
                     
                 case .failure(let error):
                     failture(error)
@@ -112,6 +119,12 @@ extension NetworkRequest {
             switch response.result{
             case .success:
                 if let value = response.result.value as? [String: AnyObject] {
+ 
+//                    if value["status"] as! Int == 1010 {
+//                        print("登录超时,请重新登录" as AnyObject)
+//                        return
+//                    }
+                    
                     success(value)
                     //                    let json = JSON(value)
                     //                    PrintLog(message: json)

@@ -46,7 +46,6 @@ public struct NetworkService {
                 
             }) { (Error) in
                 
-//                YJProgressHUD.showMessage("网络连接错误！", in: UIApplication.shared.keyWindow, afterDelayTime: 2)
                 
                 ZNCustomAlertView.handleTip("网络开小差了，请稍后重试...", isShowCancelBtn: false, completion: { (isure) in
                     

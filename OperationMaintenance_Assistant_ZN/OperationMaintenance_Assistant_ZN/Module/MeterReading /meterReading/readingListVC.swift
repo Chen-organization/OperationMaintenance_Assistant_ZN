@@ -176,7 +176,7 @@ class readingListVC: UIViewController,UITableViewDelegate,UITableViewDataSource,
                     
                     let model : readingListReturnObjModel = self.dataArray[indexPath.row - num]
 
-                    orderNum = (indexPath.row - num).description
+                    orderNum = (indexPath.row - num + 1).description
                     name = model.deviceHisId ?? ""
                     meterNum = model.nowValue ?? ""
                     time = self.timeStampToString(timeStamp:model.createDate ?? "")
@@ -287,7 +287,15 @@ class readingListVC: UIViewController,UITableViewDelegate,UITableViewDataSource,
                 
             }else{
                 
-                ZNCustomAlertView.handleTip("未上传表底数图片！", isShowCancelBtn: true) { (issure) in}
+                //查看
+                PhotoBroswerVC.show(self, type: PhotoBroswerVCTypeModal, index: 0) { () -> [Any]? in
+                    
+                    let pbModel = PhotoModel()
+                    pbModel.mid = 1
+                    pbModel.image = UIImage.init(named: "站位图")
+                    
+                    return [pbModel]
+                }
             }
             
         }else{
@@ -313,7 +321,15 @@ class readingListVC: UIViewController,UITableViewDelegate,UITableViewDataSource,
                     }
                 }else{
                     
-                    ZNCustomAlertView.handleTip("未上传表底数图片！", isShowCancelBtn: true) { (issure) in}
+                    //查看
+                    PhotoBroswerVC.show(self, type: PhotoBroswerVCTypeModal, index: 0) { () -> [Any]? in
+                        
+                        let pbModel = PhotoModel()
+                        pbModel.mid = 1
+                        pbModel.image = UIImage.init(named: "站位图")
+                        
+                        return [pbModel]
+                    }
                     
                 }
                 

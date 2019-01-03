@@ -855,7 +855,17 @@ class readingVC: UITableViewController,ScanViewControllerDelegate,UIGestureRecog
                 
             }else{
                 
-                ZNCustomAlertView.handleTip("未上传表底数图片！", isShowCancelBtn: true) { (issure) in}
+                
+                //查看
+                PhotoBroswerVC.show(self, type: PhotoBroswerVCTypeModal, index: 0) { () -> [Any]? in
+                    
+                    let pbModel = PhotoModel()
+                    pbModel.mid = 1
+                    pbModel.image = UIImage.init(named: "站位图")
+                    
+                    return [pbModel]
+                }
+                
             }
             
         }else{
@@ -879,7 +889,15 @@ class readingVC: UITableViewController,ScanViewControllerDelegate,UIGestureRecog
                     }
                 }else{
                     
-                    ZNCustomAlertView.handleTip("未上传表底数图片！", isShowCancelBtn: true) { (issure) in}
+                    //查看
+                    PhotoBroswerVC.show(self, type: PhotoBroswerVCTypeModal, index: 0) { () -> [Any]? in
+                        
+                        let pbModel = PhotoModel()
+                        pbModel.mid = 1
+                        pbModel.image = UIImage.init(named: "站位图")
+                        
+                        return [pbModel]
+                    }
                     
                 }
                 
@@ -1007,14 +1025,13 @@ class readingVC: UITableViewController,ScanViewControllerDelegate,UIGestureRecog
         let net = NetworkReachabilityManager()
         if net?.isReachable ?? false {
             
-            self.getRecordList(deviceNo: answer
-            )
-            self.getMeterInfo(deviceKey: answer)
 
-//            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.25) {
-//
-//
-//            }
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.25) {
+                self.getRecordList(deviceNo: answer)
+                self.getMeterInfo(deviceKey: answer)
+
+
+            }
             
             
         }else{
@@ -1051,7 +1068,7 @@ class readingVC: UITableViewController,ScanViewControllerDelegate,UIGestureRecog
                         
                         self.meterNo.text = model.returnObj?.deviceNo!
                         self.nultL.text = "X" + String(describing: (model.returnObj?.multiplyingPower)!)
-                        self.lastTimeMeterNumL.text = "上次:" + String(describing: (model.returnObj?.lastNowValue)!) + "kW·h"
+                        self.lastTimeMeterNumL.text = "上次:" + String(describing: (model.returnObj?.lastNowValue)!) + (model.returnObj?.measureUnit ?? "")
                         
                         self.nameL.text = "名称：" + (model.returnObj?.deviceName)!
                         self.meterNoL.text = "表号：" + (model.returnObj?.deviceNo)!
@@ -1067,10 +1084,14 @@ class readingVC: UITableViewController,ScanViewControllerDelegate,UIGestureRecog
                         
                     }else{
                         
+                        DispatchQueue.main.after(0.3) {
+                            
+                            ZNCustomAlertView.handleTip("设备不存在", isShowCancelBtn: false, completion: { (isSure) in
+                                
+                            })
+                        }
                         
-                        ZNCustomAlertView.handleTip("设备不存在", isShowCancelBtn: false, completion: { (isSure) in
-                    
-                      })
+
                         
                     }
                     
