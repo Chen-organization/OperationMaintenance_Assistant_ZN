@@ -139,13 +139,13 @@ class readingVC: UITableViewController,ScanViewControllerDelegate,UIGestureRecog
     
     @objc func meterNoChanged() {
 
-        if self.meterNo.text?.characters.count == 16 {
-            
-            self.searchBtnClick(UIButton())
-            
-            self.getRecordList(deviceNo: self.meterNo.text!)
-            
-        }
+//        if self.meterNo.text?.characters.count == 16 {
+//
+////            self.searchBtnClick(UIButton())
+////
+////            self.getRecordList(deviceNo: self.meterNo.text!)
+//
+//        }
         
     }
     
@@ -212,7 +212,7 @@ class readingVC: UITableViewController,ScanViewControllerDelegate,UIGestureRecog
                 vc.meterName = self.deviceInfoModel?.deviceName ?? ""
                 vc.lastTimeMeterNum = self.deviceInfoModel?.lastNowValue?.description ?? ""
                 vc.NowMeterNum = self.nowNum.text ?? ""
-                vc.meterNoStr = self.deviceInfoModel?.deviceNo ?? ""
+                vc.meterNoStr = self.meterNo.text ?? ""
 
                 vc.num = ""
 
@@ -284,7 +284,7 @@ class readingVC: UITableViewController,ScanViewControllerDelegate,UIGestureRecog
                 let model : readingListReturnObjModel = self.beforMeterArr[indexPath.row - self.meterArr.count] as! readingListReturnObjModel
                 
                 cell.nameL.text = model.deviceHisId ?? ""
-                cell.value0.text = model.nowValue ?? ""
+                cell.value0.text = String(format:"%.2f", Double(model.nowValue ?? "0") ?? 0)
                 cell.value1.text = self.timeStampToString(timeStamp: model.createDate ?? "")
                 
                 cell.index = indexPath.row
@@ -292,9 +292,7 @@ class readingVC: UITableViewController,ScanViewControllerDelegate,UIGestureRecog
                 //判断时间 一小时内最近能修改
                 var candelete = false
 
-                let betowen = Int(self.milliStamp)! - Int(model.createDate!)!
-                
-                if betowen/1000 >=  60 * 60 {
+                if Int(self.NowHourMilliStamp)! >= Int(model.createDate!)! {
                     
                     candelete = false
                 }else{
@@ -327,9 +325,10 @@ class readingVC: UITableViewController,ScanViewControllerDelegate,UIGestureRecog
                 let model : writeMeterModel = self.meterArr[indexPath.row] as! writeMeterModel
                 
                 cell.nameL.text = model.deviceName ?? ""
-                cell.value0.text = model.value ?? ""
+//                cell.value0.text = model.value ?? ""
                 cell.value1.text = self.timeStampToString(timeStamp: model.time ?? "")
-                
+                cell.value0.text = String(format:"%.2f", Double(model.value ?? "0") ?? 0)
+
                 cell.index = indexPath.row
                 
                 cell.setTitleColor(isLocal: true)
@@ -444,11 +443,11 @@ class readingVC: UITableViewController,ScanViewControllerDelegate,UIGestureRecog
             // 3 、 上次表底数比较
             var isRight = true
             
-            if let num = Int(self.nowNum.text!) {
+            if let num = Double(self.nowNum.text!) {
                 
                 if let last = self.deviceInfoModel?.lastNowValue {
                     
-                    isRight =  num >= Int(last) ? true : false
+                    isRight =  num >= Double(last) ? true : false
                     
                 }
             }
@@ -596,15 +595,19 @@ class readingVC: UITableViewController,ScanViewControllerDelegate,UIGestureRecog
                     let model :BaseModel = obj as! BaseModel
                     if model.statusCode == 800 {
                         
-                        self.getRecordList(deviceNo:self.meterNo.text!)
+                        self.getRecordList(deviceNo:self.deviceInfoModel?.deviceNo ?? "")
 
-                        //清空页面本次提交数据
-                        self.cleanPageMeterdData()
                         
                         self.overContentViewH.constant = 0
                         self.overContentView.isHidden = true
                         
                         ZNCustomAlertView.handleTip("提交成功", isShowCancelBtn: false, completion: { (issure) in
+                            
+                            if issure {
+                                
+                                //清空页面本次提交数据
+                                self.cleanPageMeterdData()
+                            }
                             
                         })
                     }else{
@@ -742,6 +745,8 @@ class readingVC: UITableViewController,ScanViewControllerDelegate,UIGestureRecog
         }
         
         self.getMeterInfo(deviceKey: self.meterNo.text!)
+
+//        self.getRecordList(deviceNo: self.meterNo.text!)
 
         
 //        //无网络判断
@@ -1030,7 +1035,7 @@ class readingVC: UITableViewController,ScanViewControllerDelegate,UIGestureRecog
             
 
             DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.25) {
-                self.getRecordList(deviceNo: answer)
+
                 self.getMeterInfo(deviceKey: answer)
 
 
@@ -1069,15 +1074,26 @@ class readingVC: UITableViewController,ScanViewControllerDelegate,UIGestureRecog
                         
                         self.deviceInfoModel = model.returnObj
                         
-                        self.meterNo.text = model.returnObj?.deviceNo!
+                        if model.returnObj?.deviceNum?.characters.count ?? 0 > 0{
+                            
+                            self.meterNo.text = model.returnObj?.deviceNum!
+
+                        }else{
+                            
+                            self.meterNo.text = model.returnObj?.deviceNo!
+
+                        }
+                        
                         self.nultL.text = "X" + String(describing: (model.returnObj?.multiplyingPower)!)
-                        self.lastTimeMeterNumL.text = "上次:" + String(describing: (model.returnObj?.lastNowValue)!) + (model.returnObj?.measureUnit ?? "")
+                        self.lastTimeMeterNumL.text = "上次:" + String(format:"%.2f",(model.returnObj?.lastNowValue) ?? 0) + (model.returnObj?.measureUnit ?? "")
                         
                         self.nameL.text = "名称：" + (model.returnObj?.deviceName)!
                         self.meterNoL.text = "表号：" + (model.returnObj?.deviceNo)!
                         self.addressL.text = "位置：" + (model.returnObj?.installSite)!
                         self.projectNameL.text = "项目：" + (model.returnObj?.stationName)!
                         
+                        //获取记录
+                        self.getRecordList(deviceNo: model.returnObj?.deviceNo ?? "")
    
                         DispatchQueue.main.after(0.3) {
                             
@@ -1092,6 +1108,10 @@ class readingVC: UITableViewController,ScanViewControllerDelegate,UIGestureRecog
                             ZNCustomAlertView.handleTip("设备不存在", isShowCancelBtn: false, completion: { (isSure) in
                                 
                             })
+                            
+                            //清空页面本次数据
+                            self.cleanPageMeterdData()
+                            
                         }
                         
 
@@ -1125,9 +1145,26 @@ class readingVC: UITableViewController,ScanViewControllerDelegate,UIGestureRecog
                 
                 let model:DownloadMeterDicReturnObjModel = arr.firstObject as! DownloadMeterDicReturnObjModel
                 
-                self.meterNo.text = model.id
+                if let deviceNum = model.deviceNum {
+                    
+                    if deviceNum.characters.count > 0 {
+                        
+                        self.meterNo.text = deviceNum
+
+                    }else{
+                        
+                        self.meterNo.text = model.id
+
+                    }
+                    
+                }else{
+                    
+                    self.meterNo.text = model.id
+
+                }
+                
                 self.nultL.text = "X" + String(describing: (model.multiplyingPower)!)
-                self.lastTimeMeterNumL.text = "上次:" + String(describing: (model.nowValue))
+                self.lastTimeMeterNumL.text = "上次:" + String(format:"%.2f",model.nowValue)  + (model.measureUnit ?? "")
                 
                 self.nameL.text = "名称：" + (model.name)!
                 self.meterNoL.text = "表号：" + (model.id)!
@@ -1283,9 +1320,25 @@ class readingVC: UITableViewController,ScanViewControllerDelegate,UIGestureRecog
     }
     
     
-    /// 获取当前 毫秒级 时间戳 - 13位
+    /// 获取当前整点 毫秒级 时间戳 - 13位
+    var NowHourMilliStamp : String {
+        
+        let date = NSDate()
+        let timeFormatter = DateFormatter()
+        timeFormatter.dateFormat = "yyyy-MM-dd HH"
+        let strNowTime = timeFormatter.string(from: date as Date) as String
+        
+        let hourDate = timeFormatter.date(from: strNowTime)
+        
+        let timeInterval: TimeInterval = (hourDate?.timeIntervalSince1970)!
+        let millisecond = CLongLong(round(timeInterval*1000))
+        return "\(millisecond)"
+    }
+    
+    /// 获取当前时间 毫秒级 时间戳 - 13位
     var milliStamp : String {
-        let timeInterval: TimeInterval = NSDate().timeIntervalSince1970
+        
+        let timeInterval: TimeInterval = Date().timeIntervalSince1970
         let millisecond = CLongLong(round(timeInterval*1000))
         return "\(millisecond)"
     }
@@ -1301,7 +1354,7 @@ class readingVC: UITableViewController,ScanViewControllerDelegate,UIGestureRecog
             let date = NSDate(timeIntervalSince1970: timeSta)
             let dfmatter = DateFormatter()
             //yyyy-MM-dd HH:mm:ss
-            dfmatter.dateFormat="MM-dd HH:mm"
+            dfmatter.dateFormat="MM-dd HH:mm:ss"
             return dfmatter.string(from: date as Date)
             
         }

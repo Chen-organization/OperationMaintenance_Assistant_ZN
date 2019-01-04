@@ -165,9 +165,9 @@ class readingListVC: UIViewController,UITableViewDelegate,UITableViewDataSource,
                     
                     
                     name = model.deviceName ?? ""
-                    meterNum = model.value ?? ""
+//                    meterNum = model.value ?? ""
                     time = self.timeStampToString(timeStamp: model.time ?? "")
-                    
+                    meterNum = String(format:"%.2f",Double(model.value ?? "0") ?? 0)
                     
                     cell.setTitleColor(isLocal: true)
                     cell.setCanDelete(CanDelete: true)
@@ -178,16 +178,18 @@ class readingListVC: UIViewController,UITableViewDelegate,UITableViewDataSource,
 
                     orderNum = (indexPath.row - num + 1).description
                     name = model.deviceHisId ?? ""
-                    meterNum = model.nowValue ?? ""
+//                    meterNum = model.nowValue ?? ""
+                    meterNum = String(format:"%.2f",Double(model.nowValue ?? "0") ?? 0)
+
                     time = self.timeStampToString(timeStamp:model.createDate ?? "")
                     
                     //判断时间 一小时内能修改
                     var candelete = false
                     
-                    let betowen = Int(self.milliStamp)! - Int(model.createDate!)!
+//                    let betowen = Int(self.milliStamp)! - Int(model.createDate!)!
                     
-                    if betowen/1000 >=  60 * 60 {
-                        
+                    if Int(self.NowHourMilliStamp)! >= Int(model.createDate!)! {
+
                         candelete = false
                     }else{
                         
@@ -463,6 +465,20 @@ class readingListVC: UIViewController,UITableViewDelegate,UITableViewDataSource,
    
     }
     
+    /// 获取当前整点 毫秒级 时间戳 - 13位
+    var NowHourMilliStamp : String {
+        
+        let date = NSDate()
+        let timeFormatter = DateFormatter()
+        timeFormatter.dateFormat = "yyyy-MM-dd HH"
+        let strNowTime = timeFormatter.string(from: date as Date) as String
+        
+        let hourDate = timeFormatter.date(from: strNowTime)
+        
+        let timeInterval: TimeInterval = (hourDate?.timeIntervalSince1970)!
+        let millisecond = CLongLong(round(timeInterval*1000))
+        return "\(millisecond)"
+    }
     
     
     /// 获取当前 毫秒级 时间戳 - 13位
@@ -483,7 +499,7 @@ class readingListVC: UIViewController,UITableViewDelegate,UITableViewDataSource,
             let date = NSDate(timeIntervalSince1970: timeSta)
             let dfmatter = DateFormatter()
             //yyyy-MM-dd HH:mm:ss
-            dfmatter.dateFormat="MM-dd HH:mm"
+            dfmatter.dateFormat="MM-dd HH:mm:ss"
             return dfmatter.string(from: date as Date)
             
         }

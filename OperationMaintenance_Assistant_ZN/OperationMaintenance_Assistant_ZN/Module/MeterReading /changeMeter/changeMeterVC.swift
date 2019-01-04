@@ -95,6 +95,16 @@ class changeMeterVC: UITableViewController,ScanViewControllerDelegate,UIGestureR
         
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        
+        super.viewWillDisappear(animated)
+        
+        self.dropDownMenu.closeAllComponents(animated: false)
+        
+    }
+    
+    
+    
     //MARK: - 设备更换原因 获取
 
     func getChangeReason(meterNo:String) {
@@ -608,13 +618,13 @@ class changeMeterVC: UITableViewController,ScanViewControllerDelegate,UIGestureR
             }
             return
         }
-        if self.remainNum.text == "" {
-            
-            ZNCustomAlertView.handleTip("请输入余量", isShowCancelBtn: false) { (issure) in
-                
-            }
-            return
-        }
+//        if self.remainNum.text == "" {
+//
+//            ZNCustomAlertView.handleTip("请输入余量", isShowCancelBtn: false) { (issure) in
+//
+//            }
+//            return
+//        }
         
         if ((self.selectedRepaireTypeModel == nil)){
             
