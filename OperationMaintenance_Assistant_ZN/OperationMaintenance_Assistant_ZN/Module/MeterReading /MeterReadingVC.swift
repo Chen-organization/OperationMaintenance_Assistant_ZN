@@ -186,9 +186,11 @@ class MeterReadingVC: UITableViewController {
         if self.uploadNum == RealmTool.getMetersReadingData().count {
             
             YJProgressHUD.hide()
-
+            
+            //跟新字典表
+            self.downloadMeterDic()
+            
             if self.deleteTimeArr.count > 0 {
-                
                 
                 for time in deleteTimeArr{
                     

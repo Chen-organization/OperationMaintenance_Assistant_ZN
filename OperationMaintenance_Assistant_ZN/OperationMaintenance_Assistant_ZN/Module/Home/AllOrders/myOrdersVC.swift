@@ -7,7 +7,7 @@
 //
 
 enum ordersTableViewType : Int {
-    case repair=1, repairing, repaired
+    case repair=0, repairing, repaired
 }
 
 import UIKit
@@ -15,7 +15,9 @@ import UIKit
 
 class myOrdersVC:UIViewController,MXSegmentedPagerDelegate, MXSegmentedPagerDataSource,UITableViewDelegate,UITableViewDataSource,PullTableViewDelegate {
 
-    var selectedIndex = 0
+    var selectedIndex : ordersTableViewType = ordersTableViewType.repair
+    
+    var nowPage = 1
     
     
     let segmentedPager = MXSegmentedPager()
@@ -23,6 +25,11 @@ class myOrdersVC:UIViewController,MXSegmentedPagerDelegate, MXSegmentedPagerData
     var repairTableview = BasePullTableView()
     var repairingTableview = BasePullTableView()
     var repairedTableview = BasePullTableView()
+    
+    
+    var repairArr = [myOrdersReturnObjModel]()
+    var repairingArr = [myOrdersReturnObjModel]()
+    var repairedArr = [myOrdersReturnObjModel]()
 
 
     
@@ -71,11 +78,36 @@ class myOrdersVC:UIViewController,MXSegmentedPagerDelegate, MXSegmentedPagerData
         self.repairingTableview.pullDelegate = self
         self.repairedTableview.pullDelegate = self
         
+        self.repairTableview.separatorStyle = UITableViewCell.SeparatorStyle.singleLine
+        self.repairingTableview.separatorStyle = UITableViewCell.SeparatorStyle.singleLine
+        self.repairingTableview.separatorStyle = UITableViewCell.SeparatorStyle.singleLine
+
+        
+        self.repairTableview.separatorColor = RGBCOLOR(r: 240, 240, 240)
+        self.repairingTableview.separatorColor = RGBCOLOR(r: 240, 240, 240)
+        self.repairedTableview.separatorColor = RGBCOLOR(r: 240, 240, 240)
+        
+        let line = UIView()
+        line.backgroundColor = RGBCOLOR(r: 240, 240, 240)
+        line.height = 0.5
+        self.repairTableview.tableFooterView = line
+        
+        let line1 = UIView()
+        line1.backgroundColor = RGBCOLOR(r: 240, 240, 240)
+        line1.height = 0.5
+        self.repairingTableview.tableFooterView = line1
+        
+        let line2 = UIView()
+        line2.backgroundColor = RGBCOLOR(r: 240, 240, 240)
+        line2.height = 0.5
+        self.repairedTableview.tableFooterView = line
+        
+        
         self.repairTableview.register(UINib.init(nibName: "MyOrdersCell", bundle: nil), forCellReuseIdentifier: MyOrdersCell_id)
         self.repairingTableview.register(UINib.init(nibName: "MyOrdersCell", bundle: nil), forCellReuseIdentifier: MyOrdersCell_id)
         self.repairedTableview.register(UINib.init(nibName: "MyOrdersCell", bundle: nil), forCellReuseIdentifier: MyOrdersCell_id)
 
-        
+        self.getDataWith(page: 1, type: self.selectedIndex)
 
         // Do any additional setup after loading the view.
     }
@@ -87,7 +119,7 @@ class myOrdersVC:UIViewController,MXSegmentedPagerDelegate, MXSegmentedPagerData
         view.setNeedsLayout()
         view.layoutIfNeeded()
         
-        segmentedPager.pager.showPage(at: selectedIndex, animated: false)
+        segmentedPager.pager.showPage(at: selectedIndex.rawValue, animated: false)
 
     }
     
@@ -102,7 +134,107 @@ class myOrdersVC:UIViewController,MXSegmentedPagerDelegate, MXSegmentedPagerData
     //MARK: - 数据
     func getDataWith(page:Int , type:ordersTableViewType) {
         
-        
+        UserCenter.shared.userInfo { (islogin, user) in
+            
+            var para = [
+            
+                "empName":user.empName,
+                "orgCode":user.companyCode,
+                "companyCode":user.companyCode,
+                "start":page.description,
+                "ord": "10",
+                "state":"0",
+                "id":user.empNo
+            ]
+            
+            switch (type){
+
+                case ordersTableViewType.repair :
+                para["code"] = "3"
+                    break
+            case ordersTableViewType.repairing :
+                para["code"] = "4"
+                    break
+            case ordersTableViewType.repaired:
+                para["code"] = "5"
+                    break
+                default :
+                    break
+                
+            }
+            
+            NetworkService.networkPostrequest(currentView: self.view, parameters: para as [String : Any], requestApi: getWorkFristUrl, modelClass: "myOrdersModel", response: { (obj) in
+                
+                let model : myOrdersModel = obj as! myOrdersModel
+                
+                if model.statusCode == 800 {
+                    
+                    if page == 1 {
+                        
+                        
+                        switch (type){
+                            
+                        case ordersTableViewType.repair :
+                            self.repairArr = model.returnObj ?? []
+                            break
+                        case ordersTableViewType.repairing :
+                            self.repairingArr = model.returnObj ?? []
+                            break
+                        case ordersTableViewType.repaired:
+                            self.repairedArr = model.returnObj ?? []
+
+                            break
+                        default :
+                            break
+                            
+                        }
+                        
+                    }else{
+                        
+                        switch (type){
+                            
+                        case ordersTableViewType.repair :
+                            self.repairArr += model.returnObj ?? []
+                            break
+                        case ordersTableViewType.repairing :
+                            self.repairingArr += model.returnObj ?? []
+                            break
+                        case ordersTableViewType.repaired:
+                            self.repairedArr += model.returnObj ?? []
+                            
+                            break
+                        default :
+                            break
+                            
+                        }
+                        
+                    }
+                    
+                    
+                    self.repairTableview.reloadData()
+                    self.repairTableview.mj_header.endRefreshing()
+                    self.repairTableview.mj_footer.endRefreshing()
+                    
+                    self.repairingTableview.reloadData()
+                    self.repairingTableview.mj_header.endRefreshing()
+                    self.repairingTableview.mj_footer.endRefreshing()
+                    
+                    self.repairedTableview.reloadData()
+                    self.repairedTableview.mj_header.endRefreshing()
+                    self.repairedTableview.mj_footer.endRefreshing()
+                    
+                    
+
+                }
+                
+                
+            }, failture: { (error) in
+                
+                
+                
+            })
+            
+        }
         
     }
     
@@ -126,6 +258,33 @@ class myOrdersVC:UIViewController,MXSegmentedPagerDelegate, MXSegmentedPagerData
         return [repairTableview,repairingTableview,repairedTableview][index]
     }
 
+    func segmentedPager(_ segmentedPager: MXSegmentedPager, didSelect view: UIView) {
+        
+        if segmentedPager.pager.indexForSelectedPage == ordersTableViewType.repair.rawValue {
+            
+            if !(self.repairArr.count > 0){
+                
+                self.getDataWith(page: 1, type: ordersTableViewType.repair)
+            }
+            
+        }else if segmentedPager.pager.indexForSelectedPage == ordersTableViewType.repairing.rawValue {
+            
+            if !(self.repairingArr.count > 0){
+                
+                self.getDataWith(page: 1, type: ordersTableViewType.repairing)
+            }
+            
+        }else {
+            
+            
+                if !(self.repairedArr.count > 0){
+                    
+                    self.getDataWith(page: 1, type: ordersTableViewType.repaired)
+                }
+            
+        }
+        
+    }
     
     // MARK: - TableView Delegate  DataSource
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -135,14 +294,70 @@ class myOrdersVC:UIViewController,MXSegmentedPagerDelegate, MXSegmentedPagerData
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return 20
+        switch (tableView.tag){
+            
+        case 0 :
+            return self.repairArr.count
+        case 1 :
+            return self.repairingArr.count
+            
+        case 2:
+            return self.repairedArr.count
+            
+        default :
+            break
+            
+        }
+        
+        return 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell : MyOrdersCell = tableView.dequeueReusableCell(withIdentifier: MyOrdersCell_id, for: indexPath) as! MyOrdersCell
         
+        var model = myOrdersReturnObjModel()
+        
+        if tableView.tag == ordersTableViewType.repair.rawValue {
+            
+            model = self.repairArr[indexPath.row]
+            
+        } else if tableView.tag == ordersTableViewType.repairing.rawValue {
+            
+            model = self.repairingArr[indexPath.row]
 
+        }else if tableView.tag == ordersTableViewType.repaired.rawValue {
+            
+            model = self.repairedArr[indexPath.row]
+
+        }
+ 
+        cell.imgView.kf.setImage(with: URL.init(string:model.imgs ?? ""), placeholder: UIImage.init(named: "站位图"), options: nil, progressBlock: { (a, b) in
+            
+        }, completionHandler: { (img) in
+            
+        })
+        
+        cell.titleL.text = (model.zc ?? "") + "|" + (model.zg ?? "")
+        cell.orderNoL.text = model.id ?? ""
+        cell.contentL.text = model.zv ?? ""
+        cell.addressL.text = model.zb ?? ""
+        cell.bottom1.text = model.zu ?? ""
+        cell.bottom2.text = model.zd ?? ""
+        
+        if let distance = model.distance{
+            
+            cell.distanceL.text = String(format:"%.1f", Double(distance/1000)) + "km"
+            
+        }else{
+            
+            cell.distanceL.text = "0.0km"
+
+        }
+        
+        let hourStr = ((model.timedifference ?? 0) / 1000 / 60 / 60 ).description + "小时"
+        let minStr = ((model.timedifference ?? 0) / 1000 / 60 %  60 ).description + "分钟"
+        cell.TimeL.text =  hourStr + minStr
         
         return cell
         
@@ -150,12 +365,27 @@ class myOrdersVC:UIViewController,MXSegmentedPagerDelegate, MXSegmentedPagerData
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
-        return 140
+        return 115
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         tableView.deselectRow(at: indexPath, animated: true)
+        
+        
+        if tableView.tag == ordersTableViewType.repair.rawValue{
+            
+            
+            
+        }else if tableView.tag == ordersTableViewType.repair.rawValue{
+            
+            
+            
+        }else if tableView.tag == ordersTableViewType.repair.rawValue{
+            
+            
+            
+        }
         
         
         
@@ -164,13 +394,14 @@ class myOrdersVC:UIViewController,MXSegmentedPagerDelegate, MXSegmentedPagerData
     
     func pullTableViewDidTriggerRefresh(_ pullTableView: BasePullTableView!) {
         
-        
+        self.getDataWith(page: 1, type: ordersTableViewType(rawValue: (pullTableView!.tag)) ?? ordersTableViewType(rawValue: 0)!)
     }
     
     func pullTableViewDidTriggerLoadMore(_ pullTableView: BasePullTableView!) {
         
         
-        
+        self.getDataWith(page: self.nowPage + 1, type: ordersTableViewType(rawValue: (pullTableView?.tag)!)!)
+
     }
     
     /*

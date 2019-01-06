@@ -285,6 +285,9 @@
 		742CAF1621DB67BF0022648E /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 742CAF1521DB67BF0022648E /* libsqlite3.0.tbd */; };
 		742CAF1821DB67C80022648E /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 742CAF1721DB67C80022648E /* CoreTelephony.framework */; };
 		742CAF1A21DB67D80022648E /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 742CAF1921DB67D80022648E /* libc++.tbd */; };
+		7430E33821E20B8100A9B8BD /* myOrdersModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7430E33721E20B8100A9B8BD /* myOrdersModel.swift */; };
+		7430E33A21E20BA200A9B8BD /* myOrdersReturnObjModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7430E33921E20BA200A9B8BD /* myOrdersReturnObjModel.swift */; };
+		7430E33E21E267FB00A9B8BD /* CheckVerson.m in Sources */ = {isa = PBXBuildFile; fileRef = 7430E33C21E267FB00A9B8BD /* CheckVerson.m */; };
 		744F753321CF97F20072326E /* LBXScanNetAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 744F752C21CF97F20072326E /* LBXScanNetAnimation.swift */; };
 		744F753421CF97F20072326E /* LBXScanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 744F752D21CF97F20072326E /* LBXScanView.swift */; };
 		744F753521CF97F20072326E /* LBXScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 744F752E21CF97F20072326E /* LBXScanViewController.swift */; };
@@ -867,6 +870,10 @@
 		742CAF1521DB67BF0022648E /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
 		742CAF1721DB67C80022648E /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		742CAF1921DB67D80022648E /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+		7430E33721E20B8100A9B8BD /* myOrdersModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = myOrdersModel.swift; sourceTree = "<group>"; };
+		7430E33921E20BA200A9B8BD /* myOrdersReturnObjModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = myOrdersReturnObjModel.swift; sourceTree = "<group>"; };
+		7430E33C21E267FB00A9B8BD /* CheckVerson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckVerson.m; sourceTree = "<group>"; };
+		7430E33D21E267FB00A9B8BD /* CheckVerson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckVerson.h; sourceTree = "<group>"; };
 		744F752C21CF97F20072326E /* LBXScanNetAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LBXScanNetAnimation.swift; sourceTree = "<group>"; };
 		744F752D21CF97F20072326E /* LBXScanView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LBXScanView.swift; sourceTree = "<group>"; };
 		744F752E21CF97F20072326E /* LBXScanViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LBXScanViewController.swift; sourceTree = "<group>"; };
@@ -1937,6 +1944,7 @@
 		742CAEE121DB56430022648E /* MyOrders */ = {
 			isa = PBXGroup;
 			children = (
+				7430E33B21E23F4400A9B8BD /* OrderDetails */,
 				746A63AD21DE85DD0054C0C1 /* Model */,
 				746A63AC21DE85D10054C0C1 /* View */,
 				749DFD5321DB7AD600BA6BA8 /* myOrdersVC.swift */,
@@ -2007,6 +2015,13 @@
 				742CAEFF21DB66420022648E /* BaiduMapAPI_Cloud.framework */,
 			);
 			path = BaiduMap_IOSSDK_v4.2.1_Frameworks;
+			sourceTree = "<group>";
+		};
+		7430E33B21E23F4400A9B8BD /* OrderDetails */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = OrderDetails;
 			sourceTree = "<group>";
 		};
 		744F752B21CF97F20072326E /* swiftScan */ = {
@@ -2185,6 +2200,8 @@
 		746A63AD21DE85DD0054C0C1 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				7430E33721E20B8100A9B8BD /* myOrdersModel.swift */,
+				7430E33921E20BA200A9B8BD /* myOrdersReturnObjModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -2958,6 +2975,8 @@
 				746423CE21D2FBDE0038E8E3 /* View */,
 				7477EAF421C2A50B00AAA756 /* HomeVC.swift */,
 				746423CC21D2E96A0038E8E3 /* Home.storyboard */,
+				7430E33D21E267FB00A9B8BD /* CheckVerson.h */,
+				7430E33C21E267FB00A9B8BD /* CheckVerson.m */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -3455,6 +3474,8 @@
 				181AC43121D788760018ADAD /* UIScrollView+MJRefresh.m in Sources */,
 				181AC43521D788760018ADAD /* NSBundle+MJRefresh.m in Sources */,
 				7477E88321C1701E00AAA756 /* UIView+Common.m in Sources */,
+				7430E33821E20B8100A9B8BD /* myOrdersModel.swift in Sources */,
+				7430E33E21E267FB00A9B8BD /* CheckVerson.m in Sources */,
 				7477EAC021C1712300AAA756 /* View+MASAdditions.m in Sources */,
 				742CAEA721D528A50022648E /* agreenmentVC.swift in Sources */,
 				181AC43C21D788760018ADAD /* MJRefreshAutoNormalFooter.m in Sources */,
@@ -3514,6 +3535,7 @@
 				7477EA9D21C1712300AAA756 /* SDImageCache.m in Sources */,
 				7477EAAA21C1712300AAA756 /* YJProgressHUD.m in Sources */,
 				7477EAA821C1712300AAA756 /* UIButton+WebCache.m in Sources */,
+				7430E33A21E20BA200A9B8BD /* myOrdersReturnObjModel.swift in Sources */,
 				185C234021D47A500004AD0C /* readinglistCell.swift in Sources */,
 				7477EA9F21C1712300AAA756 /* SDWebImageTransition.m in Sources */,
 				7477EAA121C1712300AAA756 /* UIImageView+WebCache.m in Sources */,

@@ -67,3 +67,8 @@ public let getRepairsClassUrl = baseURL + "/fieldRepairs/getRepairsClass"
 public let getRepairsTypeUrl = baseURL + "/fieldRepairs/getRepairsTypeByClass"
 //1.1.    现场报修提交
 public let commitUrl = baseURL + "/fieldRepairs/commit"
+
+//工单首页 ,抢单池列表，我的工单整合接口:
+public let getWorkFristUrl = baseURL + "/first/getWorkFrist"
+
+

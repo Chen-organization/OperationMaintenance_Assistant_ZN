@@ -86,6 +86,8 @@ class readingVC: UITableViewController,ScanViewControllerDelegate,UIGestureRecog
         self.meterNo.delegate = self;
         self.meterNo.addTarget(self, action: #selector(meterNoChanged), for: UIControl.Event.editingChanged)
         
+         self.nowNum.addTarget(self, action: #selector(nowNumChanged), for: UIControl.Event.editingChanged)
+        
         
         // 返回按钮
         let backButton = UIButton(type: .custom)
@@ -104,8 +106,7 @@ class readingVC: UITableViewController,ScanViewControllerDelegate,UIGestureRecog
 
         
         //隐藏超量程
-        self.overContentView.isHidden = true
-        self.overContentViewH.constant = 0
+        self.hideOverMeter()
         self.overContentView.backgroundColor = .white
         
     }
@@ -135,6 +136,16 @@ class readingVC: UITableViewController,ScanViewControllerDelegate,UIGestureRecog
 //            .instantiateViewController(withIdentifier: "readingListVC") as! readingListVC
         self.navigationController?.pushViewController(readingListVC(), animated: true)
         
+    }
+    
+    @objc func nowNumChanged(){
+    
+        if self.nowNum.text?.characters.count == 0 {
+        
+            self.hideOverMeter()
+            
+        }
+    
     }
     
     @objc func meterNoChanged() {
@@ -188,30 +199,10 @@ class readingVC: UITableViewController,ScanViewControllerDelegate,UIGestureRecog
                 //签名
                 let vc = meterReadingSignVC()
                 vc.signDelegate = self
-//
-//                if let name = self.deviceInfoModel?.deviceName{
-//
-//                    vc.meterNameL.text = name
-//                }
-//
-//                if let lastimeNum = self.deviceInfoModel?.lastNowValue?.description{
-//
-//                     vc.lastTimeMeterNumL.text = lastimeNum
-//                }
-//
-//                if let nowNum = self.nowNum.text{
-//
-//                    vc.NowMeterNumL.text = nowNum
-//                }
-//
-//                if let meterNo = self.deviceInfoModel?.deviceNo{
-//
-//                    vc.meterNo.text =  meterNo
-//                }
-            
+
                 vc.meterName = self.deviceInfoModel?.deviceName ?? ""
-                vc.lastTimeMeterNum = self.deviceInfoModel?.lastNowValue?.description ?? ""
-                vc.NowMeterNum = self.nowNum.text ?? ""
+                vc.lastTimeMeterNum = String(format:"%.2f", self.deviceInfoModel?.lastNowValue ?? 0)  + (self.deviceInfoModel?.measureUnit ?? "")
+                vc.NowMeterNum = String(format:"%.2f",  Double(self.nowNum.text ?? "0") ?? 0 )  + (self.deviceInfoModel?.measureUnit ?? "")
                 vc.meterNoStr = self.meterNo.text ?? ""
 
                 vc.num = ""
@@ -225,7 +216,8 @@ class readingVC: UITableViewController,ScanViewControllerDelegate,UIGestureRecog
 //                            if let lastNum = last{
                             
                                 let num = nowNum - last
-                                vc.num = num.description
+                                vc.num = String(format:"%.2f", num) + (self.deviceInfoModel?.measureUnit ?? "")
+                            
 
 //                            }
                             
@@ -384,6 +376,53 @@ class readingVC: UITableViewController,ScanViewControllerDelegate,UIGestureRecog
     }
 
     
+    // MARK: - 显示超量程
+    func showOverMeter() {
+        
+        
+        //超量程界面
+        self.overContentViewH.constant = 45
+        self.overContentView.isHidden = false
+        self.overBtn.isSelected = true
+        self.overL.isHidden = false
+        
+        
+        var nowMaxStr = ""
+        
+        let maxStr = Int(self.deviceInfoModel?.lastNowValue ?? 0).description
+            
+        for i in 0..<maxStr.count {
+            
+            print("a=\(i)");
+            
+            nowMaxStr.append("9")
+            
+        }
+        
+        self.overL.text = nowMaxStr
+            
+        
+        
+        self.tableView.beginUpdates()
+        self.tableView.endUpdates()
+        
+    }
+    
+    // MARK: - 隐藏超量程
+    func hideOverMeter() {
+        
+        self.overContentViewH.constant = 0
+        self.overContentView.isHidden = true
+        
+        self.tableView.beginUpdates()
+        self.tableView.endUpdates()
+        
+//        [self.tableView beginUpdates];
+//        [self.tableView endUpdates];
+    }
+    
+
+    
     // MARK: - 本控制器方法
     @IBAction func deletePickImg(_ sender: UIButton) {
         
@@ -459,30 +498,10 @@ class readingVC: UITableViewController,ScanViewControllerDelegate,UIGestureRecog
                     if issure{
                         
                         //                            self.saveData()
-                        //超量程界面
-                        self.overContentViewH.constant = 45
-                        self.overContentView.isHidden = false
-                        self.overBtn.isSelected = true
-                        self.overL.isHidden = false
                         
-                        //                            let maxStr = self.deviceInfoModel?.thresholdMax?.description
+                        self.showOverMeter()
                         
-                        var nowMaxStr = ""
-                        
-                        if let maxStr = self.deviceInfoModel?.lastNowValue?.description{
-                            
-                            for i in 0..<maxStr.count {
-                                
-                                print("a=\(i)");
-                                
-                                nowMaxStr.append("9")
-                                
-                            }
-                            
-                            self.overL.text = nowMaxStr
-                            
-                        }
-                        
+                     
                     }else{
                         
                         return;
@@ -543,9 +562,9 @@ class readingVC: UITableViewController,ScanViewControllerDelegate,UIGestureRecog
                 var isMoreThanMaxStr = "0"
                 if let num = Int(self.nowNum.text!) {
                     
-                    if let max = self.deviceInfoModel?.thresholdMax {
+                    if let max = self.deviceInfoModel?.lastNowValue {
                         
-                        isMoreThanMaxStr =  num > Int(max) ? "1" : "0"
+                        isMoreThanMaxStr =  num >= Int(max) ? "0" : "1"
                         
                     }
                     
@@ -598,8 +617,8 @@ class readingVC: UITableViewController,ScanViewControllerDelegate,UIGestureRecog
                         self.getRecordList(deviceNo:self.deviceInfoModel?.deviceNo ?? "")
 
                         
-                        self.overContentViewH.constant = 0
-                        self.overContentView.isHidden = true
+                        
+                        self.hideOverMeter()
                         
                         ZNCustomAlertView.handleTip("提交成功", isShowCancelBtn: false, completion: { (issure) in
                             
@@ -701,8 +720,7 @@ class readingVC: UITableViewController,ScanViewControllerDelegate,UIGestureRecog
             //下部展示
             self.meterArr.append(model)
             
-            self.overContentViewH.constant = 0
-            self.overContentView.isHidden = true
+            self.hideOverMeter()
             
             ZNCustomAlertView.handleTip("离线数据提交成功", isShowCancelBtn: false, completion: { (issure) in
                 

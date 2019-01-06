@@ -39,6 +39,10 @@ class HomeVC: UITableViewController,UIGestureRecognizerDelegate {
 
 
         self.navigationItem.title = "首页"
+
+        //检查版本更新
+        CheckVerson.checkVersion(withVC: self)
+
         
         self.tableView.backgroundColor = RGBCOLOR(r: 245, 245, 245)
         
@@ -124,14 +128,14 @@ class HomeVC: UITableViewController,UIGestureRecognizerDelegate {
     @objc func tapRepairView(action:UIGestureRecognizer)  {
         
         let vc = myOrdersVC()
-        vc.selectedIndex = 0
+        vc.selectedIndex = ordersTableViewType(rawValue: 0)!
         self.navigationController?.pushViewController(vc, animated: true)
         
     }
     @objc func tapRepairingView(action:UIGestureRecognizer)  {
         
         let vc = myOrdersVC()
-        vc.selectedIndex = 1
+        vc.selectedIndex = ordersTableViewType(rawValue: 1)!
         self.navigationController?.pushViewController(vc, animated: true)
 
         
@@ -139,7 +143,7 @@ class HomeVC: UITableViewController,UIGestureRecognizerDelegate {
     @objc func tapRepairedView(action:UIGestureRecognizer)  {
         
         let vc = myOrdersVC()
-        vc.selectedIndex = 2
+        vc.selectedIndex = ordersTableViewType(rawValue: 2)!
         self.navigationController?.pushViewController(vc, animated: true)
 
     }
@@ -156,7 +160,7 @@ class HomeVC: UITableViewController,UIGestureRecognizerDelegate {
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         
-        if section == 0 || section == 3{
+        if section == 0 || section == 1 || section == 3{
             
             return 0
         }
@@ -170,7 +174,10 @@ class HomeVC: UITableViewController,UIGestureRecognizerDelegate {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        if section == 3 {
+        if section == 0 || section == 1{
+            
+            return 0
+        }else if section == 3 {
             
             return self.headLinesData.count
         }

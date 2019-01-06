@@ -43,7 +43,7 @@ class meterReadingSignVC: UIViewController,PopSignatureViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.title = "扫码"
+        self.title = "抄表签名"
         
         self.meterNameL.text = self.meterName
         self.lastTimeMeterNumL.text = self.lastTimeMeterNum

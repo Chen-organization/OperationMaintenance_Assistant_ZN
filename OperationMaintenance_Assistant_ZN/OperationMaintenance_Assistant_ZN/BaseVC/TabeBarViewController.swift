@@ -32,7 +32,7 @@ class TabeBarViewController: UITabBarController {
             .instantiateViewController(withIdentifier: "HomeVC") as! HomeVC
         self.setUpOneChildViewController(viewController: home, image: "首页", selectedImage: "首页Sel", title: "")
         
-        self.setUpOneChildViewController(viewController: InspectionVC(), image: "巡检", selectedImage: "巡检Sel", title: "")
+//        self.setUpOneChildViewController(viewController: InspectionVC(), image: "巡检", selectedImage: "巡检Sel", title: "")
         
         let meterReading = UIStoryboard(name: "MeterReading", bundle: nil)
             .instantiateViewController(withIdentifier: "MeterReadingVC") as! MeterReadingVC
@@ -50,8 +50,7 @@ class TabeBarViewController: UITabBarController {
         
         // 让图片显示图片原始颜色  “UIImage” 后+ “.imageWithRenderingMode(.AlwaysOriginal)”
         let barItem : UITabBarItem = UITabBarItem.init(title: title as String, image: UIImage.init(named: image), selectedImage: UIImage.init(named: selectedImage)?.withRenderingMode(.alwaysOriginal))
-//        barItem.setTitleTextAttributes([NSAttributedString.Key.foregroundColor : UIColor.lightGray], for: UIControl.State.normal)
-//        barItem.setTitleTextAttributes([NSAttributedString.Key.foregroundColor : RGBCOLOR(r: 31, 182, 167)], for: UIControl.State.selected)
+
         barItem.imageInsets = UIEdgeInsets(top: 6, left: 0, bottom: -6, right: 0);
 
 
