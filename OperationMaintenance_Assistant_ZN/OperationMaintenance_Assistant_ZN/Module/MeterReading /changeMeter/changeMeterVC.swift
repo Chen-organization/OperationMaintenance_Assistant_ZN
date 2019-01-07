@@ -10,8 +10,24 @@ import UIKit
 import Photos
 import Alamofire
 
-class changeMeterVC: UITableViewController,ScanViewControllerDelegate,UIGestureRecognizerDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UITextFieldDelegate,MKDropdownMenuDataSource,MKDropdownMenuDelegate {
+class changeMeterVC: UITableViewController,ScanViewControllerDelegate,UIGestureRecognizerDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UITextFieldDelegate,MKDropdownMenuDataSource,MKDropdownMenuDelegate ,XDSDropDownMenuDelegate{
     
+    
+    func setDropDown(_ sender: XDSDropDownMenu!) {
+        
+//        print(self.newDropBtn.titleLabel?.text)
+        
+        self.selectedRepaireTypeModel = self.repairTypeArr[sender.selectedIndex]
+        
+    }
+    
+    
+    
+    @IBOutlet weak var newDropBtn: UIButton!
+    @IBOutlet weak var newDropContentL: UILabel!
+    
+    var downDropDownMenu = XDSDropDownMenu()
+
     
     
     @IBOutlet weak var meterNoTextField: UITextField!
@@ -38,7 +54,7 @@ class changeMeterVC: UITableViewController,ScanViewControllerDelegate,UIGestureR
     
     var selectedRepaireTypeModel : changeMeterParModel?  //类型
 
-    var repairTypeArr : NSArray = [Any]() as NSArray
+    var repairTypeArr = [changeMeterParModel]()
 
     
     var firstImage64Str : String?
@@ -79,12 +95,14 @@ class changeMeterVC: UITableViewController,ScanViewControllerDelegate,UIGestureR
         
         
         
-        self.dropDownMenu.backgroundColor = UIColor.clear
-        self.dropDownMenu.useFullScreenWidth = true
-        self.dropDownMenu.delegate = self
-        self.dropDownMenu.dataSource = self
-        self.dropDownMenu.componentTextAlignment = NSTextAlignment.left
-        self.dropDownMenu.dropdownShowsTopRowSeparator = false
+//        self.dropDownMenu.backgroundColor = UIColor.clear
+//        self.dropDownMenu.useFullScreenWidth = false
+//        self.dropDownMenu.delegate = self
+//        self.dropDownMenu.dataSource = self
+//        self.dropDownMenu.componentTextAlignment = NSTextAlignment.left
+//        self.dropDownMenu.dropdownShowsTopRowSeparator = true
+//        self.dropDownMenu.dropdownShowsBorder = true
+////        self.dropDownMenu.rowSeparatorColor = UIColor.black
         
       
         self.firstDeleteBtn.isHidden = true
@@ -99,7 +117,58 @@ class changeMeterVC: UITableViewController,ScanViewControllerDelegate,UIGestureR
         
         super.viewWillDisappear(animated)
         
-        self.dropDownMenu.closeAllComponents(animated: false)
+//        self.dropDownMenu.closeAllComponents(animated: false)
+        
+    }
+    
+    
+    
+    @IBAction func newDropBtnClick(_ sender: UIButton) {
+        
+//        NSArray *arr = @[@"1",@"2",@"3",@"4",@"5",@"6",@"7"];
+        downDropDownMenu.delegate = self;//代理
+        
+        
+        if !(self.repairTypeArr.count > 0) {
+            
+            return
+        }
+        
+        
+        let btnFrame = sender.superview?.convert(sender.frame, to: self.view)//如果按钮在UITabelView上用这个
+        
+        if(dropDownMenu.tag == 1000){
+            
+            /*
+             如果dropDownMenu的tag值为1000，表示dropDownMenu没有打开，则打开dropDownMenu
+             */
+            
+            var titleArr = [Any]()
+            
+            for model:changeMeterParModel in self.repairTypeArr {
+                
+                titleArr.append(model.configName)
+                
+            }
+            
+            //初始化选择菜单
+            self.downDropDownMenu.show(sender, withButtonFrame: btnFrame ?? CGRect.init(x: 0, y: 0, width: 0, height: 0), arrayOfTitle: titleArr, arrayOfImage:nil, animationDirection:"down")
+            
+            //添加到主视图上
+            self.view.addSubview(downDropDownMenu)
+            
+            dropDownMenu.tag = 2000;
+            
+        }else {
+            
+            /*
+             如果dropDownMenu的tag值为2000，表示dropDownMenu已经打开，则隐藏dropDownMenu
+             */
+            
+            self.downDropDownMenu.hide(withBtnFrame:btnFrame ?? CGRect.init(x: 0, y: 0, width: 0, height: 0))
+            dropDownMenu.tag = 1000;
+        }
+
         
     }
     
@@ -138,8 +207,8 @@ class changeMeterVC: UITableViewController,ScanViewControllerDelegate,UIGestureR
                         
                     }
                     
-                    self.repairTypeArr = model.returnObj?.par as! NSArray
-                    self.dropDownMenu.reloadAllComponents()
+                    self.repairTypeArr = model.returnObj?.par ?? [changeMeterParModel]()
+//                    self.dropDownMenu.reloadAllComponents()
                     
                 }
                 

@@ -27,10 +27,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window = UIWindow(frame: UIScreen.main.bounds)
         self.window?.backgroundColor = UIColor.white
         
-        
 
         /* Realm 数据库配置，用于数据库的迭代更新 */
-        let schemaVersion: UInt64 = 0
+        let schemaVersion: UInt64 = 1
         let config = Realm.Configuration(schemaVersion: schemaVersion, migrationBlock: { migration, oldSchemaVersion in
             
             /* 什么都不要做！Realm 会自行检测新增和需要移除的属性，然后自动更新硬盘上的数据库架构 */

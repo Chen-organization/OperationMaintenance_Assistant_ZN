@@ -144,6 +144,13 @@ class readingVC: UITableViewController,ScanViewControllerDelegate,UIGestureRecog
         
             self.hideOverMeter()
             
+        }else {
+            
+            if self.self.overBtn.isSelected == false{
+                
+                self.hideOverMeter()
+            }
+            
         }
     
     }
@@ -203,7 +210,17 @@ class readingVC: UITableViewController,ScanViewControllerDelegate,UIGestureRecog
                 vc.meterName = self.deviceInfoModel?.deviceName ?? ""
                 vc.lastTimeMeterNum = String(format:"%.2f", self.deviceInfoModel?.lastNowValue ?? 0)  + (self.deviceInfoModel?.measureUnit ?? "")
                 vc.NowMeterNum = String(format:"%.2f",  Double(self.nowNum.text ?? "0") ?? 0 )  + (self.deviceInfoModel?.measureUnit ?? "")
-                vc.meterNoStr = self.meterNo.text ?? ""
+                
+                if (self.deviceInfoModel?.deviceNum?.characters.count ?? 0) > 0 {
+                    
+                    vc.meterNoStr = self.deviceInfoModel?.deviceNum ?? ""
+
+                }else{
+                    
+                    vc.meterNoStr = self.deviceInfoModel?.deviceNo ?? ""
+
+                }
+                
 
                 vc.num = ""
 
@@ -213,13 +230,55 @@ class readingVC: UITableViewController,ScanViewControllerDelegate,UIGestureRecog
                         
                         if let nowNum = Double(now){
                             
-//                            if let lastNum = last{
                             
-                                let num = nowNum - last
+                            if nowNum >= last{
+                                
+                                //正常
+                                let num = (nowNum - last) * (self.deviceInfoModel?.multiplyingPower ?? 1)
                                 vc.num = String(format:"%.2f", num) + (self.deviceInfoModel?.measureUnit ?? "")
+                                
+                            }else{
+                                
+                                
+                                if self.overContentView.isHidden == true{
+                                    
+                                    //提示
+                                    ZNCustomAlertView.handleTip("输入表底数比上次小，请确认是否超出最大量程 ？", isShowCancelBtn: true) { (issure) in
+                                        
+                                        if issure{
+                                            
+                                            self.showOverMeter()
+                                            
+                                        }else{
+                                            
+                                            return;
+                                        }
+                                        
+                                    }
+                                    
+                                    
+                                    return
+                                    
+                                }else{
+                                    
+                                    //超量程
+                                    
+                                    let num = (nowNum + (Double(self.overL.text ?? "0") ?? 0) + 1)
+                                    let num1 = num - (self.deviceInfoModel?.lastNowValue ?? 0)
+                                    let mulNum = num1 * (self.deviceInfoModel?.multiplyingPower ?? 1)
+                                    vc.num = String(format:"%.2f", mulNum) + (self.deviceInfoModel?.measureUnit ?? "")
+                                    
+                                }
+                                
+                                
+                            
+                                
+                                
+                            }
                             
 
-//                            }
+                            
+
                             
                         }
 
@@ -525,16 +584,30 @@ class readingVC: UITableViewController,ScanViewControllerDelegate,UIGestureRecog
             
         }else{
             
+            //超量程
+            //判断超量程是否勾选
             
-            // 2 、 数据确认 弹框确认
-            ZNMakeSureView.handleTip(self.nowNum.text!, isShowCancelBtn: true) { (makeSure) in
+            if self.overBtn.isSelected {
                 
-                if makeSure {
+                // 数据确认 弹框确认
+                ZNMakeSureView.handleTip(self.nowNum.text!, isShowCancelBtn: true) { (makeSure) in
                     
-                    self.saveData()
+                    if makeSure {
+                        
+                        self.saveData()
+                        
+                    }
+                }
+                
+            }else{
+                
+                ZNCustomAlertView.handleTip("请勾选确认选择框或重新输入表底数", isShowCancelBtn: false) { (sure) in
                     
                 }
+                
             }
+            
+          
         }
         
         
@@ -546,6 +619,17 @@ class readingVC: UITableViewController,ScanViewControllerDelegate,UIGestureRecog
     
     
     func saveData() {
+        
+        
+        //校验表编号
+        if self.deviceInfoModel?.deviceNo != (self.meterNo.text ?? "") {
+            
+            ZNCustomAlertView.handleTip("设备编号不存在，或字典表未下载", isShowCancelBtn: false) { (sure) in
+                
+            }
+            return
+        }
+        
         
         let time = self.milliStamp
         print("对应的日期时间：\(time)")
@@ -720,8 +804,6 @@ class readingVC: UITableViewController,ScanViewControllerDelegate,UIGestureRecog
             //下部展示
             self.meterArr.append(model)
             
-            self.hideOverMeter()
-            
             ZNCustomAlertView.handleTip("离线数据提交成功", isShowCancelBtn: false, completion: { (issure) in
                 
             })
@@ -730,10 +812,12 @@ class readingVC: UITableViewController,ScanViewControllerDelegate,UIGestureRecog
             self.cleanPageMeterdData()
         }
         
+        
         let positon = IndexSet.init(integer: 2)
         self.tableView.reloadSections(positon, with: UITableView.RowAnimation.none)
         
-        
+        self.hideOverMeter()
+
         
     }
     
@@ -1090,23 +1174,40 @@ class readingVC: UITableViewController,ScanViewControllerDelegate,UIGestureRecog
                     
                     if model.statusCode == 800 {
                         
+                        //清空数据
+                        self.cleanPageMeterdData()
+                        self.hideOverMeter()
+                        
                         self.deviceInfoModel = model.returnObj
                         
-                        if model.returnObj?.deviceNum?.characters.count ?? 0 > 0{
-                            
-                            self.meterNo.text = model.returnObj?.deviceNum!
-
-                        }else{
-                            
+//                        if model.returnObj?.deviceNum?.characters.count ?? 0 > 0{
+//
+//                            self.meterNo.text = model.returnObj?.deviceNum!
+//
+//                        }else{
+                        
                             self.meterNo.text = model.returnObj?.deviceNo!
 
-                        }
+//                        }
                         
                         self.nultL.text = "X" + String(describing: (model.returnObj?.multiplyingPower)!)
                         self.lastTimeMeterNumL.text = "上次:" + String(format:"%.2f",(model.returnObj?.lastNowValue) ?? 0) + (model.returnObj?.measureUnit ?? "")
                         
                         self.nameL.text = "名称：" + (model.returnObj?.deviceName)!
-                        self.meterNoL.text = "表号：" + (model.returnObj?.deviceNo)!
+                        
+                        if model.returnObj?.deviceNum?.characters.count ?? 0 > 0{
+                            
+//                            self.meterNo.text = model.returnObj?.deviceNum!
+                            
+                            self.meterNoL.text = "表号：" + (model.returnObj?.deviceNum ?? "")
+                            
+                        }else{
+                            
+//                            self.meterNo.text = model.returnObj?.deviceNo!
+                            self.meterNoL.text = "表号：" + (model.returnObj?.deviceNo ?? "")
+                        }
+                        
+                        
                         self.addressL.text = "位置：" + (model.returnObj?.installSite)!
                         self.projectNameL.text = "项目：" + (model.returnObj?.stationName)!
                         
@@ -1160,32 +1261,42 @@ class readingVC: UITableViewController,ScanViewControllerDelegate,UIGestureRecog
             
             if (arr.count > 0) {
                 
+                //清空数据
+                self.cleanPageMeterdData()
+                self.hideOverMeter()
+                
                 
                 let model:DownloadMeterDicReturnObjModel = arr.firstObject as! DownloadMeterDicReturnObjModel
+                
+                self.meterNo.text = model.id
                 
                 if let deviceNum = model.deviceNum {
                     
                     if deviceNum.characters.count > 0 {
                         
-                        self.meterNo.text = deviceNum
+//                        self.meterNo.text = deviceNum
+                        self.meterNoL.text = "表号：" + deviceNum
+
 
                     }else{
                         
-                        self.meterNo.text = model.id
+//                        self.meterNo.text = model.id
+                        self.meterNoL.text = "表号：" + (model.id ?? "")
 
                     }
                     
                 }else{
                     
-                    self.meterNo.text = model.id
+//                    self.meterNo.text = model.id
+                    self.meterNoL.text = "表号：" + (model.id ?? "")
+
 
                 }
                 
                 self.nultL.text = "X" + String(describing: (model.multiplyingPower)!)
-                self.lastTimeMeterNumL.text = "上次:" + String(format:"%.2f",model.nowValue)  + (model.measureUnit ?? "")
+                self.lastTimeMeterNumL.text = "上次:" + String(format:"%.2f",Double(model.nowValue))  + (model.measureUnit ?? "")
                 
                 self.nameL.text = "名称：" + (model.name)!
-                self.meterNoL.text = "表号：" + (model.id)!
                 self.addressL.text = "位置：" + (model.installSite)!
                 self.projectNameL.text = "项目：" + (model.stationName)!
                 

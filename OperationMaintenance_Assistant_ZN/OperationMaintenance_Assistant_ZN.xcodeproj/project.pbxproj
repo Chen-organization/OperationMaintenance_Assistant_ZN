@@ -29,6 +29,8 @@
 		181AC44221D788760018ADAD /* MJRefreshBackFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 181AC42B21D788750018ADAD /* MJRefreshBackFooter.m */; };
 		181AC44321D788760018ADAD /* MJRefreshAutoFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 181AC42C21D788750018ADAD /* MJRefreshAutoFooter.m */; };
 		181AC44421D788760018ADAD /* MJRefreshComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = 181AC42E21D788750018ADAD /* MJRefreshComponent.m */; };
+		18328C8221E33B1800CFF04A /* XDSDropDownMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 18328C8121E33B1800CFF04A /* XDSDropDownMenu.m */; };
+		18328C8421E34B6700CFF04A /* 下拉三角.png in Resources */ = {isa = PBXBuildFile; fileRef = 18328C8321E34B6700CFF04A /* 下拉三角.png */; };
 		185C233121D37D1B0004AD0C /* LLViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185C232921D37D1B0004AD0C /* LLViewExtensions.swift */; };
 		185C233221D37D1B0004AD0C /* LLPillPageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185C232A21D37D1B0004AD0C /* LLPillPageControl.swift */; };
 		185C233321D37D1B0004AD0C /* LLCycleScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185C232B21D37D1B0004AD0C /* LLCycleScrollView.swift */; };
@@ -211,10 +213,6 @@
 		7403D2C521CF800A0055561E /* 电话3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7403D20521CF7FF60055561E /* 电话3x.png */; };
 		7403D2C621CF800A0055561E /* 定位3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7403D20621CF7FF60055561E /* 定位3x.png */; };
 		7403D2C721CF800A0055561E /* 非常紧急3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7403D20721CF7FF60055561E /* 非常紧急3x.png */; };
-		7403D2C821CF800A0055561E /* 状态框3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7403D20921CF7FFA0055561E /* 状态框3x.png */; };
-		7403D2C921CF800A0055561E /* 定位.png in Resources */ = {isa = PBXBuildFile; fileRef = 7403D20A21CF7FFA0055561E /* 定位.png */; };
-		7403D2CB21CF800A0055561E /* 定位3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7403D20C21CF7FFA0055561E /* 定位3x.png */; };
-		7403D2CD21CF800A0055561E /* 状态框.png in Resources */ = {isa = PBXBuildFile; fileRef = 7403D20E21CF7FFA0055561E /* 状态框.png */; };
 		7403D2CE21CF800A0055561E /* login_eye@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7403D21021CF7FFE0055561E /* login_eye@3x.png */; };
 		7403D2CF21CF800A0055561E /* login_锁@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7403D21121CF7FFE0055561E /* login_锁@3x.png */; };
 		7403D2D021CF800A0055561E /* 64.png in Resources */ = {isa = PBXBuildFile; fileRef = 7403D21221CF7FFE0055561E /* 64.png */; };
@@ -589,6 +587,9 @@
 		181AC42E21D788750018ADAD /* MJRefreshComponent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJRefreshComponent.m; sourceTree = "<group>"; };
 		181AC42F21D788750018ADAD /* MJRefreshFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshFooter.h; sourceTree = "<group>"; };
 		181AC43021D788750018ADAD /* MJRefreshBackFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshBackFooter.h; sourceTree = "<group>"; };
+		18328C8021E33B1800CFF04A /* XDSDropDownMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XDSDropDownMenu.h; sourceTree = "<group>"; };
+		18328C8121E33B1800CFF04A /* XDSDropDownMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XDSDropDownMenu.m; sourceTree = "<group>"; };
+		18328C8321E34B6700CFF04A /* 下拉三角.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "下拉三角.png"; sourceTree = "<group>"; };
 		185C232921D37D1B0004AD0C /* LLViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LLViewExtensions.swift; sourceTree = "<group>"; };
 		185C232A21D37D1B0004AD0C /* LLPillPageControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LLPillPageControl.swift; sourceTree = "<group>"; };
 		185C232B21D37D1B0004AD0C /* LLCycleScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LLCycleScrollView.swift; sourceTree = "<group>"; };
@@ -789,10 +790,6 @@
 		7403D20521CF7FF60055561E /* 电话3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "电话3x.png"; sourceTree = "<group>"; };
 		7403D20621CF7FF60055561E /* 定位3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "定位3x.png"; sourceTree = "<group>"; };
 		7403D20721CF7FF60055561E /* 非常紧急3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "非常紧急3x.png"; sourceTree = "<group>"; };
-		7403D20921CF7FFA0055561E /* 状态框3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "状态框3x.png"; sourceTree = "<group>"; };
-		7403D20A21CF7FFA0055561E /* 定位.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "定位.png"; sourceTree = "<group>"; };
-		7403D20C21CF7FFA0055561E /* 定位3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "定位3x.png"; sourceTree = "<group>"; };
-		7403D20E21CF7FFA0055561E /* 状态框.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "状态框.png"; sourceTree = "<group>"; };
 		7403D21021CF7FFE0055561E /* login_eye@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "login_eye@3x.png"; sourceTree = "<group>"; };
 		7403D21121CF7FFE0055561E /* login_锁@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "login_锁@3x.png"; sourceTree = "<group>"; };
 		7403D21221CF7FFE0055561E /* 64.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 64.png; sourceTree = "<group>"; };
@@ -1362,6 +1359,15 @@
 			path = Base;
 			sourceTree = "<group>";
 		};
+		18328C7F21E33B1800CFF04A /* XDSDropDownMenu */ = {
+			isa = PBXGroup;
+			children = (
+				18328C8021E33B1800CFF04A /* XDSDropDownMenu.h */,
+				18328C8121E33B1800CFF04A /* XDSDropDownMenu.m */,
+			);
+			path = XDSDropDownMenu;
+			sourceTree = "<group>";
+		};
 		185C232721D37D1B0004AD0C /* CycleBanner */ = {
 			isa = PBXGroup;
 			children = (
@@ -1614,11 +1620,9 @@
 				7403D19F21CF7FE30055561E /* 抄表切图 */,
 				7403D1EC21CF7FEF0055561E /* 代收取暖费切图 */,
 				7403D20F21CF7FFE0055561E /* 登陆切图 */,
-				7403D20821CF7FFA0055561E /* 工单详情切图 */,
 				7403D16F21CF7FDC0055561E /* 取消工单、抢单切图 */,
 				7403D17821CF7FE00055561E /* 确认订、点击效果、客户签字等的切图 */,
 				7403D1AF21CF7FE70055561E /* 首页切图 */,
-				7403D1DB21CF7FEB0055561E /* 我的抢单、定位抢单切图 */,
 				7403D1F521CF7FF30055561E /* 我的切图 */,
 				7403D23021CF80060055561E /* 找回密码切图 */,
 			);
@@ -1688,6 +1692,7 @@
 		7403D19F21CF7FE30055561E /* 抄表切图 */ = {
 			isa = PBXGroup;
 			children = (
+				18328C8321E34B6700CFF04A /* 下拉三角.png */,
 				7403D2F321CF847B0055561E /* 相机@2x.png */,
 				7403D2F421CF847C0055561E /* 相机@3x.png */,
 				7403D1AB21CF7FE30055561E /* 扫一扫点击@2x.png */,
@@ -1764,13 +1769,6 @@
 			path = "首页切图";
 			sourceTree = "<group>";
 		};
-		7403D1DB21CF7FEB0055561E /* 我的抢单、定位抢单切图 */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "我的抢单、定位抢单切图";
-			sourceTree = "<group>";
-		};
 		7403D1EC21CF7FEF0055561E /* 代收取暖费切图 */ = {
 			isa = PBXGroup;
 			children = (
@@ -1815,17 +1813,6 @@
 				7403D20721CF7FF60055561E /* 非常紧急3x.png */,
 			);
 			path = "报修工单切图";
-			sourceTree = "<group>";
-		};
-		7403D20821CF7FFA0055561E /* 工单详情切图 */ = {
-			isa = PBXGroup;
-			children = (
-				7403D20921CF7FFA0055561E /* 状态框3x.png */,
-				7403D20A21CF7FFA0055561E /* 定位.png */,
-				7403D20C21CF7FFA0055561E /* 定位3x.png */,
-				7403D20E21CF7FFA0055561E /* 状态框.png */,
-			);
-			path = "工单详情切图";
 			sourceTree = "<group>";
 		};
 		7403D20F21CF7FFE0055561E /* 登陆切图 */ = {
@@ -1944,7 +1931,6 @@
 		742CAEE121DB56430022648E /* MyOrders */ = {
 			isa = PBXGroup;
 			children = (
-				7430E33B21E23F4400A9B8BD /* OrderDetails */,
 				746A63AD21DE85DD0054C0C1 /* Model */,
 				746A63AC21DE85D10054C0C1 /* View */,
 				749DFD5321DB7AD600BA6BA8 /* myOrdersVC.swift */,
@@ -2015,13 +2001,6 @@
 				742CAEFF21DB66420022648E /* BaiduMapAPI_Cloud.framework */,
 			);
 			path = BaiduMap_IOSSDK_v4.2.1_Frameworks;
-			sourceTree = "<group>";
-		};
-		7430E33B21E23F4400A9B8BD /* OrderDetails */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = OrderDetails;
 			sourceTree = "<group>";
 		};
 		744F752B21CF97F20072326E /* swiftScan */ = {
@@ -2337,6 +2316,7 @@
 		7477E89E21C170C800AAA756 /* Vendors */ = {
 			isa = PBXGroup;
 			children = (
+				18328C7F21E33B1800CFF04A /* XDSDropDownMenu */,
 				742CAEF821DB66420022648E /* BaiduMap_IOSSDK_v4.2.1_Frameworks */,
 				742CAEDF21DB51A30022648E /* MXParallaxHeader.framework */,
 				742CAEDD21DB519D0022648E /* MXPagerView.framework */,
@@ -3147,7 +3127,6 @@
 				7403D2D021CF800A0055561E /* 64.png in Resources */,
 				746A63A121DBC0970054C0C1 /* readingListHeaderView.xib in Resources */,
 				7403D25021CF800A0055561E /* 话筒3x.png in Resources */,
-				7403D2C921CF800A0055561E /* 定位.png in Resources */,
 				7403D23E21CF800A0055561E /* 点击3x.png in Resources */,
 				746423C821D2D6000038E8E3 /* Me.storyboard in Resources */,
 				7403D24A21CF800A0055561E /* 加减点击3x.png in Resources */,
@@ -3182,7 +3161,6 @@
 				7403D28721CF800A0055561E /* banner2   3x.png in Resources */,
 				7403D25121CF800A0055561E /* 提交.png in Resources */,
 				746A639021DB9BEC0054C0C1 /* 现场报修@2x.png in Resources */,
-				7403D2C821CF800A0055561E /* 状态框3x.png in Resources */,
 				742CAEBA21DA492A0022648E /* 目录@3x.png in Resources */,
 				7403D25321CF800A0055561E /* 二维码收款3x.png in Resources */,
 				7403D29221CF800A0055561E /* 抄表@2x.png in Resources */,
@@ -3270,13 +3248,13 @@
 				7403D23F21CF800A0055561E /* 到现场相机3x.png in Resources */,
 				7403D24321CF800A0055561E /* 去支付按钮点击.png in Resources */,
 				7403D2C021CF800A0055561E /* 紧急3x.png in Resources */,
+				18328C8421E34B6700CFF04A /* 下拉三角.png in Resources */,
 				746A638221DB9BEC0054C0C1 /* 拍照@3x.png in Resources */,
 				7403D14E21CEA12C0055561E /* ReadingVCTableviewCell.xib in Resources */,
 				7403D2BB21CF800A0055561E /* xiaoxi .png in Resources */,
 				7403D2F621CF847D0055561E /* 相机@3x.png in Resources */,
 				7403D2F021CF800B0055561E /* 手机@2x.png in Resources */,
 				7403D2C221CF800A0055561E /* 三角上3xx.png in Resources */,
-				7403D2CB21CF800A0055561E /* 定位3x.png in Resources */,
 				7403D26221CF800A0055561E /* xiaoxi_red@3x.png in Resources */,
 				746A638121DB9BEC0054C0C1 /* dount_3.png in Resources */,
 				7403D2F521CF847D0055561E /* 相机@2x.png in Resources */,
@@ -3342,7 +3320,6 @@
 				185C233821D37D1B0004AD0C /* LLCycleScrollView.bundle in Resources */,
 				7403D2C421CF800A0055561E /* 图3x.png in Resources */,
 				7403D27121CF800A0055561E /* meterReading_下载字典表@2x.png in Resources */,
-				7403D2CD21CF800A0055561E /* 状态框.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3508,6 +3485,7 @@
 				7477EABD21C1712300AAA756 /* MASConstraintMaker.m in Sources */,
 				7477EA8221C1712300AAA756 /* NSString+Extend.m in Sources */,
 				7477EAF521C2A50B00AAA756 /* MeVC.swift in Sources */,
+				18328C8221E33B1800CFF04A /* XDSDropDownMenu.m in Sources */,
 				7477EAA621C1712300AAA756 /* UIView+WebCache.m in Sources */,
 				7477EA6A21C1712300AAA756 /* PhotoItemView.m in Sources */,
 				7403D11C21C67DB30055561E /* SGQRCodeObtain.m in Sources */,
@@ -3841,6 +3819,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				COMPRESS_PNG_FILES = NO;
 				DEVELOPMENT_TEAM = C6QYJFAWU4;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -3867,6 +3846,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/OperationMaintenance_Assistant_ZN/OperationMaintenance_Assistant_ZN-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "$(PODS_ROOT)/**";
@@ -3880,6 +3860,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				COMPRESS_PNG_FILES = NO;
 				DEVELOPMENT_TEAM = C6QYJFAWU4;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -3905,6 +3886,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/OperationMaintenance_Assistant_ZN/OperationMaintenance_Assistant_ZN-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "$(PODS_ROOT)/**";

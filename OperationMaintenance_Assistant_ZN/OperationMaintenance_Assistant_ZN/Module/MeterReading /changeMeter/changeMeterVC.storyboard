@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -320,12 +320,46 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xyr-8K-zK3" customClass="MKDropdownMenu">
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xyr-8K-zK3">
                                                     <rect key="frame" x="90" y="15" width="225" height="30"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Znq-Hk-fCY">
+                                                            <rect key="frame" x="5" y="0.0" width="195" height="30"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="下拉三角.png" translatesAutoresizingMaskIntoConstraints="NO" id="yAp-0W-umr">
+                                                            <rect key="frame" x="205" y="7.5" width="15" height="15"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="15" id="Gx9-tR-qZW"/>
+                                                                <constraint firstAttribute="width" constant="15" id="h13-gk-NSe"/>
+                                                            </constraints>
+                                                        </imageView>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ob2-6c-4Pd">
+                                                            <rect key="frame" x="5" y="0.0" width="220" height="30"/>
+                                                            <state key="normal">
+                                                                <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            </state>
+                                                            <connections>
+                                                                <action selector="newDropBtnClick:" destination="VgQ-YC-H02" eventType="touchUpInside" id="T0r-t4-y8f"/>
+                                                            </connections>
+                                                        </button>
+                                                    </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <color key="tintColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="0.88077910960000005" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
+                                                        <constraint firstItem="Ob2-6c-4Pd" firstAttribute="top" secondItem="Xyr-8K-zK3" secondAttribute="top" id="5do-cb-vlE"/>
+                                                        <constraint firstItem="Znq-Hk-fCY" firstAttribute="top" secondItem="Xyr-8K-zK3" secondAttribute="top" id="8PN-Zl-deR"/>
                                                         <constraint firstAttribute="height" constant="30" id="9KC-iJ-WJ2"/>
+                                                        <constraint firstItem="Znq-Hk-fCY" firstAttribute="leading" secondItem="Xyr-8K-zK3" secondAttribute="leading" constant="5" id="Rbd-hu-X2o"/>
+                                                        <constraint firstAttribute="trailing" secondItem="yAp-0W-umr" secondAttribute="trailing" constant="5" id="SuA-mK-oio"/>
+                                                        <constraint firstItem="yAp-0W-umr" firstAttribute="centerY" secondItem="Xyr-8K-zK3" secondAttribute="centerY" id="cQs-2o-3Xv"/>
+                                                        <constraint firstAttribute="trailing" secondItem="Ob2-6c-4Pd" secondAttribute="trailing" id="egs-x4-I9p"/>
+                                                        <constraint firstItem="yAp-0W-umr" firstAttribute="leading" secondItem="Znq-Hk-fCY" secondAttribute="trailing" constant="5" id="fww-X5-pUZ"/>
+                                                        <constraint firstItem="Ob2-6c-4Pd" firstAttribute="leading" secondItem="Xyr-8K-zK3" secondAttribute="leading" constant="5" id="q1h-Lp-niA"/>
+                                                        <constraint firstAttribute="bottom" secondItem="Znq-Hk-fCY" secondAttribute="bottom" id="qUE-2G-hOv"/>
+                                                        <constraint firstAttribute="bottom" secondItem="Ob2-6c-4Pd" secondAttribute="bottom" id="yEI-Mf-I5i"/>
                                                     </constraints>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
@@ -467,6 +501,8 @@
                         <outlet property="firstImgView" destination="2AB-Md-rYl" id="iLX-7w-1V8"/>
                         <outlet property="meterNameL" destination="BZH-Ad-95r" id="GsX-8F-ea3"/>
                         <outlet property="meterNoTextField" destination="QyK-hI-5nM" id="jaM-bG-mGe"/>
+                        <outlet property="newDropBtn" destination="Ob2-6c-4Pd" id="ELL-ih-FOh"/>
+                        <outlet property="newDropContentL" destination="Znq-Hk-fCY" id="PPT-kK-iY9"/>
                         <outlet property="newMeterNum" destination="WjX-yn-wNL" id="E7P-bz-5GR"/>
                         <outlet property="oldMeterNum" destination="N2o-TS-qcS" id="2Eo-8q-beN"/>
                         <outlet property="remainNum" destination="ML9-dN-1sA" id="ufx-k3-oGn"/>
@@ -477,10 +513,11 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9N5-iT-gKn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-114" y="-18"/>
+            <point key="canvasLocation" x="-114.40000000000001" y="-18.440779610194905"/>
         </scene>
     </scenes>
     <resources>
+        <image name="下拉三角.png" width="75" height="75"/>
         <image name="扫一扫点击.png" width="24" height="24"/>
         <image name="相机.png" width="53" height="53"/>
     </resources>

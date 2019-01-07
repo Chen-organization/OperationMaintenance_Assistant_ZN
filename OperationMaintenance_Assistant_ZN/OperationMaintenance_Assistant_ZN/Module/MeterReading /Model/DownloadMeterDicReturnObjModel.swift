@@ -19,7 +19,7 @@ class DownloadMeterDicReturnObjModel: Object,HandyJSON {
     @objc dynamic var measureUnit : String?
     @objc dynamic var multiplyingPower : String?
     @objc dynamic var name : String?
-    @objc dynamic var nowValue = 0
+    @objc dynamic var nowValue = 0.0
     @objc dynamic var orgCode : String?
     @objc dynamic var stationName : String?
     @objc dynamic var stationNo : String?
