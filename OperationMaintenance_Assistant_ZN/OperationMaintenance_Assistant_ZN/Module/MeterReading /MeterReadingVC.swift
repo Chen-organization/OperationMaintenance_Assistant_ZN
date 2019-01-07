@@ -187,9 +187,7 @@ class MeterReadingVC: UITableViewController {
             
             YJProgressHUD.hide()
             
-            //跟新字典表
-            self.downloadMeterDic()
-            
+          
             if self.deleteTimeArr.count > 0 {
                 
                 for time in deleteTimeArr{
@@ -205,10 +203,17 @@ class MeterReadingVC: UITableViewController {
                     
                     ZNCustomAlertView.handleTip("离线数据部分上传成功", isShowCancelBtn: false) { (issure) in
                         
+                        //跟新字典表
+                        self.downloadMeterDic()
+                        
+                        
                     }
                 }else{
                     
                     ZNCustomAlertView.handleTip("离线数据上传成功", isShowCancelBtn: false) { (issure) in
+                        
+                        //跟新字典表
+                        self.downloadMeterDic()
                         
                     }
                     
@@ -257,7 +262,7 @@ class MeterReadingVC: UITableViewController {
                     
                     RealmTool.insertMetersDic(by: model.returnObj!)
                     
-                    MBProgressHUD.show(withOnlyMessage: "数据更新成功", delayTime: 2.5)
+                    MBProgressHUD.show(withOnlyMessage: "字典表更新成功", delayTime: 2.5)
                     
                 }
             

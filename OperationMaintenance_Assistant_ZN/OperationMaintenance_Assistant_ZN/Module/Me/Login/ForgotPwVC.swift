@@ -134,12 +134,17 @@ class ForgotPwVC: BaseTableVC ,UITextFieldDelegate{
                         "state" : "1",
                         "phone"   : self.phoneNumTextField.text ?? "",
                         "Code"    : self.messageTextField.text ?? "",
-                        "password":self.newPwTextField.text
+                        "password":self.newPwTextField.text ?? ""
                 ] as [String : Any]
+            
+            YJProgressHUD.showProgress("", in: UIApplication.shared.delegate?.window!)
+
             
             NetworkService.networkPostrequest(currentView : self.view, parameters: para as! [String : String], requestApi: getBackPasswordUrl, modelClass: "BaseModel", response: { (obj) in
                 
                 let model = obj as! BaseModel
+                
+                YJProgressHUD.hide()
 
                 if(model.statusCode == 800){
                     
@@ -163,7 +168,8 @@ class ForgotPwVC: BaseTableVC ,UITextFieldDelegate{
             }, failture: { (error) in
                 
                 
-                
+                YJProgressHUD.hide()
+
                 
             })
             

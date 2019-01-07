@@ -73,7 +73,7 @@
     
     [[UIApplication sharedApplication].keyWindow addSubview:self.alertView];
     [UIView animateWithDuration:0.3 animations:^{
-        _alertView.backgroundColor = [UIColor colorWithWhite:0 alpha:0.18];
+        _alertView.backgroundColor = [UIColor colorWithWhite:0 alpha:0.45];
         _alertView.contentView.alpha = 1;
     } completion:^(BOOL finished) {
         

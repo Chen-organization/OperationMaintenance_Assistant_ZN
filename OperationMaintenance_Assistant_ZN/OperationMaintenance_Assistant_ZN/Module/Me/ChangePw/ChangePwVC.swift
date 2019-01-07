@@ -101,6 +101,8 @@ class ChangePwVC: BaseTableVC ,UITextFieldDelegate, UIAlertViewDelegate{
                             "new" : new
                 ]
                 
+                YJProgressHUD.showProgress("", in: UIApplication.shared.delegate?.window!)
+                
                 NetworkService.networkPostrequest(currentView : self.view, parameters: para as! [String : String], requestApi: getModifyPasswordUrl, modelClass: "BaseModel", response: { (obj) in
                     
                     let model = obj as! BaseModel
@@ -118,10 +120,12 @@ class ChangePwVC: BaseTableVC ,UITextFieldDelegate, UIAlertViewDelegate{
                         
                     }
                     
+                    YJProgressHUD.hide()
                     
                 }, failture: { (error) in
                     
-                    
+                    YJProgressHUD.hide()
+
                 })
                 
             }

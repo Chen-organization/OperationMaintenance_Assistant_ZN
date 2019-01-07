@@ -49,7 +49,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "OperationMaintenance_Assistant_ZN/Module/MeterReading /changeMeter/changeMeterVC.swift"
-            timestampString = "568237248.198458"
+            timestampString = "568566069.541531"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "688"
@@ -86,40 +86,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "885"
             endingLineNumber = "885"
-            landmarkName = "cellDeleteWithImgIndex(index:)"
+            landmarkName = "searchBtnClick(_:)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "OperationMaintenance_Assistant_ZN.readingVC.cellDeleteWithImgIndex(index: Swift.Int) -&gt; ()"
-                  moduleName = "OperationMaintenance_Assistant_ZN"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///My_Github_Progect/OperationMaintenance_Assistant_ZN/OperationMaintenance_Assistant_ZN/OperationMaintenance_Assistant_ZN/Module/MeterReading%20/meterReading/readingVC.swift"
-                  timestampString = "568473875.060227"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "886"
-                  endingLineNumber = "886"
-                  offsetFromSymbolStart = "884">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #2 () -&gt; Swift.Optional&lt;Swift.Array&lt;Any&gt;&gt; in OperationMaintenance_Assistant_ZN.readingVC.cellDeleteWithImgIndex(index: Swift.Int) -&gt; ()"
-                  moduleName = "OperationMaintenance_Assistant_ZN"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///My_Github_Progect/OperationMaintenance_Assistant_ZN/OperationMaintenance_Assistant_ZN/OperationMaintenance_Assistant_ZN/Module/MeterReading%20/meterReading/readingVC.swift"
-                  timestampString = "568473875.061898"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "888"
-                  endingLineNumber = "888"
-                  offsetFromSymbolStart = "16">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -145,7 +113,7 @@
                   moduleName = "OperationMaintenance_Assistant_ZN"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///My_Github_Progect/OperationMaintenance_Assistant_ZN/OperationMaintenance_Assistant_ZN/OperationMaintenance_Assistant_ZN/Module/Home/message/MessageVC.swift"
-                  timestampString = "568473875.0663379"
+                  timestampString = "568566985.400656"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "144"
@@ -160,7 +128,7 @@
                   moduleName = "OperationMaintenance_Assistant_ZN"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///My_Github_Progect/OperationMaintenance_Assistant_ZN/OperationMaintenance_Assistant_ZN/OperationMaintenance_Assistant_ZN/Module/Home/message/MessageVC.swift"
-                  timestampString = "568473875.067957"
+                  timestampString = "568566985.402344"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "146"
@@ -209,45 +177,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "OperationMaintenance_Assistant_ZN/Module/MeterReading /meterReading/readingVC.swift"
-            timestampString = "568487470.136328"
+            timestampString = "568487470.136377"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "612"
-            endingLineNumber = "612"
-            landmarkName = "saveData()"
+            startingLineNumber = "392"
+            endingLineNumber = "392"
+            landmarkName = "tableView(_:cellForRowAt:)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Bool, OperationMaintenance_Assistant_ZN.LoginReturnObjModel) -&gt; () in OperationMaintenance_Assistant_ZN.readingVC.saveData() -&gt; ()"
-                  moduleName = "OperationMaintenance_Assistant_ZN"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///My_Github_Progect/OperationMaintenance_Assistant_ZN/OperationMaintenance_Assistant_ZN/OperationMaintenance_Assistant_ZN/Module/MeterReading%20/meterReading/readingVC.swift"
-                  timestampString = "568473875.075853"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "612"
-                  endingLineNumber = "612"
-                  offsetFromSymbolStart = "7300">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.AnyObject) -&gt; () in closure #1 (Swift.Bool, OperationMaintenance_Assistant_ZN.LoginReturnObjModel) -&gt; () in OperationMaintenance_Assistant_ZN.readingVC.saveData() -&gt; ()"
-                  moduleName = "OperationMaintenance_Assistant_ZN"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///My_Github_Progect/OperationMaintenance_Assistant_ZN/OperationMaintenance_Assistant_ZN/OperationMaintenance_Assistant_ZN/Module/MeterReading%20/meterReading/readingVC.swift"
-                  timestampString = "568473875.077503"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "614"
-                  endingLineNumber = "614"
-                  offsetFromSymbolStart = "48">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -257,13 +193,45 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "OperationMaintenance_Assistant_ZN/Module/MeterReading /meterReading/readingVC.swift"
-            timestampString = "568487470.136377"
+            timestampString = "568566982.337449"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "392"
-            endingLineNumber = "392"
-            landmarkName = "showOverMeter()"
+            startingLineNumber = "696"
+            endingLineNumber = "696"
+            landmarkName = "saveData()"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 (Swift.Bool, OperationMaintenance_Assistant_ZN.LoginReturnObjModel) -&gt; () in OperationMaintenance_Assistant_ZN.readingVC.saveData() -&gt; ()"
+                  moduleName = "OperationMaintenance_Assistant_ZN"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///My_Github_Progect/OperationMaintenance_Assistant_ZN/OperationMaintenance_Assistant_ZN/OperationMaintenance_Assistant_ZN/Module/MeterReading%20/meterReading/readingVC.swift"
+                  timestampString = "568566985.373045"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "696"
+                  endingLineNumber = "696"
+                  offsetFromSymbolStart = "7256">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.AnyObject) -&gt; () in closure #2 (Swift.Bool, OperationMaintenance_Assistant_ZN.LoginReturnObjModel) -&gt; () in OperationMaintenance_Assistant_ZN.readingVC.saveData() -&gt; ()"
+                  moduleName = "OperationMaintenance_Assistant_ZN"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///My_Github_Progect/OperationMaintenance_Assistant_ZN/OperationMaintenance_Assistant_ZN/OperationMaintenance_Assistant_ZN/Module/MeterReading%20/meterReading/readingVC.swift"
+                  timestampString = "568566985.374877"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "698"
+                  endingLineNumber = "698"
+                  offsetFromSymbolStart = "48">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

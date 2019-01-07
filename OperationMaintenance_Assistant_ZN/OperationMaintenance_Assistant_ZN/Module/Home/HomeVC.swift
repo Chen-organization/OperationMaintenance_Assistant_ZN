@@ -193,8 +193,12 @@ class HomeVC: UITableViewController,UIGestureRecognizerDelegate {
             let model : TheHeadlinesReturnObjModel = self.headLinesData[indexPath.row]
             
             if let url = model.imgUrl {
-                
-                cell.img.kf.setImage(with: URL.init(string: url))
+
+                cell.img.kf.setImage(with: URL.init(string:url), placeholder: UIImage.init(named: "站位图小"), options: nil, progressBlock: { (a, b) in
+                    
+                }, completionHandler: { (img) in
+                    
+                })
 
             }
             cell.titleL.text = model.title ?? ""
