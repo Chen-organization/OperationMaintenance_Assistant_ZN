@@ -84,6 +84,7 @@ class MeterReadingVC: UITableViewController {
     }
     func UploadeMeterDic() {
         
+        self.uploadNum = 0
         
         //无网络判断
         let net = NetworkReachabilityManager()
@@ -123,26 +124,13 @@ class MeterReadingVC: UITableViewController {
                         para["thresholdMax"] = model.thresholdMax ?? ""
                         para["file"] = model.file ?? ""
                         para["file2"] = model.file2  ?? ""
-                        
-//                            if let file = model.file {
-                        
-                        
-//                            }
-//                            if let file2 = model.file2 {
-                                
-                        
-//                            }
+
                         
                             NetworkService.networkPostrequest(currentView: self.view, parameters: para, requestApi:getSubmitUrl, modelClass: "BaseModel", response: { (obj) in
                                 
                                 let m :BaseModel = obj as! BaseModel
                                 if m.statusCode == 800 {
                                     
-                                    
-                                        //清空本次提交数据
-//                                        RealmTool.deleteMetersReadingData(model: model)
-                                
-//                                    RealmTool.deleteMeterReadingDataWithTime(time: model.time ?? "")
                                     
                                     self.deleteTimeArr.append(para["time"] ?? "")
                                    
@@ -152,13 +140,13 @@ class MeterReadingVC: UITableViewController {
                                 
                                 }
                                 
-                                self.uploadNum += 1
+                                self.uploadNum = self.uploadNum + 1
                                 self.setUploadResult()
                                 
                                 
                             }, failture: { (error) in
                                 
-                                self.uploadNum += 1
+                                self.uploadNum = self.uploadNum + 1
                                 self.setUploadResult()
 
                                 
@@ -184,6 +172,8 @@ class MeterReadingVC: UITableViewController {
     func setUploadResult() {
         
         if self.uploadNum == RealmTool.getMetersReadingData().count {
+            
+            self.uploadNum = 0
             
             YJProgressHUD.hide()
             

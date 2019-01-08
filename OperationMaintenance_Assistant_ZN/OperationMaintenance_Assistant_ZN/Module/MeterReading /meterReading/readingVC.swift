@@ -12,6 +12,9 @@ import Alamofire
 
 
 class readingVC: UITableViewController,ScanViewControllerDelegate,UIGestureRecognizerDelegate,meterReadingSignVCDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,ReadingVCTableviewCellDelegate,UITextFieldDelegate {
+    
+    
+    var recordListMeterNo = "" //统一抄表记录用的表号 不做它用
 
     @IBOutlet weak var meterNo: UITextField!
     @IBOutlet weak var scanBtn: UIButton!
@@ -115,7 +118,11 @@ class readingVC: UITableViewController,ScanViewControllerDelegate,UIGestureRecog
         
         super.viewWillAppear(animated)
         
-        
+        if self.recordListMeterNo.characters.count > 0 {
+            
+            self.getRecordList(deviceNo: self.recordListMeterNo)
+            
+        }
         
     }
     
@@ -846,6 +853,9 @@ class readingVC: UITableViewController,ScanViewControllerDelegate,UIGestureRecog
             return
         }
         
+        self.recordListMeterNo = self.meterNo.text!
+
+        
         self.getMeterInfo(deviceKey: self.meterNo.text!)
 
 //        self.getRecordList(deviceNo: self.meterNo.text!)
@@ -1028,6 +1038,7 @@ class readingVC: UITableViewController,ScanViewControllerDelegate,UIGestureRecog
             //删除已上传过得记录
             
             let model = self.beforMeterArr[index - self.meterArr.count] as? readingListReturnObjModel
+
             
             if let id = model?.id{
                 
@@ -1040,7 +1051,6 @@ class readingVC: UITableViewController,ScanViewControllerDelegate,UIGestureRecog
                     }
                     
                 }
-                
 
             }
             
@@ -1076,25 +1086,45 @@ class readingVC: UITableViewController,ScanViewControllerDelegate,UIGestureRecog
             
             NetworkService.networkPostrequest(currentView: self.view, parameters: para as [String : Any], requestApi: getDeleteUrl, modelClass: "BaseModel", response: { (obj) in
                 
+                YJProgressHUD.hide()
+
                 let model : BaseModel = obj as! BaseModel
                 
                 if model.statusCode == 800 {
                     
-//                    self.getRecordList(deviceNo: self.meterNo.text ?? "")
+                    DispatchQueue.main.after(0.3) {
+                        
+                        ZNCustomAlertView.handleTip("数据删除成功", isShowCancelBtn: false, completion: { (issure) in
+                            
+                        })
+                    }
                     
                     self.beforMeterArr.remove(at: arrIndex)
-                    
+
                     let positon = IndexSet.init(integer: 2)
                     self.tableView.reloadSections(positon, with: UITableView.RowAnimation.none)
                     
+
                     
-                    ZNCustomAlertView.handleTip("数据删除成功", isShowCancelBtn: false, completion: { (issure) in
+                }else if model.statusCode == 900 {
+                    
+                    DispatchQueue.main.after(0.3) {
                         
-                    })
+                        ZNCustomAlertView.handleTip("删除失败，请刷新数据检查此条记录能否被删除！", isShowCancelBtn: false, completion: { (issure) in
+                            
+                        })
+                    }
+                        
+                }else{
                     
+                    DispatchQueue.main.after(0.3) {
+                        
+                        ZNCustomAlertView.handleTip("删除失败", isShowCancelBtn: false, completion: { (issure) in
+                            
+                        })
+                    }
                 }
                 
-                YJProgressHUD.hide()
                 
             }, failture: { (error) in
                 
@@ -1111,7 +1141,6 @@ class readingVC: UITableViewController,ScanViewControllerDelegate,UIGestureRecog
     
     
      // MARK: - 签名代理
-    
     func meterReadingedWithImg(img: UIImage) {
         
         
@@ -1130,6 +1159,7 @@ class readingVC: UITableViewController,ScanViewControllerDelegate,UIGestureRecog
     // MARK: - 二维码 代理
     func ScanViewInfo(answer: String) {
         
+        self.recordListMeterNo = answer
         
         //无网络判断
         let net = NetworkReachabilityManager()
@@ -1307,7 +1337,9 @@ class readingVC: UITableViewController,ScanViewControllerDelegate,UIGestureRecog
                 self.deviceInfoModel?.deviceName = model.name ?? ""
                 self.deviceInfoModel?.stationName = model.stationName ?? ""
                 self.deviceInfoModel?.installSite = model.installSite ?? ""
-                
+                self.deviceInfoModel?.measureUnit = model.measureUnit ?? ""
+                self.deviceInfoModel?.deviceNum = model.deviceNum ?? ""
+
                 if let mul = model.multiplyingPower{
                     
                     self.deviceInfoModel?.multiplyingPower = Double(mul) ?? 0

@@ -11,8 +11,10 @@ import UIKit
 class readingListVC: UIViewController,UITableViewDelegate,UITableViewDataSource,readinglistCellDelegate,PullTableViewDelegate {
     
     var tableView : BasePullTableView!
+    
+    var nowpage = 1
 
-    var lastNum = 1
+//    var lastNum = 1
 
     var dataArray = [readingListReturnObjModel]()
     
@@ -56,7 +58,7 @@ class readingListVC: UIViewController,UITableViewDelegate,UITableViewDataSource,
         self.tableView.mj_footer.ignoredScrollViewContentInsetBottom = is_X_XS_max ? 34 : 0;
 
 
-        self.getdata(num: 1)
+        self.tableView.mj_header.beginRefreshing()
     }
     
     func pullTableViewDidTriggerRefresh(_ pullTableView: BasePullTableView!) {
@@ -67,7 +69,7 @@ class readingListVC: UIViewController,UITableViewDelegate,UITableViewDataSource,
     
     func pullTableViewDidTriggerLoadMore(_ pullTableView: BasePullTableView!) {
         
-        self.getdata(num: self.dataArray.count)
+        self.getdata(num: self.nowpage + 1)
         
     }
     
@@ -104,6 +106,9 @@ class readingListVC: UIViewController,UITableViewDelegate,UITableViewDataSource,
 
                         }
                     }
+                    
+                    
+                    self.nowpage = num;
                     
                     self.tableView.mj_header.endRefreshing()
                     self.tableView.mj_footer.endRefreshing()
@@ -347,16 +352,7 @@ class readingListVC: UIViewController,UITableViewDelegate,UITableViewDataSource,
     
         UserCenter.shared.userInfo { (islogin, model) in
             
-            
-            ZNCustomAlertView.handleTip("是否确定删除此条抄表记录！", isShowCancelBtn: true) { (issure) in
-                
-                if !issure{
-                    return
-                }
-                
-            }
-            
-            
+    
             var para = [
                 
                 "companyCode":model.companyCode,
@@ -372,10 +368,20 @@ class readingListVC: UIViewController,UITableViewDelegate,UITableViewDataSource,
                 
                 if index < localNum {
                     
-                    //本地删除
-                    RealmTool.deleteMetersReadingData(model: RealmTool.getMetersReadingData()[index])
                     
-                    self.tableView.reloadData()
+                    
+                    ZNCustomAlertView.handleTip("是否确定删除此条抄表记录！", isShowCancelBtn: true) { (issure) in
+                        
+                        if issure{
+                            
+                            //本地删除
+                            RealmTool.deleteMetersReadingData(model: RealmTool.getMetersReadingData()[index])
+                            
+                            self.tableView.reloadData()
+                        }
+                        
+                    }
+               
                     return
                     
                 }else{
@@ -383,6 +389,7 @@ class readingListVC: UIViewController,UITableViewDelegate,UITableViewDataSource,
                     let model:readingListReturnObjModel = self.dataArray[index + localNum] as! readingListReturnObjModel
                     
                     para["id"] = model.id
+                    
                     
                 }
                 
@@ -392,70 +399,76 @@ class readingListVC: UIViewController,UITableViewDelegate,UITableViewDataSource,
                 
                 para["id"] = model.id
                 
+                
             }
             
-//            NetworkService.networkPostrequest(currentView: self.view, parameters: para as [String : Any], requestApi: getDeleteUrl, modelClass: "BaseModel", response: { (obj) in
-//
-////                let model : BaseModel = obj as! BaseModel
-////                
-////                if model.statusCode == 800{
-////
-////                    ZNCustomAlertView.handleTip("删除成功", isShowCancelBtn: false, completion: { (sure) in
-////
-////                    })
-////
-////                }else{
-////                    
-////                    ZNCustomAlertView.handleTip(model.msg, isShowCancelBtn: false, completion: { (sure) in
-////
-////                    })
-////
-////                    self.tableView.reloadData()
-////
-////                }
-//
-//            }) { (error) in
-//
-//
-//
-//            }
             
             
-          
             
-            YJProgressHUD.showProgress("", in: UIApplication.shared.delegate?.window!)
-            
-            NetworkService.networkPostrequest(currentView: self.view, parameters: para as [String : Any], requestApi: getDeleteUrl, modelClass: "BaseModel", response: { (obj) in
+            ZNCustomAlertView.handleTip("是否确定删除此条抄表记录！", isShowCancelBtn: true) { (issure) in
                 
-                let model : BaseModel = obj as! BaseModel
-                
-                if model.statusCode == 800 {
-                    
-                    //                    self.getRecordList(deviceNo: self.meterNo.text ?? "")
-//
-//                    self.beforMeterArr.remove(at: arrIndex)
-//
-//                    if index >
-                    
-                    self.getdata(num: 1)
+                YJProgressHUD.hide()
 
-                    self.tableView.reloadData()
+                if issure{
                     
-                    ZNCustomAlertView.handleTip("数据删除成功", isShowCancelBtn: false, completion: { (issure) in
+                    
+                    
+                    YJProgressHUD.showProgress("", in: UIApplication.shared.delegate?.window!)
+                    
+                    NetworkService.networkPostrequest(currentView: self.view, parameters: para as [String : Any], requestApi: getDeleteUrl, modelClass: "BaseModel", response: { (obj) in
+                        
+                        let model : BaseModel = obj as! BaseModel
+                        
+                        if model.statusCode == 800 {
+                            
+                            self.getdata(num: 1)
+                            
+                            self.tableView.reloadData()
+                            
+                            DispatchQueue.main.after(0.3) {
+                                
+                                ZNCustomAlertView.handleTip("数据删除成功", isShowCancelBtn: false, completion: { (issure) in
+                                    
+                                })
+                            }
+                            
+                        }else if model.statusCode == 900 {
+                            
+                            DispatchQueue.main.after(0.3) {
+                                
+                                ZNCustomAlertView.handleTip("删除失败，请刷新数据检查此条记录能否被删除！", isShowCancelBtn: false, completion: { (issure) in
+                                    
+                                })
+                            }
+                        }else{
+                            
+                            DispatchQueue.main.after(0.3) {
+                                
+                                ZNCustomAlertView.handleTip("删除失败", isShowCancelBtn: false, completion: { (issure) in
+                                    
+                                })
+                            }
+                        }
+                        
+                        YJProgressHUD.hide()
+
+                    }, failture: { (error) in
+                        
+                        
+                        YJProgressHUD.hide()
                         
                     })
                     
+                    
+                    
+                    
                 }
                 
-                YJProgressHUD.hide()
-                
-            }, failture: { (error) in
-                
-                
-                YJProgressHUD.hide()
-                
-            })
+            }
             
+            
+          
+          
             
             
             
