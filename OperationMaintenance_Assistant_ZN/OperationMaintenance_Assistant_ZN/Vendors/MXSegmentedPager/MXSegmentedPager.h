@@ -21,9 +21,9 @@
 // THE SOFTWARE.
 
 #import <UIKit/UIKit.h>
-#import <HMSegmentedControl/HMSegmentedControl.h>
-#import <MXPagerView/MXPagerView.h>
-#import <MXParallaxHeader/MXParallaxHeader.h>
+#import "HMSegmentedControl.h"
+#import "MXPagerView.h"
+#import "MXParallaxHeader.h"
 
 NS_ASSUME_NONNULL_BEGIN
 

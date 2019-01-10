@@ -55,6 +55,12 @@
 		185C238B21D63CFB0004AD0C /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 185C238121D63CFB0004AD0C /* Info.plist */; };
 		185C238E21D63D8C0004AD0C /* SqliteManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 185C238C21D63D8C0004AD0C /* SqliteManager.m */; };
 		185C239021D749680004AD0C /* agreement.html in Resources */ = {isa = PBXBuildFile; fileRef = 185C238F21D749680004AD0C /* agreement.html */; };
+		1892DAB821E6FBDB00508C8F /* HMSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 1892DAB721E6FBDB00508C8F /* HMSegmentedControl.m */; };
+		1892DABE21E6FBF100508C8F /* MXPagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1892DABC21E6FBF100508C8F /* MXPagerViewController.m */; };
+		1892DABF21E6FBF100508C8F /* MXPagerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1892DABD21E6FBF100508C8F /* MXPagerView.m */; };
+		1892DAC721E6FC0300508C8F /* MXScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1892DAC121E6FC0300508C8F /* MXScrollView.m */; };
+		1892DAC821E6FC0300508C8F /* MXParallaxHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 1892DAC221E6FC0300508C8F /* MXParallaxHeader.m */; };
+		1892DAC921E6FC0300508C8F /* MXScrollViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1892DAC321E6FC0300508C8F /* MXScrollViewController.m */; };
 		7403D07B21C2BC5F0055561E /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7403D07821C2BC5F0055561E /* Network.swift */; };
 		7403D07C21C2BC5F0055561E /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7403D07921C2BC5F0055561E /* NetworkService.swift */; };
 		7403D07D21C2BC5F0055561E /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7403D07A21C2BC5F0055561E /* API.swift */; };
@@ -257,9 +263,6 @@
 		742CAEC921DA9D680022648E /* MessageCountModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 742CAEC821DA9D680022648E /* MessageCountModel.swift */; };
 		742CAED921DB50180022648E /* MXSegmentedPagerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 742CAED721DB50180022648E /* MXSegmentedPagerController.m */; };
 		742CAEDA21DB50180022648E /* MXSegmentedPager.m in Sources */ = {isa = PBXBuildFile; fileRef = 742CAED821DB50180022648E /* MXSegmentedPager.m */; };
-		742CAEDC21DB51960022648E /* HMSegmentedControl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 742CAEDB21DB51960022648E /* HMSegmentedControl.framework */; };
-		742CAEDE21DB519D0022648E /* MXPagerView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 742CAEDD21DB519D0022648E /* MXPagerView.framework */; };
-		742CAEE021DB51A30022648E /* MXParallaxHeader.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 742CAEDF21DB51A30022648E /* MXParallaxHeader.framework */; };
 		742CAEF121DB5BAE0022648E /* personDataAddPicCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 742CAEE621DB5BAD0022648E /* personDataAddPicCollectionCell.m */; };
 		742CAEF221DB5BAE0022648E /* UICustomCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 742CAEE821DB5BAD0022648E /* UICustomCollectionView.m */; };
 		742CAEF321DB5BAE0022648E /* PersonDataAddPicCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 742CAEEA21DB5BAD0022648E /* PersonDataAddPicCell.m */; };
@@ -320,12 +323,6 @@
 		746423CD21D2E96A0038E8E3 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 746423CC21D2E96A0038E8E3 /* Home.storyboard */; };
 		746423D121D2FC030038E8E3 /* HomeNewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746423CF21D2FC030038E8E3 /* HomeNewCell.swift */; };
 		746423D221D2FC030038E8E3 /* HomeNewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 746423D021D2FC030038E8E3 /* HomeNewCell.xib */; };
-		746A635721DB97560054C0C1 /* MXParallaxHeader.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 742CAEDF21DB51A30022648E /* MXParallaxHeader.framework */; };
-		746A635821DB97560054C0C1 /* MXParallaxHeader.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 742CAEDF21DB51A30022648E /* MXParallaxHeader.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		746A635921DB97560054C0C1 /* MXPagerView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 742CAEDD21DB519D0022648E /* MXPagerView.framework */; };
-		746A635A21DB97560054C0C1 /* MXPagerView.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 742CAEDD21DB519D0022648E /* MXPagerView.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		746A635B21DB97560054C0C1 /* HMSegmentedControl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 742CAEDB21DB51960022648E /* HMSegmentedControl.framework */; };
-		746A635C21DB97560054C0C1 /* HMSegmentedControl.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 742CAEDB21DB51960022648E /* HMSegmentedControl.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		746A637921DB9BEC0054C0C1 /* 拍照@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 746A635F21DB9BEB0054C0C1 /* 拍照@2x.png */; };
 		746A637A21DB9BEC0054C0C1 /* dount_5.png in Resources */ = {isa = PBXBuildFile; fileRef = 746A636021DB9BEB0054C0C1 /* dount_5.png */; };
 		746A637B21DB9BEC0054C0C1 /* 内容@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 746A636121DB9BEB0054C0C1 /* 内容@2x.png */; };
@@ -536,9 +533,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				746A635C21DB97560054C0C1 /* HMSegmentedControl.framework in Embed Frameworks */,
-				746A635A21DB97560054C0C1 /* MXPagerView.framework in Embed Frameworks */,
-				746A635821DB97560054C0C1 /* MXParallaxHeader.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -625,6 +619,18 @@
 		185C238C21D63D8C0004AD0C /* SqliteManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SqliteManager.m; sourceTree = "<group>"; };
 		185C238D21D63D8C0004AD0C /* SqliteManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SqliteManager.h; sourceTree = "<group>"; };
 		185C238F21D749680004AD0C /* agreement.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = agreement.html; sourceTree = "<group>"; };
+		1892DAB621E6FBDB00508C8F /* HMSegmentedControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMSegmentedControl.h; sourceTree = "<group>"; };
+		1892DAB721E6FBDB00508C8F /* HMSegmentedControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMSegmentedControl.m; sourceTree = "<group>"; };
+		1892DABA21E6FBF100508C8F /* MXPagerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MXPagerViewController.h; sourceTree = "<group>"; };
+		1892DABB21E6FBF100508C8F /* MXPagerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MXPagerView.h; sourceTree = "<group>"; };
+		1892DABC21E6FBF100508C8F /* MXPagerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MXPagerViewController.m; sourceTree = "<group>"; };
+		1892DABD21E6FBF100508C8F /* MXPagerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MXPagerView.m; sourceTree = "<group>"; };
+		1892DAC121E6FC0300508C8F /* MXScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MXScrollView.m; sourceTree = "<group>"; };
+		1892DAC221E6FC0300508C8F /* MXParallaxHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MXParallaxHeader.m; sourceTree = "<group>"; };
+		1892DAC321E6FC0300508C8F /* MXScrollViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MXScrollViewController.m; sourceTree = "<group>"; };
+		1892DAC421E6FC0300508C8F /* MXScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MXScrollView.h; sourceTree = "<group>"; };
+		1892DAC521E6FC0300508C8F /* MXParallaxHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MXParallaxHeader.h; sourceTree = "<group>"; };
+		1892DAC621E6FC0300508C8F /* MXScrollViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MXScrollViewController.h; sourceTree = "<group>"; };
 		4154604F37E3CCCFB375A4AD /* Pods-OperationMaintenance_Assistant_ZN.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OperationMaintenance_Assistant_ZN.release.xcconfig"; path = "Pods/Target Support Files/Pods-OperationMaintenance_Assistant_ZN/Pods-OperationMaintenance_Assistant_ZN.release.xcconfig"; sourceTree = "<group>"; };
 		7403D07821C2BC5F0055561E /* Network.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		7403D07921C2BC5F0055561E /* NetworkService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
@@ -838,9 +844,6 @@
 		742CAED621DB50180022648E /* MXSegmentedPager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MXSegmentedPager.h; sourceTree = "<group>"; };
 		742CAED721DB50180022648E /* MXSegmentedPagerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MXSegmentedPagerController.m; sourceTree = "<group>"; };
 		742CAED821DB50180022648E /* MXSegmentedPager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MXSegmentedPager.m; sourceTree = "<group>"; };
-		742CAEDB21DB51960022648E /* HMSegmentedControl.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = HMSegmentedControl.framework; sourceTree = "<group>"; };
-		742CAEDD21DB519D0022648E /* MXPagerView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MXPagerView.framework; sourceTree = "<group>"; };
-		742CAEDF21DB51A30022648E /* MXParallaxHeader.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MXParallaxHeader.framework; sourceTree = "<group>"; };
 		742CAEE621DB5BAD0022648E /* personDataAddPicCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = personDataAddPicCollectionCell.m; sourceTree = "<group>"; };
 		742CAEE721DB5BAD0022648E /* PersonDataAddPicCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonDataAddPicCell.h; sourceTree = "<group>"; };
 		742CAEE821DB5BAD0022648E /* UICustomCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UICustomCollectionView.m; sourceTree = "<group>"; };
@@ -1216,15 +1219,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				742CAEDC21DB51960022648E /* HMSegmentedControl.framework in Frameworks */,
-				742CAEDE21DB519D0022648E /* MXPagerView.framework in Frameworks */,
-				746A635B21DB97560054C0C1 /* HMSegmentedControl.framework in Frameworks */,
-				742CAEE021DB51A30022648E /* MXParallaxHeader.framework in Frameworks */,
 				749DFD5F21DB7ED300BA6BA8 /* AdSupport.framework in Frameworks */,
 				742CAF1A21DB67D80022648E /* libc++.tbd in Frameworks */,
 				742CAF1821DB67C80022648E /* CoreTelephony.framework in Frameworks */,
 				749DFD5C21DB7D8900BA6BA8 /* libcrypto.a in Frameworks */,
-				746A635921DB97560054C0C1 /* MXPagerView.framework in Frameworks */,
 				742CAF1621DB67BF0022648E /* libsqlite3.0.tbd in Frameworks */,
 				742CAF1421DB67A80022648E /* Security.framework in Frameworks */,
 				742CAF1221DB67A10022648E /* CoreGraphics.framework in Frameworks */,
@@ -1243,7 +1241,6 @@
 				742CAF0421DB66420022648E /* BaiduMapAPI_Search.framework in Frameworks */,
 				742CAF0321DB66420022648E /* BaiduMapAPI_Base.framework in Frameworks */,
 				742CAF0121DB66420022648E /* BaiduMapAPI_Utils.framework in Frameworks */,
-				746A635721DB97560054C0C1 /* MXParallaxHeader.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1466,6 +1463,39 @@
 				742CAEB421DA41970022648E /* headerLinesDetailVC.xib */,
 			);
 			path = MoreHeadLinesVC;
+			sourceTree = "<group>";
+		};
+		1892DAB521E6FBDB00508C8F /* HMSegmentedControl */ = {
+			isa = PBXGroup;
+			children = (
+				1892DAB621E6FBDB00508C8F /* HMSegmentedControl.h */,
+				1892DAB721E6FBDB00508C8F /* HMSegmentedControl.m */,
+			);
+			path = HMSegmentedControl;
+			sourceTree = "<group>";
+		};
+		1892DAB921E6FBF100508C8F /* MXPagerView */ = {
+			isa = PBXGroup;
+			children = (
+				1892DABA21E6FBF100508C8F /* MXPagerViewController.h */,
+				1892DABB21E6FBF100508C8F /* MXPagerView.h */,
+				1892DABC21E6FBF100508C8F /* MXPagerViewController.m */,
+				1892DABD21E6FBF100508C8F /* MXPagerView.m */,
+			);
+			path = MXPagerView;
+			sourceTree = "<group>";
+		};
+		1892DAC021E6FC0300508C8F /* MXParallaxHeader */ = {
+			isa = PBXGroup;
+			children = (
+				1892DAC121E6FC0300508C8F /* MXScrollView.m */,
+				1892DAC221E6FC0300508C8F /* MXParallaxHeader.m */,
+				1892DAC321E6FC0300508C8F /* MXScrollViewController.m */,
+				1892DAC421E6FC0300508C8F /* MXScrollView.h */,
+				1892DAC521E6FC0300508C8F /* MXParallaxHeader.h */,
+				1892DAC621E6FC0300508C8F /* MXScrollViewController.h */,
+			);
+			path = MXParallaxHeader;
 			sourceTree = "<group>";
 		};
 		37D07A4C21783CCD725DBCD2 /* Pods */ = {
@@ -2316,11 +2346,11 @@
 		7477E89E21C170C800AAA756 /* Vendors */ = {
 			isa = PBXGroup;
 			children = (
+				1892DAC021E6FC0300508C8F /* MXParallaxHeader */,
+				1892DAB921E6FBF100508C8F /* MXPagerView */,
+				1892DAB521E6FBDB00508C8F /* HMSegmentedControl */,
 				18328C7F21E33B1800CFF04A /* XDSDropDownMenu */,
 				742CAEF821DB66420022648E /* BaiduMap_IOSSDK_v4.2.1_Frameworks */,
-				742CAEDF21DB51A30022648E /* MXParallaxHeader.framework */,
-				742CAEDD21DB519D0022648E /* MXPagerView.framework */,
-				742CAEDB21DB51960022648E /* HMSegmentedControl.framework */,
 				742CAED421DB50180022648E /* MXSegmentedPager */,
 				181AC40221D788750018ADAD /* MJRefresh */,
 				185C236721D63CFB0004AD0C /* FMDB */,
@@ -3003,7 +3033,6 @@
 				7477E83C21C025BF00AAA756 /* Resources */,
 				FD8DD99ECC682DDDEAE23D93 /* [CP] Embed Pods Frameworks */,
 				746A635D21DB97570054C0C1 /* Embed Frameworks */,
-				18328C8C21E4AB2600CFF04A /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -3341,23 +3370,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		18328C8C21E4AB2600CFF04A /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nAPP_PATH=\"${TARGET_BUILD_DIR}/${WRAPPER_NAME}\"  \n\n# This script loops through the frameworks embedded in the application and  \n# removes unused architectures.  \nfind \"$APP_PATH\" -name '*.framework' -type d | while read -r FRAMEWORK  \ndo  \nFRAMEWORK_EXECUTABLE_NAME=$(defaults read \"$FRAMEWORK/Info.plist\" CFBundleExecutable)  \nFRAMEWORK_EXECUTABLE_PATH=\"$FRAMEWORK/$FRAMEWORK_EXECUTABLE_NAME\"  \necho \"Executable is $FRAMEWORK_EXECUTABLE_PATH\"  \n\nEXTRACTED_ARCHS=()  \n\nfor ARCH in $ARCHS  \ndo  \necho \"Extracting $ARCH from $FRAMEWORK_EXECUTABLE_NAME\"  \nlipo -extract \"$ARCH\" \"$FRAMEWORK_EXECUTABLE_PATH\" -o \"$FRAMEWORK_EXECUTABLE_PATH-$ARCH\"  \nEXTRACTED_ARCHS+=(\"$FRAMEWORK_EXECUTABLE_PATH-$ARCH\")  \ndone  \n\necho \"Merging extracted architectures: ${ARCHS}\"  \nlipo -o \"$FRAMEWORK_EXECUTABLE_PATH-merged\" -create \"${EXTRACTED_ARCHS[@]}\"  \nrm \"${EXTRACTED_ARCHS[@]}\"  \n\necho \"Replacing original executable with thinned version\"  \nrm \"$FRAMEWORK_EXECUTABLE_PATH\"  \nmv \"$FRAMEWORK_EXECUTABLE_PATH-merged\" \"$FRAMEWORK_EXECUTABLE_PATH\"  \n\ndone  \n\n";
-		};
 		E73F5207F318F7735F7C6215 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -3441,6 +3453,7 @@
 				7477EA8021C1712300AAA756 /* UIFont+Extend.m in Sources */,
 				7477EACB21C1712300AAA756 /* ALiProgressHUD.m in Sources */,
 				746A63A821DBD4940054C0C1 /* changeMeterDisplayModel.swift in Sources */,
+				1892DAC721E6FC0300508C8F /* MXScrollView.m in Sources */,
 				7477EA3121C1712300AAA756 /* FLAnimatedImageView.m in Sources */,
 				185C234521D4A4BC0004AD0C /* readingListReturnObjModel.swift in Sources */,
 				7477EA6621C1712300AAA756 /* PBPGView.m in Sources */,
@@ -3494,10 +3507,12 @@
 				7477EA9721C1712300AAA756 /* SDWebImageCoderHelper.m in Sources */,
 				7403D0D221C5594A0055561E /* LoginVC.swift in Sources */,
 				7477EA8A21C1712300AAA756 /* NSString+File.m in Sources */,
+				1892DABF21E6FBF100508C8F /* MXPagerView.m in Sources */,
 				7477EAA021C1712300AAA756 /* NSData+ImageContentType.m in Sources */,
 				7477EA9E21C1712300AAA756 /* SDWebImageDownloaderOperation.m in Sources */,
 				7477EA7921C1712300AAA756 /* UIImage+Extend.m in Sources */,
 				7403D16721CF5ED60055561E /* getVerificationModel.swift in Sources */,
+				1892DAB821E6FBDB00508C8F /* HMSegmentedControl.m in Sources */,
 				742CAEB121D9F6B10022648E /* CustomerRefreshHeader.m in Sources */,
 				185C238821D63CFB0004AD0C /* FMDatabase.m in Sources */,
 				7477EABD21C1712300AAA756 /* MASConstraintMaker.m in Sources */,
@@ -3553,6 +3568,7 @@
 				181AC43621D788760018ADAD /* UIView+MJExtension.m in Sources */,
 				181AC43721D788760018ADAD /* MJRefreshBackGifFooter.m in Sources */,
 				7477EA7721C1712300AAA756 /* UIImage+Water.m in Sources */,
+				1892DABE21E6FBF100508C8F /* MXPagerViewController.m in Sources */,
 				7477EA9C21C1712300AAA756 /* SDAnimatedImageRep.m in Sources */,
 				185C233721D37D1B0004AD0C /* LLImagePageControl.swift in Sources */,
 				7477E84421C025BF00AAA756 /* ViewController.swift in Sources */,
@@ -3577,6 +3593,7 @@
 				7403D14921CD4E400055561E /* DownloadMeterDicReturnObjModel.swift in Sources */,
 				7477EA3521C1712300AAA756 /* ZNCustomAlertContentView.m in Sources */,
 				7477EAA321C1712300AAA756 /* SDWebImageGIFCoder.m in Sources */,
+				1892DAC921E6FC0300508C8F /* MXScrollViewController.m in Sources */,
 				742CAEAB21D52A080022648E /* ChangePwVC.swift in Sources */,
 				742CAEF521DB5BAE0022648E /* olineRepaireContentTableview.swift in Sources */,
 				746423B621D271060038E8E3 /* IQTextView.swift in Sources */,
@@ -3611,6 +3628,7 @@
 				7477EA7A21C1712300AAA756 /* UIImage+Color.m in Sources */,
 				7477EA8321C1712300AAA756 /* NSString+Password.m in Sources */,
 				7477EABF21C1712300AAA756 /* NSArray+MASAdditions.m in Sources */,
+				1892DAC821E6FC0300508C8F /* MXParallaxHeader.m in Sources */,
 				742CAEC921DA9D680022648E /* MessageCountModel.swift in Sources */,
 				746423BC21D271060038E8E3 /* IQInvocation.swift in Sources */,
 				7477EA7421C1712300AAA756 /* SVIndefiniteAnimatedView.m in Sources */,

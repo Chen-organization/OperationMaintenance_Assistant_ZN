@@ -62,6 +62,9 @@
 #import "MXSegmentedPager.h"
 #import "PersonDataAddPicCell.h"
 #import "MXSegmentedPagerController.h"
+#import "MXPagerView.h"
+#import "MXParallaxHeader.h"
+#import "HMSegmentedControl.h"
 
 
 #import "ZNMakeSureView.h"
