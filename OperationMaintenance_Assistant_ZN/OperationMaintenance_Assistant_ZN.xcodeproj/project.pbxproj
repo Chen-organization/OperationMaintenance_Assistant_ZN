@@ -506,6 +506,8 @@
 		7477EAF821C2A5F800AAA756 /* TabeBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7477EAF721C2A5F800AAA756 /* TabeBarViewController.swift */; };
 		7477EAFB21C2A7F600AAA756 /* InspectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7477EAFA21C2A7F600AAA756 /* InspectionVC.swift */; };
 		7477EAFE21C2A8CA00AAA756 /* MeterReadingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7477EAFD21C2A8CA00AAA756 /* MeterReadingVC.swift */; };
+		7494CE7821E79D5C0009445A /* orderDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7494CE7721E79D5C0009445A /* orderDetailVC.swift */; };
+		7494CE7A21E79FFD0009445A /* orderDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7494CE7921E79FFD0009445A /* orderDetail.storyboard */; };
 		749DFD5221DB707600BA6BA8 /* BMKLocationKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 749DFD5121DB707600BA6BA8 /* BMKLocationKit.framework */; };
 		749DFD5421DB7AD600BA6BA8 /* myOrdersVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 749DFD5321DB7AD600BA6BA8 /* myOrdersVC.swift */; };
 		749DFD5621DB7AF000BA6BA8 /* WorkOrdersVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 749DFD5521DB7AF000BA6BA8 /* WorkOrdersVC.swift */; };
@@ -1216,6 +1218,8 @@
 		7477EAF721C2A5F800AAA756 /* TabeBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabeBarViewController.swift; sourceTree = "<group>"; };
 		7477EAFA21C2A7F600AAA756 /* InspectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InspectionVC.swift; sourceTree = "<group>"; };
 		7477EAFD21C2A8CA00AAA756 /* MeterReadingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeterReadingVC.swift; sourceTree = "<group>"; };
+		7494CE7721E79D5C0009445A /* orderDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = orderDetailVC.swift; sourceTree = "<group>"; };
+		7494CE7921E79FFD0009445A /* orderDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = orderDetail.storyboard; sourceTree = "<group>"; };
 		749DFD5121DB707600BA6BA8 /* BMKLocationKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = BMKLocationKit.framework; sourceTree = "<group>"; };
 		749DFD5321DB7AD600BA6BA8 /* myOrdersVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = myOrdersVC.swift; sourceTree = "<group>"; };
 		749DFD5521DB7AF000BA6BA8 /* WorkOrdersVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkOrdersVC.swift; sourceTree = "<group>"; };
@@ -1517,6 +1521,8 @@
 			children = (
 				1892DACB21E759E700508C8F /* Model */,
 				1892DACF21E759E800508C8F /* View */,
+				7494CE7721E79D5C0009445A /* orderDetailVC.swift */,
+				7494CE7921E79FFD0009445A /* orderDetail.storyboard */,
 			);
 			path = orderDetail;
 			sourceTree = "<group>";
@@ -3202,6 +3208,7 @@
 				7403D2D021CF800A0055561E /* 64.png in Resources */,
 				746A63A121DBC0970054C0C1 /* readingListHeaderView.xib in Resources */,
 				7403D25021CF800A0055561E /* 话筒3x.png in Resources */,
+				7494CE7A21E79FFD0009445A /* orderDetail.storyboard in Resources */,
 				7403D23E21CF800A0055561E /* 点击3x.png in Resources */,
 				746423C821D2D6000038E8E3 /* Me.storyboard in Resources */,
 				7403D24A21CF800A0055561E /* 加减点击3x.png in Resources */,
@@ -3478,6 +3485,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7494CE7821E79D5C0009445A /* orderDetailVC.swift in Sources */,
 				7403D08421C2C4380055561E /* ZNCustomAlertView.h in Sources */,
 				7477EACC21C1712300AAA756 /* UINavigationController+FDFullscreenPopGesture.m in Sources */,
 				7477E88221C1701E00AAA756 /* UIView+FP.m in Sources */,
