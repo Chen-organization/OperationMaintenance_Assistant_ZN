@@ -61,6 +61,13 @@
 		1892DAC721E6FC0300508C8F /* MXScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1892DAC121E6FC0300508C8F /* MXScrollView.m */; };
 		1892DAC821E6FC0300508C8F /* MXParallaxHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 1892DAC221E6FC0300508C8F /* MXParallaxHeader.m */; };
 		1892DAC921E6FC0300508C8F /* MXScrollViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1892DAC321E6FC0300508C8F /* MXScrollViewController.m */; };
+		1892DAD421E759E800508C8F /* WorkOrderDetailImgsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1892DACC21E759E700508C8F /* WorkOrderDetailImgsModel.swift */; };
+		1892DAD521E759E800508C8F /* WorkOrderDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1892DACD21E759E700508C8F /* WorkOrderDetailModel.swift */; };
+		1892DAD621E759E800508C8F /* WorkOrderDetailReturnObjModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1892DACE21E759E700508C8F /* WorkOrderDetailReturnObjModel.swift */; };
+		1892DAD721E759E800508C8F /* OrderDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1892DAD021E759E800508C8F /* OrderDetailCell.xib */; };
+		1892DAD821E759E800508C8F /* OrderDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1892DAD121E759E800508C8F /* OrderDetailCell.swift */; };
+		1892DAD921E759E800508C8F /* OrderDetailHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1892DAD221E759E800508C8F /* OrderDetailHeaderView.xib */; };
+		1892DADA21E759E800508C8F /* OrderDetailHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1892DAD321E759E800508C8F /* OrderDetailHeaderView.swift */; };
 		7403D07B21C2BC5F0055561E /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7403D07821C2BC5F0055561E /* Network.swift */; };
 		7403D07C21C2BC5F0055561E /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7403D07921C2BC5F0055561E /* NetworkService.swift */; };
 		7403D07D21C2BC5F0055561E /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7403D07A21C2BC5F0055561E /* API.swift */; };
@@ -631,6 +638,13 @@
 		1892DAC421E6FC0300508C8F /* MXScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MXScrollView.h; sourceTree = "<group>"; };
 		1892DAC521E6FC0300508C8F /* MXParallaxHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MXParallaxHeader.h; sourceTree = "<group>"; };
 		1892DAC621E6FC0300508C8F /* MXScrollViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MXScrollViewController.h; sourceTree = "<group>"; };
+		1892DACC21E759E700508C8F /* WorkOrderDetailImgsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkOrderDetailImgsModel.swift; sourceTree = "<group>"; };
+		1892DACD21E759E700508C8F /* WorkOrderDetailModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkOrderDetailModel.swift; sourceTree = "<group>"; };
+		1892DACE21E759E700508C8F /* WorkOrderDetailReturnObjModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkOrderDetailReturnObjModel.swift; sourceTree = "<group>"; };
+		1892DAD021E759E800508C8F /* OrderDetailCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OrderDetailCell.xib; sourceTree = "<group>"; };
+		1892DAD121E759E800508C8F /* OrderDetailCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderDetailCell.swift; sourceTree = "<group>"; };
+		1892DAD221E759E800508C8F /* OrderDetailHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OrderDetailHeaderView.xib; sourceTree = "<group>"; };
+		1892DAD321E759E800508C8F /* OrderDetailHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderDetailHeaderView.swift; sourceTree = "<group>"; };
 		4154604F37E3CCCFB375A4AD /* Pods-OperationMaintenance_Assistant_ZN.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OperationMaintenance_Assistant_ZN.release.xcconfig"; path = "Pods/Target Support Files/Pods-OperationMaintenance_Assistant_ZN/Pods-OperationMaintenance_Assistant_ZN.release.xcconfig"; sourceTree = "<group>"; };
 		7403D07821C2BC5F0055561E /* Network.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		7403D07921C2BC5F0055561E /* NetworkService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
@@ -1496,6 +1510,36 @@
 				1892DAC621E6FC0300508C8F /* MXScrollViewController.h */,
 			);
 			path = MXParallaxHeader;
+			sourceTree = "<group>";
+		};
+		1892DACA21E74C2800508C8F /* orderDetail */ = {
+			isa = PBXGroup;
+			children = (
+				1892DACB21E759E700508C8F /* Model */,
+				1892DACF21E759E800508C8F /* View */,
+			);
+			path = orderDetail;
+			sourceTree = "<group>";
+		};
+		1892DACB21E759E700508C8F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1892DACC21E759E700508C8F /* WorkOrderDetailImgsModel.swift */,
+				1892DACD21E759E700508C8F /* WorkOrderDetailModel.swift */,
+				1892DACE21E759E700508C8F /* WorkOrderDetailReturnObjModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		1892DACF21E759E800508C8F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				1892DAD021E759E800508C8F /* OrderDetailCell.xib */,
+				1892DAD121E759E800508C8F /* OrderDetailCell.swift */,
+				1892DAD221E759E800508C8F /* OrderDetailHeaderView.xib */,
+				1892DAD321E759E800508C8F /* OrderDetailHeaderView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		37D07A4C21783CCD725DBCD2 /* Pods */ = {
@@ -2975,6 +3019,7 @@
 		7477EAF321C2A50B00AAA756 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				1892DACA21E74C2800508C8F /* orderDetail */,
 				742CAEE421DB5AB50022648E /* GrabOrder */,
 				742CAEE321DB597D0022648E /* RepairsOline */,
 				742CAEE221DB59700022648E /* WorkOrders */,
@@ -3276,6 +3321,7 @@
 				7403D25C21CF800A0055561E /* 确定点击3x.png in Resources */,
 				7477EAAB21C1712300AAA756 /* images.bundle in Resources */,
 				7403D23F21CF800A0055561E /* 到现场相机3x.png in Resources */,
+				1892DAD721E759E800508C8F /* OrderDetailCell.xib in Resources */,
 				7403D24321CF800A0055561E /* 去支付按钮点击.png in Resources */,
 				7403D2C021CF800A0055561E /* 紧急3x.png in Resources */,
 				18328C8421E34B6700CFF04A /* 下拉三角.png in Resources */,
@@ -3330,6 +3376,7 @@
 				7403D29821CF800A0055561E /* 首页Sel@2x.png in Resources */,
 				7403D26921CF800A0055561E /* 搜索点击@3x.png in Resources */,
 				7403D25521CF800A0055561E /* 到现场相机.png in Resources */,
+				1892DAD921E759E800508C8F /* OrderDetailHeaderView.xib in Resources */,
 				7403D28F21CF800A0055561E /* 未标题-2.png in Resources */,
 				7403D25B21CF800A0055561E /* 加未点击.png in Resources */,
 				7403D2B221CF800A0055561E /* 未选@2x.png in Resources */,
@@ -3448,6 +3495,7 @@
 				7477EA6521C1712300AAA756 /* PBBlurImageView.m in Sources */,
 				746423C021D271060038E8E3 /* IQKeyboardReturnKeyHandler.swift in Sources */,
 				7477EABE21C1712300AAA756 /* MASLayoutConstraint.m in Sources */,
+				1892DADA21E759E800508C8F /* OrderDetailHeaderView.swift in Sources */,
 				7477E89B21C1709900AAA756 /* BaseReturnObjModel.swift in Sources */,
 				746423BA21D271060038E8E3 /* IQToolbar.swift in Sources */,
 				7477EA8021C1712300AAA756 /* UIFont+Extend.m in Sources */,
@@ -3592,6 +3640,7 @@
 				7477E88421C1701E00AAA756 /* UITextField+Placeholder.m in Sources */,
 				7403D14921CD4E400055561E /* DownloadMeterDicReturnObjModel.swift in Sources */,
 				7477EA3521C1712300AAA756 /* ZNCustomAlertContentView.m in Sources */,
+				1892DAD821E759E800508C8F /* OrderDetailCell.swift in Sources */,
 				7477EAA321C1712300AAA756 /* SDWebImageGIFCoder.m in Sources */,
 				1892DAC921E6FC0300508C8F /* MXScrollViewController.m in Sources */,
 				742CAEAB21D52A080022648E /* ChangePwVC.swift in Sources */,
@@ -3611,6 +3660,7 @@
 				7477EA7E21C1712300AAA756 /* UIColor+Extend.m in Sources */,
 				7477EA3C21C1712300AAA756 /* CustomerAlertViewManger.m in Sources */,
 				7477E89621C1705F00AAA756 /* NavigationController.swift in Sources */,
+				1892DAD521E759E800508C8F /* WorkOrderDetailModel.swift in Sources */,
 				744F754521CFC6160072326E /* EasySignatureView.m in Sources */,
 				181AC43821D788760018ADAD /* MJRefreshBackStateFooter.m in Sources */,
 				744F753E21CFC07B0072326E /* meterReadingSignVC.swift in Sources */,
@@ -3640,6 +3690,7 @@
 				746423D121D2FC030038E8E3 /* HomeNewCell.swift in Sources */,
 				181AC44021D788760018ADAD /* MJRefreshFooter.m in Sources */,
 				7477EAF821C2A5F800AAA756 /* TabeBarViewController.swift in Sources */,
+				1892DAD621E759E800508C8F /* WorkOrderDetailReturnObjModel.swift in Sources */,
 				7477EA8421C1712300AAA756 /* NSArray+Extend.m in Sources */,
 				7403D16B21CF72940055561E /* getDeviceInfoModel.swift in Sources */,
 				7403D11D21C67DB30055561E /* SGQRCodeScanView.m in Sources */,
@@ -3667,6 +3718,7 @@
 				749DFD5421DB7AD600BA6BA8 /* myOrdersVC.swift in Sources */,
 				7477EA9421C1712300AAA756 /* SDWebImageDownloader.m in Sources */,
 				185C233121D37D1B0004AD0C /* LLViewExtensions.swift in Sources */,
+				1892DAD421E759E800508C8F /* WorkOrderDetailImgsModel.swift in Sources */,
 				7477EAA421C1712300AAA756 /* SDImageCacheConfig.m in Sources */,
 				7477E89D21C1709900AAA756 /* BaseModel.swift in Sources */,
 				7403D0D521C5594A0055561E /* LoginReturnObjModel.swift in Sources */,

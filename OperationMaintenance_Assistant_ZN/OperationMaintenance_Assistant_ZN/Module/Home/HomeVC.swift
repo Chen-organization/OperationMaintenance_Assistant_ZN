@@ -160,7 +160,7 @@ class HomeVC: UITableViewController,UIGestureRecognizerDelegate {
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         
-        if section == 0 || section == 1 || section == 3{
+        if section == 0  || section == 3{
             
             return 0
         }
@@ -176,7 +176,7 @@ class HomeVC: UITableViewController,UIGestureRecognizerDelegate {
         
         if section == 0 || section == 1{
             
-            return 0
+            return 1
         }else if section == 3 {
             
             return self.headLinesData.count
