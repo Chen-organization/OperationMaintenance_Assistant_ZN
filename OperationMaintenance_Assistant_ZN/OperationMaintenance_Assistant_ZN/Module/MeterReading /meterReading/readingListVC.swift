@@ -8,7 +8,16 @@
 
 import UIKit
 
+@objc protocol readingListVCDelegate{
+    
+    func deleteRefresh()
+    
+}
+
 class readingListVC: UIViewController,UITableViewDelegate,UITableViewDataSource,readinglistCellDelegate,PullTableViewDelegate {
+    
+    weak var  Delegate: readingListVCDelegate?
+
     
     var tableView : BasePullTableView!
     
@@ -378,6 +387,8 @@ class readingListVC: UIViewController,UITableViewDelegate,UITableViewDataSource,
                             RealmTool.deleteMetersReadingData(model: RealmTool.getMetersReadingData()[index])
                             
                             self.tableView.reloadData()
+                            
+                            self.Delegate?.deleteRefresh()
                         }
                         
                     }
@@ -431,24 +442,36 @@ class readingListVC: UIViewController,UITableViewDelegate,UITableViewDataSource,
                                     
                                 })
                             }
+                            self.Delegate?.deleteRefresh()
+
                             
-                        }else if model.statusCode == 900 {
-                            
-                            DispatchQueue.main.after(0.3) {
-                                
-                                ZNCustomAlertView.handleTip("删除失败，请刷新数据检查此条记录能否被删除！", isShowCancelBtn: false, completion: { (issure) in
-                                    
-                                })
-                            }
                         }else{
                             
                             DispatchQueue.main.after(0.3) {
-                                
-                                ZNCustomAlertView.handleTip("删除失败", isShowCancelBtn: false, completion: { (issure) in
-                                    
+
+                                ZNCustomAlertView.handleTip(model.msg, isShowCancelBtn: false, completion: { (issure) in
+
                                 })
                             }
+                            
                         }
+//                        else if model.statusCode == 900 {
+//
+//                            DispatchQueue.main.after(0.3) {
+//
+//                                ZNCustomAlertView.handleTip("删除失败，请刷新数据检查此条记录能否被删除！", isShowCancelBtn: false, completion: { (issure) in
+//
+//                                })
+//                            }
+//                        }else{
+//
+//                            DispatchQueue.main.after(0.3) {
+//
+//                                ZNCustomAlertView.handleTip("删除失败", isShowCancelBtn: false, completion: { (issure) in
+//
+//                                })
+//                            }
+//                        }
                         
                         YJProgressHUD.hide()
 

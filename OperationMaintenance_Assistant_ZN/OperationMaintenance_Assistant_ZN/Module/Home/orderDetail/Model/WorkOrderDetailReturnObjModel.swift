@@ -75,7 +75,7 @@ class WorkOrderDetailReturnObjModel: BaseReturnObjModel {
         
         func ga_heightForComment(fontSize: CGFloat, width: CGFloat) -> CGFloat {
             let font = UIFont.systemFont(ofSize: fontSize)
-            let rect = NSString(string: self).boundingRect(with: CGSize(width: width, height: CGFloat(MAXFLOAT)), options: .usesLineFragmentOrigin, attributes: [NSAttributedStringKey.font: font], context: nil)
+            let rect = NSString(string: self).boundingRect(with: CGSize(width: width, height: CGFloat(MAXFLOAT)), options: .usesLineFragmentOrigin, attributes: [NSAttributedString.Key.font: font], context: nil)
             return ceil(rect.height)
         }
         

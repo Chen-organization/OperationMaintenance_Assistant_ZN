@@ -58,7 +58,7 @@
     if ([newVersion compare:localVersion options:NSNumericSearch] ==NSOrderedDescending)
     {
         
-        [CustomerAlertViewManger handleVerson:[NSString stringWithFormat:@"运维助手V%@",newVersion]  Tip:newContent completion:^(NSString *curTweet, BOOL sendSucess) {
+        [CustomerAlertViewManger handleVerson:[NSString stringWithFormat:@"中能运维助手V%@",newVersion]  Tip:newContent completion:^(NSString *curTweet, BOOL sendSucess) {
         
             if (sendSucess) {
                 

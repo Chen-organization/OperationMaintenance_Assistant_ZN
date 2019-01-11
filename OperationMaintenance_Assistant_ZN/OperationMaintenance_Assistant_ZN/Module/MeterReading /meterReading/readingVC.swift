@@ -11,7 +11,7 @@ import Photos
 import Alamofire
 
 
-class readingVC: UITableViewController,ScanViewControllerDelegate,UIGestureRecognizerDelegate,meterReadingSignVCDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,ReadingVCTableviewCellDelegate,UITextFieldDelegate {
+class readingVC: UITableViewController,ScanViewControllerDelegate,UIGestureRecognizerDelegate,meterReadingSignVCDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,ReadingVCTableviewCellDelegate,UITextFieldDelegate ,readingListVCDelegate{
     
     
     var recordListMeterNo = "" //统一抄表记录用的表号 不做它用
@@ -118,9 +118,19 @@ class readingVC: UITableViewController,ScanViewControllerDelegate,UIGestureRecog
         
         super.viewWillAppear(animated)
         
+       
+        
+    }
+    
+    func deleteRefresh() {
+        
         if self.recordListMeterNo.characters.count > 0 {
             
-            self.getRecordList(deviceNo: self.recordListMeterNo)
+//            DispatchQueue.main.after(0.3) {
+            
+                self.getRecordList(deviceNo: self.recordListMeterNo)
+                
+//            }
             
         }
         
@@ -141,7 +151,9 @@ class readingVC: UITableViewController,ScanViewControllerDelegate,UIGestureRecog
         
 //        let list = UIStoryboard(name: "MeterReading", bundle: nil)
 //            .instantiateViewController(withIdentifier: "readingListVC") as! readingListVC
-        self.navigationController?.pushViewController(readingListVC(), animated: true)
+        let vc = readingListVC()
+        vc.Delegate = self
+        self.navigationController?.pushViewController(vc, animated: true)
         
     }
     
@@ -483,8 +495,7 @@ class readingVC: UITableViewController,ScanViewControllerDelegate,UIGestureRecog
         self.tableView.beginUpdates()
         self.tableView.endUpdates()
         
-//        [self.tableView beginUpdates];
-//        [self.tableView endUpdates];
+
     }
     
 
