@@ -372,26 +372,29 @@ class myOrdersVC:UIViewController,MXSegmentedPagerDelegate, MXSegmentedPagerData
         
         tableView.deselectRow(at: indexPath, animated: true)
         
+        var model : myOrdersReturnObjModel = myOrdersReturnObjModel()
         
         if tableView.tag == ordersTableViewType.repair.rawValue{
             
-            
-            
-        }else if tableView.tag == ordersTableViewType.repair.rawValue{
-            
-            
+            model = self.repairArr[indexPath.row]
             
         }else if tableView.tag == ordersTableViewType.repair.rawValue{
             
+            model = self.repairingArr[indexPath.row]
             
+        }else if tableView.tag == ordersTableViewType.repair.rawValue{
+            
+            model = self.repairedArr[indexPath.row]
             
         }
         
-        
+        let vc = orderDetailVC.getOrderDetailVC()
+        vc.orderNo = model.id ?? ""
+        self.navigationController?.pushViewController(vc, animated: true)
         
         
     }
-    
+
     func pullTableViewDidTriggerRefresh(_ pullTableView: BasePullTableView!) {
         
         self.getDataWith(page: 1, type: ordersTableViewType(rawValue: (pullTableView!.tag)) ?? ordersTableViewType(rawValue: 0)!)
