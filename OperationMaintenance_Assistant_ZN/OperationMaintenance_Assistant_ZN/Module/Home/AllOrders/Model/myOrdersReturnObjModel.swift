@@ -29,6 +29,18 @@ class myOrdersReturnObjModel: BaseReturnObjModel {
     var imgs : String?
 
 
+    var address : String?
+    var contactman : String?
+    var count : String?
+//    var date : String?
+//    var distance : String?
+    var repairsdesc : String?
+    var tel : String?
+    var typename : String?
+    var workcontent : String?
+    var workname : String?
+    var workno : String?
+
     
     
 //    "id": "W100920181100005",

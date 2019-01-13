@@ -119,15 +119,18 @@ class myOrdersVC:UIViewController,MXSegmentedPagerDelegate, MXSegmentedPagerData
         view.setNeedsLayout()
         view.layoutIfNeeded()
         
-        segmentedPager.pager.showPage(at: selectedIndex.rawValue, animated: false)
+        self.segmentedPager.pager.showPage(at: selectedIndex.rawValue, animated: false)
+        
+        self.segmentedPager.reloadData()
 
     }
     
     override func viewWillLayoutSubviews() {
         
-        self.segmentedPager.frame = self.view.bounds
-        
         super.viewWillLayoutSubviews()
+        
+        self.segmentedPager.frame = self.view.bounds
+
         
     }
     
@@ -260,6 +263,8 @@ class myOrdersVC:UIViewController,MXSegmentedPagerDelegate, MXSegmentedPagerData
 
     func segmentedPager(_ segmentedPager: MXSegmentedPager, didSelect view: UIView) {
         
+        self.selectedIndex = ordersTableViewType(rawValue: segmentedPager.pager.indexForSelectedPage)!
+        
         if segmentedPager.pager.indexForSelectedPage == ordersTableViewType.repair.rawValue {
             
             if !(self.repairArr.count > 0){
@@ -372,23 +377,27 @@ class myOrdersVC:UIViewController,MXSegmentedPagerDelegate, MXSegmentedPagerData
         
         tableView.deselectRow(at: indexPath, animated: true)
         
+        let vc = orderDetailVC.getOrderDetailVC()
+
         var model : myOrdersReturnObjModel = myOrdersReturnObjModel()
         
         if tableView.tag == ordersTableViewType.repair.rawValue{
             
             model = self.repairArr[indexPath.row]
-            
-        }else if tableView.tag == ordersTableViewType.repair.rawValue{
+            vc.repairType = orderDetailType.repair
+
+        }else if tableView.tag == ordersTableViewType.repairing.rawValue{
             
             model = self.repairingArr[indexPath.row]
-            
-        }else if tableView.tag == ordersTableViewType.repair.rawValue{
+            vc.repairType = orderDetailType.repairing
+
+        }else if tableView.tag == ordersTableViewType.repaired.rawValue{
             
             model = self.repairedArr[indexPath.row]
-            
+            vc.repairType = orderDetailType.repaired
+
         }
         
-        let vc = orderDetailVC.getOrderDetailVC()
         vc.orderNo = model.id ?? ""
         self.navigationController?.pushViewController(vc, animated: true)
         

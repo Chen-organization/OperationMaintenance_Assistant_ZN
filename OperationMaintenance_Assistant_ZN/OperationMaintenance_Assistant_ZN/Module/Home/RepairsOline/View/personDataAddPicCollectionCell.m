@@ -60,16 +60,17 @@
 //        [self.contentView.layer addSublayer:border];
 
         
-        UIImageView *placeHolderImg = [[UIImageView alloc] initWithFrame:CGRectMake(5, 5, Cell_Width - 10, Cell_Height - 10)];
+        UIImageView *placeHolderImg = [[UIImageView alloc] init];
         placeHolderImg.contentMode = UIViewContentModeScaleAspectFill;
         placeHolderImg.clipsToBounds = YES;
         placeHolderImg.image = [UIImage imageNamed:@"拍照"];
         [self.contentView addSubview:placeHolderImg];
-//        [placeHolderImg mas_makeConstraints:^(MASConstraintMaker *make) {
-//
-//            make.edges.equalTo(self.contentView).insets(UIEdgeInsetsMake(5, 10, 5, 10));
-//
-//        }];
+        
+        [placeHolderImg mas_makeConstraints:^(MASConstraintMaker *make) {
+
+            make.edges.equalTo(self.contentView).insets(UIEdgeInsetsMake(5, 5, 5, 5));
+
+        }];
         
 //        UILabel *tipL = [[UILabel alloc]init];
 //        self.tipL = tipL;
@@ -193,12 +194,16 @@
     
     
     if (!_imgView) {
-        _imgView = [[UIImageView alloc] initWithFrame:CGRectMake(5, 5, Cell_Width - 10, Cell_Height - 10)];
+        _imgView = [[UIImageView alloc] init];
         _imgView.contentMode = UIViewContentModeScaleAspectFill;
         _imgView.clipsToBounds = YES;
         //        _imgView.layer.masksToBounds = YES;
         //        _imgView.layer.cornerRadius = 2.0;
         [self.contentView addSubview:_imgView];
+        [_imgView mas_makeConstraints:^(MASConstraintMaker *make) {
+            
+            make.edges.equalTo(self.contentView).insets(UIEdgeInsetsMake(5, 5, 5, 5));
+        }];
     }
     
     return _imgView;
@@ -208,9 +213,9 @@
 - (UIButton *)deleteBtn{
     
     if (!_deleteBtn) {
-        _deleteBtn = [[UIButton alloc] initWithFrame:CGRectMake(Cell_Width-20, 0, 20, 20)];
+        _deleteBtn = [[UIButton alloc] init];
         [_deleteBtn setImage:[UIImage imageNamed:@"pic_deletel"] forState:UIControlStateNormal];
-        _deleteBtn.backgroundColor = [UIColor blackColor];
+//        _deleteBtn.backgroundColor = [UIColor blackColor];
         _deleteBtn.layer.cornerRadius = CGRectGetWidth(_deleteBtn.bounds)/2;
         _deleteBtn.layer.masksToBounds = YES;
         
@@ -218,6 +223,12 @@
         
         [_deleteBtn addTarget:self action:@selector(deleteBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
         [self.contentView addSubview:_deleteBtn];
+        [_deleteBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+            
+            make.top.right.equalTo(self.contentView).offset(0);
+            make.size.mas_equalTo(CGSizeMake(20, 20));
+        }];
+        
     }
     return _deleteBtn;
 }

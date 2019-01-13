@@ -7,68 +7,148 @@
 //
 
 import UIKit
+import HandyJSON
 
-class WorkOrderDetailReturnObjModel: BaseReturnObjModel {
+class WorkOrderDetailReturnObjModel: HandyJSON {
     
     
-    var workNo : String?
+    var workcontent : String?
     
-    var companyCode : String?
-    var orgCode : String?
-    var source : String?
-    var workClass : String?
-    var workType : String?
-    var urgency : String?
-    var biotopeCode : String?
+    var orderno : String?
+    var address : String?
+    var tel : String?
+    var configname : String?
+    var repairsdesc : String?
     var longitude : String?
     var latitude : String?
-    var houseName : String?
-    var unitName : String?
-    var houseNumber : String?
-    var address : String?
-    var contactMan : String?
-    var tel : String?
-    var repairsDesc : String?
-    var dealDesc : String?
+    var date : String?
+    var arr : [String]?
+    var are : [String]?
+    var art : [String]?
+    var distance : String?
+    var workclass : String?
+    var worktype : String?
+    var urgency : String?
     var status : String?
-    var isEvaluate : String?
-    var isVisit : String?
-    var orderNo : String?
-    var payType : String?
-    var isPay : String?
-    var workName : String?
-    var typeName : String?
-    var createDateStr : String?
-    var workSendId : String?
-    var sendEmpNo : String?
-    var sendEmpName : String?
-    var repairsTime : String?
-    var urgencyName : String?
+    var paytype : String?
+    var ispay : String?
+    var dealdesc : String?
+    var arrdate : String?
+    var dealdate : String?
+    var price : Double?
+    var qty : Double?
+    var fee : Double?
+    var ast : String?
+    var total : Double?
 
-    var workDealImgs : [WorkOrderDetailImgsModel]?
     
+
+    var contactman : String?
+
+    var mapArr : [WorkOrderDetailMapModel]?
     
-    lazy var cellHeight : Double = {
+    required init() {}
+    
+    func mapping(mapper: HelpingMapper) {
         
-        if let a = self.repairsDesc{
+        mapper.specify(property: &mapArr, name: "map")
+
+    }
+   
+
+
+//    var workDealImgs : [WorkOrderDetailImgsModel]?
+
+    
+    
+    lazy var repairsdescHeight : Double = {
+
+        if let a = self.repairsdesc{
+
+            let statusLabelText: String = ("" + a)
+
+            let h = statusLabelText.ga_heightForComment(fontSize: 16, width: ScreenW - 30)
+
+            return Double(h + 30)
+        }
+
+        return 50
+
+    }()
+    
+    
+    lazy var dealdescHeight : Double = {
+        
+        if let a = self.dealdesc{
             
-            
-            let statusLabelText: String = ("　　" + a)
+            let statusLabelText: String = ("" + a)
             
             let h = statusLabelText.ga_heightForComment(fontSize: 14, width: ScreenW - 30)
             
-            return Double(h + 86)
+            return Double(h + 30)
         }
         
-     
-        return 86
+        return 50
         
     }()
     
     
-    
+    lazy var repairContentCellHeight : Double = {
+        
+        var height = 0.0
+        
+        if let a = self.dealdesc{
+            
+            let statusLabelText: String = ("" + a)
+            
+            let h = statusLabelText.ga_heightForComment(fontSize: 14, width: ScreenW - 30)
+            
+            height = Double(h + 30)
+        }
+        
+        if self.arr?.count ?? 0 > 0 {
+            
+            height = height + Double((ScreenW - 60)/3) + 30
+            
+        }
+        
+        
+        return height
+        
+    }()
+
+    lazy var dealedCellHeight : Double = {
+        
+        var height = 0.0
+        
+        if let a = self.dealdesc{
+            
+            let statusLabelText: String = ("" + a)
+            
+            let h = statusLabelText.ga_heightForComment(fontSize: 14, width: ScreenW - 30)
+            
+            height = Double(h + 30)
+        }
+        
+        if self.art?.count ?? 0 > 0 {
+            
+            height = height + Double((ScreenW - 60)/3) + 30
+            
+        }
+        
+        if self.mapArr?.count ?? 0 > 0 {
+            
+            height = height + Double((self.mapArr?.count ?? 0) * 35 )
+            
+        }
+        
+        
+        return height + 50
+        
+    }()
+
 }
-    
+
     
     // 计算文字高度或者宽度与weight参数无关
     extension String {

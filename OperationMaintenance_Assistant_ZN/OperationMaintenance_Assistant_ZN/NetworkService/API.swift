@@ -70,5 +70,11 @@ public let commitUrl = baseURL + "/fieldRepairs/commit"
 
 //工单首页 ,抢单池列表，我的工单整合接口:
 public let getWorkFristUrl = baseURL + "/first/getWorkFrist"
+//工单详情,抢单池详情，取消抢单
+public let getDetailsUrl = baseURL + "/first/getDetails"
+
+//public let getWorkFristUrl = baseURL + "/first/getWorkFrist"
+//上传工单图片到本地服务器
+public let getUploadPicturesURL = baseURL + "/first/getUploadPictures"
 
 

@@ -71,6 +71,7 @@
 #import "CheckVerson.h"
 
 #import "XDSDropDownMenu.h"
+#import "toTheSceneAddPhotoView.h"
 
 
 #endif /* OperationMaintenance_Assistant_ZN_Bridging_Header_h */
