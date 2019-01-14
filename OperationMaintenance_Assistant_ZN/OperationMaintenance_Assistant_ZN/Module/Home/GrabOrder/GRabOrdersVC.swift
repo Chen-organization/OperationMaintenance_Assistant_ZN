@@ -8,7 +8,7 @@
 
 import UIKit
 
-class GRabOrdersVC: UIViewController,UITableViewDelegate,UITableViewDataSource,PullTableViewDelegate {
+class GRabOrdersVC: UIViewController,UITableViewDelegate,UITableViewDataSource,PullTableViewDelegate,grabOrderCellDelegate {
     
     
     var nowPage = 1
@@ -173,6 +173,8 @@ class GRabOrdersVC: UIViewController,UITableViewDelegate,UITableViewDataSource,P
         let minStr = ((model.timedifference ?? 0) / 1000 / 60 %  60 ).description + "分钟"
         cell.timeL.text =  hourStr + minStr
         
+        cell.Index = indexPath.row
+        cell.grabDelegate = self
         return cell
         
     }
@@ -207,5 +209,51 @@ class GRabOrdersVC: UIViewController,UITableViewDelegate,UITableViewDataSource,P
         self.getDataWith(page: self.nowPage + 1)
         
     }
+    
+    //MARK: - CELL DELEGATE
+    func grabOrder(index: Int) {
+        
+        let orderModel :myOrdersReturnObjModel  = self.repairArr[index]
+        
+        UserCenter.shared.userInfo { (islogin, model) in
+            
+            let para = [
+                
+                "companyCode":model.companyCode,
+                "orgCode" : model.orgCode,
+                "empNo": model.empNo,
+                "empName": model.empName,
+                "orderID":orderModel.id ?? "",
+                "start":"1",
+                "ord": "20",
+                ]
+            
+            NetworkService.networkPostrequest(currentView: self.view, parameters: para as [String : Any], requestApi: getMyGrabListUrl, modelClass: "BaseModel", response: { (obj) in
+                
+                let model : readingListModel = obj as! readingListModel
+                
+                if model.statusCode == 800 {
+                    
+                    self.repairArr.remove(at: index)
+                    self.repairTableview.reloadData()
+                
+                    self.navigationController?.pushViewController(myOrderListVC(), animated: true)
+                    
+                }
+
+                
+            }, failture: { (error) in
+                
+              
+                
+            })
+            
+            
+            
+        }
+
+        
+    }
+    
     
 }

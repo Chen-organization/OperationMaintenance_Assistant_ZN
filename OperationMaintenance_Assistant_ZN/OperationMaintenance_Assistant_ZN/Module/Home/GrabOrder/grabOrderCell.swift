@@ -8,11 +8,21 @@
 
 import UIKit
 
+
+@objc protocol grabOrderCellDelegate{
+    
+    func grabOrder(index: Int)
+    
+}
+
 let grabOrderCell_id = "grabOrderCell"
 
 
 class grabOrderCell: UITableViewCell {
     
+    weak var  grabDelegate: grabOrderCellDelegate?
+
+    var Index: Int = 0
     
     @IBOutlet weak var titleL: UILabel!
     
@@ -33,6 +43,8 @@ class grabOrderCell: UITableViewCell {
     
     
     @IBAction func grabBtnClick(_ sender: UIButton) {
+        
+        self.grabDelegate?.grabOrder(index: self.Index)
     }
     
 

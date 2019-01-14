@@ -542,6 +542,7 @@
 		74B2AEF821EB99870083A05A /* toTheSceneAddPhotoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 74B2AEF721EB99870083A05A /* toTheSceneAddPhotoView.m */; };
 		74B2AF0521EBA4D20083A05A /* toTheSceneVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 74B2AF0321EBA4D20083A05A /* toTheSceneVC.xib */; };
 		74B2AF0D21EBA7510083A05A /* toTheSceneVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B2AF0C21EBA7510083A05A /* toTheSceneVC.swift */; };
+		74B2AF1021ECF9880083A05A /* myOrderListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B2AF0F21ECF9880083A05A /* myOrderListVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1281,6 +1282,7 @@
 		74B2AEF721EB99870083A05A /* toTheSceneAddPhotoView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = toTheSceneAddPhotoView.m; sourceTree = "<group>"; };
 		74B2AF0321EBA4D20083A05A /* toTheSceneVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = toTheSceneVC.xib; sourceTree = "<group>"; };
 		74B2AF0C21EBA7510083A05A /* toTheSceneVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = toTheSceneVC.swift; sourceTree = "<group>"; };
+		74B2AF0F21ECF9880083A05A /* myOrderListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = myOrderListVC.swift; sourceTree = "<group>"; };
 		9387F9749FA2D28DBBE888FA /* Pods-OperationMaintenance_Assistant_ZN.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OperationMaintenance_Assistant_ZN.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OperationMaintenance_Assistant_ZN/Pods-OperationMaintenance_Assistant_ZN.debug.xcconfig"; sourceTree = "<group>"; };
 		D2331F8AA2C2E5183A987B1A /* Pods_OperationMaintenance_Assistant_ZN.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OperationMaintenance_Assistant_ZN.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -2097,6 +2099,7 @@
 		742CAEE421DB5AB50022648E /* GrabOrder */ = {
 			isa = PBXGroup;
 			children = (
+				74B2AF0E21ECF9720083A05A /* myOrderList */,
 				749DFD5721DB7B0A00BA6BA8 /* GRabOrdersVC.swift */,
 				7494CE8821EB25530009445A /* grabOrderCell.swift */,
 				7494CE8921EB25530009445A /* grabOrderCell.xib */,
@@ -3183,6 +3186,14 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		74B2AF0E21ECF9720083A05A /* myOrderList */ = {
+			isa = PBXGroup;
+			children = (
+				74B2AF0F21ECF9880083A05A /* myOrderListVC.swift */,
+			);
+			path = myOrderList;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -3804,6 +3815,7 @@
 				7403D15121CF3F2F0055561E /* writeMeterModel.swift in Sources */,
 				7403D16D21CF760A0055561E /* getDeviceInfoReturnObjModel.swift in Sources */,
 				7477EA7E21C1712300AAA756 /* UIColor+Extend.m in Sources */,
+				74B2AF1021ECF9880083A05A /* myOrderListVC.swift in Sources */,
 				7477EA3C21C1712300AAA756 /* CustomerAlertViewManger.m in Sources */,
 				7477E89621C1705F00AAA756 /* NavigationController.swift in Sources */,
 				1892DAD521E759E800508C8F /* WorkOrderDetailModel.swift in Sources */,

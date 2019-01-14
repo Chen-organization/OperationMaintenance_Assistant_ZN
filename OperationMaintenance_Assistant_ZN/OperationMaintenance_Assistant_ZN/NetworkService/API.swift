@@ -72,6 +72,8 @@ public let commitUrl = baseURL + "/fieldRepairs/commit"
 public let getWorkFristUrl = baseURL + "/first/getWorkFrist"
 //工单详情,抢单池详情，取消抢单
 public let getDetailsUrl = baseURL + "/first/getDetails"
+//抢单、抢单列表
+public let getMyGrabListUrl = baseURL + "/my/getMyGrabList"
 
 //public let getWorkFristUrl = baseURL + "/first/getWorkFrist"
 //上传工单图片到本地服务器
