@@ -97,17 +97,17 @@
 		7403D16921CF5EFD0055561E /* getVerificationReturnObjModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7403D16821CF5EFD0055561E /* getVerificationReturnObjModel.swift */; };
 		7403D16B21CF72940055561E /* getDeviceInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7403D16A21CF72940055561E /* getDeviceInfoModel.swift */; };
 		7403D16D21CF760A0055561E /* getDeviceInfoReturnObjModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7403D16C21CF760A0055561E /* getDeviceInfoReturnObjModel.swift */; };
-		7403D23721CF800A0055561E /* 点击.png in Resources */ = {isa = PBXBuildFile; fileRef = 7403D17021CF7FDC0055561E /* 点击.png */; };
+		7403D23721CF800A0055561E /* 点击@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7403D17021CF7FDC0055561E /* 点击@2x.png */; };
 		7403D23821CF800A0055561E /* 站位图.png in Resources */ = {isa = PBXBuildFile; fileRef = 7403D17121CF7FDC0055561E /* 站位图.png */; };
-		7403D23921CF800A0055561E /* 未点击3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7403D17221CF7FDC0055561E /* 未点击3x.png */; };
+		7403D23921CF800A0055561E /* 未点击@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7403D17221CF7FDC0055561E /* 未点击@3x.png */; };
 		7403D23A21CF800A0055561E /* 站位图小.png in Resources */ = {isa = PBXBuildFile; fileRef = 7403D17321CF7FDC0055561E /* 站位图小.png */; };
 		7403D23B21CF800A0055561E /* 抢单@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7403D17421CF7FDC0055561E /* 抢单@3x.png */; };
 		7403D23C21CF800A0055561E /* 抢单@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7403D17521CF7FDC0055561E /* 抢单@2x.png */; };
-		7403D23D21CF800A0055561E /* 未点击.png in Resources */ = {isa = PBXBuildFile; fileRef = 7403D17621CF7FDC0055561E /* 未点击.png */; };
-		7403D23E21CF800A0055561E /* 点击3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7403D17721CF7FDC0055561E /* 点击3x.png */; };
+		7403D23D21CF800A0055561E /* 未点击@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7403D17621CF7FDC0055561E /* 未点击@2x.png */; };
+		7403D23E21CF800A0055561E /* 点击@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7403D17721CF7FDC0055561E /* 点击@3x.png */; };
 		7403D23F21CF800A0055561E /* 到现场相机3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7403D17921CF7FE00055561E /* 到现场相机3x.png */; };
 		7403D24021CF800A0055561E /* 确定.png in Resources */ = {isa = PBXBuildFile; fileRef = 7403D17A21CF7FE00055561E /* 确定.png */; };
-		7403D24121CF800A0055561E /* 话筒.png in Resources */ = {isa = PBXBuildFile; fileRef = 7403D17B21CF7FE00055561E /* 话筒.png */; };
+		7403D24121CF800A0055561E /* 话筒@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7403D17B21CF7FE00055561E /* 话筒@2x.png */; };
 		7403D24221CF800A0055561E /* 二维码收款.png in Resources */ = {isa = PBXBuildFile; fileRef = 7403D17C21CF7FE00055561E /* 二维码收款.png */; };
 		7403D24321CF800A0055561E /* 去支付按钮点击.png in Resources */ = {isa = PBXBuildFile; fileRef = 7403D17D21CF7FE00055561E /* 去支付按钮点击.png */; };
 		7403D24421CF800A0055561E /* 减未点击3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7403D17E21CF7FE00055561E /* 减未点击3x.png */; };
@@ -122,7 +122,7 @@
 		7403D24D21CF800A0055561E /* 提交3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7403D18721CF7FE00055561E /* 提交3x.png */; };
 		7403D24E21CF800A0055561E /* xiaoxi@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7403D18821CF7FE00055561E /* xiaoxi@2x.png */; };
 		7403D24F21CF800A0055561E /* 加未点击3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7403D18921CF7FE00055561E /* 加未点击3x.png */; };
-		7403D25021CF800A0055561E /* 话筒3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7403D18A21CF7FE00055561E /* 话筒3x.png */; };
+		7403D25021CF800A0055561E /* 话筒@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7403D18A21CF7FE00055561E /* 话筒@3x.png */; };
 		7403D25121CF800A0055561E /* 提交.png in Resources */ = {isa = PBXBuildFile; fileRef = 7403D18B21CF7FE00055561E /* 提交.png */; };
 		7403D25221CF800A0055561E /* 确定3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7403D18C21CF7FE00055561E /* 确定3x.png */; };
 		7403D25321CF800A0055561E /* 二维码收款3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7403D18D21CF7FE00055561E /* 二维码收款3x.png */; };
@@ -297,6 +297,18 @@
 		7430E33821E20B8100A9B8BD /* myOrdersModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7430E33721E20B8100A9B8BD /* myOrdersModel.swift */; };
 		7430E33A21E20BA200A9B8BD /* myOrdersReturnObjModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7430E33921E20BA200A9B8BD /* myOrdersReturnObjModel.swift */; };
 		7430E33E21E267FB00A9B8BD /* CheckVerson.m in Sources */ = {isa = PBXBuildFile; fileRef = 7430E33C21E267FB00A9B8BD /* CheckVerson.m */; };
+		744BFFE321F4F15D0061BDDA /* AFURLResponseSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 744BFFD921F4F15D0061BDDA /* AFURLResponseSerialization.m */; };
+		744BFFE421F4F15D0061BDDA /* AFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 744BFFDA21F4F15D0061BDDA /* AFHTTPSessionManager.m */; };
+		744BFFE521F4F15D0061BDDA /* AFURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 744BFFDC21F4F15D0061BDDA /* AFURLSessionManager.m */; };
+		744BFFE621F4F15D0061BDDA /* AFURLRequestSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 744BFFDD21F4F15D0061BDDA /* AFURLRequestSerialization.m */; };
+		744BFFE721F4F15D0061BDDA /* AFNetworkReachabilityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 744BFFDF21F4F15D0061BDDA /* AFNetworkReachabilityManager.m */; };
+		744BFFE821F4F15D0061BDDA /* AFSecurityPolicy.m in Sources */ = {isa = PBXBuildFile; fileRef = 744BFFE021F4F15D0061BDDA /* AFSecurityPolicy.m */; };
+		744BFFEC21F502730061BDDA /* PayVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 744BFFEA21F502730061BDDA /* PayVC.swift */; };
+		744BFFED21F502730061BDDA /* PayVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 744BFFEB21F502730061BDDA /* PayVC.xib */; };
+		744BFFF021F5043C0061BDDA /* makeSureOrder.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 744BFFEF21F5043C0061BDDA /* makeSureOrder.storyboard */; };
+		744BFFF221F5045B0061BDDA /* makeSureOrderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 744BFFF121F5045B0061BDDA /* makeSureOrderVC.swift */; };
+		744BFFF521F50EE80061BDDA /* makeSureOrderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 744BFFF321F50EE80061BDDA /* makeSureOrderCell.swift */; };
+		744BFFF621F50EE80061BDDA /* makeSureOrderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 744BFFF421F50EE80061BDDA /* makeSureOrderCell.xib */; };
 		744F753321CF97F20072326E /* LBXScanNetAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 744F752C21CF97F20072326E /* LBXScanNetAnimation.swift */; };
 		744F753421CF97F20072326E /* LBXScanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 744F752D21CF97F20072326E /* LBXScanView.swift */; };
 		744F753521CF97F20072326E /* LBXScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 744F752E21CF97F20072326E /* LBXScanViewController.swift */; };
@@ -543,6 +555,23 @@
 		74B2AF0521EBA4D20083A05A /* toTheSceneVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 74B2AF0321EBA4D20083A05A /* toTheSceneVC.xib */; };
 		74B2AF0D21EBA7510083A05A /* toTheSceneVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B2AF0C21EBA7510083A05A /* toTheSceneVC.swift */; };
 		74B2AF1021ECF9880083A05A /* myOrderListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B2AF0F21ECF9880083A05A /* myOrderListVC.swift */; };
+		74B2AF1221F3982C0083A05A /* GrabOrdersMapVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B2AF1121F3982C0083A05A /* GrabOrdersMapVC.swift */; };
+		74B2AF1621F459530083A05A /* myGrabOrderListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B2AF1421F459530083A05A /* myGrabOrderListCell.swift */; };
+		74B2AF1721F459530083A05A /* myGrabOrderListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 74B2AF1521F459530083A05A /* myGrabOrderListCell.xib */; };
+		74B2AF1A21F466970083A05A /* myBillListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B2AF1921F466970083A05A /* myBillListVC.swift */; };
+		74B2AF1E21F468AA0083A05A /* myBillListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B2AF1C21F468AA0083A05A /* myBillListCell.swift */; };
+		74B2AF1F21F468AA0083A05A /* myBillListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 74B2AF1D21F468AA0083A05A /* myBillListCell.xib */; };
+		74B2AF2221F473D70083A05A /* myBillListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B2AF2121F473D70083A05A /* myBillListModel.swift */; };
+		74B2AF2421F473EF0083A05A /* myBillListReturnObjModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B2AF2321F473EF0083A05A /* myBillListReturnObjModel.swift */; };
+		74B2AF2721F4994C0083A05A /* GrabOrderListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B2AF2621F4994C0083A05A /* GrabOrderListModel.swift */; };
+		74B2AF2921F4996A0083A05A /* GrabOrderListReturnObjModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B2AF2821F4996A0083A05A /* GrabOrderListReturnObjModel.swift */; };
+		74B2AF2C21F4A2770083A05A /* cancelReasonModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B2AF2B21F4A2770083A05A /* cancelReasonModel.swift */; };
+		74B2AF3221F4A3590083A05A /* ZNCancelOrderReasonView.m in Sources */ = {isa = PBXBuildFile; fileRef = 74B2AF3121F4A3590083A05A /* ZNCancelOrderReasonView.m */; };
+		74B2AF3621F4A36F0083A05A /* ZNCancelOrderReasonContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 74B2AF3421F4A36F0083A05A /* ZNCancelOrderReasonContentView.m */; };
+		74B2AF3721F4A36F0083A05A /* ZNCancelOrderReasonContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 74B2AF3521F4A36F0083A05A /* ZNCancelOrderReasonContentView.xib */; };
+		74B2AF3B21F4A6910083A05A /* ZNCancelOrderReasonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 74B2AF3921F4A6910083A05A /* ZNCancelOrderReasonCell.m */; };
+		74B2AF3C21F4A6910083A05A /* ZNCancelOrderReasonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 74B2AF3A21F4A6910083A05A /* ZNCancelOrderReasonCell.xib */; };
+		74B2AF3E21F4B6490083A05A /* cancelReasonReturnObjModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B2AF3D21F4B6490083A05A /* cancelReasonReturnObjModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -710,17 +739,17 @@
 		7403D16821CF5EFD0055561E /* getVerificationReturnObjModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = getVerificationReturnObjModel.swift; sourceTree = "<group>"; };
 		7403D16A21CF72940055561E /* getDeviceInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = getDeviceInfoModel.swift; sourceTree = "<group>"; };
 		7403D16C21CF760A0055561E /* getDeviceInfoReturnObjModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = getDeviceInfoReturnObjModel.swift; sourceTree = "<group>"; };
-		7403D17021CF7FDC0055561E /* 点击.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "点击.png"; sourceTree = "<group>"; };
+		7403D17021CF7FDC0055561E /* 点击@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "点击@2x.png"; sourceTree = "<group>"; };
 		7403D17121CF7FDC0055561E /* 站位图.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "站位图.png"; sourceTree = "<group>"; };
-		7403D17221CF7FDC0055561E /* 未点击3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "未点击3x.png"; sourceTree = "<group>"; };
+		7403D17221CF7FDC0055561E /* 未点击@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "未点击@3x.png"; sourceTree = "<group>"; };
 		7403D17321CF7FDC0055561E /* 站位图小.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "站位图小.png"; sourceTree = "<group>"; };
 		7403D17421CF7FDC0055561E /* 抢单@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "抢单@3x.png"; sourceTree = "<group>"; };
 		7403D17521CF7FDC0055561E /* 抢单@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "抢单@2x.png"; sourceTree = "<group>"; };
-		7403D17621CF7FDC0055561E /* 未点击.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "未点击.png"; sourceTree = "<group>"; };
-		7403D17721CF7FDC0055561E /* 点击3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "点击3x.png"; sourceTree = "<group>"; };
+		7403D17621CF7FDC0055561E /* 未点击@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "未点击@2x.png"; sourceTree = "<group>"; };
+		7403D17721CF7FDC0055561E /* 点击@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "点击@3x.png"; sourceTree = "<group>"; };
 		7403D17921CF7FE00055561E /* 到现场相机3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "到现场相机3x.png"; sourceTree = "<group>"; };
 		7403D17A21CF7FE00055561E /* 确定.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "确定.png"; sourceTree = "<group>"; };
-		7403D17B21CF7FE00055561E /* 话筒.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "话筒.png"; sourceTree = "<group>"; };
+		7403D17B21CF7FE00055561E /* 话筒@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "话筒@2x.png"; sourceTree = "<group>"; };
 		7403D17C21CF7FE00055561E /* 二维码收款.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "二维码收款.png"; sourceTree = "<group>"; };
 		7403D17D21CF7FE00055561E /* 去支付按钮点击.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "去支付按钮点击.png"; sourceTree = "<group>"; };
 		7403D17E21CF7FE00055561E /* 减未点击3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "减未点击3x.png"; sourceTree = "<group>"; };
@@ -735,7 +764,7 @@
 		7403D18721CF7FE00055561E /* 提交3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "提交3x.png"; sourceTree = "<group>"; };
 		7403D18821CF7FE00055561E /* xiaoxi@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "xiaoxi@2x.png"; sourceTree = "<group>"; };
 		7403D18921CF7FE00055561E /* 加未点击3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "加未点击3x.png"; sourceTree = "<group>"; };
-		7403D18A21CF7FE00055561E /* 话筒3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "话筒3x.png"; sourceTree = "<group>"; };
+		7403D18A21CF7FE00055561E /* 话筒@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "话筒@3x.png"; sourceTree = "<group>"; };
 		7403D18B21CF7FE00055561E /* 提交.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "提交.png"; sourceTree = "<group>"; };
 		7403D18C21CF7FE00055561E /* 确定3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "确定3x.png"; sourceTree = "<group>"; };
 		7403D18D21CF7FE00055561E /* 二维码收款3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "二维码收款3x.png"; sourceTree = "<group>"; };
@@ -918,6 +947,26 @@
 		7430E33921E20BA200A9B8BD /* myOrdersReturnObjModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = myOrdersReturnObjModel.swift; sourceTree = "<group>"; };
 		7430E33C21E267FB00A9B8BD /* CheckVerson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckVerson.m; sourceTree = "<group>"; };
 		7430E33D21E267FB00A9B8BD /* CheckVerson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckVerson.h; sourceTree = "<group>"; };
+		744BFFD521F4F15D0061BDDA /* AFSecurityPolicy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFSecurityPolicy.h; sourceTree = "<group>"; };
+		744BFFD621F4F15D0061BDDA /* AFNetworkReachabilityManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNetworkReachabilityManager.h; sourceTree = "<group>"; };
+		744BFFD721F4F15D0061BDDA /* AFURLSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLSessionManager.h; sourceTree = "<group>"; };
+		744BFFD821F4F15D0061BDDA /* AFURLRequestSerialization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLRequestSerialization.h; sourceTree = "<group>"; };
+		744BFFD921F4F15D0061BDDA /* AFURLResponseSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLResponseSerialization.m; sourceTree = "<group>"; };
+		744BFFDA21F4F15D0061BDDA /* AFHTTPSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPSessionManager.m; sourceTree = "<group>"; };
+		744BFFDB21F4F15D0061BDDA /* AFURLResponseSerialization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLResponseSerialization.h; sourceTree = "<group>"; };
+		744BFFDC21F4F15D0061BDDA /* AFURLSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLSessionManager.m; sourceTree = "<group>"; };
+		744BFFDD21F4F15D0061BDDA /* AFURLRequestSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLRequestSerialization.m; sourceTree = "<group>"; };
+		744BFFDE21F4F15D0061BDDA /* AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNetworking.h; sourceTree = "<group>"; };
+		744BFFDF21F4F15D0061BDDA /* AFNetworkReachabilityManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFNetworkReachabilityManager.m; sourceTree = "<group>"; };
+		744BFFE021F4F15D0061BDDA /* AFSecurityPolicy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFSecurityPolicy.m; sourceTree = "<group>"; };
+		744BFFE121F4F15D0061BDDA /* AFCompatibilityMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFCompatibilityMacros.h; sourceTree = "<group>"; };
+		744BFFE221F4F15D0061BDDA /* AFHTTPSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPSessionManager.h; sourceTree = "<group>"; };
+		744BFFEA21F502730061BDDA /* PayVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayVC.swift; sourceTree = "<group>"; };
+		744BFFEB21F502730061BDDA /* PayVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PayVC.xib; sourceTree = "<group>"; };
+		744BFFEF21F5043C0061BDDA /* makeSureOrder.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = makeSureOrder.storyboard; sourceTree = "<group>"; };
+		744BFFF121F5045B0061BDDA /* makeSureOrderVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = makeSureOrderVC.swift; sourceTree = "<group>"; };
+		744BFFF321F50EE80061BDDA /* makeSureOrderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = makeSureOrderCell.swift; sourceTree = "<group>"; };
+		744BFFF421F50EE80061BDDA /* makeSureOrderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = makeSureOrderCell.xib; sourceTree = "<group>"; };
 		744F752C21CF97F20072326E /* LBXScanNetAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LBXScanNetAnimation.swift; sourceTree = "<group>"; };
 		744F752D21CF97F20072326E /* LBXScanView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LBXScanView.swift; sourceTree = "<group>"; };
 		744F752E21CF97F20072326E /* LBXScanViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LBXScanViewController.swift; sourceTree = "<group>"; };
@@ -1283,6 +1332,26 @@
 		74B2AF0321EBA4D20083A05A /* toTheSceneVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = toTheSceneVC.xib; sourceTree = "<group>"; };
 		74B2AF0C21EBA7510083A05A /* toTheSceneVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = toTheSceneVC.swift; sourceTree = "<group>"; };
 		74B2AF0F21ECF9880083A05A /* myOrderListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = myOrderListVC.swift; sourceTree = "<group>"; };
+		74B2AF1121F3982C0083A05A /* GrabOrdersMapVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrabOrdersMapVC.swift; sourceTree = "<group>"; };
+		74B2AF1421F459530083A05A /* myGrabOrderListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = myGrabOrderListCell.swift; sourceTree = "<group>"; };
+		74B2AF1521F459530083A05A /* myGrabOrderListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = myGrabOrderListCell.xib; sourceTree = "<group>"; };
+		74B2AF1921F466970083A05A /* myBillListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = myBillListVC.swift; sourceTree = "<group>"; };
+		74B2AF1C21F468AA0083A05A /* myBillListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = myBillListCell.swift; sourceTree = "<group>"; };
+		74B2AF1D21F468AA0083A05A /* myBillListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = myBillListCell.xib; sourceTree = "<group>"; };
+		74B2AF2121F473D70083A05A /* myBillListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = myBillListModel.swift; sourceTree = "<group>"; };
+		74B2AF2321F473EF0083A05A /* myBillListReturnObjModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = myBillListReturnObjModel.swift; sourceTree = "<group>"; };
+		74B2AF2621F4994C0083A05A /* GrabOrderListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrabOrderListModel.swift; sourceTree = "<group>"; };
+		74B2AF2821F4996A0083A05A /* GrabOrderListReturnObjModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrabOrderListReturnObjModel.swift; sourceTree = "<group>"; };
+		74B2AF2B21F4A2770083A05A /* cancelReasonModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = cancelReasonModel.swift; sourceTree = "<group>"; };
+		74B2AF3021F4A3590083A05A /* ZNCancelOrderReasonView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZNCancelOrderReasonView.h; sourceTree = "<group>"; };
+		74B2AF3121F4A3590083A05A /* ZNCancelOrderReasonView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZNCancelOrderReasonView.m; sourceTree = "<group>"; };
+		74B2AF3321F4A36F0083A05A /* ZNCancelOrderReasonContentView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZNCancelOrderReasonContentView.h; sourceTree = "<group>"; };
+		74B2AF3421F4A36F0083A05A /* ZNCancelOrderReasonContentView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZNCancelOrderReasonContentView.m; sourceTree = "<group>"; };
+		74B2AF3521F4A36F0083A05A /* ZNCancelOrderReasonContentView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ZNCancelOrderReasonContentView.xib; sourceTree = "<group>"; };
+		74B2AF3821F4A6910083A05A /* ZNCancelOrderReasonCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZNCancelOrderReasonCell.h; sourceTree = "<group>"; };
+		74B2AF3921F4A6910083A05A /* ZNCancelOrderReasonCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZNCancelOrderReasonCell.m; sourceTree = "<group>"; };
+		74B2AF3A21F4A6910083A05A /* ZNCancelOrderReasonCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ZNCancelOrderReasonCell.xib; sourceTree = "<group>"; };
+		74B2AF3D21F4B6490083A05A /* cancelReasonReturnObjModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = cancelReasonReturnObjModel.swift; sourceTree = "<group>"; };
 		9387F9749FA2D28DBBE888FA /* Pods-OperationMaintenance_Assistant_ZN.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OperationMaintenance_Assistant_ZN.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OperationMaintenance_Assistant_ZN/Pods-OperationMaintenance_Assistant_ZN.debug.xcconfig"; sourceTree = "<group>"; };
 		D2331F8AA2C2E5183A987B1A /* Pods_OperationMaintenance_Assistant_ZN.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OperationMaintenance_Assistant_ZN.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -1772,14 +1841,14 @@
 		7403D16F21CF7FDC0055561E /* 取消工单、抢单切图 */ = {
 			isa = PBXGroup;
 			children = (
-				7403D17021CF7FDC0055561E /* 点击.png */,
+				7403D17021CF7FDC0055561E /* 点击@2x.png */,
 				7403D17121CF7FDC0055561E /* 站位图.png */,
-				7403D17221CF7FDC0055561E /* 未点击3x.png */,
+				7403D17221CF7FDC0055561E /* 未点击@3x.png */,
 				7403D17321CF7FDC0055561E /* 站位图小.png */,
 				7403D17421CF7FDC0055561E /* 抢单@3x.png */,
 				7403D17521CF7FDC0055561E /* 抢单@2x.png */,
-				7403D17621CF7FDC0055561E /* 未点击.png */,
-				7403D17721CF7FDC0055561E /* 点击3x.png */,
+				7403D17621CF7FDC0055561E /* 未点击@2x.png */,
+				7403D17721CF7FDC0055561E /* 点击@3x.png */,
 			);
 			path = "取消工单、抢单切图";
 			sourceTree = "<group>";
@@ -1789,7 +1858,8 @@
 			children = (
 				7403D17921CF7FE00055561E /* 到现场相机3x.png */,
 				7403D17A21CF7FE00055561E /* 确定.png */,
-				7403D17B21CF7FE00055561E /* 话筒.png */,
+				7403D17B21CF7FE00055561E /* 话筒@2x.png */,
+				7403D18A21CF7FE00055561E /* 话筒@3x.png */,
 				7403D17C21CF7FE00055561E /* 二维码收款.png */,
 				7403D17D21CF7FE00055561E /* 去支付按钮点击.png */,
 				7403D17E21CF7FE00055561E /* 减未点击3x.png */,
@@ -1806,7 +1876,6 @@
 				7403D18621CF7FE00055561E /* 加点击3x.png */,
 				7403D18721CF7FE00055561E /* 提交3x.png */,
 				7403D18921CF7FE00055561E /* 加未点击3x.png */,
-				7403D18A21CF7FE00055561E /* 话筒3x.png */,
 				7403D18B21CF7FE00055561E /* 提交.png */,
 				7403D18C21CF7FE00055561E /* 确定3x.png */,
 				7403D18D21CF7FE00055561E /* 二维码收款3x.png */,
@@ -2101,6 +2170,7 @@
 			children = (
 				74B2AF0E21ECF9720083A05A /* myOrderList */,
 				749DFD5721DB7B0A00BA6BA8 /* GRabOrdersVC.swift */,
+				74B2AF1121F3982C0083A05A /* GrabOrdersMapVC.swift */,
 				7494CE8821EB25530009445A /* grabOrderCell.swift */,
 				7494CE8921EB25530009445A /* grabOrderCell.xib */,
 			);
@@ -2142,6 +2212,47 @@
 				742CAEFF21DB66420022648E /* BaiduMapAPI_Cloud.framework */,
 			);
 			path = BaiduMap_IOSSDK_v4.2.1_Frameworks;
+			sourceTree = "<group>";
+		};
+		744BFFD421F4F15D0061BDDA /* AFNetworking */ = {
+			isa = PBXGroup;
+			children = (
+				744BFFD521F4F15D0061BDDA /* AFSecurityPolicy.h */,
+				744BFFD621F4F15D0061BDDA /* AFNetworkReachabilityManager.h */,
+				744BFFD721F4F15D0061BDDA /* AFURLSessionManager.h */,
+				744BFFD821F4F15D0061BDDA /* AFURLRequestSerialization.h */,
+				744BFFD921F4F15D0061BDDA /* AFURLResponseSerialization.m */,
+				744BFFDA21F4F15D0061BDDA /* AFHTTPSessionManager.m */,
+				744BFFDB21F4F15D0061BDDA /* AFURLResponseSerialization.h */,
+				744BFFDC21F4F15D0061BDDA /* AFURLSessionManager.m */,
+				744BFFDD21F4F15D0061BDDA /* AFURLRequestSerialization.m */,
+				744BFFDE21F4F15D0061BDDA /* AFNetworking.h */,
+				744BFFDF21F4F15D0061BDDA /* AFNetworkReachabilityManager.m */,
+				744BFFE021F4F15D0061BDDA /* AFSecurityPolicy.m */,
+				744BFFE121F4F15D0061BDDA /* AFCompatibilityMacros.h */,
+				744BFFE221F4F15D0061BDDA /* AFHTTPSessionManager.h */,
+			);
+			path = AFNetworking;
+			sourceTree = "<group>";
+		};
+		744BFFE921F502550061BDDA /* pay */ = {
+			isa = PBXGroup;
+			children = (
+				744BFFEA21F502730061BDDA /* PayVC.swift */,
+				744BFFEB21F502730061BDDA /* PayVC.xib */,
+			);
+			path = pay;
+			sourceTree = "<group>";
+		};
+		744BFFEE21F503040061BDDA /* makeSureOrder */ = {
+			isa = PBXGroup;
+			children = (
+				744BFFEF21F5043C0061BDDA /* makeSureOrder.storyboard */,
+				744BFFF121F5045B0061BDDA /* makeSureOrderVC.swift */,
+				744BFFF321F50EE80061BDDA /* makeSureOrderCell.swift */,
+				744BFFF421F50EE80061BDDA /* makeSureOrderCell.xib */,
+			);
+			path = makeSureOrder;
 			sourceTree = "<group>";
 		};
 		744F752B21CF97F20072326E /* swiftScan */ = {
@@ -2457,6 +2568,8 @@
 		7477E89E21C170C800AAA756 /* Vendors */ = {
 			isa = PBXGroup;
 			children = (
+				744BFFD421F4F15D0061BDDA /* AFNetworking */,
+				74B2AF2D21F4A2F80083A05A /* cancelOrderReasonAlertView */,
 				1892DAC021E6FC0300508C8F /* MXParallaxHeader */,
 				1892DAB921E6FBF100508C8F /* MXPagerView */,
 				1892DAB521E6FBDB00508C8F /* HMSegmentedControl */,
@@ -3073,6 +3186,7 @@
 		7477EAF121C2A50B00AAA756 /* Me */ = {
 			isa = PBXGroup;
 			children = (
+				74B2AF1821F466690083A05A /* myBill */,
 				746423C921D2DD630038E8E3 /* Model */,
 				742CAEA921D52A080022648E /* ChangePw */,
 				7403D0CA21C5594A0055561E /* Login */,
@@ -3086,6 +3200,8 @@
 		7477EAF321C2A50B00AAA756 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				744BFFEE21F503040061BDDA /* makeSureOrder */,
+				744BFFE921F502550061BDDA /* pay */,
 				74B2AEF221EB96DD0083A05A /* toTheScene */,
 				1892DACA21E74C2800508C8F /* orderDetail */,
 				742CAEE421DB5AB50022648E /* GrabOrder */,
@@ -3189,9 +3305,82 @@
 		74B2AF0E21ECF9720083A05A /* myOrderList */ = {
 			isa = PBXGroup;
 			children = (
+				74B2AF2521F499250083A05A /* Model */,
+				74B2AF1321F459120083A05A /* View */,
 				74B2AF0F21ECF9880083A05A /* myOrderListVC.swift */,
 			);
 			path = myOrderList;
+			sourceTree = "<group>";
+		};
+		74B2AF1321F459120083A05A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				74B2AF1421F459530083A05A /* myGrabOrderListCell.swift */,
+				74B2AF1521F459530083A05A /* myGrabOrderListCell.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		74B2AF1821F466690083A05A /* myBill */ = {
+			isa = PBXGroup;
+			children = (
+				74B2AF2021F473B50083A05A /* Model */,
+				74B2AF1B21F466A80083A05A /* view */,
+				74B2AF1921F466970083A05A /* myBillListVC.swift */,
+			);
+			path = myBill;
+			sourceTree = "<group>";
+		};
+		74B2AF1B21F466A80083A05A /* view */ = {
+			isa = PBXGroup;
+			children = (
+				74B2AF1C21F468AA0083A05A /* myBillListCell.swift */,
+				74B2AF1D21F468AA0083A05A /* myBillListCell.xib */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		74B2AF2021F473B50083A05A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				74B2AF2121F473D70083A05A /* myBillListModel.swift */,
+				74B2AF2321F473EF0083A05A /* myBillListReturnObjModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		74B2AF2521F499250083A05A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				74B2AF2A21F4A25B0083A05A /* cancelReasonModel */,
+				74B2AF2621F4994C0083A05A /* GrabOrderListModel.swift */,
+				74B2AF2821F4996A0083A05A /* GrabOrderListReturnObjModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		74B2AF2A21F4A25B0083A05A /* cancelReasonModel */ = {
+			isa = PBXGroup;
+			children = (
+				74B2AF2B21F4A2770083A05A /* cancelReasonModel.swift */,
+				74B2AF3D21F4B6490083A05A /* cancelReasonReturnObjModel.swift */,
+			);
+			path = cancelReasonModel;
+			sourceTree = "<group>";
+		};
+		74B2AF2D21F4A2F80083A05A /* cancelOrderReasonAlertView */ = {
+			isa = PBXGroup;
+			children = (
+				74B2AF3021F4A3590083A05A /* ZNCancelOrderReasonView.h */,
+				74B2AF3121F4A3590083A05A /* ZNCancelOrderReasonView.m */,
+				74B2AF3321F4A36F0083A05A /* ZNCancelOrderReasonContentView.h */,
+				74B2AF3421F4A36F0083A05A /* ZNCancelOrderReasonContentView.m */,
+				74B2AF3521F4A36F0083A05A /* ZNCancelOrderReasonContentView.xib */,
+				74B2AF3821F4A6910083A05A /* ZNCancelOrderReasonCell.h */,
+				74B2AF3921F4A6910083A05A /* ZNCancelOrderReasonCell.m */,
+				74B2AF3A21F4A6910083A05A /* ZNCancelOrderReasonCell.xib */,
+			);
+			path = cancelOrderReasonAlertView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -3310,6 +3499,7 @@
 				7403D27521CF800A0055561E /* 巡检@2x.png in Resources */,
 				746A637A21DB9BEC0054C0C1 /* dount_5.png in Resources */,
 				7403D26E21CF800A0055561E /* meterReading_上传离线数据@2x.png in Resources */,
+				74B2AF3721F4A36F0083A05A /* ZNCancelOrderReasonContentView.xib in Resources */,
 				746A637C21DB9BEC0054C0C1 /* 人员@3x.png in Resources */,
 				746A637921DB9BEC0054C0C1 /* 拍照@2x.png in Resources */,
 				7403D29621CF800A0055561E /* 未标题-4.png in Resources */,
@@ -3331,12 +3521,13 @@
 				7403D2C121CF800A0055561E /* 去支付按钮3x.png in Resources */,
 				7494CE8221EA89DE0009445A /* 状态框3x.png in Resources */,
 				7403D24B21CF800A0055561E /* 签字点击3x.png in Resources */,
+				74B2AF1721F459530083A05A /* myGrabOrderListCell.xib in Resources */,
 				7403D26D21CF800A0055561E /* meterReading_抄表@3x.png in Resources */,
 				7403D2D021CF800A0055561E /* 64.png in Resources */,
 				746A63A121DBC0970054C0C1 /* readingListHeaderView.xib in Resources */,
-				7403D25021CF800A0055561E /* 话筒3x.png in Resources */,
+				7403D25021CF800A0055561E /* 话筒@3x.png in Resources */,
 				7494CE7A21E79FFD0009445A /* orderDetail.storyboard in Resources */,
-				7403D23E21CF800A0055561E /* 点击3x.png in Resources */,
+				7403D23E21CF800A0055561E /* 点击@3x.png in Resources */,
 				746423C821D2D6000038E8E3 /* Me.storyboard in Resources */,
 				7403D24A21CF800A0055561E /* 加减点击3x.png in Resources */,
 				7403D27F21CF800A0055561E /* banner3.png in Resources */,
@@ -3365,7 +3556,7 @@
 				7403D2AF21CF800A0055561E /* 已选@3x.png in Resources */,
 				746A638621DB9BEC0054C0C1 /* tel@3x.png in Resources */,
 				7477EAC721C1712300AAA756 /* HUD_error@3x.png in Resources */,
-				7403D23721CF800A0055561E /* 点击.png in Resources */,
+				7403D23721CF800A0055561E /* 点击@2x.png in Resources */,
 				7403D2BE21CF800A0055561E /* xiaoxi 3x.png in Resources */,
 				7403D2D221CF800A0055561E /* login_eyeClose@2x.png in Resources */,
 				7403D26721CF800A0055561E /* meterReading_换表@2x.png in Resources */,
@@ -3387,6 +3578,7 @@
 				7403D24921CF800A0055561E /* 提交点击.png in Resources */,
 				7477EA3721C1712300AAA756 /* LICENSE in Resources */,
 				7403D26C21CF800A0055561E /* meterReading_上传离线数据@3x.png in Resources */,
+				74B2AF1F21F468AA0083A05A /* myBillListCell.xib in Resources */,
 				7403D25E21CF800A0055561E /* 加减3x.png in Resources */,
 				746A639421DB9F940054C0C1 /* repairClass@2x.jpg in Resources */,
 				7403D28621CF800A0055561E /* 抄表@3x.png in Resources */,
@@ -3406,6 +3598,7 @@
 				746A637F21DB9BEC0054C0C1 /* 内容@3x.png in Resources */,
 				7403D25D21CF800A0055561E /* 去支付按钮点击3x.png in Resources */,
 				7403D24E21CF800A0055561E /* xiaoxi@2x.png in Resources */,
+				74B2AF3C21F4A6910083A05A /* ZNCancelOrderReasonCell.xib in Resources */,
 				7403D27D21CF800A0055561E /* banner2.png in Resources */,
 				7494CEA321EB3A060009445A /* 返回3x.png in Resources */,
 				7403D27021CF800A0055561E /* 扫一扫点击@2x.png in Resources */,
@@ -3415,8 +3608,8 @@
 				7477EAC621C1712300AAA756 /* HUD_success@3x.png in Resources */,
 				7403D27321CF800A0055561E /* 签字1.png in Resources */,
 				7403D25F21CF800A0055561E /* 提交点击3x.png in Resources */,
-				7403D23D21CF800A0055561E /* 未点击.png in Resources */,
-				7403D24121CF800A0055561E /* 话筒.png in Resources */,
+				7403D23D21CF800A0055561E /* 未点击@2x.png in Resources */,
+				7403D24121CF800A0055561E /* 话筒@2x.png in Resources */,
 				7403D2B421CF800A0055561E /* 暂无数据.png in Resources */,
 				746A638821DB9BEC0054C0C1 /* tel@2x.png in Resources */,
 				7477EA3821C1712300AAA756 /* README.mdown in Resources */,
@@ -3460,6 +3653,7 @@
 				7403D11A21C67DB30055561E /* SGQRCode.bundle in Resources */,
 				746A639121DB9BEC0054C0C1 /* 电话@3x.png in Resources */,
 				7403D27821CF800A0055561E /* 箭头.png in Resources */,
+				744BFFF021F5043C0061BDDA /* makeSureOrder.storyboard in Resources */,
 				7403D25C21CF800A0055561E /* 确定点击3x.png in Resources */,
 				7477EAAB21C1712300AAA756 /* images.bundle in Resources */,
 				7403D23F21CF800A0055561E /* 到现场相机3x.png in Resources */,
@@ -3473,6 +3667,7 @@
 				7403D2F621CF847D0055561E /* 相机@3x.png in Resources */,
 				7403D2F021CF800B0055561E /* 手机@2x.png in Resources */,
 				7403D2C221CF800A0055561E /* 三角上3xx.png in Resources */,
+				744BFFF621F50EE80061BDDA /* makeSureOrderCell.xib in Resources */,
 				7403D26221CF800A0055561E /* xiaoxi_red@3x.png in Resources */,
 				746A638121DB9BEC0054C0C1 /* dount_3.png in Resources */,
 				7403D2F521CF847D0055561E /* 相机@2x.png in Resources */,
@@ -3510,7 +3705,7 @@
 				7477EA5F21C1712300AAA756 /* PhotoBroswerVC.xib in Resources */,
 				746A638A21DB9BEC0054C0C1 /* 倒三角@2x.png in Resources */,
 				7477EA7021C1712300AAA756 /* CoreSDWebImage.bundle in Resources */,
-				7403D23921CF800A0055561E /* 未点击3x.png in Resources */,
+				7403D23921CF800A0055561E /* 未点击@3x.png in Resources */,
 				7403D2B721CF800A0055561E /* 我的banner@2x.png in Resources */,
 				7494CE8321EA89DE0009445A /* 定位@2x.png in Resources */,
 				746A638C21DB9BEC0054C0C1 /* 电话@2x.png in Resources */,
@@ -3542,6 +3737,7 @@
 				7403D25921CF800A0055561E /* 减点击.png in Resources */,
 				7403D27A21CF800A0055561E /* 热门3x.png in Resources */,
 				7403D26A21CF800A0055561E /* meterReading_下载字典表@3x.png in Resources */,
+				744BFFED21F502730061BDDA /* PayVC.xib in Resources */,
 				7403D2D721CF800A0055561E /* login_eye@2x.png in Resources */,
 				7403D08821C4D8030055561E /* MeterReading.storyboard in Resources */,
 				185C233821D37D1B0004AD0C /* LLCycleScrollView.bundle in Resources */,
@@ -3718,6 +3914,8 @@
 				742CAEB121D9F6B10022648E /* CustomerRefreshHeader.m in Sources */,
 				185C238821D63CFB0004AD0C /* FMDatabase.m in Sources */,
 				7477EABD21C1712300AAA756 /* MASConstraintMaker.m in Sources */,
+				74B2AF3B21F4A6910083A05A /* ZNCancelOrderReasonCell.m in Sources */,
+				74B2AF3E21F4B6490083A05A /* cancelReasonReturnObjModel.swift in Sources */,
 				7477EA8221C1712300AAA756 /* NSString+Extend.m in Sources */,
 				7477EAF521C2A50B00AAA756 /* MeVC.swift in Sources */,
 				18328C8221E33B1800CFF04A /* XDSDropDownMenu.m in Sources */,
@@ -3736,6 +3934,7 @@
 				185C238A21D63CFB0004AD0C /* FMResultSet.m in Sources */,
 				742CAEA221D524BF0022648E /* aboutUsVC.swift in Sources */,
 				746A63AA21DBD4A10054C0C1 /* changeMeterParModel.swift in Sources */,
+				74B2AF3221F4A3590083A05A /* ZNCancelOrderReasonView.m in Sources */,
 				7477E89421C1705F00AAA756 /* BaseVC.swift in Sources */,
 				7477EA7C21C1712300AAA756 /* UIWindow+Launch.m in Sources */,
 				742CAEC621DA91370022648E /* myMessageCell.swift in Sources */,
@@ -3745,13 +3944,18 @@
 				7477EAA221C1712300AAA756 /* NSImage+WebCache.m in Sources */,
 				742CAEB221D9F6B10022648E /* BasePullTableView.m in Sources */,
 				7477EA9021C1712300AAA756 /* SDWebImageFrame.m in Sources */,
+				74B2AF1621F459530083A05A /* myGrabOrderListCell.swift in Sources */,
 				744F754621CFC6160072326E /* PopSignatureView.m in Sources */,
 				7477EA9D21C1712300AAA756 /* SDImageCache.m in Sources */,
 				7477EAAA21C1712300AAA756 /* YJProgressHUD.m in Sources */,
+				744BFFE421F4F15D0061BDDA /* AFHTTPSessionManager.m in Sources */,
+				74B2AF2721F4994C0083A05A /* GrabOrderListModel.swift in Sources */,
 				7494CE8A21EB25530009445A /* grabOrderCell.swift in Sources */,
 				7477EAA821C1712300AAA756 /* UIButton+WebCache.m in Sources */,
 				7430E33A21E20BA200A9B8BD /* myOrdersReturnObjModel.swift in Sources */,
+				74B2AF1221F3982C0083A05A /* GrabOrdersMapVC.swift in Sources */,
 				185C234021D47A500004AD0C /* readinglistCell.swift in Sources */,
+				744BFFF221F5045B0061BDDA /* makeSureOrderVC.swift in Sources */,
 				7477EA9F21C1712300AAA756 /* SDWebImageTransition.m in Sources */,
 				7477EAA121C1712300AAA756 /* UIImageView+WebCache.m in Sources */,
 				7477EAA721C1712300AAA756 /* SDWebImageImageIOCoder.m in Sources */,
@@ -3774,12 +3978,17 @@
 				7477EA7721C1712300AAA756 /* UIImage+Water.m in Sources */,
 				1892DABE21E6FBF100508C8F /* MXPagerViewController.m in Sources */,
 				7477EA9C21C1712300AAA756 /* SDAnimatedImageRep.m in Sources */,
+				744BFFE821F4F15D0061BDDA /* AFSecurityPolicy.m in Sources */,
 				185C233721D37D1B0004AD0C /* LLImagePageControl.swift in Sources */,
+				74B2AF2C21F4A2770083A05A /* cancelReasonModel.swift in Sources */,
+				74B2AF2421F473EF0083A05A /* myBillListReturnObjModel.swift in Sources */,
 				7477E84421C025BF00AAA756 /* ViewController.swift in Sources */,
 				7477EA7821C1712300AAA756 /* UIImage+Cut.m in Sources */,
+				744BFFE721F4F15D0061BDDA /* AFNetworkReachabilityManager.m in Sources */,
 				185C233621D37D1B0004AD0C /* LLFilledPageControl.swift in Sources */,
 				7477EA3621C1712300AAA756 /* MBProgressHUD.m in Sources */,
 				7477E88621C1701E00AAA756 /* UIPlaceHolderTextView.m in Sources */,
+				74B2AF1A21F466970083A05A /* myBillListVC.swift in Sources */,
 				746A639821DBAFD30054C0C1 /* ZNMakeSureView.m in Sources */,
 				7403D13B21C807E60055561E /* changeMeterVC.swift in Sources */,
 				7477E89C21C1709900AAA756 /* OtherBaseModel.swift in Sources */,
@@ -3801,6 +4010,7 @@
 				1892DAC921E6FC0300508C8F /* MXScrollViewController.m in Sources */,
 				742CAEAB21D52A080022648E /* ChangePwVC.swift in Sources */,
 				742CAEF521DB5BAE0022648E /* olineRepaireContentTableview.swift in Sources */,
+				74B2AF2921F4996A0083A05A /* GrabOrderListReturnObjModel.swift in Sources */,
 				746423B621D271060038E8E3 /* IQTextView.swift in Sources */,
 				7403D07D21C2BC5F0055561E /* API.swift in Sources */,
 				7403D07C21C2BC5F0055561E /* NetworkService.swift in Sources */,
@@ -3818,9 +4028,11 @@
 				74B2AF1021ECF9880083A05A /* myOrderListVC.swift in Sources */,
 				7477EA3C21C1712300AAA756 /* CustomerAlertViewManger.m in Sources */,
 				7477E89621C1705F00AAA756 /* NavigationController.swift in Sources */,
+				744BFFF521F50EE80061BDDA /* makeSureOrderCell.swift in Sources */,
 				1892DAD521E759E800508C8F /* WorkOrderDetailModel.swift in Sources */,
 				744F754521CFC6160072326E /* EasySignatureView.m in Sources */,
 				181AC43821D788760018ADAD /* MJRefreshBackStateFooter.m in Sources */,
+				744BFFE321F4F15D0061BDDA /* AFURLResponseSerialization.m in Sources */,
 				744F753E21CFC07B0072326E /* meterReadingSignVC.swift in Sources */,
 				7477E88521C1701E00AAA756 /* NSString+emoji.m in Sources */,
 				746A63A621DBD4830054C0C1 /* changeMeterReturnObjModel.swift in Sources */,
@@ -3855,7 +4067,9 @@
 				7477E84221C025BF00AAA756 /* AppDelegate.swift in Sources */,
 				7477EA6921C1712300AAA756 /* PhotoImageView.m in Sources */,
 				7477EA3321C1712300AAA756 /* ZNCustomAlertView.m in Sources */,
+				744BFFE521F4F15D0061BDDA /* AFURLSessionManager.m in Sources */,
 				185C238921D63CFB0004AD0C /* FMDatabasePool.m in Sources */,
+				74B2AF2221F473D70083A05A /* myBillListModel.swift in Sources */,
 				746A63B021DE85FE0054C0C1 /* MyOrdersCell.swift in Sources */,
 				7477EAFE21C2A8CA00AAA756 /* MeterReadingVC.swift in Sources */,
 				181AC44321D788760018ADAD /* MJRefreshAutoFooter.m in Sources */,
@@ -3864,6 +4078,7 @@
 				7477EA7321C1712300AAA756 /* SVProgressHUD.m in Sources */,
 				7477EAA921C1712300AAA756 /* SDWebImageWebPCoder.m in Sources */,
 				7477EA9821C1712300AAA756 /* SDWebImageCompat.m in Sources */,
+				74B2AF3621F4A36F0083A05A /* ZNCancelOrderReasonContentView.m in Sources */,
 				7403D0D421C5594A0055561E /* LoginModel.swift in Sources */,
 				7477EA9A21C1712300AAA756 /* SDWebImageCoder.m in Sources */,
 				7477EA6E21C1712300AAA756 /* UIImageView+SD.m in Sources */,
@@ -3884,6 +4099,9 @@
 				181AC43F21D788760018ADAD /* MJRefreshGifHeader.m in Sources */,
 				742CAEDA21DB50180022648E /* MXSegmentedPager.m in Sources */,
 				181AC44421D788760018ADAD /* MJRefreshComponent.m in Sources */,
+				74B2AF1E21F468AA0083A05A /* myBillListCell.swift in Sources */,
+				744BFFEC21F502730061BDDA /* PayVC.swift in Sources */,
+				744BFFE621F4F15D0061BDDA /* AFURLRequestSerialization.m in Sources */,
 				742CAEB521DA41970022648E /* headerLinesDetailVC.swift in Sources */,
 				7477E89521C1705F00AAA756 /* BaseTableVC.swift in Sources */,
 				7403D12B21C6A8D50055561E /* MBProgressHUD+SGQRCode.m in Sources */,

@@ -151,6 +151,11 @@ class MeVC: UITableViewController,UIActionSheetDelegate,UIImagePickerControllerD
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
+        if section == 1 {
+            
+            return 5
+        }
+        
             return 2
     }
     
@@ -170,19 +175,22 @@ class MeVC: UITableViewController,UIActionSheetDelegate,UIImagePickerControllerD
             
             switch indexPath.row {
                 
-//                case 0:
-//
-//                break
-//                case 1:
-//
-//                    break
-//                case 2:
-//
-//                    break
                 case 0:
+                    self.navigationController?.pushViewController(myOrdersVC(), animated: true)
+
+                break
+                case 1:
+                    self.navigationController?.pushViewController(myBillListVC(), animated: true)
+
+                    break
+                case 2:
+                    self.navigationController?.pushViewController(myOrderListVC(), animated: true)
+
+                    break
+                case 3:
                     self.navigationController?.pushViewController(MessageVC(), animated: true)
                     break
-                case 1:
+                case 4:
                      UIApplication.shared.openURL(NSURL.init(string: "tel://01062019488")! as URL)
                     break
                 

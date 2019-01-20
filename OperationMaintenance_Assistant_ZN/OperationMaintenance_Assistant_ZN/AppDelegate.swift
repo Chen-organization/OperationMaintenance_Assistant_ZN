@@ -14,14 +14,23 @@ import RealmSwift
 
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate ,BMKGeneralDelegate {
 
     var window: UIWindow?
+    
+    var _mapManager: BMKMapManager?
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 
-    
+        //地图
+        _mapManager = BMKMapManager()
+        // 如果要关注网络及授权验证事件，请设定generalDelegate参数
+        let ret = _mapManager?.start("hblWV9xsl67jWi4uuTDup58EU0QKWnlb", generalDelegate: self)
+        if ret == false {
+            NSLog("manager start failed!")
+        }
+
         
         //设置tabbar
         self.window = UIWindow(frame: UIScreen.main.bounds)

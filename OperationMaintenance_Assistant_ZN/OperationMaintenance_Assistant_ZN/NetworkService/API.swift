@@ -79,4 +79,9 @@ public let getMyGrabListUrl = baseURL + "/my/getMyGrabList"
 //上传工单图片到本地服务器
 public let getUploadPicturesURL = baseURL + "/first/getUploadPictures"
 
+//收款账单 和 在线缴费
+public let getParagraphURL = baseURL + "/first/getParagraph"
+
+//取消抢单原因列表
+public let getCancelOrdersURL = baseURL + "/my/getCancelOrders"
 

@@ -10,6 +10,8 @@ import UIKit
 
 class GRabOrdersVC: UIViewController,UITableViewDelegate,UITableViewDataSource,PullTableViewDelegate,grabOrderCellDelegate {
     
+    var mapVC : GrabOrdersMapVC?
+    
     
     var nowPage = 1
     
@@ -48,10 +50,12 @@ class GRabOrdersVC: UIViewController,UITableViewDelegate,UITableViewDataSource,P
         // 维修记录
         let map = UIButton(type: .custom)
         map.frame = CGRect(x: 200, y: 13, width: 18, height: 18)
-        map.addTarget(self, action: #selector(toMap), for: .touchUpInside)
+        map.addTarget(self, action: #selector(toMap(btn:)), for: .touchUpInside)
 //        map.setTitle("记录", for: UIControl.State.normal)
 //        map.setTitleColor(UIColor.white, for: UIControl.State.normal)
         map.setImage(UIImage.init(named: "定位白"), for: UIControl.State.normal)
+        map.setImage(UIImage.init(named: ""), for: UIControl.State.selected)
+
         // 自定义导航栏的UIBarButtonItem类型的按钮
         let backView = UIBarButtonItem(customView: map)
         // 重要方法，用来调整自定义返回view距离左边的距离
@@ -61,18 +65,50 @@ class GRabOrdersVC: UIViewController,UITableViewDelegate,UITableViewDataSource,P
         navigationItem.rightBarButtonItems = [barButtonItem, backView]
         
         
-        
-        
-        
         self.getDataWith(page: 1)
         
         // Do any additional setup after loading the view.
     }
     
     //MARK: - 地图
-    @objc func toMap()  {
+    @objc func toMap(btn:UIButton)  {
         
+        btn.isSelected = !btn.isSelected
         
+        if btn.isSelected {
+            
+            if self.mapVC == nil {
+                
+                let vc = GrabOrdersMapVC()
+                self.mapVC = vc
+                vc.view.frame = self.view.bounds
+                self.addChild(vc)
+                self.view.insertSubview(vc.view, at: 0)
+                
+            }
+            UIView.animate(withDuration: 0.3, animations: {
+                
+                self.repairTableview.isHidden = true
+
+            }) { (sure) in
+
+                
+            }
+            self.title = "定位抢单"
+            //MARK: - 是否刷新数据
+            
+        }else{
+            
+            UIView.animate(withDuration: 0.3, animations: {
+                
+                self.repairTableview.isHidden = false
+                
+            }) { (sure) in
+                
+                
+            }
+            self.title = "抢单池"
+        }
         
     }
     
@@ -213,6 +249,8 @@ class GRabOrdersVC: UIViewController,UITableViewDelegate,UITableViewDataSource,P
     //MARK: - CELL DELEGATE
     func grabOrder(index: Int) {
         
+        YJProgressHUD.showProgress("", in: UIApplication.shared.keyWindow)
+        
         let orderModel :myOrdersReturnObjModel  = self.repairArr[index]
         
         UserCenter.shared.userInfo { (islogin, model) in
@@ -223,14 +261,16 @@ class GRabOrdersVC: UIViewController,UITableViewDelegate,UITableViewDataSource,P
                 "orgCode" : model.orgCode,
                 "empNo": model.empNo,
                 "empName": model.empName,
-                "orderID":orderModel.id ?? "",
+                "orderID":orderModel.workno ?? "",
                 "start":"1",
                 "ord": "20",
                 ]
             
             NetworkService.networkPostrequest(currentView: self.view, parameters: para as [String : Any], requestApi: getMyGrabListUrl, modelClass: "BaseModel", response: { (obj) in
-                
-                let model : readingListModel = obj as! readingListModel
+
+                YJProgressHUD.hide()
+
+                let model : BaseModel = obj as! BaseModel
                 
                 if model.statusCode == 800 {
                     
@@ -245,7 +285,8 @@ class GRabOrdersVC: UIViewController,UITableViewDelegate,UITableViewDataSource,P
             }, failture: { (error) in
                 
               
-                
+                YJProgressHUD.hide()
+
             })
             
             

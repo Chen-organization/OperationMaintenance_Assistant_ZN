@@ -8,7 +8,7 @@
 
 enum orderDetailType : Int {
     
-    case repair = 0,repairing,repaired
+    case repair = 0,repairing,repaired,waitPay
 }
 
 
@@ -112,8 +112,15 @@ class orderDetailVC: UITableViewController {
             
         }else if self.repairType == orderDetailType.repairing {
             
-
+            let vc = makeSureOrderVC.getVC()
+            self.navigationController?.pushViewController(vc, animated: true)
             
+            
+        }else if self.repairType == orderDetailType.waitPay {
+            
+            let vc = PayVC()
+            self.navigationController?.pushViewController(vc, animated: true)
+
             
         }
         
@@ -148,9 +155,9 @@ class orderDetailVC: UITableViewController {
             
             self.sureBtn.setTitle("去完成", for: UIControl.State.normal)
 
-        }else if self.repairType == orderDetailType.repaired {
+        }else if self.repairType == orderDetailType.waitPay {
             
-            self.sureBtn.setTitle("", for: UIControl.State.normal)
+            self.sureBtn.setTitle("待支付", for: UIControl.State.normal)
 
         }
         
@@ -419,6 +426,13 @@ class orderDetailVC: UITableViewController {
                 return 0
             }
             return 1
+        }else if self.repairType == orderDetailType.waitPay {
+            
+            if section == 6{
+                
+                return 0
+            }
+            return 1
         }
         
         return 1
@@ -462,6 +476,14 @@ class orderDetailVC: UITableViewController {
         }else if self.repairType == orderDetailType.repairing {
             
             if section > 4 {
+                
+                return 0;
+            }
+            
+            
+        }else if self.repairType == orderDetailType.waitPay {
+            
+            if section == 6 {
                 
                 return 0;
             }

@@ -167,8 +167,27 @@ class WorkOrdersVC: UIViewController,UITableViewDelegate,UITableViewDataSource,P
         
         tableView.deselectRow(at: indexPath, animated: true)
         
-       
         
+        let model = self.repairArr[indexPath.row]
+       
+        let vc = orderDetailVC.getOrderDetailVC()
+        vc.orderNo = model.id ?? ""
+        
+        if model.zu == "已安排" {
+            vc.repairType = orderDetailType.repair
+
+        }else if model.zu == "修理中" {
+            
+            vc.repairType = orderDetailType.repairing
+
+        }else if model.zu == "待支付" {
+            
+            vc.repairType = orderDetailType.waitPay
+            
+        }
+        
+        
+        self.navigationController?.pushViewController(vc, animated: true)
         
     }
     
