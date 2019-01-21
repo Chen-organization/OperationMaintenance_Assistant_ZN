@@ -85,3 +85,7 @@ public let getParagraphURL = baseURL + "/first/getParagraph"
 //取消抢单原因列表
 public let getCancelOrdersURL = baseURL + "/my/getCancelOrders"
 
+//取消抢单原因列表
+public let getConfirmOrderURL = baseURL + "/first/getConfirmOrder"
+
+
