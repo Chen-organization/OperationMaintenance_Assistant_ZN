@@ -86,51 +86,93 @@ class toTheSceneVC: UIViewController,UIActionSheetDelegate,UIImagePickerControll
     @IBAction func sureBtnClick(_ sender: UIButton) {
         
         
-        if !(self.imageArr.count > 0) {
-            
-            YJProgressHUD.showMessage("请上传图片", in: UIApplication.shared.keyWindow, afterDelayTime: 2)
-            return
-        }
+//        if !(self.imageArr.count > 0) {
+//
+//            YJProgressHUD.showMessage("请上传图片", in: UIApplication.shared.keyWindow, afterDelayTime: 2)
+//            return
+//        }
         
         UserCenter.shared.userInfo { (islogin, user) in
+            
             
             
 //            http://plat.znxk.net:6801/first/getUploadPictures?companyCode=1009&orgCode=1009001&empNo=E100900003&empName=zf%E6%9C%BA%E6%9E%84&workNo=W100920190100001&type=2
             
             
+            self.imageArr.removeAllObjects()
+            self.imageArr.add(UIImage.init(named:"图一" )!)
+            
+            
+            
+            var ImgStrArr = [String]()
+            
+            for i in 0..<self.imageArr.count {
+                
+                let image = self.imageArr[i] as! UIImage
+                let data = image.compress(withMaxLength: 1 * 1024 * 1024 / 8)
+                
+//                let imageName = self.milliStamp + ".jpeg" //i.description +
+                
+                // NSData 转换为 Base64编码的字符串
+                let base64String:String = data?.base64EncodedString(options: NSData.Base64EncodingOptions(rawValue: 0)) ?? ""
+                
+                ImgStrArr.append(base64String)
+            }
+
+            
+            if (!JSONSerialization.isValidJSONObject(ImgStrArr)) {
+                print("无法解析出JSONString")
+            }
+            
+            let data : NSData! = try? JSONSerialization.data(withJSONObject: ImgStrArr, options: []) as NSData!
+            let JSONString = NSString(data:data as Data,encoding: String.Encoding.utf8.rawValue)
+
             let para = [
-                        "companyCode":user.companyCode,
-                        "empNo":user.empNo,
-                        "empName":user.empName,
-                        "orgCode":user.orgCode,
-                        "workNo":self.orderNo,
-                        "type" : "2"
-                        ]
+                "companyCode":user.companyCode ?? "",
+                        "empNo":user.empNo ?? "",
+                        "empName":user.empName ?? "",
+                        "orgCode":user.orgCode ?? "",
+                        "workNo":self.orderNo ,
+                        "type" : "2",
+                        "File" : JSONString
+                ] as [String : Any]
+            
+            
+            NetworkService.networkPostrequest(currentView: self.view, parameters: para as [String : Any], requestApi: getUploadPicturesURL, modelClass: "BaseModel", response: { (obj) in
+                
+                
+                
+            }, failture: { (error) in
+                
+                
+                
+            })
             
       
 //
 //            let manager = AFHTTPSessionManager.init()
 //            manager.requestSerializer.timeoutInterval = 40;
-//            manager.responseSerializer.acceptableContentTypes = NSSet(arrayLiteral: "text/plain", "multipart/form-data", "application/json", "text/html", "image/jpeg", "image/png", "application/octet-stream", "text/json") as? Set<String>
+//            manager.responseSerializer.acceptableContentTypes = NSSet(arrayLiteral: "text/plain", "application/json", "text/html", "image/jpeg", "image/png", "application/octet-stream", "text/json") as? Set<String>
 //
 //            let headers: HTTPHeaders =  [    "Authorization": "Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ==",
 //                                             "Accept": "application/json",
+//                                             "Content-Type": "application/x-www-form-urlencoded"
 //                                             ]
 //
-//            manager.post(getUploadPicturesURL, parameters: para, headers: headers, constructingBodyWith: { (multipartFormData) in
+//            manager.post(getUploadPicturesURL, parameters: para as [String : AnyObject], headers: headers, constructingBodyWith: { (multipartFormData) in
 //
 //
 //
-//                    for i in 0..<self.imageArr.count {
+////                    for i in 0..<self.imageArr.count {
 //
-//                        let image = self.imageArr[i] as! UIImage
-//                        let data = image.compress(withMaxLength: 1 * 1024 * 1024 / 8)
+//                        let image = UIImage.init(named:"图一") //self.imageArr[i] as! UIImage
+//                        let data = image!.compress(withMaxLength: 1 * 1024 * 1024 / 8)
 //
-//                        let imageName = self.milliStamp + i.description + ".jpeg"
+//                        let imageName = self.milliStamp + ".jpeg" //i.description +
 //
 //                        multipartFormData.appendPart(withFileData: data!, name: "File", fileName: imageName, mimeType: "image/jpeg")
 //
-//                    }
+////                    }
 //
 //
 //            }, progress: { (progress) in
@@ -143,6 +185,8 @@ class toTheSceneVC: UIViewController,UIActionSheetDelegate,UIImagePickerControll
 //                //如果response不为空时
 //                if response != nil {
 //
+//                    print(task)
+//
 //                    print(response)
 //
 //                }
@@ -153,68 +197,133 @@ class toTheSceneVC: UIViewController,UIActionSheetDelegate,UIImagePickerControll
 //                //打印连接失败原因
 //                print(error)
 //            })
+
+            
+//            let headers = [
+//                "Authorization": "Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ==",
+//                "Content-Type": "application/x-www-form-urlencoded"
+//            ]
 //
+//
+//            Alamofire.upload(multipartFormData: { (multipartFormData) in
+//
+//                //采用post表单上传
+//                for (key , value) in para{
+//
+//                    multipartFormData.append((value?.data(using: String.Encoding.utf8)!)!, withName: key)
+//
+//
+//                }
+//
+//                // 参数解释：
+//                //withName:和后台服务器的name要一致 ；fileName:可以充分利用写成用户的id，但是格式要写对； mimeType：规定的，要上传其他格式可以自行百度查一下\
+//
+//                for i in 0..<self.imageArr.count {
+//
+//                    let image = self.imageArr[i] as! UIImage
+//                    let data = image.compress(withMaxLength: 1 * 1024 * 1024 / 8)
+//
+//                    let imageName = self.milliStamp + i.description + ".jpeg"
+//
+//                    multipartFormData.append(data!, withName: "File", fileName: imageName, mimeType: "image/jpeg")
+//                }
+//
+//
+//
+//
+//            }, usingThreshold: UInt64.init(), to: getUploadPicturesURL, method: .post, headers: headers, encodingCompletion: { (encodingResult) in
+//
+//
+//                switch encodingResult {
+//                case .success(let upload, _, _):
+//                    //连接服务器成功后，对json的处理
+//                    upload.responseJSON { response in
+//                        //解包
+//                        guard let result = response.result.value else { return }
+//                        print("json:\(result)")
+//
+//                        //                            let model = (swiftClassFromString(className: "BaseModel") as? HandyJSON.Type )?.deserialize(from: response)
+//
+//
+//                    }
+//                    //获取上传进度
+//                    upload.uploadProgress(queue: DispatchQueue.global(qos: .utility)) { progress in
+//                        print("图片上传进度: \(progress.fractionCompleted)")
+//
+//
+//
+//                    }
+//                case .failure(let encodingError):
+//                    //打印连接失败原因
+//                    print(encodingError)
+//                }
+//
+//            })
             
-            //上传图片到服务器
-                Alamofire.upload(
-                    multipartFormData: { multipartFormData in
-                        //采用post表单上传
-
-                        for (key , value) in para{
             
-                            multipartFormData.append((value?.data(using: String.Encoding.utf8)!)!, withName: key)
-
-
-                        }
-
-                        // 参数解释：
-                        //withName:和后台服务器的name要一致 ；fileName:可以充分利用写成用户的id，但是格式要写对； mimeType：规定的，要上传其他格式可以自行百度查一下\
-
-                        for i in 0..<self.imageArr.count {
-
-                            let image = self.imageArr[i] as! UIImage
-                            let data = image.compress(withMaxLength: 1 * 1024 * 1024 / 8)
-                            
-                            let imageName = self.milliStamp + i.description + ".jpeg"
-
-                            multipartFormData.append(data!, withName: "File", fileName: imageName, mimeType: "image/jpeg")
-                        }
-                        
-
-                },to:getUploadPicturesURL ,encodingCompletion: { encodingResult in
-                    switch encodingResult {
-                    case .success(let upload, _, _):
-                        //连接服务器成功后，对json的处理
-                        upload.responseJSON { response in
-                            //解包
-                            guard let result = response.result.value else { return }
-                            print("json:\(result)")
-
-//                            let model = (swiftClassFromString(className: "BaseModel") as? HandyJSON.Type )?.deserialize(from: response)
-
-
-                        }
-                        //获取上传进度
-                        upload.uploadProgress(queue: DispatchQueue.global(qos: .utility)) { progress in
-                            print("图片上传进度: \(progress.fractionCompleted)")
-
-                            
-
-                        }
-                    case .failure(let encodingError):
-                        //打印连接失败原因
-                        print(encodingError)
-                    }
-                })
             
+            
+//
+//            //上传图片到服务器
+//                Alamofire.upload(
+//                    multipartFormData: { multipartFormData in
+//                        //采用post表单上传
+//
+//                        for (key , value) in para{
+//
+//                            multipartFormData.append((value?.data(using: String.Encoding.utf8)!)!, withName: key)
+//
+//
+//                        }
+//
+//                        // 参数解释：
+//                        //withName:和后台服务器的name要一致 ；fileName:可以充分利用写成用户的id，但是格式要写对； mimeType：规定的，要上传其他格式可以自行百度查一下\
+//
+//                        for i in 0..<self.imageArr.count {
+//
+//                            let image = self.imageArr[i] as! UIImage
+//                            let data = image.compress(withMaxLength: 1 * 1024 * 1024 / 8)
+//
+//                            let imageName = self.milliStamp + i.description + ".jpeg"
+//
+//                            multipartFormData.append(data!, withName: "File", fileName: imageName, mimeType: "image/jpeg")
+//                        }
+//
+//
+//                },to:getUploadPicturesURL ,encodingCompletion: { encodingResult in
+//                    switch encodingResult {
+//                    case .success(let upload, _, _):
+//                        //连接服务器成功后，对json的处理
+//                        upload.responseJSON { response in
+//                            //解包
+//                            guard let result = response.result.value else { return }
+//                            print("json:\(result)")
+//
+////                            let model = (swiftClassFromString(className: "BaseModel") as? HandyJSON.Type )?.deserialize(from: response)
+//
+//
+//                        }
+//                        //获取上传进度
+//                        upload.uploadProgress(queue: DispatchQueue.global(qos: .utility)) { progress in
+//                            print("图片上传进度: \(progress.fractionCompleted)")
+//
+//
+//
+//                        }
+//                    case .failure(let encodingError):
+//                        //打印连接失败原因
+//                        print(encodingError)
+//                    }
+//                })
+//
             
         }
         
-        let vc = orderDetailVC()
-        vc.orderNo = self.orderNo
-        vc.repairType = orderDetailType.repairing
-
-        self.navigationController?.pushViewController(vc, animated: true)
+//        let vc = orderDetailVC()
+//        vc.orderNo = self.orderNo
+//        vc.repairType = orderDetailType.repairing
+//
+//        self.navigationController?.pushViewController(vc, animated: true)
         
     }
     
