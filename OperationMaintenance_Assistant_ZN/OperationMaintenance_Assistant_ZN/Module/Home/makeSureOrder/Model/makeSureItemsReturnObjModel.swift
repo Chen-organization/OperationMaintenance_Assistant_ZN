@@ -12,8 +12,10 @@ class makeSureItemsReturnObjModel: OtherBaseModel {
 
     var goodsNo : String?
     var goodsName : String?
-    var retailPrice : String?
-
+    var retailPrice : Double?
+    
+    
+    var num = 1
     
 //    "": "PJ2017080002", "": "三通", "": "0.01"
 }

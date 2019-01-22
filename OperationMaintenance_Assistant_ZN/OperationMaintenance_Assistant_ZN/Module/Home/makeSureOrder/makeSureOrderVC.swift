@@ -8,16 +8,20 @@
 
 import UIKit
 
-class makeSureOrderVC: UITableViewController,UIGestureRecognizerDelegate,UIActionSheetDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate ,XDSDropDownMenuDelegate {
+class makeSureOrderVC: UITableViewController,UIGestureRecognizerDelegate,UIActionSheetDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate ,XDSDropDownMenuDelegate , makeSureOrderCellDelegate ,UITextViewDelegate{
     
     
     func setDropDown(_ sender: XDSDropDownMenu!) {
         
+        self.downDropDownMenu.tag = 1000;
         self.selectedItemModel = self.showItemsArray[sender.selectedIndex]
         
     }
     
     var orderNo = ""
+    
+    @IBOutlet weak var textView: UIPlaceHolderTextView!
+    
     
     ///相机，相册
     var cameraPicker: UIImagePickerController!
@@ -27,21 +31,54 @@ class makeSureOrderVC: UITableViewController,UIGestureRecognizerDelegate,UIActio
     @IBOutlet weak var contentImg2: UIImageView!
     @IBOutlet weak var contentImg3: UIImageView!
     @IBOutlet weak var contentImg4: UIImageView!
+    
+    @IBOutlet weak var deleteBtn1: UIButton!
+    @IBOutlet weak var deleteBtn2: UIButton!
+    @IBOutlet weak var deleteBtn3: UIButton!
+    @IBOutlet weak var deleteBtn4: UIButton!
+    
+    
+    @IBOutlet weak var repaireContentSelectView: UIView!
+    
+    @IBOutlet weak var repairContentSelectViewH: NSLayoutConstraint!
+    
+    
+    @IBOutlet weak var moneyL: UILabel!
+    
+    
 
     var ImgArr = [UIImageView]()
     var selectedImgArr = [UIImage]()
+    
+    
+    var deleteBtnArr = [UIButton]()
+
 
     
     var showItemsArray = [makeSureItemsReturnObjModel]()
     var selectedItemsArray = [makeSureItemsReturnObjModel]()
 
-    var selectedItemModel = makeSureItemsReturnObjModel()  //下拉选中的还没确定的
+    var selectedItemModel : makeSureItemsReturnObjModel?  //下拉选中的还没确定的
 
     
     var downDropDownMenu = XDSDropDownMenu()
     @IBOutlet weak var selectedItemL: UILabel!
     
+   
+    @IBOutlet weak var payOnlineBtn: UIButton!
+    @IBAction func payOnlieClick(_ sender: UIButton) {
+        
+        self.payOnlineBtn.isSelected = true
+        self.payMoneyBtn.isSelected = false
+    }
     
+    @IBOutlet weak var payMoneyBtn: UIButton!
+    @IBAction func payMoneyClick(_ sender: UIButton) {
+    
+        self.payOnlineBtn.isSelected = false
+        self.payMoneyBtn.isSelected = true
+    }
+
     
     class func getVC() ->  makeSureOrderVC {
         
@@ -59,7 +96,18 @@ class makeSureOrderVC: UITableViewController,UIGestureRecognizerDelegate,UIActio
         
         self.tableView.backgroundColor = RGBCOLOR(r: 245, 245, 245)
         
+        
+        self.textView.placeholder = "请描述状况，限300字..."
+        self.textView.placeholderColor = RGBCOLOR(r: 153, 153, 153)
+        self.textView.delegate = self
+        self.textView.tag = 4000
+        self.textView.tintColor = self.view.tintColor
+        self.textView.text = ""
+        
+        
         ImgArr = [contentImg1,contentImg2,contentImg3,contentImg4]
+        deleteBtnArr = [deleteBtn1,deleteBtn2,deleteBtn3,deleteBtn4]
+
 
         for i in 0..<ImgArr.count {
             
@@ -86,16 +134,167 @@ class makeSureOrderVC: UITableViewController,UIGestureRecognizerDelegate,UIActio
             
         }
         
+        for i in 0..<deleteBtnArr.count {
+            
+            let btn = deleteBtnArr[i]
+
+            btn.tag = i;
+            
+            btn.addTarget(self, action: #selector(deleteImg(btn:)), for: UIControl.Event.touchUpInside)
+            
+        }
+        
+        self.refreshImgs()
+
         
         self.tableView.register(UINib.init(nibName: "makeSureOrderCell", bundle:Bundle.main ), forCellReuseIdentifier:makeSureOrderCell_id )
         
+        self.tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
         
+        self.getItems()
+        
+        self.downDropDownMenu.tag = 1000;
+        
+        self.payOnlineBtn.isSelected = true
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+    }
+    
+    @objc func deleteImg(btn:UIButton) {
+        
+        self.selectedImgArr.remove(at: btn.tag)
+        
+        self.refreshImgs()
+    }
+    
+    func refreshImgs() {
+        
+        for i in 0..<ImgArr.count {
+            
+            let img = ImgArr[i]
+            let btn = deleteBtnArr[i]
+
+            img.tag = i
+            
+            if i <= self.selectedImgArr.count {
+                
+                img.isHidden = false
+                
+                if i < self.selectedImgArr.count {
+                 
+                    img.image = self.selectedImgArr[i]
+                    
+                    btn.isHidden = false
+                    
+                    
+                }else{
+                    
+                    img.image = UIImage.init(named: "相机")
+                    
+                    btn.isHidden = true
+                }
+                
+            }else{
+                
+                img.isHidden = true
+                btn.isHidden = true
+
+            }
+            
+        }
+        
+        
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        
+        if (text == "\n") {  // textView点击完成隐藏键盘
+            
+            textView.resignFirstResponder()
+            
+            return false
+            
+        }else{
+            
+            if textView.textInputMode?.primaryLanguage == "emoji" || ((textView.textInputMode?.primaryLanguage) == nil) {
+                YJProgressHUD.showMessage("请输入正确字符", in: UIApplication.shared.keyWindow, afterDelayTime: 2)
+                return false
+            }
+            
+            if NSString.isNineKeyBoard(text) {
+                
+                
+                return true
+            }else{
+                
+                let str : NSString = text as NSString
+                
+                if ( str.containEmoji()){
+                    YJProgressHUD.showMessage("请输入正确字符", in: UIApplication.shared.keyWindow, afterDelayTime: 2)
+                    return false
+                }
+            }
+            
+        }
+        
+        return true
+    }
+    
+    func textViewDidChange(_ textView: UITextView) {
+        
+
+        if textView.text.characters.count > 300 {
+            
+                //获得已输出字数与正输入字母数
+                let selectRange = textView.markedTextRange
+            
+                //获取高亮部分 － 如果有联想词则解包成功
+                if let selectRange = selectRange {
+                    let position =  textView.position(from: (selectRange.start), offset: 0)
+                    if (position != nil) {
+                        return
+                    }
+                }
+            
+                let textContent = textView.text
+                let textNum = textContent?.characters.count
+            
+                //
+                if textNum! > 300 {
+                    let index = textContent?.index((textContent?.startIndex)!, offsetBy: 300)
+                    let str = textContent?.substring(to: index!)
+                    textView.text = str
+                }
+        }
+        
+        
+    }
+    
+    func getRepairSelectViewContent() {
+        
+ 
+//        "returnObj": [{
+//        "dealCode": "DW0101",
+//        "dealName": "开阀门",
+//        "companyCode": "0000",
+//        "workClass": "W01",
+//        "dealTime": 10,
+//        "status": 1,
+//        "createDate": 1531457998000
+//        }, {
+    
+//    http://plat.znxk.net:6801/workOrder/getWorkClassDeal?companyCode=1009&orgCode=1009001&empNo=E100900003&empName=zf%E6%9C%BA%E6%9E%84&workClass=W01
+    
     }
     
     //MARK: - 维修配件
@@ -119,9 +318,9 @@ class makeSureOrderVC: UITableViewController,UIGestureRecognizerDelegate,UIActio
             
             var titleArr = [Any]()
             
-            for model:makeSureItemsReturnObjModel in self.selectedItemsArray {
+            for model:makeSureItemsReturnObjModel in self.showItemsArray {
                 
-                titleArr.append(model.goodsName)
+                titleArr.append(model.goodsName ?? "")
                 
             }
             
@@ -146,8 +345,7 @@ class makeSureOrderVC: UITableViewController,UIGestureRecognizerDelegate,UIActio
     }
     
     //MARK: - 配件列表 获取
-    
-    func getChangeReason(meterNo:String) {
+    func getItems() {
         
         UserCenter.shared.userInfo { (islogin, userModel) in
             
@@ -158,7 +356,6 @@ class makeSureOrderVC: UITableViewController,UIGestureRecognizerDelegate,UIActio
                 "empNo": userModel.empNo ?? "",
                 "empName": userModel.empName ?? "",
                 "id": self.orderNo,
-                "deviceNo": meterNo ,
                 ] as [String : Any]
             
             NetworkService.networkPostrequest(currentView: self.view, parameters: para, requestApi:getConfirmOrderURL, modelClass: "makeSureItemsModel", response: { (obj) in
@@ -183,25 +380,36 @@ class makeSureOrderVC: UITableViewController,UIGestureRecognizerDelegate,UIActio
         
     }
     
-    //MARK: - 添加配件按钮点击
+    //MARK: -  添加配件按钮点击
     
     @IBAction func addItemsBtnClick(_ sender: UIButton) {
         
-        
-        let hasItem = self.selectedItemsArray.contains { (obj) -> Bool in
-            
-            return obj.goodsNo == self.selectedItemModel.goodsNo
-        }
-        
-        if hasItem {
+        if self.selectedItemModel == nil {
             
             ZNCustomAlertView.handleTip("请选择配件", isShowCancelBtn: false) { (sure) in
                 
             }
+            
+            return
+        }
+        
+        
+        let hasItem = self.selectedItemsArray.contains { (obj) -> Bool in
+            
+            return obj.goodsNo == self.selectedItemModel?.goodsNo
+        }
+        
+        if hasItem {
+            
+            YJProgressHUD.showMessage("配件已经添加", in: UIApplication.shared.keyWindow, afterDelayTime: Int(1.5))
+            
+
         }else{
             
             //刷新数据
-            self.selectedItemsArray.insert(self.selectedItemModel, at: 0)
+            self.selectedItemsArray.insert(self.selectedItemModel!, at: 0)
+            
+            self.calculateMoney()
             self.tableView.reloadData()
             
         }
@@ -215,6 +423,13 @@ class makeSureOrderVC: UITableViewController,UIGestureRecognizerDelegate,UIActio
     @objc func tapImgView(action:UIGestureRecognizer)  {
         
         if action.view!.tag == self.selectedImgArr.count  {
+            
+            if action.view!.tag == 3 {
+                
+                YJProgressHUD.showMessage("仅限添加三张图片", in: UIApplication.shared.keyWindow, afterDelayTime: Int(1.5))
+                
+                return
+            }
             
             //添加图片
             let actionSheet=UIActionSheet()
@@ -296,6 +511,7 @@ class makeSureOrderVC: UITableViewController,UIGestureRecognizerDelegate,UIActio
         
         self.selectedImgArr.append(image)
         
+        self.refreshImgs()
         
     }
     
@@ -346,6 +562,10 @@ class makeSureOrderVC: UITableViewController,UIGestureRecognizerDelegate,UIActio
             
             let model : makeSureItemsReturnObjModel = self.selectedItemsArray[indexPath.row]
             
+            cell.titleL.text = model.goodsName
+            
+            cell.delegate = self
+            
 //            if let url = model.imgUrl {
 //
 //                cell.img.kf.setImage(with: URL.init(string:url), placeholder: UIImage.init(named: "站位图小"), options: nil, progressBlock: { (a, b) in
@@ -371,13 +591,13 @@ class makeSureOrderVC: UITableViewController,UIGestureRecognizerDelegate,UIActio
         
         if (indexPath.section == 0 ){
             
-            return 260
+            return 300
         }else if indexPath.section == 2 {
             
-            return 35
+            return 40
         }
         
-        return 40
+        return 45
     }
     
     //cell的缩进级别,动态静态cell必须重写,否则会造成崩溃
@@ -389,6 +609,86 @@ class makeSureOrderVC: UITableViewController,UIGestureRecognizerDelegate,UIActio
             return super.tableView(tableView, indentationLevelForRowAt: newIndexPath)
         }
         return super.tableView(tableView, indentationLevelForRowAt: indexPath)
+    }
+    
+    // MARK: - cell delegate
+    func deleteBtnCli(index: Int) {
+        
+        self.selectedItemsArray.remove(at: index)
+        
+        self.calculateMoney()
+        self.tableView.reloadData()
+        
+    }
+    
+    func numOf(num: Int, index: Int) {
+        
+        let model : makeSureItemsReturnObjModel = self.selectedItemsArray[index]
+        model.num = num
+        
+        //刷新价格
+        self.calculateMoney()
+    }
+    
+    
+    // MARK: - 计算价格
+    
+    func calculateMoney() {
+        
+        var money = 0.0
+        
+        for model in self.selectedItemsArray {
+            
+            let itemMoney = Double(model.num) * model.retailPrice!
+            money += itemMoney
+        }
+        
+        self.moneyL.text = NSString.init(format: "%.2f", money) as String;
+        
+    }
+    
+    // MARK: - 提交
+    @IBAction func sureBtnClick(_ sender: UIButton) {
+        
+//        if !(self.textView.text.characters.count > 0){
+//
+//            ZNCustomAlertView.handleTip("请填写报修内容或勾选一种维修内容", isShowCancelBtn: false) { (sure) in
+//
+//            }
+//            return
+//        }
+     
+//        UserCenter.shared.userInfo { (islogin, userModel) in
+//
+//            let para = [
+//
+//                "companyCode": userModel.companyCode ?? "",
+//                "orgCode": userModel.orgCode ?? "",
+//                "empNo": userModel.empNo ?? "",
+//                "empName": userModel.empName ?? "",
+//                "id": self.orderNo,
+//                ] as [String : Any]
+//
+//            NetworkService.networkPostrequest(currentView: self.view, parameters: para, requestApi:getConfirmOrderURL, modelClass: "makeSureItemsModel", response: { (obj) in
+//
+//                let model : makeSureItemsModel = obj as! makeSureItemsModel
+//
+//                if model.statusCode == 800 {
+//
+//                    self.showItemsArray = model.returnObj ?? [makeSureItemsReturnObjModel]()
+//                    //                    self.dropDownMenu.reloadAllComponents()
+//
+//                }
+//
+//
+//            }, failture: { (error) in
+//
+//
+//
+//            })
+//        }
+        
+        
     }
     
 

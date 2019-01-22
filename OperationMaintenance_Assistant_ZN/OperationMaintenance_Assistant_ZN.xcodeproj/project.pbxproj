@@ -31,6 +31,7 @@
 		181AC44421D788760018ADAD /* MJRefreshComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = 181AC42E21D788750018ADAD /* MJRefreshComponent.m */; };
 		18328C8221E33B1800CFF04A /* XDSDropDownMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 18328C8121E33B1800CFF04A /* XDSDropDownMenu.m */; };
 		18328C8421E34B6700CFF04A /* 下拉三角.png in Resources */ = {isa = PBXBuildFile; fileRef = 18328C8321E34B6700CFF04A /* 下拉三角.png */; };
+		1851645021F6AE4D000E6E36 /* imgDeleteBtn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1851644F21F6AE4D000E6E36 /* imgDeleteBtn@2x.png */; };
 		185C233121D37D1B0004AD0C /* LLViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185C232921D37D1B0004AD0C /* LLViewExtensions.swift */; };
 		185C233221D37D1B0004AD0C /* LLPillPageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185C232A21D37D1B0004AD0C /* LLPillPageControl.swift */; };
 		185C233321D37D1B0004AD0C /* LLCycleScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185C232B21D37D1B0004AD0C /* LLCycleScrollView.swift */; };
@@ -649,6 +650,7 @@
 		18328C8021E33B1800CFF04A /* XDSDropDownMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XDSDropDownMenu.h; sourceTree = "<group>"; };
 		18328C8121E33B1800CFF04A /* XDSDropDownMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XDSDropDownMenu.m; sourceTree = "<group>"; };
 		18328C8321E34B6700CFF04A /* 下拉三角.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "下拉三角.png"; sourceTree = "<group>"; };
+		1851644F21F6AE4D000E6E36 /* imgDeleteBtn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "imgDeleteBtn@2x.png"; sourceTree = "<group>"; };
 		185C232921D37D1B0004AD0C /* LLViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LLViewExtensions.swift; sourceTree = "<group>"; };
 		185C232A21D37D1B0004AD0C /* LLPillPageControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LLPillPageControl.swift; sourceTree = "<group>"; };
 		185C232B21D37D1B0004AD0C /* LLCycleScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LLCycleScrollView.swift; sourceTree = "<group>"; };
@@ -1823,6 +1825,7 @@
 		7403D16E21CF7FCB0055561E /* Img */ = {
 			isa = PBXGroup;
 			children = (
+				1851644F21F6AE4D000E6E36 /* imgDeleteBtn@2x.png */,
 				7494CE8C21EB3A060009445A /* 我的抢单、定位抢单切图 */,
 				7494CE7B21EA89DD0009445A /* 工单详情切图 */,
 				7403D1FE21CF7FF60055561E /* 报修工单切图 */,
@@ -3567,6 +3570,7 @@
 				7403D23721CF800A0055561E /* 点击@2x.png in Resources */,
 				7403D2BE21CF800A0055561E /* xiaoxi 3x.png in Resources */,
 				7403D2D221CF800A0055561E /* login_eyeClose@2x.png in Resources */,
+				1851645021F6AE4D000E6E36 /* imgDeleteBtn@2x.png in Resources */,
 				7403D26721CF800A0055561E /* meterReading_换表@2x.png in Resources */,
 				7403D28721CF800A0055561E /* banner2   3x.png in Resources */,
 				746A639021DB9BEC0054C0C1 /* 现场报修@2x.png in Resources */,
