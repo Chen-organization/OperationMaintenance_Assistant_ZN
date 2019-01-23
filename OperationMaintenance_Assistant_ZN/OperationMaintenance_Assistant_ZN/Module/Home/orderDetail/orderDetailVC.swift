@@ -113,12 +113,16 @@ class orderDetailVC: UITableViewController {
         }else if self.repairType == orderDetailType.repairing {
             
             let vc = makeSureOrderVC.getVC()
+            vc.orderNo = self.orderNo
+            vc.workClass = self.model.returnObj?.workclass ?? ""
             self.navigationController?.pushViewController(vc, animated: true)
             
             
         }else if self.repairType == orderDetailType.waitPay {
             
             let vc = PayVC()
+            vc.orderNo = self.model.returnObj?.orderno ?? ""
+            vc.moneyL.text = self.moneyL.text
             self.navigationController?.pushViewController(vc, animated: true)
 
             

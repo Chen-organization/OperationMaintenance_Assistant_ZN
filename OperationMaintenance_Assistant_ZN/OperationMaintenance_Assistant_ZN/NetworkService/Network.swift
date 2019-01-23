@@ -110,11 +110,11 @@ extension NetworkRequest {
     func PostRequest(urlString : String, params : [String : Any], success : @escaping (_ response : [String : AnyObject])->(), failture : @escaping (_ error : Error)->()) {
         
         let headers: HTTPHeaders =  [
-//                                        "Authorization": "Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ==",
-//                                         "Accept": "application/json",
-                                        "Content-Type": "application/x-www-form-urlencoded"
+                                        "Authorization": "Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ==",
+                                        "Accept": "application/json",
+                                        "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8"
 
-        ]
+            ]
         
 
         

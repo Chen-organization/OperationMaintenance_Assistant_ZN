@@ -8,7 +8,7 @@
 
 import UIKit
 
-class myBillListVC: UIViewController,MXSegmentedPagerDelegate, MXSegmentedPagerDataSource,UITableViewDelegate,UITableViewDataSource,PullTableViewDelegate  {
+class myBillListVC: UIViewController,MXSegmentedPagerDelegate, MXSegmentedPagerDataSource,UITableViewDelegate,UITableViewDataSource,PullTableViewDelegate,myBillListCellDelegate  {
     
     
     
@@ -171,6 +171,16 @@ class myBillListVC: UIViewController,MXSegmentedPagerDelegate, MXSegmentedPagerD
                      
                     }
 
+                    
+                    self.repairBillTableview.configBlankPage(EaseBlankPageType.view, hasData: self.repairBillArr.count > 0, hasError: false, reloadButtonBlock: { (sure) in
+                        
+                    })
+
+                    self.heatingBillTableview.configBlankPage(EaseBlankPageType.view, hasData: self.heatingBillArr.count > 0, hasError: false, reloadButtonBlock: { (sure) in
+                        
+                    })
+
+                    
 
                     self.repairBillTableview.reloadData()
                     self.repairBillTableview.mj_header.endRefreshing()
@@ -310,6 +320,10 @@ class myBillListVC: UIViewController,MXSegmentedPagerDelegate, MXSegmentedPagerD
             
         }
         
+        cell.isHeatingCell = tableView.tag == 1000 ? false : true
+        cell.index = indexPath.row
+        cell.Delegate = self
+        
         cell.backgroundColor = UIColor.clear
         cell.contentView.backgroundColor = UIColor.clear
         
@@ -340,7 +354,58 @@ class myBillListVC: UIViewController,MXSegmentedPagerDelegate, MXSegmentedPagerD
         self.getDataWith(page: page + 1, type: pullTableView.tag)
         
     }
-    
+    //MARK: - cell delegate
+    func payBtnClick(isHeatingCell: Bool, index: Int) {
+        
+        var model = myBillListReturnObjModel()
+        
+        if isHeatingCell == false {
+            
+            model = self.repairBillArr[index]
+            
+        } else {
+            
+            model = self.heatingBillArr[index]
+            
+            
+            let para = ["orderNo": model.orderNo,
+                        ]
+            
+            
+            NetworkService.networkPostrequest(currentView: self.view, parameters: para as [String : Any], requestApi:"http://plat.znxk.net:6802/wx/scanCodePayHeating" , modelClass: "scanCodePayModel", response: { (obj) in
+                
+                let Model : scanCodePayModel = obj as! scanCodePayModel
+                
+                if Model.statusCode == 800 {
+                    
+                    //二维码 url
+                    let vc = PayVC()
+                    vc.moneyL.text = "¥" + (model.payMoney ?? "")
+                    vc.scanUrl = Model.returnObj!
+                    self.navigationController?.pushViewController(vc, animated: true)
+                    
+                    
+                }else{
+                    
+                    print("alert")
+                    
+                    YJProgressHUD.showMessage(Model.msg, in: UIApplication.shared.keyWindow, afterDelayTime: 2)
+                    
+                }
+                
+            }) { (error) in
+                
+            }
+            
+            
+            
+        }
+        
+        
+   
+        
+        
+    }
     
     //MARK: -时间戳转时间函数
     func timeStampToString(timeStamp: String)->String {

@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Alamofire
+import HandyJSON
 
 class makeSureOrderVC: UITableViewController,UIGestureRecognizerDelegate,UIActionSheetDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate ,XDSDropDownMenuDelegate , makeSureOrderCellDelegate ,UITextViewDelegate{
     
@@ -19,6 +21,10 @@ class makeSureOrderVC: UITableViewController,UIGestureRecognizerDelegate,UIActio
     }
     
     var orderNo = ""
+    var workClass = ""
+    
+    var row0_H = 300
+
     
     @IBOutlet weak var textView: UIPlaceHolderTextView!
     
@@ -39,8 +45,11 @@ class makeSureOrderVC: UITableViewController,UIGestureRecognizerDelegate,UIActio
     
     
     @IBOutlet weak var repaireContentSelectView: UIView!
-    
     @IBOutlet weak var repairContentSelectViewH: NSLayoutConstraint!
+    
+    //维修内容
+    var repairContentItemsArray = [repairContentItemsReturnObjModel]()
+
     
     
     @IBOutlet weak var moneyL: UILabel!
@@ -54,7 +63,7 @@ class makeSureOrderVC: UITableViewController,UIGestureRecognizerDelegate,UIActio
     var deleteBtnArr = [UIButton]()
 
 
-    
+    //配件
     var showItemsArray = [makeSureItemsReturnObjModel]()
     var selectedItemsArray = [makeSureItemsReturnObjModel]()
 
@@ -152,6 +161,7 @@ class makeSureOrderVC: UITableViewController,UIGestureRecognizerDelegate,UIActio
         self.tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
         
         self.getItems()
+        self.getRepairSelectViewContent()
         
         self.downDropDownMenu.tag = 1000;
         
@@ -280,21 +290,113 @@ class makeSureOrderVC: UITableViewController,UIGestureRecognizerDelegate,UIActio
         
     }
     
+    //MARK: - 勾选维修内容
     func getRepairSelectViewContent() {
         
- 
-//        "returnObj": [{
-//        "dealCode": "DW0101",
-//        "dealName": "开阀门",
-//        "companyCode": "0000",
-//        "workClass": "W01",
-//        "dealTime": 10,
-//        "status": 1,
-//        "createDate": 1531457998000
-//        }, {
+        self.repaireContentSelectView.backgroundColor = .white
+        self.repairContentSelectViewH.constant = 0
+        
     
-//    http://plat.znxk.net:6801/workOrder/getWorkClassDeal?companyCode=1009&orgCode=1009001&empNo=E100900003&empName=zf%E6%9C%BA%E6%9E%84&workClass=W01
+////    http://plat.znxk.net:6801/workOrder/getWorkClassDeal?
+//        companyCode=1009&
+//        orgCode=1009001&
+//        empNo=E100900003&
+//        empName=zf%E6%9C%BA%E6%9E%84&
+//        workClass=W01
+
+
+        UserCenter.shared.userInfo { (islogin, userModel) in
+
+            let para = [
+
+                "companyCode": userModel.companyCode ?? "",
+                "orgCode": userModel.orgCode ?? "",
+                "empNo": userModel.empNo ?? "",
+                "empName": userModel.empName ?? "",
+                "workClass": self.workClass,
+                ] as [String : Any]
+
+            
+            YJProgressHUD.showProgress("", in: UIApplication.shared.delegate?.window!)
+            
+            NetworkService.networkGetrequest(currentView: self.view, parameters: para, requestApi: getWorkClassDealURL, modelClass: "repairContentItemsModel", response: { (obj) in
+
+                let model : repairContentItemsModel = obj as! repairContentItemsModel
+
+                if model.statusCode == 800 {
+
+                    self.repairContentItemsArray = model.returnObj ?? []
+                    
+                    if (model.returnObj?.count) ?? 0 > 0{
+                     
+                        let height  = 10 + ((model.returnObj!.count-1)/3 + 1) * 30
+                        self.repairContentSelectViewH.constant = CGFloat(height)
+                        
+                        let btnW = (ScreenW - 30)/3.0
+                        let btnH = 30
+                        
+                        
+                        
+                        for i in 0..<model.returnObj!.count {
+                            
+                            let model : repairContentItemsReturnObjModel = model.returnObj![i]
+                            
+                            
+                            
+                            let l = i % 3
+                            let r = i / 3
+                            
+                            
+                            // 创建一个常规的button
+                            let button = UIButton(type:.custom)
+                            button.frame = CGRect(x:15 + l * Int(btnW), y:10 + r * btnH, width:Int(btnW), height:btnH)
+                            button.setTitle( " " + model.dealName!, for: .normal)
+                            button.titleLabel?.font = UIFont.systemFont(ofSize: 13)
+                            button.setTitleColor(UIColor.black, for: .normal)
+                            button.setImage(UIImage.init(named: "未选"), for: UIControl.State.normal)
+                            button.setImage(UIImage.init(named: "已选"), for: .selected)
+                            button.contentHorizontalAlignment = UIControl.ContentHorizontalAlignment.left;
+                            
+
+                            //无参数点击事件
+                            //带button参数传递
+                            button.tag = i
+                            button.addTarget(self, action: #selector(self.repairItemButtonClick(button:)), for: UIControl.Event.touchUpInside)
+                            self.repaireContentSelectView.addSubview(button)
+                            
+                            
+                        }
+
+                        self.row0_H += height
+                        
+                    }
+                    
+                    self.tableView.reloadData();
+                }
+                
+                YJProgressHUD.hide()
+
+            }, failture: { (error) in
+
+                YJProgressHUD.hide()
+
+
+            })
+        }
+        
+
     
+    }
+    
+    
+    @objc func repairItemButtonClick(button:UIButton){
+        
+        button.isSelected = !button.isSelected
+        
+        
+        let model = self.repairContentItemsArray[button.tag]
+        model.isSelected = button.isSelected
+        
     }
     
     //MARK: - 维修配件
@@ -542,7 +644,7 @@ class makeSureOrderVC: UITableViewController,UIGestureRecognizerDelegate,UIActio
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         
-        return 4
+        return 5
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -591,7 +693,7 @@ class makeSureOrderVC: UITableViewController,UIGestureRecognizerDelegate,UIActio
         
         if (indexPath.section == 0 ){
             
-            return 300
+            return CGFloat(self.row0_H)
         }else if indexPath.section == 2 {
             
             return 40
@@ -643,23 +745,16 @@ class makeSureOrderVC: UITableViewController,UIGestureRecognizerDelegate,UIActio
             money += itemMoney
         }
         
-        self.moneyL.text = NSString.init(format: "%.2f", money) as String;
+        self.moneyL.text = NSString.init(format: "%.2f", money) as String + "¥"
         
     }
     
     // MARK: - 提交
     @IBAction func sureBtnClick(_ sender: UIButton) {
         
-//        if !(self.textView.text.characters.count > 0){
-//
-//            ZNCustomAlertView.handleTip("请填写报修内容或勾选一种维修内容", isShowCancelBtn: false) { (sure) in
-//
-//            }
-//            return
-//        }
      
-//        UserCenter.shared.userInfo { (islogin, userModel) in
-//
+        UserCenter.shared.userInfo { (islogin, userModel) in
+
 //            let para = [
 //
 //                "companyCode": userModel.companyCode ?? "",
@@ -669,7 +764,268 @@ class makeSureOrderVC: UITableViewController,UIGestureRecognizerDelegate,UIActio
 //                "id": self.orderNo,
 //                ] as [String : Any]
 //
-//            NetworkService.networkPostrequest(currentView: self.view, parameters: para, requestApi:getConfirmOrderURL, modelClass: "makeSureItemsModel", response: { (obj) in
+            
+            
+            
+            
+            
+            
+            
+//
+//            if !(self.selectedImgArr.count > 0) {
+//
+//                YJProgressHUD.showMessage("请上传图片", in: UIApplication.shared.keyWindow, afterDelayTime: 2)
+//                return
+//            }
+//
+            
+            YJProgressHUD.showProgress("", in: UIApplication.shared.delegate?.window!)
+            
+            
+            UserCenter.shared.userInfo { (islogin, user) in
+                
+                
+                
+                //            http://plat.znxk.net:6801/first/getUploadPictures?companyCode=1009&orgCode=1009001&empNo=E100900003&empName=zf%E6%9C%BA%E6%9E%84&workNo=W100920190100001&type=2
+                
+                
+                var ImgStrArr = [String]()
+                
+                for i in 0..<self.selectedImgArr.count {
+                    
+                    let image = self.selectedImgArr[i]
+                    let data = image.compress(withMaxLength: 1 * 1024 * 1024 / 8)
+                    
+                    //                let imageName = self.milliStamp + ".jpeg" //i.description +
+                    
+                    // NSData 转换为 Base64编码的字符串
+                    let base64String:String = data?.base64EncodedString(options: NSData.Base64EncodingOptions(rawValue: 0)) ?? ""
+                    
+                    ImgStrArr.append(base64String)
+                }
+                
+                
+                var para = String()
+                //图片
+                for str in ImgStrArr{
+                    
+                    if para.characters.count > 0{
+                        
+                        para = para + "&"
+                    }
+                    para = para + "File=" + str
+                    
+                    
+                }
+                
+                
+                //参数
+                para = para + "&companyCode="
+                
+                para = para + user.companyCode! + "&empName="
+                
+                para = para + user.empName! + "&empNo="
+                
+                para = para + user.empNo! + "&orgCode="
+                
+                para = para + user.orgCode! + "&type=3&state=1&id="
+                
+                para = para + self.orderNo
+                
+                
+                //手写内容
+                if self.textView.text.characters.count > 0{
+                    
+                    para = para + "&reamke=" + self.textView.text
+                    
+                }
+                
+                //d勾选内容
+                
+                var array = [repairContentItemsReturnObjModel]()
+                for model in self.repairContentItemsArray{
+                    
+                    if model.isSelected {
+                        
+                        array.append(model)
+                    }
+                    
+                }
+                
+                if array.count > 0 {
+                    
+                    para = para + "&date=["
+                    
+                    for j in 0..<array.count {
+                        
+                        let m : repairContentItemsReturnObjModel = array[j]
+                        
+                        para = para + "id:" + m.dealCode! + " name:" + m.dealName!
+                        
+                        if j != array.count - 1{
+                            
+                            para = para + ","
+                        }
+                    }
+                    
+                    para = para + "]"
+
+                }
+                
+                //报修内容必填
+                if !(self.textView.text.characters.count > 0) && !(array.count > 0){
+                    
+                    ZNCustomAlertView.handleTip("请填写报修内容或勾选一种维修内容", isShowCancelBtn: false) { (sure) in
+                        
+                    }
+                    YJProgressHUD.hide()
+                    return
+                }
+                
+                
+                //配件  费用
+                
+                if self.selectedItemsArray.count > 0{
+
+//                    para = para + "&commodity=["
+
+                    var commodityArr = [NSDictionary]()
+
+
+                    for pModel in self.selectedItemsArray{
+
+                        let dic = [
+
+                            "number" : pModel.num.description,
+                            "name" : pModel.goodsNo
+
+                        ]
+                        commodityArr.append(dic as NSDictionary)
+
+                    }
+
+                    if !JSONSerialization.isValidJSONObject(commodityArr) {
+                        print("无法解析出JSONString")
+                        return
+                        
+                    }
+                    let data :NSData! = try!JSONSerialization.data(withJSONObject: commodityArr, options: [])as NSData
+                    let JSONString = NSString(data: data as Data, encoding:String.Encoding.utf8.rawValue)
+                    
+
+                    para = para + "&commodity=" + (JSONString! as String)
+
+//                    para = para + "]"
+
+                }
+                
+                if self.payOnlineBtn.isSelected{
+                    
+                    
+                    para = para + "&pay=1"
+                }else{
+                    
+                    para = para + "&commodity=2"
+                }
+                
+                
+                let manager = AFHTTPSessionManager.init()
+                manager.requestSerializer.timeoutInterval = 60;
+                manager.responseSerializer.acceptableContentTypes = NSSet(arrayLiteral: "text/plain", "application/json", "text/html", "image/jpeg", "image/png", "application/octet-stream", "text/json") as? Set<String>
+                
+                let headers: HTTPHeaders =  [    "Authorization": "Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ==",
+                                                 "Accept": "application/json",
+                                                 "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8"
+                ]
+                
+                
+                manager.post(getConfirmOrderURL, parameters:para.data(using: .utf8), headers: headers, progress: { (progress) in
+                    
+                    
+                }, success: { (task, response) in
+                    
+                    
+                    YJProgressHUD.hide()
+                    
+                    //如果response不为空时
+                    if response != nil {
+                        
+                        print(task)
+                        
+                        print(response)
+                        
+                        
+                        let model : BaseModel = (swiftClassFromString(className: "BaseModel") as! HandyJSON.Type ).deserialize(from: response as? NSDictionary) as! BaseModel
+                        
+                        if model.statusCode == 800 {
+                            
+                            
+                            if self.selectedItemsArray.count > 0{
+                                
+                                //
+                                
+                                if self.payOnlineBtn.isSelected{
+                                    
+                                    //去二维码
+                                    let vc = PayVC()
+                                    vc.orderNo = self.orderNo
+                                    vc.moneyL.text = self.moneyL.text
+                                    self.navigationController?.pushViewController(vc, animated: true)
+                                    
+                                    
+                                }else{
+                                    
+                                    //去签字
+                                    let vc = PaySignVC()
+                                    vc.orderNo = self.orderNo
+                                    self.navigationController?.pushViewController(vc, animated: true)
+                                    
+                                    
+                                }
+                                
+                                
+                              
+                                
+                            }else{
+                                
+                                //任务工单
+                                self.navigationController?.popToViewController(self.navigationController?.viewControllers[1] ?? UIViewController(), animated: true)
+                            }
+
+                            
+                        }else{
+                            
+                            YJProgressHUD.showMessage(model.msg, in: UIApplication.shared.keyWindow, afterDelayTime: 1)
+                        }
+                        
+                        
+                    }
+                }, failure: { (task, error) in
+                    
+                    
+                    //打印连接失败原因
+                    print(error)
+                    
+                    YJProgressHUD.hide()
+                    
+                })
+                
+                
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+//
+//
+//            NetworkService.networkPostrequest(currentView: self.view, parameters: para, requestApi:getConfirmOrderURL, modelClass: "BaseModel", response: { (obj) in
 //
 //                let model : makeSureItemsModel = obj as! makeSureItemsModel
 //
@@ -686,11 +1042,17 @@ class makeSureOrderVC: UITableViewController,UIGestureRecognizerDelegate,UIActio
 //
 //
 //            })
-//        }
-        
-        
+        }
+            
+        }
+
+
     }
-    
+
+        
+        
+                
+                
 
 //    // MARK: - Table view data source
 //

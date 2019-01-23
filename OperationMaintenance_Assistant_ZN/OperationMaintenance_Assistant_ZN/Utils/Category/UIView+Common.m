@@ -618,7 +618,7 @@ static char LoadingViewKey, BlankPageViewKey;
         }
         _reloadButton.hidden = NO;
         _reloadButtonBlock = block;
-        [_monkeyView setImage:[UIImage imageNamed:@"planet"]];
+        [_monkeyView setImage:[UIImage imageNamed:@"暂无数据"]];
         _tipLabel.text = @"\n貌似出了点差错\n";
     }else{
         //        空白数据
@@ -631,7 +631,7 @@ static char LoadingViewKey, BlankPageViewKey;
         _curType=blankPageType;
         switch (blankPageType) {
             case EaseBlankPageTypeView: {
-                imageName = @"planet";
+                imageName = @"暂无数据";
                 tipStr = @"暂无数据";
                 break;
             }
@@ -639,7 +639,7 @@ static char LoadingViewKey, BlankPageViewKey;
 #pragma mark - 情况判断
             default://其它页面（这里没有提到的页面，都属于其它）
             {
-                imageName = @"planet";
+                imageName = @"暂无数据";
                 tipStr = @"暂无数据";
             }
                 break;

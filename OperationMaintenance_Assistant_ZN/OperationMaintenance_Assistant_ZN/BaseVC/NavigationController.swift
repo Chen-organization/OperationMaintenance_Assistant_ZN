@@ -25,6 +25,9 @@ class NavigationController: UINavigationController {
         //item颜色
         self.navigationBar.tintColor = UIColor.white
         
+        self.navigationBar.shadowImage=UIImage()
+        
+
     
     }
     

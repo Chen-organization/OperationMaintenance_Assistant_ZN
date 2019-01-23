@@ -213,6 +213,18 @@ class myOrdersVC:UIViewController,MXSegmentedPagerDelegate, MXSegmentedPagerData
                         
                     }
                     
+                    self.repairTableview.configBlankPage(EaseBlankPageType.view, hasData: self.repairArr.count > 0, hasError: false, reloadButtonBlock: { (sure) in
+                        
+                    })
+                    
+                    self.repairingTableview.configBlankPage(EaseBlankPageType.view, hasData: self.repairingArr.count > 0, hasError: false, reloadButtonBlock: { (sure) in
+                        
+                    })
+                    
+                    self.repairedTableview.configBlankPage(EaseBlankPageType.view, hasData: self.repairedArr.count > 0, hasError: false, reloadButtonBlock: { (sure) in
+                        
+                    })
+                    
                     
                     self.repairTableview.reloadData()
                     self.repairTableview.mj_header.endRefreshing()

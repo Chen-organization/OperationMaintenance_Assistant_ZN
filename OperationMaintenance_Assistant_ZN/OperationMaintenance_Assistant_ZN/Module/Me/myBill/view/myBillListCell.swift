@@ -8,10 +8,27 @@
 
 import UIKit
 
+@objc protocol myBillListCellDelegate{
+    
+    
+    
+    func payBtnClick(isHeatingCell: Bool , index:Int)
+    
+}
+
+
 let myBillListCell_id = "myBillListCell"
 
 class myBillListCell: UITableViewCell {
     
+    
+    weak var  Delegate: myBillListCellDelegate?
+    
+    var isHeatingCell = false
+    var index = 0
+
+    
+
     
     @IBOutlet weak var moneyL: UILabel!
     
@@ -24,6 +41,9 @@ class myBillListCell: UITableViewCell {
     @IBOutlet weak var payTypeL: UILabel!
     
     @IBAction func payBtnClick(_ sender: UIButton) {
+        
+        self.Delegate?.payBtnClick(isHeatingCell: self.isHeatingCell, index: self.index)
+        
     }
     
     @IBOutlet weak var dealTimeL: UILabel!

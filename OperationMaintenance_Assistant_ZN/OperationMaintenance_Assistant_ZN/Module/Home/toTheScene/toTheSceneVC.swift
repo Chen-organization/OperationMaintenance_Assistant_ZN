@@ -86,11 +86,15 @@ class toTheSceneVC: UIViewController,UIActionSheetDelegate,UIImagePickerControll
     @IBAction func sureBtnClick(_ sender: UIButton) {
         
         
-//        if !(self.imageArr.count > 0) {
-//
-//            YJProgressHUD.showMessage("请上传图片", in: UIApplication.shared.keyWindow, afterDelayTime: 2)
-//            return
-//        }
+        if !(self.imageArr.count > 0) {
+
+            YJProgressHUD.showMessage("请上传图片", in: UIApplication.shared.keyWindow, afterDelayTime: 2)
+            return
+        }
+        
+        
+        YJProgressHUD.showProgress("", in: UIApplication.shared.delegate?.window!)
+
         
         UserCenter.shared.userInfo { (islogin, user) in
             
@@ -104,23 +108,23 @@ class toTheSceneVC: UIViewController,UIActionSheetDelegate,UIImagePickerControll
             for i in 0..<self.imageArr.count {
                 
                 let image = self.imageArr[i] as! UIImage
-                let data = image.compress(withMaxLength: 1 * 1024 * 1024 / 8)
+                let data = image.compress(withMaxLength: 1 * 1024 * 1024 / 20)
                 
 //                let imageName = self.milliStamp + ".jpeg" //i.description +
                 
                 // NSData 转换为 Base64编码的字符串
-                let base64String:String = data?.base64EncodedString(options: NSData.Base64EncodingOptions(rawValue: 0)) ?? ""
+                let base64String:String = data!.base64EncodedString()//data?.base64EncodedString(options: NSData.Base64EncodingOptions(rawValue: 0)) ?? ""
                 
                 ImgStrArr.append(base64String)
             }
 
             
-            if (!JSONSerialization.isValidJSONObject(ImgStrArr)) {
-                print("无法解析出JSONString")
-            }
-            
-            let data : NSData! = try? JSONSerialization.data(withJSONObject: ImgStrArr, options: []) as NSData!
-            let JSONString = NSString(data:data as Data,encoding: String.Encoding.utf8.rawValue)
+//            if (!JSONSerialization.isValidJSONObject(ImgStrArr)) {
+//                print("无法解析出JSONString")
+//            }
+//
+//            let data : NSData! = try? JSONSerialization.data(withJSONObject: ImgStrArr, options: []) as NSData!
+//            let JSONString = NSString(data:data as Data,encoding: String.Encoding.utf8.rawValue)
 
 //            let para = [
 //                "companyCode":user.companyCode ?? "",
@@ -174,6 +178,7 @@ class toTheSceneVC: UIViewController,UIActionSheetDelegate,UIImagePickerControll
             URL = URL + self.orderNo
 
             
+           
             
             let manager = AFHTTPSessionManager.init()
             manager.requestSerializer.timeoutInterval = 40;
@@ -185,25 +190,56 @@ class toTheSceneVC: UIViewController,UIActionSheetDelegate,UIImagePickerControll
                                              ]
             
             
-            manager.post(URL.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed) ?? "", parameters:para.data(using: .utf8), headers: headers, progress: { (progress) in
-
-
-            }, success: { (task, response) in
-
-                //如果response不为空时
-                if response != nil {
-
-                    print(task)
-
-                    print(response)
-
-                }
-            }, failure: { (task, error) in
-
-
-                //打印连接失败原因
-                print(error)
-            })
+            self.post(para: para, url: URL.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed) ?? "")
+            
+            
+//            manager.post(URL.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed) ?? "", parameters:para.data(using: .utf8), headers: headers, progress: { (progress) in
+//
+//
+//            }, success: { (task, response) in
+//
+//
+//                YJProgressHUD.hide()
+//
+//                //如果response不为空时
+//                if response != nil {
+//
+//                    print(task)
+//
+//                    print(response)
+//
+//
+//                    let model : BaseModel = (swiftClassFromString(className: "BaseModel") as! HandyJSON.Type ).deserialize(from: response as? NSDictionary) as! BaseModel
+//
+//                    if model.statusCode == 800 {
+//
+//                        let vc = orderDetailVC.getOrderDetailVC()
+//                        vc.orderNo = self.orderNo
+//                        vc.repairType = orderDetailType.repairing
+//                        self.navigationController?.pushViewController(vc, animated: true)
+//
+//                    }else{
+//
+//                        YJProgressHUD.showMessage(model.msg, in: UIApplication.shared.keyWindow, afterDelayTime: 1)
+//                    }
+//
+//
+////                    if (response as! NSDictionary)["statusCode"] == "800" {
+////
+////                        self.navigationController?.pushViewController(<#T##viewController: UIViewController##UIViewController#>, animated: <#T##Bool#>)
+////
+////                    }
+//
+//                }
+//            }, failure: { (task, error) in
+//
+//
+//                //打印连接失败原因
+//                print(error)
+//
+//                YJProgressHUD.hide()
+//
+//            })
             
             
             
@@ -451,6 +487,46 @@ class toTheSceneVC: UIViewController,UIActionSheetDelegate,UIImagePickerControll
 //
 //        self.navigationController?.pushViewController(vc, animated: true)
         
+    }
+    
+    
+    func post(para:String , url:String) {
+        
+        let session = URLSession(configuration: .default)
+        // 设置URL(该地址不可用，写你自己的服务器地址)
+        var request = URLRequest(url: URL(string: url)!)
+        request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+        request.setValue("application/json", forHTTPHeaderField: "Accept")
+
+        request.httpMethod = "POST"
+        // 设置要post的内容，字典格式
+        let postData = ["name":"111111","password":"2222222"]
+        let postString = postData.compactMap({ (key, value) -> String in
+            return "\(key)=\(value)"
+        }).joined(separator: "&")
+        request.httpBody = para.data(using: .utf8)
+        // 后面不解释了，和GET的注释一样
+        let task = session.dataTask(with: request) {(data, response, error) in
+            do{
+                //              将二进制数据转换为字典对象
+                if let jsonObj:NSDictionary = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions()) as? NSDictionary
+                {
+                    print(jsonObj)
+                    //主线程
+                    DispatchQueue.main.async{
+                        
+                    }
+                }
+            } catch{
+                print("Error.")
+                DispatchQueue.main.async{
+                    
+                }
+                
+            }
+        }
+        task.resume()
+            
     }
     
     

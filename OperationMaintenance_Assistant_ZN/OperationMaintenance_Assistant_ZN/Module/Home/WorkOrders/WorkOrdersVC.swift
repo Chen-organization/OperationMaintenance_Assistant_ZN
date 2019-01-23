@@ -85,6 +85,10 @@ class WorkOrdersVC: UIViewController,UITableViewDelegate,UITableViewDataSource,P
                     }
                     
                     
+                    self.repairTableview.configBlankPage(EaseBlankPageType.view, hasData: self.repairArr.count > 0, hasError: false, reloadButtonBlock: { (sure) in
+                        
+                    })
+                    
                     self.repairTableview.reloadData()
                     self.repairTableview.mj_header.endRefreshing()
                     self.repairTableview.mj_footer.endRefreshing()

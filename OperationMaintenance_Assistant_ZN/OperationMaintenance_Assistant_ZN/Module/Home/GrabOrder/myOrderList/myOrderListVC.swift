@@ -28,7 +28,7 @@ class myOrderListVC: UIViewController,UITableViewDelegate,UITableViewDataSource,
         
         self.title = "我的抢单"
         
-        self.view.backgroundColor = .white
+        self.view.backgroundColor = RGBCOLOR(r: 245, 245, 245)
         
         
         self.repairTableview.delegate = self

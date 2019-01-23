@@ -336,11 +336,23 @@ class HomeVC: UITableViewController,UIGestureRecognizerDelegate {
                 
                 if model.statusCode == 800 {
                     
-                    self.repairNumL.text = model.returnObj?[0].count ?? "0"
-                    
-                    self.repairingNumL.text = model.returnObj?[1].count ?? "0"
-                    
-                    self.repairedNumL.text = model.returnObj?[2].count ?? "0"
+                    for m in model.returnObj ?? []{
+                        
+                        if m.status == "待维修"{
+                            
+                            self.repairNumL.text = m.count ?? "0"
+
+                        }else if m.status == "进行中"{
+                            
+                            self.repairingNumL.text = m.count ?? "0"
+
+                        }else if m.status == "已完成"{
+                            
+                            self.repairedNumL.text = m.count ?? "0"
+
+                        }
+                        
+                    }
                     
                     
                 }

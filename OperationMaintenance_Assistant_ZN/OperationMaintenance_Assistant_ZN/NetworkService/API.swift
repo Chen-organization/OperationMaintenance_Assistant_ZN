@@ -88,4 +88,10 @@ public let getCancelOrdersURL = baseURL + "/my/getCancelOrders"
 //取消抢单原因列表
 public let getConfirmOrderURL = baseURL + "/first/getConfirmOrder"
 
+//维修列表
+public let getWorkClassDealURL = baseURL + "/workOrder/getWorkClassDeal"
+//支付二维码
+public let scanCodePayURL = baseURL + "/wx/scanCodePay"
+//支付状态
+public let getStatusURL = baseURL + "/first/getStatus"
 
