@@ -190,56 +190,56 @@ class toTheSceneVC: UIViewController,UIActionSheetDelegate,UIImagePickerControll
                                              ]
             
             
-            self.post(para: para, url: URL.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed) ?? "")
+//            self.post(para: para, url: URL.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed) ?? "")
+//
             
-            
-//            manager.post(URL.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed) ?? "", parameters:para.data(using: .utf8), headers: headers, progress: { (progress) in
+            manager.post(URL.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed) ?? "", parameters:para.data(using: .utf8), headers: headers, progress: { (progress) in
+
+
+            }, success: { (task, response) in
+
+
+                YJProgressHUD.hide()
+
+                //如果response不为空时
+                if response != nil {
+
+                    print(task)
+
+                    print(response)
+
+
+                    let model : BaseModel = (swiftClassFromString(className: "BaseModel") as! HandyJSON.Type ).deserialize(from: response as? NSDictionary) as! BaseModel
+
+                    if model.statusCode == 800 {
+
+                        let vc = orderDetailVC.getOrderDetailVC()
+                        vc.orderNo = self.orderNo
+                        vc.repairType = orderDetailType.repairing
+                        self.navigationController?.pushViewController(vc, animated: true)
+
+                    }else{
+
+                        YJProgressHUD.showMessage(model.msg, in: UIApplication.shared.keyWindow, afterDelayTime: 1)
+                    }
+
+
+//                    if (response as! NSDictionary)["statusCode"] == "800" {
 //
+//                        self.navigationController?.pushViewController(<#T##viewController: UIViewController##UIViewController#>, animated: <#T##Bool#>)
 //
-//            }, success: { (task, response) in
-//
-//
-//                YJProgressHUD.hide()
-//
-//                //如果response不为空时
-//                if response != nil {
-//
-//                    print(task)
-//
-//                    print(response)
-//
-//
-//                    let model : BaseModel = (swiftClassFromString(className: "BaseModel") as! HandyJSON.Type ).deserialize(from: response as? NSDictionary) as! BaseModel
-//
-//                    if model.statusCode == 800 {
-//
-//                        let vc = orderDetailVC.getOrderDetailVC()
-//                        vc.orderNo = self.orderNo
-//                        vc.repairType = orderDetailType.repairing
-//                        self.navigationController?.pushViewController(vc, animated: true)
-//
-//                    }else{
-//
-//                        YJProgressHUD.showMessage(model.msg, in: UIApplication.shared.keyWindow, afterDelayTime: 1)
 //                    }
-//
-//
-////                    if (response as! NSDictionary)["statusCode"] == "800" {
-////
-////                        self.navigationController?.pushViewController(<#T##viewController: UIViewController##UIViewController#>, animated: <#T##Bool#>)
-////
-////                    }
-//
-//                }
-//            }, failure: { (task, error) in
-//
-//
-//                //打印连接失败原因
-//                print(error)
-//
-//                YJProgressHUD.hide()
-//
-//            })
+
+                }
+            }, failure: { (task, error) in
+
+
+                //打印连接失败原因
+                print(error)
+
+                YJProgressHUD.hide()
+
+            })
             
             
             
