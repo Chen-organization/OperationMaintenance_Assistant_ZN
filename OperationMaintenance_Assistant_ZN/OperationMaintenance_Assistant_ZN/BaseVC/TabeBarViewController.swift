@@ -34,7 +34,7 @@ class TabeBarViewController: UITabBarController {
             .instantiateViewController(withIdentifier: "HomeVC") as! HomeVC
         self.setUpOneChildViewController(viewController: home, image: "首页", selectedImage: "首页Sel", title: "")
         
-        self.setUpOneChildViewController(viewController: InspectionVC(), image: "巡检", selectedImage: "巡检Sel", title: "")
+        self.setUpOneChildViewController(viewController: InspectionViewController(), image: "巡检", selectedImage: "巡检Sel", title: "")
         
         let meterReading = UIStoryboard(name: "MeterReading", bundle: nil)
             .instantiateViewController(withIdentifier: "MeterReadingVC") as! MeterReadingVC

@@ -106,16 +106,24 @@ class toTheSceneVC: UIViewController,UIActionSheetDelegate,UIImagePickerControll
             var ImgStrArr = [String]()
             
             for i in 0..<self.imageArr.count {
-                //MARK: ---  ❌❌❌❌❌❌❌❌❌
-                let image = UIImage.init(named:"10711548238217.jpg")  //self.imageArr[i] as! UIImage
-                let data = image!.compress(withMaxLength: 1 * 1024 * 1024 / 20)
+                //MARK: ---
+                let image = self.imageArr[i] as! UIImage
+//                UIImage.init(named:"10711548238217.jpg")
                 
-//                let imageName = self.milliStamp + ".jpeg" //i.description +
+                let dataOrigin = image.pngData()
+                let base64StringOrigin:String = dataOrigin!.base64EncodedString()
+
+                
+                let data = image.compress(withMaxLength: 1 * 1024 * 1024 / 8)
                 
                 // NSData 转换为 Base64编码的字符串
                 let base64String:String = data!.base64EncodedString()//data?.base64EncodedString(options: NSData.Base64EncodingOptions(rawValue: 0)) ?? ""
+
                 
-                ImgStrArr.append(base64String)
+//                let encoder = CocoaSecurityEncoder()
+//                let base64String = encoder.base64(data)
+                
+                ImgStrArr.append((base64String))
             }
 
             
@@ -192,7 +200,7 @@ class toTheSceneVC: UIViewController,UIActionSheetDelegate,UIImagePickerControll
             
             self.post(para: para, url: URL.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed) ?? "")
 
-//
+
 //            manager.post(URL.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed) ?? "", parameters:para.data(using: .utf8), headers: headers, progress: { (progress) in
 //
 //
@@ -240,8 +248,8 @@ class toTheSceneVC: UIViewController,UIActionSheetDelegate,UIImagePickerControll
 //                YJProgressHUD.hide()
 //
 //            })
-
-            
+//
+//
             
             
             
@@ -504,7 +512,14 @@ class toTheSceneVC: UIViewController,UIActionSheetDelegate,UIImagePickerControll
         let postString = postData.compactMap({ (key, value) -> String in
             return "\(key)=\(value)"
         }).joined(separator: "&")
-        request.httpBody = para.data(using: .utf8)
+        
+        
+        
+        let customAllowedSet =  NSCharacterSet(charactersIn:"+").inverted
+        let paraUtf8String = para.addingPercentEncoding(withAllowedCharacters: customAllowedSet)
+ 
+        
+        request.httpBody = paraUtf8String?.data(using: .utf8)
         // 后面不解释了，和GET的注释一样
         let task = session.dataTask(with: request) {(data, response, error) in
             do{
@@ -512,8 +527,25 @@ class toTheSceneVC: UIViewController,UIActionSheetDelegate,UIImagePickerControll
                 if let jsonObj:NSDictionary = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions()) as? NSDictionary
                 {
                     print(jsonObj)
+                    
                     //主线程
                     DispatchQueue.main.async{
+                     
+                        YJProgressHUD.hide()
+                        
+                        let model : BaseModel = (swiftClassFromString(className: "BaseModel") as! HandyJSON.Type ).deserialize(from: jsonObj as? NSDictionary) as! BaseModel
+                        
+                        if model.statusCode == 800 {
+                            
+                            let vc = orderDetailVC.getOrderDetailVC()
+                            vc.orderNo = self.orderNo
+                            vc.repairType = orderDetailType.repairing
+                            self.navigationController?.pushViewController(vc, animated: true)
+                            
+                        }else{
+                            
+                            YJProgressHUD.showMessage(model.msg, in: UIApplication.shared.keyWindow, afterDelayTime: 1)
+                        }
                         
                     }
                 }
@@ -521,6 +553,8 @@ class toTheSceneVC: UIViewController,UIActionSheetDelegate,UIImagePickerControll
                 print("Error.")
                 DispatchQueue.main.async{
                     
+                    YJProgressHUD.hide()
+
                 }
                 
             }

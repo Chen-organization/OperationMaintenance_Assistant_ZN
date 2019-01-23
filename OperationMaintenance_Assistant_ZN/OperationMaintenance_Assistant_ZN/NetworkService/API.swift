@@ -94,4 +94,6 @@ public let getWorkClassDealURL = baseURL + "/workOrder/getWorkClassDeal"
 public let scanCodePayURL = baseURL + "/wx/scanCodePay"
 //支付状态
 public let getStatusURL = baseURL + "/first/getStatus"
+//巡检记录
+public let getPatrolListURL = baseURL + "/patrol/getPatrolList"
 

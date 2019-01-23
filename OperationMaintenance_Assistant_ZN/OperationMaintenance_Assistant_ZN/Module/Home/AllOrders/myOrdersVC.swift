@@ -41,6 +41,7 @@ class myOrdersVC:UIViewController,MXSegmentedPagerDelegate, MXSegmentedPagerData
         self.view.backgroundColor = .white
         
         self.edgesForExtendedLayout = []
+        
 
         
         segmentedPager.delegate = self
@@ -171,6 +172,8 @@ class myOrdersVC:UIViewController,MXSegmentedPagerDelegate, MXSegmentedPagerData
                 let model : myOrdersModel = obj as! myOrdersModel
                 
                 if model.statusCode == 800 {
+                    
+                    self.nowPage = page
                     
                     if page == 1 {
                         

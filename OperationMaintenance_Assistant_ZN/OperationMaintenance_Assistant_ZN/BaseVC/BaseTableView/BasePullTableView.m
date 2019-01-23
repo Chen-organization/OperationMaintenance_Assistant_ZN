@@ -74,6 +74,10 @@
     
     // 防止block循环retain，所以用__unsafe_unretained
     
+    
+    self.estimatedRowHeight = 0;
+    self.estimatedSectionHeaderHeight = 0;
+    self.estimatedSectionFooterHeight = 0;
 
     self.separatorStyle = UITableViewCellSeparatorStyleNone;
     

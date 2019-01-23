@@ -56,7 +56,6 @@
 		185C238B21D63CFB0004AD0C /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 185C238121D63CFB0004AD0C /* Info.plist */; };
 		185C238E21D63D8C0004AD0C /* SqliteManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 185C238C21D63D8C0004AD0C /* SqliteManager.m */; };
 		185C239021D749680004AD0C /* agreement.html in Resources */ = {isa = PBXBuildFile; fileRef = 185C238F21D749680004AD0C /* agreement.html */; };
-		187B373121F8036900DF5C54 /* InspectionVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 187B373021F8036900DF5C54 /* InspectionVC.xib */; };
 		187B373421F86C8B00DF5C54 /* InspectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187B373221F86C8B00DF5C54 /* InspectionViewController.swift */; };
 		187B373521F86C8B00DF5C54 /* InspectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 187B373321F86C8B00DF5C54 /* InspectionViewController.xib */; };
 		187B373721F8704000DF5C54 /* imgDeleteBtn.png in Resources */ = {isa = PBXBuildFile; fileRef = 187B373621F8703F00DF5C54 /* imgDeleteBtn.png */; };
@@ -308,6 +307,10 @@
 		744B000521F792D80061BDDA /* payStatusModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 744B000421F792D80061BDDA /* payStatusModel.swift */; };
 		744B000921F793C10061BDDA /* PaySignVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 744B000721F793C10061BDDA /* PaySignVC.swift */; };
 		744B000A21F793C10061BDDA /* PaySignVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 744B000821F793C10061BDDA /* PaySignVC.xib */; };
+		744B000D21F919C10061BDDA /* PatrolListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 744B000C21F919C10061BDDA /* PatrolListModel.swift */; };
+		744B000F21F919E10061BDDA /* PatrolListReturnObjModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 744B000E21F919E10061BDDA /* PatrolListReturnObjModel.swift */; };
+		744B001321F91CB10061BDDA /* PatrolListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 744B001121F91CB10061BDDA /* PatrolListCell.swift */; };
+		744B001421F91CB10061BDDA /* PatrolListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 744B001221F91CB10061BDDA /* PatrolListCell.xib */; };
 		744BFFE321F4F15D0061BDDA /* AFURLResponseSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 744BFFD921F4F15D0061BDDA /* AFURLResponseSerialization.m */; };
 		744BFFE421F4F15D0061BDDA /* AFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 744BFFDA21F4F15D0061BDDA /* AFHTTPSessionManager.m */; };
 		744BFFE521F4F15D0061BDDA /* AFURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 744BFFDC21F4F15D0061BDDA /* AFURLSessionManager.m */; };
@@ -531,7 +534,6 @@
 		7477EAF521C2A50B00AAA756 /* MeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7477EAF221C2A50B00AAA756 /* MeVC.swift */; };
 		7477EAF621C2A50B00AAA756 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7477EAF421C2A50B00AAA756 /* HomeVC.swift */; };
 		7477EAF821C2A5F800AAA756 /* TabeBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7477EAF721C2A5F800AAA756 /* TabeBarViewController.swift */; };
-		7477EAFB21C2A7F600AAA756 /* InspectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7477EAFA21C2A7F600AAA756 /* InspectionVC.swift */; };
 		7477EAFE21C2A8CA00AAA756 /* MeterReadingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7477EAFD21C2A8CA00AAA756 /* MeterReadingVC.swift */; };
 		7494CE7821E79D5C0009445A /* orderDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7494CE7721E79D5C0009445A /* orderDetailVC.swift */; };
 		7494CE7A21E79FFD0009445A /* orderDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7494CE7921E79FFD0009445A /* orderDetail.storyboard */; };
@@ -699,7 +701,6 @@
 		185C238C21D63D8C0004AD0C /* SqliteManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SqliteManager.m; sourceTree = "<group>"; };
 		185C238D21D63D8C0004AD0C /* SqliteManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SqliteManager.h; sourceTree = "<group>"; };
 		185C238F21D749680004AD0C /* agreement.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = agreement.html; sourceTree = "<group>"; };
-		187B373021F8036900DF5C54 /* InspectionVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InspectionVC.xib; sourceTree = "<group>"; };
 		187B373221F86C8B00DF5C54 /* InspectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InspectionViewController.swift; sourceTree = "<group>"; };
 		187B373321F86C8B00DF5C54 /* InspectionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InspectionViewController.xib; sourceTree = "<group>"; };
 		187B373621F8703F00DF5C54 /* imgDeleteBtn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = imgDeleteBtn.png; sourceTree = "<group>"; };
@@ -973,6 +974,10 @@
 		744B000421F792D80061BDDA /* payStatusModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = payStatusModel.swift; sourceTree = "<group>"; };
 		744B000721F793C10061BDDA /* PaySignVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaySignVC.swift; sourceTree = "<group>"; };
 		744B000821F793C10061BDDA /* PaySignVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PaySignVC.xib; sourceTree = "<group>"; };
+		744B000C21F919C10061BDDA /* PatrolListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatrolListModel.swift; sourceTree = "<group>"; };
+		744B000E21F919E10061BDDA /* PatrolListReturnObjModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatrolListReturnObjModel.swift; sourceTree = "<group>"; };
+		744B001121F91CB10061BDDA /* PatrolListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatrolListCell.swift; sourceTree = "<group>"; };
+		744B001221F91CB10061BDDA /* PatrolListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PatrolListCell.xib; sourceTree = "<group>"; };
 		744BFFD521F4F15D0061BDDA /* AFSecurityPolicy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFSecurityPolicy.h; sourceTree = "<group>"; };
 		744BFFD621F4F15D0061BDDA /* AFNetworkReachabilityManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNetworkReachabilityManager.h; sourceTree = "<group>"; };
 		744BFFD721F4F15D0061BDDA /* AFURLSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLSessionManager.h; sourceTree = "<group>"; };
@@ -1323,7 +1328,6 @@
 		7477EAF221C2A50B00AAA756 /* MeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeVC.swift; sourceTree = "<group>"; };
 		7477EAF421C2A50B00AAA756 /* HomeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
 		7477EAF721C2A5F800AAA756 /* TabeBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabeBarViewController.swift; sourceTree = "<group>"; };
-		7477EAFA21C2A7F600AAA756 /* InspectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InspectionVC.swift; sourceTree = "<group>"; };
 		7477EAFD21C2A8CA00AAA756 /* MeterReadingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeterReadingVC.swift; sourceTree = "<group>"; };
 		7494CE7721E79D5C0009445A /* orderDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = orderDetailVC.swift; sourceTree = "<group>"; };
 		7494CE7921E79FFD0009445A /* orderDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = orderDetail.storyboard; sourceTree = "<group>"; };
@@ -2270,6 +2274,24 @@
 				744B000821F793C10061BDDA /* PaySignVC.xib */,
 			);
 			path = PaySignVC;
+			sourceTree = "<group>";
+		};
+		744B000B21F919650061BDDA /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				744B000C21F919C10061BDDA /* PatrolListModel.swift */,
+				744B000E21F919E10061BDDA /* PatrolListReturnObjModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		744B001021F91C8C0061BDDA /* view */ = {
+			isa = PBXGroup;
+			children = (
+				744B001121F91CB10061BDDA /* PatrolListCell.swift */,
+				744B001221F91CB10061BDDA /* PatrolListCell.xib */,
+			);
+			path = view;
 			sourceTree = "<group>";
 		};
 		744BFFD421F4F15D0061BDDA /* AFNetworking */ = {
@@ -3305,8 +3327,8 @@
 		7477EAF921C2A7CE00AAA756 /*  Inspection */ = {
 			isa = PBXGroup;
 			children = (
-				7477EAFA21C2A7F600AAA756 /* InspectionVC.swift */,
-				187B373021F8036900DF5C54 /* InspectionVC.xib */,
+				744B001021F91C8C0061BDDA /* view */,
+				744B000B21F919650061BDDA /* Model */,
 				187B373221F86C8B00DF5C54 /* InspectionViewController.swift */,
 				187B373321F86C8B00DF5C54 /* InspectionViewController.xib */,
 			);
@@ -3595,6 +3617,7 @@
 				7403D27E21CF800A0055561E /* 任务清单2@2x.png in Resources */,
 				7403D2DB21CF800A0055561E /* login_eyeClose@3x.png in Resources */,
 				742CAE9521D3EDF00022648E /* icon_back@3x.png in Resources */,
+				744B001421F91CB10061BDDA /* PatrolListCell.xib in Resources */,
 				7403D28921CF800A0055561E /* 信息@2x.png in Resources */,
 				187B373521F86C8B00DF5C54 /* InspectionViewController.xib in Resources */,
 				7403D25621CF800A0055561E /* xiaoxi@3x.png in Resources */,
@@ -3789,7 +3812,6 @@
 				7494CEA521EB3A060009445A /* 定位白@2x.png in Resources */,
 				7403D28121CF800A0055561E /* tu2  3X.png in Resources */,
 				7403D29521CF800A0055561E /* xiaoxi3x.png in Resources */,
-				187B373121F8036900DF5C54 /* InspectionVC.xib in Resources */,
 				746423BF21D271060038E8E3 /* IQKeyboardManager.bundle in Resources */,
 				746A638421DB9BEC0054C0C1 /* 倒三角@3x.png in Resources */,
 				7477EA5F21C1712300AAA756 /* PhotoBroswerVC.xib in Resources */,
@@ -4058,6 +4080,7 @@
 				7477EABA21C1712300AAA756 /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
 				7403D07B21C2BC5F0055561E /* Network.swift in Sources */,
 				7477EA7F21C1712300AAA756 /* UIView+Extend.m in Sources */,
+				744B001321F91CB10061BDDA /* PatrolListCell.swift in Sources */,
 				7403D16921CF5EFD0055561E /* getVerificationReturnObjModel.swift in Sources */,
 				7477EA7221C1712300AAA756 /* CoreSVP.m in Sources */,
 				7403D08121C2C0F10055561E /* PCH.swift in Sources */,
@@ -4066,6 +4089,7 @@
 				7477EA6021C1712300AAA756 /* PhotoBroswerVC.m in Sources */,
 				7403D12221C69ADD0055561E /* readingVC.swift in Sources */,
 				742CAED921DB50180022648E /* MXSegmentedPagerController.m in Sources */,
+				744B000F21F919E10061BDDA /* PatrolListReturnObjModel.swift in Sources */,
 				181AC43621D788760018ADAD /* UIView+MJExtension.m in Sources */,
 				181AC43721D788760018ADAD /* MJRefreshBackGifFooter.m in Sources */,
 				7477EA7721C1712300AAA756 /* UIImage+Water.m in Sources */,
@@ -4111,6 +4135,7 @@
 				7403D07C21C2BC5F0055561E /* NetworkService.swift in Sources */,
 				746423CB21D2DDA30038E8E3 /* sendHeadImgModel.swift in Sources */,
 				7403D14D21CEA12C0055561E /* ReadingVCTableviewCell.swift in Sources */,
+				744B000D21F919C10061BDDA /* PatrolListModel.swift in Sources */,
 				7477EA6721C1712300AAA756 /* PBSaveBtn.m in Sources */,
 				7477EAC121C1712300AAA756 /* MASConstraint.m in Sources */,
 				181AC43921D788760018ADAD /* MJRefreshBackNormalFooter.m in Sources */,
@@ -4206,7 +4231,6 @@
 				7403D12B21C6A8D50055561E /* MBProgressHUD+SGQRCode.m in Sources */,
 				742CAE9F21D3FB690022648E /* jobOrderReturnobjModel.swift in Sources */,
 				7477EA6321C1712300AAA756 /* PBConst.m in Sources */,
-				7477EAFB21C2A7F600AAA756 /* InspectionVC.swift in Sources */,
 				181AC43E21D788760018ADAD /* MJRefreshStateHeader.m in Sources */,
 				744B000021F760020061BDDA /* repairContentItemsReturnObjModel.swift in Sources */,
 				7477E89121C1705F00AAA756 /* UIBarButtonItemFixSpace.swift in Sources */,

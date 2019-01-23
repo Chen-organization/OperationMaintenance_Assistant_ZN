@@ -852,9 +852,10 @@ class makeSureOrderVC: UITableViewController,UIGestureRecognizerDelegate,UIActio
                     
                 }
                 
+                para = para + "&date=["
+
                 if array.count > 0 {
                     
-                    para = para + "&date=["
                     
                     for j in 0..<array.count {
                         
@@ -868,9 +869,9 @@ class makeSureOrderVC: UITableViewController,UIGestureRecognizerDelegate,UIActio
                         }
                     }
                     
-                    para = para + "]"
-
                 }
+                para = para + "]"
+
                 
                 //报修内容必填
                 if !(self.textView.text.characters.count > 0) && !(array.count > 0){
@@ -885,7 +886,7 @@ class makeSureOrderVC: UITableViewController,UIGestureRecognizerDelegate,UIActio
                 
                 //配件  费用
                 
-                if self.selectedItemsArray.count > 0{
+//                if self.selectedItemsArray.count > 0{
 
 //                    para = para + "&commodity=["
 
@@ -917,7 +918,7 @@ class makeSureOrderVC: UITableViewController,UIGestureRecognizerDelegate,UIActio
 
 //                    para = para + "]"
 
-                }
+//                }
                 
                 if self.payOnlineBtn.isSelected{
                     
@@ -925,21 +926,110 @@ class makeSureOrderVC: UITableViewController,UIGestureRecognizerDelegate,UIActio
                     para = para + "&pay=1"
                 }else{
                     
-                    para = para + "&commodity=2"
+                    para = para + "&pay=2"
                 }
                 
                 
-                let manager = AFHTTPSessionManager.init()
-                manager.requestSerializer.timeoutInterval = 60;
-                manager.responseSerializer.acceptableContentTypes = NSSet(arrayLiteral: "text/plain", "application/json", "text/html", "image/jpeg", "image/png", "application/octet-stream", "text/json") as? Set<String>
+//                let manager = AFHTTPSessionManager.init()
+//                manager.requestSerializer.timeoutInterval = 60;
+//                manager.responseSerializer.acceptableContentTypes = NSSet(arrayLiteral: "text/plain", "application/json", "text/html", "image/jpeg", "image/png", "application/octet-stream", "text/json") as? Set<String>
+//
+//                let headers: HTTPHeaders =  [    "Authorization": "Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ==",
+//                                                 "Accept": "application/json",
+//                                                 "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8"
+//                ]
+//
                 
-                let headers: HTTPHeaders =  [    "Authorization": "Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ==",
-                                                 "Accept": "application/json",
-                                                 "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8"
-                ]
+
                 
                 
-                manager.post(getConfirmOrderURL, parameters:para.data(using: .utf8), headers: headers, progress: { (progress) in
+                let session = URLSession(configuration: .default)
+                // 设置URL(该地址不可用，写你自己的服务器地址)
+                var request = URLRequest(url: URL(string: getConfirmOrderURL)!)
+                request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+                request.setValue("application/json", forHTTPHeaderField: "Accept")
+                
+                request.httpMethod = "POST"
+                
+                
+                let customAllowedSet =  NSCharacterSet(charactersIn:"+").inverted
+                let paraUtf8String = para.addingPercentEncoding(withAllowedCharacters: customAllowedSet)
+                
+                
+                request.httpBody = paraUtf8String?.data(using: .utf8)
+                // 后面不解释了，和GET的注释一样
+                let task = session.dataTask(with: request) {(data, response, error) in
+                    do{
+                        //              将二进制数据转换为字典对象
+                        if let jsonObj:NSDictionary = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions()) as? NSDictionary
+                        {
+                            print(jsonObj)
+                            
+                            //主线程
+                            DispatchQueue.main.async{
+                                
+                                YJProgressHUD.hide()
+                                
+                                let model : BaseModel = (swiftClassFromString(className: "BaseModel") as! HandyJSON.Type ).deserialize(from: jsonObj as? NSDictionary) as! BaseModel
+                                
+                                if model.statusCode == 800 {
+                                    
+                                    
+                                    if self.selectedItemsArray.count > 0{
+                                        
+                                        //
+                                        
+                                        if self.payOnlineBtn.isSelected{
+                                            
+                                            //去二维码
+                                            let vc = PayVC()
+                                            vc.orderNo = self.orderNo
+                                            vc.moneyL.text = self.moneyL.text
+                                            self.navigationController?.pushViewController(vc, animated: true)
+                                            
+                                            
+                                        }else{
+                                            
+                                            //去签字
+                                            let vc = PaySignVC()
+                                            vc.orderNo = self.orderNo
+                                            self.navigationController?.pushViewController(vc, animated: true)
+                                            
+                                            
+                                        }
+                                        
+                                        
+                                        
+                                        
+                                    }else{
+                                        
+                                        //任务工单
+                                        self.navigationController?.popToViewController(self.navigationController?.viewControllers[1] ?? UIViewController(), animated: true)
+                                    }
+                                    
+                                    
+                                }else{
+                                    
+                                    YJProgressHUD.showMessage(model.msg, in: UIApplication.shared.keyWindow, afterDelayTime: 1)
+                                }
+                                
+                            }
+                        }
+                    } catch{
+                        print("Error.")
+                        DispatchQueue.main.async{
+                            
+                            YJProgressHUD.hide()
+                            
+                        }
+                        
+                    }
+                }
+                task.resume()
+                
+                
+               /*
+                manager.post(getConfirmOrderURL, parameters:paraUtf8String?.data(using: .utf8), headers: headers, progress: { (progress) in
                     
                     
                 }, success: { (task, response) in
@@ -1011,7 +1101,7 @@ class makeSureOrderVC: UITableViewController,UIGestureRecognizerDelegate,UIActio
                 })
                 
                 
-            
+            */
             
             
             
