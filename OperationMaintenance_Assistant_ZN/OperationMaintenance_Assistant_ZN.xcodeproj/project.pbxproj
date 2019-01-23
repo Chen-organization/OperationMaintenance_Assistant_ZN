@@ -56,6 +56,13 @@
 		185C238B21D63CFB0004AD0C /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 185C238121D63CFB0004AD0C /* Info.plist */; };
 		185C238E21D63D8C0004AD0C /* SqliteManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 185C238C21D63D8C0004AD0C /* SqliteManager.m */; };
 		185C239021D749680004AD0C /* agreement.html in Resources */ = {isa = PBXBuildFile; fileRef = 185C238F21D749680004AD0C /* agreement.html */; };
+		187B373121F8036900DF5C54 /* InspectionVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 187B373021F8036900DF5C54 /* InspectionVC.xib */; };
+		187B373421F86C8B00DF5C54 /* InspectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187B373221F86C8B00DF5C54 /* InspectionViewController.swift */; };
+		187B373521F86C8B00DF5C54 /* InspectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 187B373321F86C8B00DF5C54 /* InspectionViewController.xib */; };
+		187B373721F8704000DF5C54 /* imgDeleteBtn.png in Resources */ = {isa = PBXBuildFile; fileRef = 187B373621F8703F00DF5C54 /* imgDeleteBtn.png */; };
+		187B373B21F875E100DF5C54 /* 10711548238217.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 187B373A21F875E100DF5C54 /* 10711548238217.jpg */; };
+		187B374421F8829A00DF5C54 /* Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 187B374221F8829A00DF5C54 /* Base64.m */; };
+		187B374521F8829A00DF5C54 /* CocoaSecurity.m in Sources */ = {isa = PBXBuildFile; fileRef = 187B374321F8829A00DF5C54 /* CocoaSecurity.m */; };
 		1892DAB821E6FBDB00508C8F /* HMSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 1892DAB721E6FBDB00508C8F /* HMSegmentedControl.m */; };
 		1892DABE21E6FBF100508C8F /* MXPagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1892DABC21E6FBF100508C8F /* MXPagerViewController.m */; };
 		1892DABF21E6FBF100508C8F /* MXPagerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1892DABD21E6FBF100508C8F /* MXPagerView.m */; };
@@ -692,6 +699,15 @@
 		185C238C21D63D8C0004AD0C /* SqliteManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SqliteManager.m; sourceTree = "<group>"; };
 		185C238D21D63D8C0004AD0C /* SqliteManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SqliteManager.h; sourceTree = "<group>"; };
 		185C238F21D749680004AD0C /* agreement.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = agreement.html; sourceTree = "<group>"; };
+		187B373021F8036900DF5C54 /* InspectionVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InspectionVC.xib; sourceTree = "<group>"; };
+		187B373221F86C8B00DF5C54 /* InspectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InspectionViewController.swift; sourceTree = "<group>"; };
+		187B373321F86C8B00DF5C54 /* InspectionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InspectionViewController.xib; sourceTree = "<group>"; };
+		187B373621F8703F00DF5C54 /* imgDeleteBtn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = imgDeleteBtn.png; sourceTree = "<group>"; };
+		187B373A21F875E100DF5C54 /* 10711548238217.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 10711548238217.jpg; sourceTree = "<group>"; };
+		187B374021F8829A00DF5C54 /* Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Base64.h; sourceTree = "<group>"; };
+		187B374121F8829A00DF5C54 /* CocoaSecurity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CocoaSecurity.h; sourceTree = "<group>"; };
+		187B374221F8829A00DF5C54 /* Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Base64.m; sourceTree = "<group>"; };
+		187B374321F8829A00DF5C54 /* CocoaSecurity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CocoaSecurity.m; sourceTree = "<group>"; };
 		1892DAB621E6FBDB00508C8F /* HMSegmentedControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMSegmentedControl.h; sourceTree = "<group>"; };
 		1892DAB721E6FBDB00508C8F /* HMSegmentedControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMSegmentedControl.m; sourceTree = "<group>"; };
 		1892DABA21E6FBF100508C8F /* MXPagerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MXPagerViewController.h; sourceTree = "<group>"; };
@@ -1621,6 +1637,17 @@
 			path = MoreHeadLinesVC;
 			sourceTree = "<group>";
 		};
+		187B373F21F8829A00DF5C54 /* CocoaSecurity */ = {
+			isa = PBXGroup;
+			children = (
+				187B374021F8829A00DF5C54 /* Base64.h */,
+				187B374121F8829A00DF5C54 /* CocoaSecurity.h */,
+				187B374221F8829A00DF5C54 /* Base64.m */,
+				187B374321F8829A00DF5C54 /* CocoaSecurity.m */,
+			);
+			path = CocoaSecurity;
+			sourceTree = "<group>";
+		};
 		1892DAB521E6FBDB00508C8F /* HMSegmentedControl */ = {
 			isa = PBXGroup;
 			children = (
@@ -2515,6 +2542,8 @@
 		7477E84021C025BF00AAA756 /* OperationMaintenance_Assistant_ZN */ = {
 			isa = PBXGroup;
 			children = (
+				187B373A21F875E100DF5C54 /* 10711548238217.jpg */,
+				187B373621F8703F00DF5C54 /* imgDeleteBtn.png */,
 				7403D16E21CF7FCB0055561E /* Img */,
 				7403D07721C2BC5F0055561E /* NetworkService */,
 				7477EACD21C1714000AAA756 /* Module */,
@@ -2620,6 +2649,7 @@
 		7477E89E21C170C800AAA756 /* Vendors */ = {
 			isa = PBXGroup;
 			children = (
+				187B373F21F8829A00DF5C54 /* CocoaSecurity */,
 				744BFFD421F4F15D0061BDDA /* AFNetworking */,
 				74B2AF2D21F4A2F80083A05A /* cancelOrderReasonAlertView */,
 				1892DAC021E6FC0300508C8F /* MXParallaxHeader */,
@@ -3268,7 +3298,6 @@
 				7477EAF421C2A50B00AAA756 /* HomeVC.swift */,
 				746423CC21D2E96A0038E8E3 /* Home.storyboard */,
 				7430E33D21E267FB00A9B8BD /* CheckVerson.h */,
-				7430E33C21E267FB00A9B8BD /* CheckVerson.m */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -3277,6 +3306,9 @@
 			isa = PBXGroup;
 			children = (
 				7477EAFA21C2A7F600AAA756 /* InspectionVC.swift */,
+				187B373021F8036900DF5C54 /* InspectionVC.xib */,
+				187B373221F86C8B00DF5C54 /* InspectionViewController.swift */,
+				187B373321F86C8B00DF5C54 /* InspectionViewController.xib */,
 			);
 			path = " Inspection";
 			sourceTree = "<group>";
@@ -3284,6 +3316,7 @@
 		7477EAFC21C2A80300AAA756 /* MeterReading  */ = {
 			isa = PBXGroup;
 			children = (
+				7430E33C21E267FB00A9B8BD /* CheckVerson.m */,
 				7403D14521CD4D290055561E /* Model */,
 				7477EAFD21C2A8CA00AAA756 /* MeterReadingVC.swift */,
 				7403D08721C4D8030055561E /* MeterReading.storyboard */,
@@ -3563,6 +3596,7 @@
 				7403D2DB21CF800A0055561E /* login_eyeClose@3x.png in Resources */,
 				742CAE9521D3EDF00022648E /* icon_back@3x.png in Resources */,
 				7403D28921CF800A0055561E /* 信息@2x.png in Resources */,
+				187B373521F86C8B00DF5C54 /* InspectionViewController.xib in Resources */,
 				7403D25621CF800A0055561E /* xiaoxi@3x.png in Resources */,
 				746A638921DB9BEC0054C0C1 /* 类型@2x.png in Resources */,
 				7403D2EE21CF800B0055561E /* 检查更新LOGO3x.png in Resources */,
@@ -3572,6 +3606,7 @@
 				7494CE8B21EB25530009445A /* grabOrderCell.xib in Resources */,
 				7403D2BC21CF800A0055561E /* 未标题-2.png in Resources */,
 				7403D2C121CF800A0055561E /* 去支付按钮3x.png in Resources */,
+				187B373721F8704000DF5C54 /* imgDeleteBtn.png in Resources */,
 				7494CE8221EA89DE0009445A /* 状态框3x.png in Resources */,
 				7403D24B21CF800A0055561E /* 签字点击3x.png in Resources */,
 				74B2AF1721F459530083A05A /* myGrabOrderListCell.xib in Resources */,
@@ -3622,6 +3657,7 @@
 				185C239021D749680004AD0C /* agreement.html in Resources */,
 				7403D2B121CF800A0055561E /* 暂无数据@3x.png in Resources */,
 				744F753F21CFC07B0072326E /* meterReadingSignVC.xib in Resources */,
+				187B373B21F875E100DF5C54 /* 10711548238217.jpg in Resources */,
 				7403D23A21CF800A0055561E /* 站位图小.png in Resources */,
 				7403D2B621CF800A0055561E /* 缴费.png in Resources */,
 				7403D25A21CF800A0055561E /* 确定点击.png in Resources */,
@@ -3753,6 +3789,7 @@
 				7494CEA521EB3A060009445A /* 定位白@2x.png in Resources */,
 				7403D28121CF800A0055561E /* tu2  3X.png in Resources */,
 				7403D29521CF800A0055561E /* xiaoxi3x.png in Resources */,
+				187B373121F8036900DF5C54 /* InspectionVC.xib in Resources */,
 				746423BF21D271060038E8E3 /* IQKeyboardManager.bundle in Resources */,
 				746A638421DB9BEC0054C0C1 /* 倒三角@3x.png in Resources */,
 				7477EA5F21C1712300AAA756 /* PhotoBroswerVC.xib in Resources */,
@@ -3890,6 +3927,7 @@
 				181AC43421D788760018ADAD /* UIScrollView+MJExtension.m in Sources */,
 				746423C321D271060038E8E3 /* IQUIViewController+Additions.swift in Sources */,
 				7477EA8921C1712300AAA756 /* CoreArchive.m in Sources */,
+				187B373421F86C8B00DF5C54 /* InspectionViewController.swift in Sources */,
 				7477EA6D21C1712300AAA756 /* LFRoundProgressView.m in Sources */,
 				181AC43D21D788760018ADAD /* MJRefreshNormalHeader.m in Sources */,
 				185C233D21D46DBB0004AD0C /* readingListVC.swift in Sources */,
@@ -3961,6 +3999,7 @@
 				7477EA8A21C1712300AAA756 /* NSString+File.m in Sources */,
 				1892DABF21E6FBF100508C8F /* MXPagerView.m in Sources */,
 				7477EAA021C1712300AAA756 /* NSData+ImageContentType.m in Sources */,
+				187B374421F8829A00DF5C54 /* Base64.m in Sources */,
 				7477EA9E21C1712300AAA756 /* SDWebImageDownloaderOperation.m in Sources */,
 				7477EA7921C1712300AAA756 /* UIImage+Extend.m in Sources */,
 				7403D16721CF5ED60055561E /* getVerificationModel.swift in Sources */,
@@ -4087,6 +4126,7 @@
 				7477E89621C1705F00AAA756 /* NavigationController.swift in Sources */,
 				744BFFF521F50EE80061BDDA /* makeSureOrderCell.swift in Sources */,
 				1892DAD521E759E800508C8F /* WorkOrderDetailModel.swift in Sources */,
+				187B374521F8829A00DF5C54 /* CocoaSecurity.m in Sources */,
 				744F754521CFC6160072326E /* EasySignatureView.m in Sources */,
 				181AC43821D788760018ADAD /* MJRefreshBackStateFooter.m in Sources */,
 				744BFFE321F4F15D0061BDDA /* AFURLResponseSerialization.m in Sources */,

@@ -18,7 +18,7 @@
     
     if (self) {
         
-//        [self config];
+        [self config];
     }
 
     return self;
