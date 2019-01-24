@@ -110,40 +110,14 @@ class toTheSceneVC: UIViewController,UIActionSheetDelegate,UIImagePickerControll
                 let image = self.imageArr[i] as! UIImage
 //                UIImage.init(named:"10711548238217.jpg")
                 
-                let dataOrigin = image.pngData()
-                let base64StringOrigin:String = dataOrigin!.base64EncodedString()
-
-                
                 let data = image.compress(withMaxLength: 1 * 1024 * 1024 / 8)
                 
                 // NSData 转换为 Base64编码的字符串
                 let base64String:String = data!.base64EncodedString()//data?.base64EncodedString(options: NSData.Base64EncodingOptions(rawValue: 0)) ?? ""
 
                 
-//                let encoder = CocoaSecurityEncoder()
-//                let base64String = encoder.base64(data)
-                
                 ImgStrArr.append((base64String))
             }
-
-            
-//            if (!JSONSerialization.isValidJSONObject(ImgStrArr)) {
-//                print("无法解析出JSONString")
-//            }
-//
-//            let data : NSData! = try? JSONSerialization.data(withJSONObject: ImgStrArr, options: []) as NSData!
-//            let JSONString = NSString(data:data as Data,encoding: String.Encoding.utf8.rawValue)
-
-//            let para = [
-//                "companyCode":user.companyCode ?? "",
-//                        "empNo":user.empNo ?? "",
-//                        "empName":user.empName ?? "",
-//                        "orgCode":user.orgCode ?? "",
-//                        "workNo":self.orderNo ,
-//                        "type" : "2",
-////                        "File" : ImgStrArr.first,
-////                        "File" : ImgStrArr.first
-//                ]
             
             
             var para = String()
@@ -160,18 +134,7 @@ class toTheSceneVC: UIViewController,UIActionSheetDelegate,UIImagePickerControll
                 
             }
             
-            
-            
-//            NetworkService.networkPostrequest(currentView: self.view, parameters: para as [String : Any], requestApi: getUploadPicturesURL, modelClass: "BaseModel", response: { (obj) in
-//
-//
-//
-//            }, failture: { (error) in
-//
-//
-//
-//            })
-            
+
      
             var URL = getUploadPicturesURL+"?companyCode="
             
@@ -186,17 +149,17 @@ class toTheSceneVC: UIViewController,UIActionSheetDelegate,UIImagePickerControll
             URL = URL + self.orderNo
 
             
-           
-            
-            let manager = AFHTTPSessionManager.init()
-            manager.requestSerializer.timeoutInterval = 40;
-            manager.responseSerializer.acceptableContentTypes = NSSet(arrayLiteral: "text/plain", "application/json", "text/html", "image/jpeg", "image/png", "application/octet-stream", "text/json") as? Set<String>
-
-            let headers: HTTPHeaders =  [    "Authorization": "Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ==",
-                                             "Accept": "application/json",
-                                             "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8"
-                                             ]
-            
+//
+//
+//            let manager = AFHTTPSessionManager.init()
+//            manager.requestSerializer.timeoutInterval = 40;
+//            manager.responseSerializer.acceptableContentTypes = NSSet(arrayLiteral: "text/plain", "application/json", "text/html", "image/jpeg", "image/png", "application/octet-stream", "text/json") as? Set<String>
+//
+//            let headers: HTTPHeaders =  [    "Authorization": "Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ==",
+//                                             "Accept": "application/json",
+//                                             "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8"
+//                                             ]
+//
             
             self.post(para: para, url: URL.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed) ?? "")
 

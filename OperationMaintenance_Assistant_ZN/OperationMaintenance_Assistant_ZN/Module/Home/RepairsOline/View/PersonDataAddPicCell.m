@@ -21,7 +21,7 @@
 @interface PersonDataAddPicCell ()
 
 @property (strong, nonatomic) NSArray *curTweet;
-@property (nonatomic,assign) BOOL isLoading;
+@property (nonatomic,assign) BOOL isLoading;       //标识 不可修改图片状态
 
 @property (strong, nonatomic) UICustomCollectionView *mediaView;
 @property (strong, nonatomic) NSMutableDictionary *imageViewsDict;
@@ -142,7 +142,16 @@
 #pragma mark Collection M
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
     NSInteger num = _curTweet.count;
-    return num < 3? num+ 1: num;
+    
+    if (self.isLoading) {
+        
+        return num;
+    }else{
+        
+        return num < 3? num+ 1: num;
+
+    }
+    
 }
 
 // The cell that is returned must be retrieved from a call to -dequeueReusableCellWithReuseIdentifier:forIndexPath:
@@ -150,13 +159,15 @@
     __weak typeof(self) weakSelf = self;
     
     personDataAddPicCollectionCell *ccell = [collectionView dequeueReusableCellWithReuseIdentifier:kCCellIdentifier_TweetSendImage forIndexPath:indexPath];
+    
+    
     if (indexPath.row < _curTweet.count) {
         
         ccell.curTweetImg = _curTweet[indexPath.row];
-        if (self.isLoading == YES && indexPath.row == _curTweet.count - 1) {
-            
-            [ccell startAnimation];
-        }
+//        if (self.isLoading == YES && indexPath.row == _curTweet.count - 1) {
+//
+////            [ccell startAnimation];
+//        }
         
     }else{
         ccell.curTweetImg = nil;
@@ -167,6 +178,12 @@
         }
     };
     [_imageViewsDict setObject:ccell.imgView forKey:indexPath];
+    
+    if (self.isLoading) {
+        
+        ccell.deleteBtn.hidden = YES;
+    }
+    
     return ccell;
 }
 

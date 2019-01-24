@@ -233,7 +233,7 @@ class GRabOrdersVC: UIViewController,UITableViewDelegate,UITableViewDataSource,P
         var model : myOrdersReturnObjModel = myOrdersReturnObjModel()
         model = self.repairArr[indexPath.row]
         vc.repairType = orderDetailType.repair
-        vc.orderNo = model.id ?? ""
+        vc.orderNo = model.workno ?? ""
         self.navigationController?.pushViewController(vc, animated: true)
         
     }

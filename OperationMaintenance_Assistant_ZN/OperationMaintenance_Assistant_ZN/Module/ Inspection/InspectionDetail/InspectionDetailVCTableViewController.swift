@@ -8,7 +8,7 @@
 
 import UIKit
 
-class InspectionDetailVCTableViewController: UITableViewController {
+class InspectionDetailVCTableViewController: UITableViewController,UIGestureRecognizerDelegate {
 
     
     
@@ -20,6 +20,8 @@ class InspectionDetailVCTableViewController: UITableViewController {
         return vc
     }
 
+    var patrolId = ""
+    
     
     @IBOutlet weak var dateL: UILabel!
     @IBOutlet weak var addressL: UILabel!
@@ -32,6 +34,12 @@ class InspectionDetailVCTableViewController: UITableViewController {
     @IBOutlet weak var contentImg3: UIImageView!
     
     var ImgArr = [UIImageView]()
+    var ImgUrlArr = [String]()
+
+    
+    
+    var addressCellHeight = 48.0
+    var contentCellHeight = 48.0
 
     
     override func viewDidLoad() {
@@ -41,14 +49,157 @@ class InspectionDetailVCTableViewController: UITableViewController {
 
         
         ImgArr = [contentImg1,contentImg2,contentImg3]
+        
+        for i in 0..<ImgArr.count {
+            
+            
+            let img = ImgArr[i]
+            img.tag = i
 
+            img.isHidden = true
+  
+            
+            let tap1:UITapGestureRecognizer = UITapGestureRecognizer.init()
+            tap1.numberOfTapsRequired = 1 //轻点次数
+            tap1.numberOfTouchesRequired = 1 //手指个数
+            tap1.delegate = self
+            tap1.addTarget(self, action: #selector(tapImgView(action:)))
+            img.addGestureRecognizer(tap1)
+            
+        }
+        
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        self.getData()
+       
     }
+    
+    
+    @IBAction func toRepair(_ sender: UIButton) {
+        
+        var imgs = [UIImage]()
+        
+        for i in 0..<self.ImgUrlArr.count {
+            
+            let img = self.ImgArr[i]
+            imgs.append(img.image!)
+            
+        }
+        
+        let vc : onlineRepaire = UIStoryboard(name: "Home", bundle: nil)
+            .instantiateViewController(withIdentifier: "onlineRepaire") as! onlineRepaire
+        vc.wokerName = self.nameL.text ?? ""
+        vc.address = self.addressL.text ?? ""
+        vc.contentText = self.contentL.text ?? ""
+        vc.imageArr = imgs
+        
+        
+        vc.patrolId = self.patrolId
+        
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    
+    //MARK: - 手势
+    @objc func tapImgView(action:UIGestureRecognizer)  {
+        
+        
+            //查看
+            let img :UIImageView = action.view as! UIImageView
+            
+            PhotoBroswerVC.show(self, type: PhotoBroswerVCTypeModal, index: 0) { () -> [Any]? in
+                
+                let pbModel = PhotoModel()
+                pbModel.mid = 1
+                pbModel.image = img.image
+                
+                return [pbModel]
+                
+            }
+            
+  
+        
+        
+    }
+    
+    func getData() {
+        
+        
+        
+        UserCenter.shared.userInfo { (islogin, userModel) in
+            
+            
+            let para = [
+                
+                "companyCode": userModel.companyCode ?? "",
+                "orgCode": userModel.orgCode ?? "",
+                "empNo": userModel.empNo ?? "",
+                "empName": userModel.empName ?? "",
+                "patrolId": self.patrolId,
+                ]
+
+            
+            NetworkService.networkPostrequest(currentView: self.view, parameters: para, requestApi: getPatrolDetailsURL, modelClass: "InspectionDetailModel", response: { (obj) in
+                
+                let model : InspectionDetailModel = obj as! InspectionDetailModel
+                if model.statusCode == 800 {
+                    
+                    self.dateL.text = self.timeStampToString(timeStamp: (model.returnObj?.content?.createDate ?? ""))
+                    self.addressL.text = (model.returnObj?.content?.address ?? "")
+                    self.nameL.text = (model.returnObj?.content?.empName ?? "")
+                    self.contentL.text = (model.returnObj?.content?.patrolContent ?? "")
+
+             
+                    let size = (model.returnObj?.content?.address ?? "").boundingRect(with: CGSize(width: self.addressL.frame.width, height: 8000), options: .usesLineFragmentOrigin, attributes: [NSAttributedString.Key.font: self.addressL.font], context: nil)
+                    self.addressCellHeight = Double(size.height + 25.0)
+                    
+                    
+                    let contentSize = (model.returnObj?.content?.patrolContent ?? "").boundingRect(with: CGSize(width: self.contentL.frame.width, height: 8000), options: .usesLineFragmentOrigin, attributes: [NSAttributedString.Key.font: self.contentL.font], context: nil)
+                    self.contentCellHeight = Double(contentSize.height + 25.0)
+                  
+                    for m : InspectionDetailPriceModel in (model.returnObj?.price ?? []) {
+                        
+                        self.ImgUrlArr.append(m.imgUrl ?? "")
+                        
+                    }
+                    
+                    for i in 0..<self.ImgUrlArr.count {
+                        
+                        let img = self.ImgArr[i]
+                        img.kf.setImage(with: URL.init(string:self.ImgUrlArr[i]), placeholder: UIImage.init(named: "站位图"), options: nil, progressBlock: { (a, b) in
+                            
+                        }, completionHandler: { (img) in
+                            
+                        })
+                        img.isHidden = false
+                        
+                    }
+                    
+                    
+                    self.tableView.reloadData()
+                    
+                }else{
+                    
+                    YJProgressHUD.showMessage(model.msg, in: UIApplication.shared.keyWindow, afterDelayTime: 2)
+
+                    
+                }
+                
+                
+            }, failture: { (error) in
+                
+                
+                
+            })
+            
+            
+            
+        }
+        
+        
+        
+        
+    }
+    
 
     // MARK: - Table view data source
 
@@ -64,21 +215,42 @@ class InspectionDetailVCTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
-        if (indexPath.row < 3) {
+        if (indexPath.row == 0 || indexPath.row == 2) {
             
             return 48
             
+        }else  if (indexPath.row == 1) {
+            
+            return CGFloat(self.addressCellHeight);
         }else  if (indexPath.row == 3) {
             
-            return UITableView.automaticDimension;
+            return CGFloat(self.contentCellHeight);
         }else{
             
-            return 93
+            return self.ImgUrlArr.count > 0 ?  93 : 0
         }
         
     }
 
     
+    //MARK: -时间戳转时间函数
+    func timeStampToString(timeStamp: String)->String {
+        //时间戳为毫秒级要 ／ 1000， 秒就不用除1000，参数带没带000
+        
+        if let timestampDouble = Double(timeStamp) {
+            
+            let timeSta:TimeInterval = TimeInterval(timestampDouble / 1000)
+            let date = NSDate(timeIntervalSince1970: timeSta)
+            let dfmatter = DateFormatter()
+            //yyyy-MM-dd HH:mm:ss
+            dfmatter.dateFormat="yyyy-MM-dd HH:mm:ss"
+            return dfmatter.string(from: date as Date)
+            
+        }
+        
+        return ""
+        
+    }
     
     /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

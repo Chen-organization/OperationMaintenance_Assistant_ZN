@@ -9,14 +9,25 @@
 import UIKit
 
 class onlineRepaire: BaseVC ,BMKLocationAuthDelegate ,BMKLocationManagerDelegate ,AddressTextFieldHeightChangeDelegate{
+    
+    /*   ----------    巡检 传过来的参数   ------------   */
+    
+    var patrolId : String? //巡检id
+    
+    var wokerName : String?
+    var address : String?
+    var contentText : String?
+    var imageArr = [UIImage]()
+    
+    /*   ----------------------------------------------------------   */
+
+
 
     var container : olineRepaireContentTableview!
     
     var locationManager : BMKLocationManager!
     var completionBlock : BMKLocatingCompletionBlock!
-    
-//    var longitudeStr : Double = 0
-//    var latitudeStr : Double = 0
+
 
     var location : CLLocationCoordinate2D?
     
@@ -35,6 +46,19 @@ class onlineRepaire: BaseVC ,BMKLocationAuthDelegate ,BMKLocationManagerDelegate
         self.sureBtn.layer.shadowOffset = CGSize(width:2 , height:2)
         self.sureBtn.layer.shadowOpacity = 0.3
         self.sureBtn.layer.shadowRadius = 3
+        
+        
+        if let id = self.patrolId {
+            
+            self.container.contentTextView.text = self.contentText
+            self.container.address.text = self.address
+            self.container.setAddressCellheight(textView: self.container.address)
+            
+            self.container.footerVeiw.setDataArray(self.imageArr, isLoading: true)
+            
+            return
+        }
+        
         
         BMKLocationAuth.sharedInstance().checkPermision(withKey: "hblWV9xsl67jWi4uuTDup58EU0QKWnlb", authDelegate: self)
         
@@ -132,6 +156,146 @@ class onlineRepaire: BaseVC ,BMKLocationAuthDelegate ,BMKLocationManagerDelegate
     
     
     @IBAction func sureBtnClick(_ sender: UIButton) {
+        
+        
+        if let id = self.patrolId {
+            
+            //巡检 转 报修
+            
+            
+            
+            
+            weak var weakSelf = self // ADD THIS LINE AS WELL
+            
+            
+            if ((container.wokerName.text!.characters.count > 0) && (self.isCorrectTel(Str: container.tel.text!.characters.count > 0 ? container.tel.text! : "" )) && (container.address.text!.characters.count > 0) && (container.contentTextView.text.characters.count > 0) && (container.selectedRepaireTypeModel != nil)){
+                
+                
+                //报修内容不能全是空格
+                
+                var count : Int = 0
+                
+                for i in container.contentTextView.text.characters {
+                    print(i)
+                    
+                    if (i == " "){
+                        
+                        count = count + 1
+                    }
+                    
+                }
+                
+                if count == container.contentTextView.text.count{
+                    
+                    ZNCustomAlertView.handleTip("请填写报修内容", isShowCancelBtn: false, completion: { (sisure) in
+                        
+                    })
+                    
+                    return
+                }
+                
+                
+                YJProgressHUD.showProgress(nil, in: UIApplication.shared.keyWindow)
+                
+                UserCenter.shared.userInfo { (islogin, userInfo) in
+                    
+                    
+                    let dic = [
+                        "companyCode":userInfo.companyCode,
+                        "orgCode":userInfo.orgCode ,
+                        "empNo":userInfo.empNo,
+                        "empName":userInfo.empName,
+                        "contactMan":self.container.wokerName.text,
+                        "tel": self.container.tel.text,
+                        "address" : self.container.address.text,
+                        "workType" : self.container.selectedRepaireTypeModel?.workType,
+                        "repairsDesc" : self.container.contentTextView.text,
+                        "patrolId": self.patrolId as Any
+                        ] as [String : Any]
+                    
+                    let para = NSMutableDictionary.init(dictionary:dic )
+                    
+
+                    
+                    NetworkService.networkPostrequest(currentView : self.view, parameters: para as! [String : Any], requestApi: patrolCommitURL, modelClass: "BaseModel", response: { (obj) in
+                        
+                        let model = obj as! BaseModel
+                        
+                        if(model.statusCode == 800){
+                            
+                            self.navigationController?.popToRootViewController(animated: true)
+                            
+                            
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
+                                print("Are we there yet?")
+                            
+                                YJProgressHUD.showMessage("提交成功", in: UIApplication.shared.keyWindow, afterDelayTime: 2)
+
+                            
+                            }
+                        }else{
+                            
+                            ZNCustomAlertView.handleTip(model.msg, isShowCancelBtn: false, completion: { (issure) in
+                                
+                            })
+                            
+                        }
+                        
+                        YJProgressHUD.hide()
+                        
+                    }, failture: { (error) in
+                        
+                        
+                        YJProgressHUD.hide()
+                    })
+                    
+                    
+                }
+                
+            }else{
+                
+                var tip = ""
+                
+                
+                if (!(container.wokerName.text!.characters.count > 0)){
+                    
+                    YJProgressHUD.showMessage("请填写报修人员", in: UIApplication.shared.keyWindow, afterDelayTime: 2)
+                    return
+                    
+                }else if (!(container.tel.text!.characters.count > 0)){
+                    
+                    tip = "请填写联系电话"
+                }else if (!self.isCorrectTel(Str: container.tel.text!.characters.count > 0 ? container.tel.text! : "" )){
+                    
+                    tip = "请填写正确的手机号"
+                }else if( !(container.address.text!.characters.count > 0) ){
+                    
+                    tip = "请填写具体位置"
+                    
+                }else if( container.selectedRepaireTypeModel == nil){
+                    
+                    tip = "请选择报修类型"
+                    
+                }else if( !(container.contentTextView.text.characters.count > 0)){
+                    
+                    tip = "请填写报修内容"
+                }
+                
+                
+                ZNCustomAlertView.handleTip(tip, isShowCancelBtn: false, completion: { (isSure) in
+                    
+                })
+                
+            }
+            
+            
+            
+            
+            return
+        }
+        
+        
+        
         
         weak var weakSelf = self // ADD THIS LINE AS WELL
         

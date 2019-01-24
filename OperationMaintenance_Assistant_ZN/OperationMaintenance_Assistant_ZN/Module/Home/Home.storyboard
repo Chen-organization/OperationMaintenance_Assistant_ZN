@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -366,14 +366,14 @@
         <!--Oline Repaire Content Tableview-->
         <scene sceneID="kWM-nz-3DO">
             <objects>
-                <tableViewController id="2C6-Pt-oRO" customClass="olineRepaireContentTableview" customModule="MonitoringAssistant_ZN" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="2C6-Pt-oRO" customClass="olineRepaireContentTableview" customModule="OperationMaintenance_Assistant_ZN" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="1" sectionFooterHeight="10" contentViewInsetsToSafeArea="NO" id="plm-5H-Sud">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="509"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="separatorColor" red="0.80392156859999997" green="0.80392156859999997" blue="0.80392156859999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                        <view key="tableFooterView" contentMode="scaleToFill" id="Epr-gL-4df" customClass="PersonDataAddPicCell">
+                        <view key="tableFooterView" contentMode="scaleToFill" misplaced="YES" id="Epr-gL-4df" customClass="PersonDataAddPicCell">
                             <rect key="frame" x="0.0" y="350" width="375" height="200"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
@@ -782,7 +782,7 @@
         <!--Online Repaire-->
         <scene sceneID="uNy-JR-7zp">
             <objects>
-                <viewController storyboardIdentifier="onlineRepaire" id="tIF-vm-4VL" customClass="onlineRepaire" customModule="MonitoringAssistant_ZN" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="onlineRepaire" id="tIF-vm-4VL" customClass="onlineRepaire" customModule="OperationMaintenance_Assistant_ZN" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="CSm-7x-W7E"/>
                         <viewControllerLayoutGuide type="bottom" id="tfy-4r-CVg"/>
@@ -796,7 +796,7 @@
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GR4-uH-L5k">
                                         <rect key="frame" x="43" y="30" width="289" height="45"/>
-                                        <color key="backgroundColor" red="0.27721589800000002" green="0.4923430681" blue="0.61328029630000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" red="0.27450980390000002" green="0.74509803919999995" blue="0.70196078429999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="45" id="Dbr-l3-fYk"/>
                                         </constraints>
@@ -870,7 +870,7 @@
         <image name="故障报修1.png" width="55" height="55"/>
         <image name="未标题-4.png" width="22" height="31"/>
         <image name="照片.png" width="16" height="16"/>
-        <image name="电话.png" width="16" height="16"/>
+        <image name="电话.png" width="20" height="20"/>
         <image name="箭头.png" width="12" height="20"/>
         <image name="类型.png" width="16" height="16"/>
         <image name="虚线.png" width="1" height="73"/>

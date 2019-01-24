@@ -122,7 +122,7 @@ class orderDetailVC: UITableViewController {
             
             let vc = PayVC()
             vc.orderNo = self.model.returnObj?.orderno ?? ""
-            vc.moneyL.text = self.moneyL.text
+            vc.money = self.moneyL.text ?? ""
             self.navigationController?.pushViewController(vc, animated: true)
 
             
@@ -195,7 +195,11 @@ class orderDetailVC: UITableViewController {
     //MARK: - 维修记录
     @objc func toList() {
         
-     
+        let vc = RepairRecordsVC()
+        vc.orderNo = self.orderNo
+        self.navigationController?.pushViewController(vc, animated: true)
+        
+        
     }
     
     //MARK: - 获取数据
@@ -347,7 +351,7 @@ class orderDetailVC: UITableViewController {
                                 let view : orderDetailFittingsView = Bundle.main.loadNibNamed("orderDetailFittingsView", owner: nil, options: nil)?.first as! orderDetailFittingsView
                                 view.nameL.text = m.name ?? ""
                                 view.onepriceL.text = String(format: "¥%.2f", m.price ?? 0)
-                                view.numL.text = "x" + (m.count ?? 0).description
+                                view.numL.text = "x" + Int(m.count ?? 0).description
                                 
                                 self.fittingSContentView.addSubview(view)
                                 view.snp.makeConstraints({ (make) in

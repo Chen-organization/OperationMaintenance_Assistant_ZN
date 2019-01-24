@@ -33,9 +33,18 @@
                                     <constraints>
                                         <constraint firstAttribute="height" constant="40" id="igc-xQ-DOF"/>
                                     </constraints>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <state key="normal" title="转报修">
                                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </state>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                            <real key="value" value="4"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
+                                    <connections>
+                                        <action selector="toRepair:" destination="CHD-zQ-7ct" eventType="touchUpInside" id="Jg6-Bs-1nZ"/>
+                                    </connections>
                                 </button>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -182,8 +191,8 @@
                                             <constraints>
                                                 <constraint firstAttribute="bottom" secondItem="UAN-xZ-wCn" secondAttribute="bottom" constant="11.5" id="K7Z-Gi-lc6"/>
                                                 <constraint firstItem="fDG-YI-C3j" firstAttribute="leading" secondItem="aBc-nQ-j2j" secondAttribute="leading" constant="15" id="QFc-Dn-o9o"/>
-                                                <constraint firstItem="fDG-YI-C3j" firstAttribute="centerY" secondItem="aBc-nQ-j2j" secondAttribute="centerY" id="XCg-WJ-8pm"/>
                                                 <constraint firstAttribute="trailing" secondItem="UAN-xZ-wCn" secondAttribute="trailing" constant="15" id="a0u-aF-0C6"/>
+                                                <constraint firstItem="fDG-YI-C3j" firstAttribute="top" secondItem="aBc-nQ-j2j" secondAttribute="top" constant="12" id="f0h-3u-flA"/>
                                                 <constraint firstItem="UAN-xZ-wCn" firstAttribute="top" secondItem="aBc-nQ-j2j" secondAttribute="top" constant="12" id="iLO-G1-PUe"/>
                                                 <constraint firstItem="UAN-xZ-wCn" firstAttribute="leading" secondItem="fDG-YI-C3j" secondAttribute="trailing" id="s5v-uM-LBj"/>
                                             </constraints>

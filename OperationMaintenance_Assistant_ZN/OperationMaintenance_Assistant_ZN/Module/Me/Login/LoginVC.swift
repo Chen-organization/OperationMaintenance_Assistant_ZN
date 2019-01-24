@@ -134,6 +134,7 @@ class LoginVC: BaseTableVC ,ChangedPwDelegate ,UITextFieldDelegate{
             
                 
 //            }, failture: <#T##(NSError) -> ()#>)
+            
             NetworkService.networkPostrequest(currentView : self.view , parameters: para as! [String : String], requestApi: LoginUrl, modelClass: String(describing: LoginModel.self), response: { (obj) in
                 
                 YJProgressHUD.hide()

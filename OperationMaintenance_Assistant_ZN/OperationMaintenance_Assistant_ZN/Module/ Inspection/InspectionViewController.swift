@@ -7,10 +7,18 @@
 //
 
 import UIKit
+import HandyJSON
 
-class InspectionViewController:  UIViewController,UIGestureRecognizerDelegate,UIActionSheetDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate ,UITextViewDelegate ,UITableViewDelegate,UITableViewDataSource,PullTableViewDelegate {
+class InspectionViewController:  UIViewController,UIGestureRecognizerDelegate,UIActionSheetDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate ,UITextViewDelegate ,UITableViewDelegate,UITableViewDataSource,PullTableViewDelegate  ,BMKLocationAuthDelegate ,BMKLocationManagerDelegate {
     
-   
+    var locationManager : BMKLocationManager!
+    var completionBlock : BMKLocatingCompletionBlock!
+    
+    var location : CLLocationCoordinate2D?
+    var address : String?
+
+
+    
     @IBOutlet weak var textView: UIPlaceHolderTextView!
     
     var nowPage = 1
@@ -51,6 +59,74 @@ class InspectionViewController:  UIViewController,UIGestureRecognizerDelegate,UI
     @IBAction func commitBtnClick(_ sender: UIButton) {
         
         
+        if(self.location == nil){
+            
+            ZNCustomAlertView.handleTip("定位失败,查看设置中定位是否打开", isShowCancelBtn: false, completion: { (isSure) in
+                
+            })
+            
+            return
+        }
+        
+        if !(self.textView.text.characters.count > 0) {
+            
+            YJProgressHUD.showMessage("请填写巡检内容", in: UIApplication.shared.keyWindow, afterDelayTime: 2)
+            return
+        }
+        
+        
+        YJProgressHUD.showProgress("", in: UIApplication.shared.delegate?.window!)
+
+        UserCenter.shared.userInfo { (islogin, user) in
+            
+         
+            var ImgStrArr = [String]()
+            
+            for i in 0..<self.selectedImgArr.count {
+                //MARK: ---
+                let image = self.selectedImgArr[i]
+                
+                let data = image.compress(withMaxLength: 1 * 1024 * 1024 / 8)
+                
+                // NSData 转换为 Base64编码的字符串
+                let base64String:String = data!.base64EncodedString()//
+                ImgStrArr.append((base64String))
+            }
+            
+           
+            var para = String()
+            
+            for str in ImgStrArr{
+                
+                if para.characters.count > 0{
+                    
+                    para = para + "&"
+                }
+                para = para + "File=" + str
+                
+            }
+            
+
+            var URL = getInspectionSubmissionURL + "?companyCode="
+            
+            URL = URL + user.companyCode! + "&empName="
+            
+            URL = URL + user.empName! + "&empNo="
+            
+            URL = URL + user.empNo! + "&orgCode="
+            
+            URL = URL + user.orgCode! + "&date="
+            
+            URL = URL + self.textView.text + "&address="
+            
+            URL = URL + (self.address ?? "")
+                
+            self.post(para: para, url: URL.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed) ?? "")
+
+        }
+        
+        
+        
     }
     
     var tableView = BasePullTableView()
@@ -75,10 +151,7 @@ class InspectionViewController:  UIViewController,UIGestureRecognizerDelegate,UI
         }
 //        self.tableView.backgroundColor = RGBCOLOR(r: 245, 245, 245)
         self.tableView.isLoadMoreEnable = true
-        //        let view = UIView()
-        //        view.height = 1
-        //        self.tableView.tableFooterView = view
-        
+
         
         self.tableView.separatorStyle = UITableViewCell.SeparatorStyle.singleLine
         self.tableView.separatorColor = RGBCOLOR(r: 240, 240, 240)
@@ -141,8 +214,101 @@ class InspectionViewController:  UIViewController,UIGestureRecognizerDelegate,UI
         
         self.refreshImgs()
         
-        
         self.getDataWithPage(page: 1)
+        
+        
+        
+        BMKLocationAuth.sharedInstance().checkPermision(withKey: "hblWV9xsl67jWi4uuTDup58EU0QKWnlb", authDelegate: self)
+        
+        locationManager = BMKLocationManager.init()
+        locationManager.delegate = self as! BMKLocationManagerDelegate
+        locationManager.coordinateType = BMKLocationCoordinateType.BMK09LL
+        
+        locationManager.distanceFilter = kCLDistanceFilterNone;
+        //设置预期精度参数
+        locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters;
+        //设置应用位置类型
+        locationManager.activityType = CLActivityType.other;
+        //设置是否自动停止位置更新
+        locationManager.pausesLocationUpdatesAutomatically = false;
+        //设置是否允许后台定位
+        locationManager.allowsBackgroundLocationUpdates = false;
+        //设置位置获取超时时间
+        locationManager.locationTimeout = 5;
+        //设置获取地址信息超时时间
+        locationManager.reGeocodeTimeout = 5;
+        
+        weak var weakSelf = self // ADD THIS LINE AS WELL
+        
+        locationManager.requestLocation(withReGeocode: true, withNetworkState: false) { (location, netWorkState, error) in
+            
+            if (location == nil){
+                
+                ZNCustomAlertView.handleTip("定位失败,查看设置中定位是否打开", isShowCancelBtn: false, completion: { (isSure) in
+                    
+                    let url = URL(string: UIApplication.openSettingsURLString)
+                    
+                    if UIApplication.shared.canOpenURL(url!){
+                        
+                        UIApplication.shared.openURL(url!)
+                        
+                    }
+                    
+                })
+                self.address = ""
+                return
+            }
+            
+            let loc = location as! BMKLocation
+            
+            if (loc.location != nil) {//得到定位信息
+                
+                self.location = loc.location?.coordinate
+                
+            }else{
+                
+                return;
+            }
+            
+            if (loc.rgcData != nil) {
+                
+                var str : String! = ""
+                
+                if  let a = loc.rgcData?.city, let b = loc.rgcData?.district{
+                    
+                    str = (loc.rgcData?.city)! + (loc.rgcData?.district)!
+                    
+                }
+                
+                
+                if let street = loc.rgcData?.street {
+                    
+                    str = str + street
+                }
+                
+                if let streetNum = loc.rgcData?.streetNumber {
+                    
+                    str = str + streetNum
+                }
+                
+//                if let arr = loc.rgcData?.poiList {
+//
+//                    if  let poi : BMKLocationPoi = loc.rgcData?.poiList.first {
+//
+//                        str = str + poi.name
+//                    }
+//                }
+                
+                
+                self.address = str
+                
+             
+                
+            }
+            
+        }
+        
+        
         
         
         // Do any additional setup after loading the view.
@@ -409,6 +575,16 @@ class InspectionViewController:  UIViewController,UIGestureRecognizerDelegate,UI
         
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let model = self.dataArray[indexPath.row]
+        
+        let vc = InspectionDetailVCTableViewController.getVC()
+        vc.patrolId = model.patrolId ?? ""
+        self.navigationController?.pushViewController(vc, animated: true)
+        
+    }
+    
     
     func pullTableViewDidTriggerRefresh(_ pullTableView: BasePullTableView!) {
         
@@ -421,6 +597,148 @@ class InspectionViewController:  UIViewController,UIGestureRecognizerDelegate,UI
         
     }
     
+    
+    func post(para:String , url:String) {
+        
+        let session = URLSession(configuration: .default)
+        // 设置URL(该地址不可用，写你自己的服务器地址)
+        var request = URLRequest(url: URL(string: url)!)
+        request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+        request.setValue("application/json", forHTTPHeaderField: "Accept")
+        
+        request.httpMethod = "POST"
+        // 设置要post的内容，字典格式
+        let postData = ["name":"111111","password":"2222222"]
+        let postString = postData.compactMap({ (key, value) -> String in
+            return "\(key)=\(value)"
+        }).joined(separator: "&")
+        
+        
+        
+        let customAllowedSet =  NSCharacterSet(charactersIn:"+").inverted
+        let paraUtf8String = para.addingPercentEncoding(withAllowedCharacters: customAllowedSet)
+        
+        
+        request.httpBody = paraUtf8String?.data(using: .utf8)
+        // 后面不解释了，和GET的注释一样
+        let task = session.dataTask(with: request) {(data, response, error) in
+            do{
+                //              将二进制数据转换为字典对象
+                if let jsonObj:NSDictionary = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions()) as? NSDictionary
+                {
+                    print(jsonObj)
+                    
+                    //主线程
+                    DispatchQueue.main.async{
+                        
+                        YJProgressHUD.hide()
+                        
+                        let model : BaseModel = (swiftClassFromString(className: "BaseModel") as! HandyJSON.Type ).deserialize(from: jsonObj as? NSDictionary) as! BaseModel
+                        
+                        if model.statusCode == 800 {
+                            
+                           //刷新页面
+                            self.textView.text = ""
+                            self.selectedImgArr.removeAll()
+                            self.refreshImgs()
+                            
+                            self.getDataWithPage(page: 1)
+                            
+                        }else{
+                            
+                            YJProgressHUD.showMessage(model.msg, in: UIApplication.shared.keyWindow, afterDelayTime: 1)
+                        }
+                        
+                    }
+                }
+            } catch{
+                print("Error.")
+                DispatchQueue.main.async{
+                    
+                    YJProgressHUD.hide()
+                    
+                }
+                
+            }
+        }
+        task.resume()
+        
+    }
+    
+    //MARK: - TEXTVIEW
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        
+        if (text == "\n") {  // textView点击完成隐藏键盘
+            
+            textView.resignFirstResponder()
+            
+            return false
+            
+        }else{
+            
+            if textView.textInputMode?.primaryLanguage == "emoji" || ((textView.textInputMode?.primaryLanguage) == nil) {
+                YJProgressHUD.showMessage("请输入正确字符", in: UIApplication.shared.keyWindow, afterDelayTime: 2)
+                return false
+            }
+            
+            if NSString.isNineKeyBoard(text) {
+                
+                
+                return true
+            }else{
+                
+                let str : NSString = text as NSString
+                
+                if ( str.containEmoji()){
+                    YJProgressHUD.showMessage("请输入正确字符", in: UIApplication.shared.keyWindow, afterDelayTime: 2)
+                    return false
+                }
+            }
+            
+        }
+        
+        return true
+    }
+    
+    func textViewDidChange(_ textView: UITextView) {
+        
+        
+        if textView.text.characters.count > 300 {
+            
+            //获得已输出字数与正输入字母数
+            let selectRange = textView.markedTextRange
+            
+            //获取高亮部分 － 如果有联想词则解包成功
+            if let selectRange = selectRange {
+                let position =  textView.position(from: (selectRange.start), offset: 0)
+                if (position != nil) {
+                    return
+                }
+            }
+            
+            let textContent = textView.text
+            let textNum = textContent?.characters.count
+            
+            //
+            if textNum! > 300 {
+                let index = textContent?.index((textContent?.startIndex)!, offsetBy: 300)
+                let str = textContent?.substring(to: index!)
+                textView.text = str
+            }
+        }
+        
+        
+    }
+
+    
+
     
     //MARK: -时间戳转时间函数
     func timeStampToString(timeStamp: String)->String {

@@ -13,8 +13,12 @@ import Alamofire
 class PayVC: UIViewController {
     
     
+    var money = ""
+
+    
     var orderNo = ""
-    var scanUrl = ""
+
+    var scanUrl = ""   //账单进入 支付连接
     
     
     
@@ -133,6 +137,7 @@ class PayVC: UIViewController {
                     if model.returnObj == "已支付" {
                         
                         let vc = PaySignVC()
+                        vc.orderNo = self.orderNo
                         self.navigationController?.pushViewController(vc, animated: true)
                         
                         self.timer.invalidate()

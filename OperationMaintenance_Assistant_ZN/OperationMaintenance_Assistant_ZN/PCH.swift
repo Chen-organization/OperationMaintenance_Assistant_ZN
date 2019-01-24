@@ -27,7 +27,7 @@ let is_X_XS_max = UIScreen.main.bounds.size.height >= 812
 let ScreenH = UIScreen.main.bounds.size.height
 let ScreenW = UIScreen.main.bounds.size.width
 
-let NavHeight = IS_iPhoneX ? 88.0 : 64.0
+let NavHeight = is_X_XS_max ? 88.0 : 64.0
 
 public let statusBarheight = UIApplication.shared.statusBarFrame.size.height
 

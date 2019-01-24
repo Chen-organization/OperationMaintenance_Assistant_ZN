@@ -1101,7 +1101,7 @@
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yFw-lV-nNI">
                                         <rect key="frame" x="43" y="30" width="289" height="45"/>
-                                        <color key="backgroundColor" red="0.27721589803695679" green="0.49234306812286377" blue="0.61328029632568359" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" red="0.27450980390000002" green="0.74509803919999995" blue="0.70196078429999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="45" id="fq2-pe-rav"/>
                                         </constraints>
@@ -1446,7 +1446,7 @@
         <image name="手机.png" width="14" height="16"/>
         <image name="未选.png" width="12" height="12"/>
         <image name="照片.png" width="16" height="16"/>
-        <image name="电话.png" width="16" height="16"/>
+        <image name="电话.png" width="20" height="20"/>
         <image name="登陆logo.png" width="96" height="96"/>
         <image name="短信验证.png" width="14" height="16"/>
         <image name="类型.png" width="16" height="16"/>

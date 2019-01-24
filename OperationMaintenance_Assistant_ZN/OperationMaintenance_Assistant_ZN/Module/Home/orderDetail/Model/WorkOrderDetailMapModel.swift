@@ -10,7 +10,7 @@ import UIKit
 
 class WorkOrderDetailMapModel: BaseReturnObjModel {
 
-    var count : Int?
+    var count : Double?
     var money : Double?
     var name : String?
     var price : Double?

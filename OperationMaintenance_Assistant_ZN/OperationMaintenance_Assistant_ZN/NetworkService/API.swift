@@ -97,3 +97,14 @@ public let getStatusURL = baseURL + "/first/getStatus"
 //巡检记录
 public let getPatrolListURL = baseURL + "/patrol/getPatrolList"
 
+//巡检提交
+public let getInspectionSubmissionURL = baseURL + "/patrol/getInspectionSubmission"
+//巡检详情
+public let getPatrolDetailsURL = baseURL + "/patrol/getPatrolDetails"
+
+
+//巡检 转 报修
+public let patrolCommitURL = baseURL + "/fieldRepairs/patrolCommit"
+//维修记录
+public let getMaintenanceRecordURL = baseURL + "/first/getMaintenanceRecord"
+
