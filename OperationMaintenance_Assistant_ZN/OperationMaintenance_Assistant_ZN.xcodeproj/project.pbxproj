@@ -62,6 +62,8 @@
 		187B373B21F875E100DF5C54 /* 10711548238217.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 187B373A21F875E100DF5C54 /* 10711548238217.jpg */; };
 		187B374421F8829A00DF5C54 /* Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 187B374221F8829A00DF5C54 /* Base64.m */; };
 		187B374521F8829A00DF5C54 /* CocoaSecurity.m in Sources */ = {isa = PBXBuildFile; fileRef = 187B374321F8829A00DF5C54 /* CocoaSecurity.m */; };
+		187B374821F98CC900DF5C54 /* InspectionDetailVCTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187B374721F98CC900DF5C54 /* InspectionDetailVCTableViewController.swift */; };
+		187B374A21F98CE100DF5C54 /* Inspection.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 187B374921F98CE100DF5C54 /* Inspection.storyboard */; };
 		1892DAB821E6FBDB00508C8F /* HMSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 1892DAB721E6FBDB00508C8F /* HMSegmentedControl.m */; };
 		1892DABE21E6FBF100508C8F /* MXPagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1892DABC21E6FBF100508C8F /* MXPagerViewController.m */; };
 		1892DABF21E6FBF100508C8F /* MXPagerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1892DABD21E6FBF100508C8F /* MXPagerView.m */; };
@@ -222,10 +224,10 @@
 		7403D2BC21CF800A0055561E /* 未标题-2.png in Resources */ = {isa = PBXBuildFile; fileRef = 7403D1FB21CF7FF30055561E /* 未标题-2.png */; };
 		7403D2BD21CF800A0055561E /* 我的头像@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7403D1FC21CF7FF30055561E /* 我的头像@3x.png */; };
 		7403D2BE21CF800A0055561E /* xiaoxi 3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7403D1FD21CF7FF30055561E /* xiaoxi 3x.png */; };
-		7403D2BF21CF800A0055561E /* 三脚下3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7403D1FF21CF7FF60055561E /* 三脚下3x.png */; };
+		7403D2BF21CF800A0055561E /* 三脚下.png in Resources */ = {isa = PBXBuildFile; fileRef = 7403D1FF21CF7FF60055561E /* 三脚下.png */; };
 		7403D2C021CF800A0055561E /* 紧急3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7403D20021CF7FF60055561E /* 紧急3x.png */; };
 		7403D2C121CF800A0055561E /* 去支付按钮3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7403D20121CF7FF60055561E /* 去支付按钮3x.png */; };
-		7403D2C221CF800A0055561E /* 三角上3xx.png in Resources */ = {isa = PBXBuildFile; fileRef = 7403D20221CF7FF60055561E /* 三角上3xx.png */; };
+		7403D2C221CF800A0055561E /* 三角上3.png in Resources */ = {isa = PBXBuildFile; fileRef = 7403D20221CF7FF60055561E /* 三角上3.png */; };
 		7403D2C321CF800A0055561E /* 返回键3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7403D20321CF7FF60055561E /* 返回键3x.png */; };
 		7403D2C421CF800A0055561E /* 图3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7403D20421CF7FF60055561E /* 图3x.png */; };
 		7403D2C721CF800A0055561E /* 非常紧急3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7403D20721CF7FF60055561E /* 非常紧急3x.png */; };
@@ -709,6 +711,8 @@
 		187B374121F8829A00DF5C54 /* CocoaSecurity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CocoaSecurity.h; sourceTree = "<group>"; };
 		187B374221F8829A00DF5C54 /* Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Base64.m; sourceTree = "<group>"; };
 		187B374321F8829A00DF5C54 /* CocoaSecurity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CocoaSecurity.m; sourceTree = "<group>"; };
+		187B374721F98CC900DF5C54 /* InspectionDetailVCTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InspectionDetailVCTableViewController.swift; sourceTree = "<group>"; };
+		187B374921F98CE100DF5C54 /* Inspection.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Inspection.storyboard; sourceTree = "<group>"; };
 		1892DAB621E6FBDB00508C8F /* HMSegmentedControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMSegmentedControl.h; sourceTree = "<group>"; };
 		1892DAB721E6FBDB00508C8F /* HMSegmentedControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMSegmentedControl.m; sourceTree = "<group>"; };
 		1892DABA21E6FBF100508C8F /* MXPagerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MXPagerViewController.h; sourceTree = "<group>"; };
@@ -882,10 +886,10 @@
 		7403D1FB21CF7FF30055561E /* 未标题-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "未标题-2.png"; sourceTree = "<group>"; };
 		7403D1FC21CF7FF30055561E /* 我的头像@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "我的头像@3x.png"; sourceTree = "<group>"; };
 		7403D1FD21CF7FF30055561E /* xiaoxi 3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "xiaoxi 3x.png"; sourceTree = "<group>"; };
-		7403D1FF21CF7FF60055561E /* 三脚下3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "三脚下3x.png"; sourceTree = "<group>"; };
+		7403D1FF21CF7FF60055561E /* 三脚下.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "三脚下.png"; sourceTree = "<group>"; };
 		7403D20021CF7FF60055561E /* 紧急3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "紧急3x.png"; sourceTree = "<group>"; };
 		7403D20121CF7FF60055561E /* 去支付按钮3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "去支付按钮3x.png"; sourceTree = "<group>"; };
-		7403D20221CF7FF60055561E /* 三角上3xx.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "三角上3xx.png"; sourceTree = "<group>"; };
+		7403D20221CF7FF60055561E /* 三角上3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "三角上3.png"; sourceTree = "<group>"; };
 		7403D20321CF7FF60055561E /* 返回键3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "返回键3x.png"; sourceTree = "<group>"; };
 		7403D20421CF7FF60055561E /* 图3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "图3x.png"; sourceTree = "<group>"; };
 		7403D20721CF7FF60055561E /* 非常紧急3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "非常紧急3x.png"; sourceTree = "<group>"; };
@@ -1652,6 +1656,15 @@
 			path = CocoaSecurity;
 			sourceTree = "<group>";
 		};
+		187B374621F98CA900DF5C54 /* InspectionDetail */ = {
+			isa = PBXGroup;
+			children = (
+				187B374721F98CC900DF5C54 /* InspectionDetailVCTableViewController.swift */,
+				187B374921F98CE100DF5C54 /* Inspection.storyboard */,
+			);
+			path = InspectionDetail;
+			sourceTree = "<group>";
+		};
 		1892DAB521E6FBDB00508C8F /* HMSegmentedControl */ = {
 			isa = PBXGroup;
 			children = (
@@ -2055,10 +2068,10 @@
 		7403D1FE21CF7FF60055561E /* 报修工单切图 */ = {
 			isa = PBXGroup;
 			children = (
-				7403D1FF21CF7FF60055561E /* 三脚下3x.png */,
+				7403D1FF21CF7FF60055561E /* 三脚下.png */,
 				7403D20021CF7FF60055561E /* 紧急3x.png */,
 				7403D20121CF7FF60055561E /* 去支付按钮3x.png */,
-				7403D20221CF7FF60055561E /* 三角上3xx.png */,
+				7403D20221CF7FF60055561E /* 三角上3.png */,
 				7403D20321CF7FF60055561E /* 返回键3x.png */,
 				7403D20421CF7FF60055561E /* 图3x.png */,
 				7403D20721CF7FF60055561E /* 非常紧急3x.png */,
@@ -3327,6 +3340,7 @@
 		7477EAF921C2A7CE00AAA756 /*  Inspection */ = {
 			isa = PBXGroup;
 			children = (
+				187B374621F98CA900DF5C54 /* InspectionDetail */,
 				744B001021F91C8C0061BDDA /* view */,
 				744B000B21F919650061BDDA /* Model */,
 				187B373221F86C8B00DF5C54 /* InspectionViewController.swift */,
@@ -3621,10 +3635,11 @@
 				7403D28921CF800A0055561E /* 信息@2x.png in Resources */,
 				187B373521F86C8B00DF5C54 /* InspectionViewController.xib in Resources */,
 				7403D25621CF800A0055561E /* xiaoxi@3x.png in Resources */,
+				187B374A21F98CE100DF5C54 /* Inspection.storyboard in Resources */,
 				746A638921DB9BEC0054C0C1 /* 类型@2x.png in Resources */,
 				7403D2EE21CF800B0055561E /* 检查更新LOGO3x.png in Resources */,
 				7403D28221CF800A0055561E /* 我的@3x.png in Resources */,
-				7403D2BF21CF800A0055561E /* 三脚下3x.png in Resources */,
+				7403D2BF21CF800A0055561E /* 三脚下.png in Resources */,
 				746A63B121DE85FE0054C0C1 /* MyOrdersCell.xib in Resources */,
 				7494CE8B21EB25530009445A /* grabOrderCell.xib in Resources */,
 				7403D2BC21CF800A0055561E /* 未标题-2.png in Resources */,
@@ -3778,7 +3793,7 @@
 				7403D2BB21CF800A0055561E /* xiaoxi .png in Resources */,
 				7403D2F621CF847D0055561E /* 相机@3x.png in Resources */,
 				7403D2F021CF800B0055561E /* 手机@2x.png in Resources */,
-				7403D2C221CF800A0055561E /* 三角上3xx.png in Resources */,
+				7403D2C221CF800A0055561E /* 三角上3.png in Resources */,
 				744BFFF621F50EE80061BDDA /* makeSureOrderCell.xib in Resources */,
 				7403D26221CF800A0055561E /* xiaoxi_red@3x.png in Resources */,
 				746A638121DB9BEC0054C0C1 /* dount_3.png in Resources */,
@@ -4152,6 +4167,7 @@
 				744BFFF521F50EE80061BDDA /* makeSureOrderCell.swift in Sources */,
 				1892DAD521E759E800508C8F /* WorkOrderDetailModel.swift in Sources */,
 				187B374521F8829A00DF5C54 /* CocoaSecurity.m in Sources */,
+				187B374821F98CC900DF5C54 /* InspectionDetailVCTableViewController.swift in Sources */,
 				744F754521CFC6160072326E /* EasySignatureView.m in Sources */,
 				181AC43821D788760018ADAD /* MJRefreshBackStateFooter.m in Sources */,
 				744BFFE321F4F15D0061BDDA /* AFURLResponseSerialization.m in Sources */,

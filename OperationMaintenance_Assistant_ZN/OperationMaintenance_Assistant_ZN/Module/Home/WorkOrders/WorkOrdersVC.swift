@@ -17,6 +17,12 @@ class WorkOrdersVC: UIViewController,UITableViewDelegate,UITableViewDataSource,P
     
     var repairArr = [myOrdersReturnObjModel]()
 
+    //筛选顺序
+    var selectedItemCode = 1
+    
+    var selectedItemCodeContentView = UIView()
+
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,6 +30,32 @@ class WorkOrdersVC: UIViewController,UITableViewDelegate,UITableViewDataSource,P
         self.title = "任务工单"
         
         self.view.backgroundColor = .white
+        
+        
+        // 筛选
+        let backButton = UIButton(type: .custom)
+        backButton.frame = CGRect(x: 200, y: 13, width: 18, height: 18)
+        backButton.addTarget(self, action: #selector(selectedItem(btn:)), for: .touchUpInside)
+        backButton.setTitle("三脚下", for: UIControl.State.normal)
+        backButton.setTitle("三脚上", for: UIControl.State.normal)
+        backButton.setImage(UIImage.init(named: ""), for: UIControl.State.normal)
+        backButton.setTitleColor(UIColor.white, for: UIControl.State.normal)
+        // 自定义导航栏的UIBarButtonItem类型的按钮
+        let backView = UIBarButtonItem(customView: backButton)
+        // 重要方法，用来调整自定义返回view距离左边的距离
+        let barButtonItem = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: nil, action: nil)
+        barButtonItem.width = -5
+        // 返回按钮设置成功
+        navigationItem.rightBarButtonItems = [barButtonItem, backView]
+        
+        
+        self.view.addSubview(self.selectedItemCodeContentView)
+        self.selectedItemCodeContentView.snp.makeConstraints { (make) in
+            
+            
+            
+        }
+        
         
         
         self.repairTableview.delegate = self
@@ -46,6 +78,14 @@ class WorkOrdersVC: UIViewController,UITableViewDelegate,UITableViewDataSource,P
         
         // Do any additional setup after loading the view.
     }
+    
+    @objc func selectedItem(btn:UIButton) {
+        
+        
+        
+        
+    }
+    
     
     //MARK: - 数据
     func getDataWith(page:Int) {

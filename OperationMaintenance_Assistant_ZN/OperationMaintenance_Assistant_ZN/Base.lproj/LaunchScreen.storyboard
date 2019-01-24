@@ -39,6 +39,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="lunchImg" width="540" height="960"/>
+        <image name="lunchImg" width="1080" height="1920"/>
     </resources>
 </document>
