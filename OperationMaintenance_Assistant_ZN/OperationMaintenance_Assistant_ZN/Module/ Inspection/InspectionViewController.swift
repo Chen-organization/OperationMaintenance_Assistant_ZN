@@ -9,7 +9,7 @@
 import UIKit
 import HandyJSON
 
-class InspectionViewController:  UIViewController,UIGestureRecognizerDelegate,UIActionSheetDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate ,UITextViewDelegate ,UITableViewDelegate,UITableViewDataSource,PullTableViewDelegate  ,BMKLocationAuthDelegate ,BMKLocationManagerDelegate {
+class InspectionViewController:  UIViewController,UIGestureRecognizerDelegate,UIActionSheetDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate ,UITextViewDelegate ,UITableViewDelegate,UITableViewDataSource,PullTableViewDelegate  ,BMKLocationAuthDelegate ,BMKLocationManagerDelegate ,iflyToolDeletage{
     
     var locationManager : BMKLocationManager!
     var completionBlock : BMKLocatingCompletionBlock!
@@ -51,8 +51,30 @@ class InspectionViewController:  UIViewController,UIGestureRecognizerDelegate,UI
     @IBAction func speakBtnClick(_ sender: UIButton) {
         
         
+        let tool = ZZiflyTool.share()
+        tool?.delegate = self
+        tool?.startRecognizer()
+        
+        
         
     }
+    
+    func speakRecognizerError(_ error: IFlySpeechError!, result: String!) {
+        
+        if error != nil{
+            
+            print( "-- 报错 --" + error.errorDesc)
+            
+        }else{
+            
+            print( "-------------" + result)
+            
+            self.textView.text = self.textView.text + result
+            
+        }
+        
+    }
+    
     
     @IBOutlet weak var commitBtn: UIButton!
     

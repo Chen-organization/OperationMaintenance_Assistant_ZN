@@ -64,6 +64,17 @@
 		187B374521F8829A00DF5C54 /* CocoaSecurity.m in Sources */ = {isa = PBXBuildFile; fileRef = 187B374321F8829A00DF5C54 /* CocoaSecurity.m */; };
 		187B374821F98CC900DF5C54 /* InspectionDetailVCTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187B374721F98CC900DF5C54 /* InspectionDetailVCTableViewController.swift */; };
 		187B374A21F98CE100DF5C54 /* Inspection.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 187B374921F98CE100DF5C54 /* Inspection.storyboard */; };
+		187B37E221FAFBD100DF5C54 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 187B37E121FAFBD100DF5C54 /* libz.tbd */; };
+		187B37E421FAFBDC00DF5C54 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 187B37E321FAFBDC00DF5C54 /* AVFoundation.framework */; };
+		187B37E621FAFC0500DF5C54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 187B37E521FAFC0500DF5C54 /* Foundation.framework */; };
+		187B37E821FAFC2100DF5C54 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 187B37E721FAFC2100DF5C54 /* AudioToolbox.framework */; };
+		187B37EA21FAFC2900DF5C54 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 187B37E921FAFC2800DF5C54 /* UIKit.framework */; };
+		187B37EC21FAFC3D00DF5C54 /* Contacts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 187B37EB21FAFC3D00DF5C54 /* Contacts.framework */; };
+		187B37EE21FAFC4900DF5C54 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 187B37ED21FAFC4900DF5C54 /* AddressBook.framework */; };
+		187B37F021FB061300DF5C54 /* iflyMSC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 187B37EF21FB061300DF5C54 /* iflyMSC.framework */; };
+		187B37F421FB10D300DF5C54 /* ZZiflyTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 187B37F321FB10D300DF5C54 /* ZZiflyTool.m */; };
+		187B37FA21FB10F100DF5C54 /* ISRDataHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 187B37F621FB10F100DF5C54 /* ISRDataHelper.m */; };
+		187B37FB21FB10F100DF5C54 /* IATConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 187B37F821FB10F100DF5C54 /* IATConfig.m */; };
 		1892DAB821E6FBDB00508C8F /* HMSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 1892DAB721E6FBDB00508C8F /* HMSegmentedControl.m */; };
 		1892DABE21E6FBF100508C8F /* MXPagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1892DABC21E6FBF100508C8F /* MXPagerViewController.m */; };
 		1892DABF21E6FBF100508C8F /* MXPagerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1892DABD21E6FBF100508C8F /* MXPagerView.m */; };
@@ -722,6 +733,20 @@
 		187B374321F8829A00DF5C54 /* CocoaSecurity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CocoaSecurity.m; sourceTree = "<group>"; };
 		187B374721F98CC900DF5C54 /* InspectionDetailVCTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InspectionDetailVCTableViewController.swift; sourceTree = "<group>"; };
 		187B374921F98CE100DF5C54 /* Inspection.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Inspection.storyboard; sourceTree = "<group>"; };
+		187B37E121FAFBD100DF5C54 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		187B37E321FAFBDC00DF5C54 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		187B37E521FAFC0500DF5C54 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		187B37E721FAFC2100DF5C54 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		187B37E921FAFC2800DF5C54 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		187B37EB21FAFC3D00DF5C54 /* Contacts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Contacts.framework; path = System/Library/Frameworks/Contacts.framework; sourceTree = SDKROOT; };
+		187B37ED21FAFC4900DF5C54 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
+		187B37EF21FB061300DF5C54 /* iflyMSC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = iflyMSC.framework; sourceTree = "<group>"; };
+		187B37F221FB10D300DF5C54 /* ZZiflyTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZiflyTool.h; sourceTree = "<group>"; };
+		187B37F321FB10D300DF5C54 /* ZZiflyTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZiflyTool.m; sourceTree = "<group>"; };
+		187B37F621FB10F100DF5C54 /* ISRDataHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISRDataHelper.m; sourceTree = "<group>"; };
+		187B37F721FB10F100DF5C54 /* IATConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IATConfig.h; sourceTree = "<group>"; };
+		187B37F821FB10F100DF5C54 /* IATConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IATConfig.m; sourceTree = "<group>"; };
+		187B37F921FB10F100DF5C54 /* ISRDataHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISRDataHelper.h; sourceTree = "<group>"; };
 		1892DAB621E6FBDB00508C8F /* HMSegmentedControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMSegmentedControl.h; sourceTree = "<group>"; };
 		1892DAB721E6FBDB00508C8F /* HMSegmentedControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMSegmentedControl.m; sourceTree = "<group>"; };
 		1892DABA21E6FBF100508C8F /* MXPagerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MXPagerViewController.h; sourceTree = "<group>"; };
@@ -1417,17 +1442,25 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				742CAF1221DB67A10022648E /* CoreGraphics.framework in Frameworks */,
+				742CAF0C21DB677B0022648E /* QuartzCore.framework in Frameworks */,
+				187B37EE21FAFC4900DF5C54 /* AddressBook.framework in Frameworks */,
+				187B37EC21FAFC3D00DF5C54 /* Contacts.framework in Frameworks */,
+				742CAF0A21DB67720022648E /* CoreLocation.framework in Frameworks */,
+				187B37EA21FAFC2900DF5C54 /* UIKit.framework in Frameworks */,
+				187B37E821FAFC2100DF5C54 /* AudioToolbox.framework in Frameworks */,
+				742CAF1821DB67C80022648E /* CoreTelephony.framework in Frameworks */,
+				187B37E621FAFC0500DF5C54 /* Foundation.framework in Frameworks */,
+				742CAF1021DB67960022648E /* SystemConfiguration.framework in Frameworks */,
+				187B37E421FAFBDC00DF5C54 /* AVFoundation.framework in Frameworks */,
+				187B37E221FAFBD100DF5C54 /* libz.tbd in Frameworks */,
 				749DFD5F21DB7ED300BA6BA8 /* AdSupport.framework in Frameworks */,
 				742CAF1A21DB67D80022648E /* libc++.tbd in Frameworks */,
-				742CAF1821DB67C80022648E /* CoreTelephony.framework in Frameworks */,
 				749DFD5C21DB7D8900BA6BA8 /* libcrypto.a in Frameworks */,
 				742CAF1621DB67BF0022648E /* libsqlite3.0.tbd in Frameworks */,
 				742CAF1421DB67A80022648E /* Security.framework in Frameworks */,
-				742CAF1221DB67A10022648E /* CoreGraphics.framework in Frameworks */,
-				742CAF1021DB67960022648E /* SystemConfiguration.framework in Frameworks */,
 				742CAF0E21DB67830022648E /* OpenGLES.framework in Frameworks */,
-				742CAF0C21DB677B0022648E /* QuartzCore.framework in Frameworks */,
-				742CAF0A21DB67720022648E /* CoreLocation.framework in Frameworks */,
+				187B37F021FB061300DF5C54 /* iflyMSC.framework in Frameworks */,
 				749DFD5D21DB7D8900BA6BA8 /* libssl.a in Frameworks */,
 				742CAF0821DB676A0022648E /* MobileCoreServices.framework in Frameworks */,
 				742CAF0621DB66420022648E /* BaiduMapAPI_Cloud.framework in Frameworks */,
@@ -1684,6 +1717,27 @@
 			path = InspectionDetail;
 			sourceTree = "<group>";
 		};
+		187B37F121FB10C500DF5C54 /* 讯飞类 */ = {
+			isa = PBXGroup;
+			children = (
+				187B37F521FB10F100DF5C54 /* isr */,
+				187B37F221FB10D300DF5C54 /* ZZiflyTool.h */,
+				187B37F321FB10D300DF5C54 /* ZZiflyTool.m */,
+			);
+			path = "讯飞类";
+			sourceTree = "<group>";
+		};
+		187B37F521FB10F100DF5C54 /* isr */ = {
+			isa = PBXGroup;
+			children = (
+				187B37F621FB10F100DF5C54 /* ISRDataHelper.m */,
+				187B37F721FB10F100DF5C54 /* IATConfig.h */,
+				187B37F821FB10F100DF5C54 /* IATConfig.m */,
+				187B37F921FB10F100DF5C54 /* ISRDataHelper.h */,
+			);
+			path = isr;
+			sourceTree = "<group>";
+		};
 		1892DAB521E6FBDB00508C8F /* HMSegmentedControl */ = {
 			isa = PBXGroup;
 			children = (
@@ -1764,6 +1818,13 @@
 		6C10444056BA7CF598DE237F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				187B37ED21FAFC4900DF5C54 /* AddressBook.framework */,
+				187B37EB21FAFC3D00DF5C54 /* Contacts.framework */,
+				187B37E921FAFC2800DF5C54 /* UIKit.framework */,
+				187B37E721FAFC2100DF5C54 /* AudioToolbox.framework */,
+				187B37E521FAFC0500DF5C54 /* Foundation.framework */,
+				187B37E321FAFBDC00DF5C54 /* AVFoundation.framework */,
+				187B37E121FAFBD100DF5C54 /* libz.tbd */,
 				749DFD5E21DB7ED300BA6BA8 /* AdSupport.framework */,
 				742CAF1921DB67D80022648E /* libc++.tbd */,
 				742CAF1721DB67C80022648E /* CoreTelephony.framework */,
@@ -2619,6 +2680,7 @@
 		7477E83521C025BF00AAA756 = {
 			isa = PBXGroup;
 			children = (
+				187B37EF21FB061300DF5C54 /* iflyMSC.framework */,
 				749DFD6021DB806900BA6BA8 /* mapapi.bundle */,
 				7477E84021C025BF00AAA756 /* OperationMaintenance_Assistant_ZN */,
 				7477E85521C025C000AAA756 /* OperationMaintenance_Assistant_ZNTests */,
@@ -2749,6 +2811,7 @@
 		7477E89E21C170C800AAA756 /* Vendors */ = {
 			isa = PBXGroup;
 			children = (
+				187B37F121FB10C500DF5C54 /* 讯飞类 */,
 				187B373F21F8829A00DF5C54 /* CocoaSecurity */,
 				744BFFD421F4F15D0061BDDA /* AFNetworking */,
 				74B2AF2D21F4A2F80083A05A /* cancelOrderReasonAlertView */,
@@ -4204,10 +4267,12 @@
 				744B000321F78CCE0061BDDA /* scanCodePayModel.swift in Sources */,
 				744F753821CF97F20072326E /* LBXPermissions.swift in Sources */,
 				744F753721CF97F20072326E /* LBXScanViewStyle.swift in Sources */,
+				187B37FB21FB10F100DF5C54 /* IATConfig.m in Sources */,
 				746A639B21DBAFFC0054C0C1 /* ZNMakeSureAlertContentView.m in Sources */,
 				744F753921CF97F20072326E /* LBXScanWrapper.swift in Sources */,
 				181AC43A21D788760018ADAD /* MJRefreshAutoStateFooter.m in Sources */,
 				7477EA9621C1712300AAA756 /* UIImage+MultiFormat.m in Sources */,
+				187B37F421FB10D300DF5C54 /* ZZiflyTool.m in Sources */,
 				185C233521D37D1B0004AD0C /* LLCycleScrollViewCell.swift in Sources */,
 				742CAE9D21D3FB540022648E /* jobOrdersModel.swift in Sources */,
 				7477E88421C1701E00AAA756 /* UITextField+Placeholder.m in Sources */,
@@ -4253,6 +4318,7 @@
 				7477EA7B21C1712300AAA756 /* UIImage+FixOrientation.m in Sources */,
 				181AC44121D788760018ADAD /* MJRefreshHeader.m in Sources */,
 				7477E88121C1701E00AAA756 /* UIImage+Compress.m in Sources */,
+				187B37FA21FB10F100DF5C54 /* ISRDataHelper.m in Sources */,
 				742CAEF721DB5BAE0022648E /* RepairsTypeModel.swift in Sources */,
 				7477EA7D21C1712300AAA756 /* UITableViewCell+Extend.m in Sources */,
 				742CAEC221DA8AE00022648E /* myMessageReturnObjModel.swift in Sources */,
@@ -4508,8 +4574,13 @@
 					"$(PROJECT_DIR)/OperationMaintenance_Assistant_ZN/Vendors/BaiduLoc_iOSSDK_Libs_Bitcode_v1.1",
 					"$(PROJECT_DIR)/OperationMaintenance_Assistant_ZN/Vendors/BaiduMapAPI",
 					"$(PROJECT_DIR)/OperationMaintenance_Assistant_ZN/Vendors/BaiduMap_IOSSDK_v4.2.1_Frameworks",
+					"$(PROJECT_DIR)",
 				);
-				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/OperationMaintenance_Assistant_ZN/Vendors/ZNCustomAlertView\"/**";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				HEADER_SEARCH_PATHS = (
+					"\"$(SRCROOT)/OperationMaintenance_Assistant_ZN/Vendors/ZNCustomAlertView\"/**",
+					"\"$(SRCROOT)/iflyMSC.framework/Headers\"",
+				);
 				INFOPLIST_FILE = OperationMaintenance_Assistant_ZN/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -4529,7 +4600,10 @@
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
-				USER_HEADER_SEARCH_PATHS = "$(PODS_ROOT)/**";
+				USER_HEADER_SEARCH_PATHS = (
+					"$(PODS_ROOT)/**",
+					"\"$(SRCROOT)/iflyMSC.framework/Headers\"",
+				);
 			};
 			name = Debug;
 		};
@@ -4549,8 +4623,13 @@
 					"$(PROJECT_DIR)/OperationMaintenance_Assistant_ZN/Vendors/BaiduLoc_iOSSDK_Libs_Bitcode_v1.1",
 					"$(PROJECT_DIR)/OperationMaintenance_Assistant_ZN/Vendors/BaiduMapAPI",
 					"$(PROJECT_DIR)/OperationMaintenance_Assistant_ZN/Vendors/BaiduMap_IOSSDK_v4.2.1_Frameworks",
+					"$(PROJECT_DIR)",
 				);
-				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/OperationMaintenance_Assistant_ZN/Vendors/ZNCustomAlertView\"/**";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				HEADER_SEARCH_PATHS = (
+					"\"$(SRCROOT)/OperationMaintenance_Assistant_ZN/Vendors/ZNCustomAlertView\"/**",
+					"\"$(SRCROOT)/iflyMSC.framework/Headers\"",
+				);
 				INFOPLIST_FILE = OperationMaintenance_Assistant_ZN/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -4569,7 +4648,10 @@
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
-				USER_HEADER_SEARCH_PATHS = "$(PODS_ROOT)/**";
+				USER_HEADER_SEARCH_PATHS = (
+					"$(PODS_ROOT)/**",
+					"\"$(SRCROOT)/iflyMSC.framework/Headers\"",
+				);
 			};
 			name = Release;
 		};

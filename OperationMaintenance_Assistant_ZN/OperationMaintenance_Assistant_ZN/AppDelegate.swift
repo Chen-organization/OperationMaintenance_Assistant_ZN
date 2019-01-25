@@ -31,6 +31,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate ,BMKGeneralDelegate {
             NSLog("manager start failed!")
         }
 
+        //讯飞
+        IFlySetting.setLogFile(LOG_LEVEL(rawValue: Int(LC_ALL)))
+        IFlySetting.showLogcat(true)
+        
+        let documentPath = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory,FileManager.SearchPathDomainMask.userDomainMask,true).last
+      IFlySetting.setLogFilePath(documentPath)
+        
+        let initString = "appid=" + "5c457c4f"
+        IFlySpeechUtility.createUtility(initString)
+        
+        
         
         //设置tabbar
         self.window = UIWindow(frame: UIScreen.main.bounds)
